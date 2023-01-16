@@ -1,0 +1,103 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class Singleton : MonoBehaviour
+{
+    public static Singleton Inst = null;
+
+    [Header("API ID")]
+    public string Playfab_ID;
+    public string Agora_AppID;
+    public string Photon_AppID;
+    public string localUid;
+    [Header("Basic Setting")]
+    public int showName;
+    public float rotSpeed;
+    [Header("Display Setting")]
+    public int resolution;
+    public int screenMode;
+    public int brightness;
+    public int shadow;
+    public int fvDis;
+    public int tvDis;
+    [Header("Quiz MGR")]
+    public string questions = "";
+    public List<string> question = new();
+    public int currSelect = 0;
+
+    public bool isPatty = false;
+
+    void Awake()
+    {
+        Resources.UnloadUnusedAssets();
+        //PlayerPrefs.DeleteAll();
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+            Destroy(this.gameObject);
+    }
+
+    void Start()
+    {
+        Load();
+    }
+
+    void Load()
+    {
+        if (PlayerPrefs.HasKey("resolution"))
+        {
+            showName = PlayerPrefs.GetInt("ShowName");
+            rotSpeed = PlayerPrefs.GetFloat("RotSpeed");
+            resolution = PlayerPrefs.GetInt("Resolution");
+            screenMode = PlayerPrefs.GetInt("ScreenMode");
+            brightness = PlayerPrefs.GetInt("Brightness") - 20;
+            shadow = PlayerPrefs.GetInt("Shadow");
+            fvDis = PlayerPrefs.GetInt("FVDis");
+            tvDis = PlayerPrefs.GetInt("TVDis");
+        }
+        else
+        {
+            showName = 0;
+            rotSpeed = 1.0f;
+            resolution = 1;
+            screenMode = 0;
+            brightness = 10;
+            shadow = 0;
+            fvDis = 1;
+            tvDis = 1;
+        }
+    }
+
+    public void QuestionInit()
+    {
+        Transform quizContent = GameObject.Find("Quiz_Content").transform;
+        string a = questions;
+        question.Clear();
+        for (int i = 1; i < a.Split("¢Ë").Length; i++)
+        {
+            string b = a.Split("¢Ë")[i];
+            question.Add(b);
+            Transform c = quizContent.GetChild(i - 1);
+            c.gameObject.SetActive(true);
+            c.GetChild(1).GetComponent<TextMeshProUGUI>().text = b.Split("¢Ç")[0];
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("ShowName", showName);
+        PlayerPrefs.SetFloat("RotSpeed", rotSpeed);
+        PlayerPrefs.SetInt("Resolution", resolution);
+        PlayerPrefs.SetInt("ScreenMode", screenMode);
+        PlayerPrefs.SetInt("Brightness", brightness + 20);
+        PlayerPrefs.SetInt("Shadow", shadow);
+        PlayerPrefs.SetInt("FVDis", fvDis);
+        PlayerPrefs.SetInt("TVDis", tvDis);
+        PlayerPrefs.Save();
+    }
+}
