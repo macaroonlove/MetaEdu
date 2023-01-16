@@ -36,6 +36,14 @@ MonoBehaviour:
   RpcList:
   - ClickRpc
   - DestroyRpc
+  - Attack
+  - Battle
+  - Chating
+  - RPCNick
+  - ScreenViewRPC
+  - SendCreateMonster
+  - SendMonsterDie
+  - StunMode
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0
