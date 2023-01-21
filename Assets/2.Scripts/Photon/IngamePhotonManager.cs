@@ -65,7 +65,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            StartCoroutine(Wait("Campus#2.Campus"));
+            RoomChangeManager.Instance.RoomOut("Campus#2.Campus", 20);
         }
     }
 
@@ -91,14 +91,14 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
             _sex = "W";
 
         }
+        PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
+        if (!_isCreate) CreateCharacter();
 
         if (Singleton.Inst.questions == "")
         {
             Singleton.Inst.questions = result.Data["Question"].Value;
         }
         Singleton.Inst.QuestionInit();
-        PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
-        if (!_isCreate) CreateCharacter();
     }
 
     void CreateCharacter()
@@ -108,6 +108,8 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         myCharacter.tag = "Player";
         myCharacter.layer = 7;
         _isCreate = true;
+
+        GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
     }
     #endregion
 
@@ -143,18 +145,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     #region πÊ ¿Ãµø
     public void JCRLL()
     {
-        StartCoroutine(Wait("Battle#4.Battle"));
-    }
-
-    IEnumerator Wait(string targetRoom)
-    {
-        PhotonNetwork.LeaveRoom();
-        Singleton.Inst.isPatty = false;
-        yield return new WaitForSeconds(2);
-        PhotonNetwork.JoinOrCreateRoom(targetRoom, new RoomOptions { MaxPlayers = 20 }, null);
-        yield return new WaitForSeconds(2);
-        PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
-        PhotonNetwork.IsMessageQueueRunning = false;
+        RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
     }
     #endregion
 }

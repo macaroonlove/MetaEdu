@@ -235,13 +235,12 @@ public class ShareCam : MonoBehaviourPunCallbacks
     #region ¿Ã∫•∆Æ
     void InitEventHandler()
     {
-        AgoraEventHandler handler = new AgoraEventHandler(this, noCam, EliceDigital, PV, myCam);
+        AgoraEventHandler handler = new AgoraEventHandler(this, noCam, EliceDigital, myCam);
         RtcEngine.InitEventHandler(handler);
     }
 
     internal class AgoraEventHandler : IRtcEngineEventHandler
     {
-        private PhotonView PV;
         private GameObject _myCam;
         private Sprite noCam;
         private TMP_FontAsset EliceDigital;
@@ -249,9 +248,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
         private TextMeshProUGUI NoTR;
         private TextMeshProUGUI CNTMP;
 
-        internal AgoraEventHandler(ShareCam sampleVideo, Sprite NC, TMP_FontAsset ED, PhotonView PVO, GameObject Cam)
+        internal AgoraEventHandler(ShareCam sampleVideo, Sprite NC, TMP_FontAsset ED, GameObject Cam)
         {
-            PV = PVO;
             _myCam = Cam;
             videoSample = sampleVideo;
             noCam = NC;
@@ -278,6 +276,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
             _myCam.name = _id;
             videoSample._screenUid = connection.localUid;
             Singleton.Inst.localUid = _id;
+            Debug.Log(GameObject.Find(PhotonNetwork.LocalPlayer.NickName));
             GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(_id);
 
             _myCam.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = CamColor();

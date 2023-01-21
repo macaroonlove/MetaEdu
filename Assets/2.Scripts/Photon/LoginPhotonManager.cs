@@ -11,6 +11,8 @@ public class LoginPhotonManager : MonoBehaviourPunCallbacks
     private string LobbyRoom = "Campus#2.Campus";
     void Start()
     {
+        SoundManager.Instance.Login_BGM();
+        SoundManager.Instance.EffectExample();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -21,33 +23,25 @@ public class LoginPhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        PhotonNetwork.JoinRoom(LobbyRoom);
+        RoomChangeManager.Instance.RoomChange(LobbyRoom);
     }
 
     public void Disconnect() => PhotonNetwork.Disconnect();
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
+    //public override void OnJoinedRoom()
+    //{
+    //    RoomChangeManager.Instance.RoomChange("2.Campus");
+    //}
 
-    }
+    //public override void OnJoinRoomFailed(short returnCode, string message)
+    //{
+    //    // 规 积己
+    //    PhotonNetwork.CreateRoom(LobbyRoom, new RoomOptions { MaxPlayers = 20 });
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        // 规 涝厘
-        PhotonNetwork.LoadLevel("2.Campus");
-        PhotonNetwork.IsMessageQueueRunning = false;
-    }
-
-
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        // 规 积己
-        PhotonNetwork.CreateRoom(LobbyRoom, new RoomOptions { MaxPlayers = 20 });
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.Log("规 积己俊 角菩");
-    }
+    //public override void OnCreateRoomFailed(short returnCode, string message)
+    //{
+    //    Debug.Log("规 积己俊 角菩");
+    //}
     #endregion
 }

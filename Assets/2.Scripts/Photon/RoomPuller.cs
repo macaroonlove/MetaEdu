@@ -91,19 +91,21 @@ public class RoomPuller : MonoBehaviourPunCallbacks
             client.Disconnect();
             client = null;
             callback = null;
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.AddCallbackTarget(this);
+            RoomChangeManager.Instance.RoomOut(MyList[multiple + num].Name, 20);
+            //PhotonNetwork.LeaveRoom();
+            //PhotonNetwork.AddCallbackTarget(this);
 
-            StartCoroutine("JR", num);
+            //StartCoroutine("JR", num);
         }
         MyListRenewal();
     }
 
-    IEnumerator JR(int num)
-    {
-        yield return new WaitForSeconds(0.5f);
-        PhotonNetwork.JoinRoom(MyList[multiple + num].Name);
-    }
+    //IEnumerator JR(int num)
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+        
+    //    //PhotonNetwork.JoinRoom(MyList[multiple + num].Name);
+    //}
 
     void MyListRenewal()
     {
@@ -160,41 +162,40 @@ public class RoomPuller : MonoBehaviourPunCallbacks
         client.Disconnect();
         client = null;
         callback = null;
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.AddCallbackTarget(this);
+        RoomChangeManager.Instance.RoomOut((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "´ÔÀÇ ¹æ" : RoomName.text) + "#" + roomSet, RoomMax.value + 2);
 
-        Invoke("CR", 0.5f);
+        //Invoke("CR", 0.5f);
     }
 
-    void CR()
-    {
-        PhotonNetwork.CreateRoom((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "´ÔÀÇ ¹æ" : RoomName.text) + "#" + roomSet, new RoomOptions { MaxPlayers = (byte)(RoomMax.value + 2) });
-    }
+    //void CR()
+    //{
+    //    PhotonNetwork.CreateRoom((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "´ÔÀÇ ¹æ" : RoomName.text) + "#" + roomSet, new RoomOptions { MaxPlayers = (byte)(RoomMax.value + 2) });
+    //}
 
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        RoomName.text = "";
-        CreateRoom();
-    }
+    //public override void OnCreateRoomFailed(short returnCode, string message)
+    //{
+    //    RoomName.text = "";
+    //    CreateRoom();
+    //}
 
-    public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
+    //public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        RoomName.text = "";
-        CreateRoom();
-    }
+    //public override void OnJoinRandomFailed(short returnCode, string message)
+    //{
+    //    RoomName.text = "";
+    //    CreateRoom();
+    //}
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        PhotonNetwork.JoinOrCreateRoom("Campus", new RoomOptions { MaxPlayers = 20 }, null);
-        PhotonNetwork.LoadLevel(1);
-    }
+    //public override void OnJoinRoomFailed(short returnCode, string message)
+    //{
+    //    PhotonNetwork.JoinOrCreateRoom("Campus", new RoomOptions { MaxPlayers = 20 }, null);
+    //    PhotonNetwork.LoadLevel(1);
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        Singleton.Inst.isPatty = false;
-        PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
-        PhotonNetwork.IsMessageQueueRunning = false;
-    }
+    //public override void OnJoinedRoom()
+    //{
+    //    Singleton.Inst.isPatty = false;
+    //    PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
+    //    PhotonNetwork.IsMessageQueueRunning = false;
+    //}
 }
