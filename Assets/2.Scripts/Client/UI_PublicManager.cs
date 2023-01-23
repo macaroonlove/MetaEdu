@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Photon.Pun;
-using Photon.Realtime;
 using TMPro;
 
 public class UI_PublicManager : MonoBehaviour
@@ -29,6 +27,8 @@ public class UI_PublicManager : MonoBehaviour
     [Header("페티씬")]
     private ShareCam _agManager;
     private IngamePhotonManager _ptManager;
+    private GameObject _createRoomPanel;
+    private GameObject _createQuizPanel;
 
     public Sprite[] camButtonSprite;
     private Image _camOnOffImg;
@@ -56,6 +56,7 @@ public class UI_PublicManager : MonoBehaviour
 
     [Header("설정창")]
     private GameObject _setting;
+    private GameObject _rebinding;
     private TextMeshProUGUI _basic;
     private TextMeshProUGUI _control;
     private TextMeshProUGUI _display;
@@ -92,11 +93,14 @@ public class UI_PublicManager : MonoBehaviour
             _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
             _chatInput = _chatPanel.transform.GetChild(1).gameObject;
             _sendChat = _chatInput.GetComponent<TMP_InputField>();
-            _setting = gameObject.transform.GetChild(8).gameObject;
+            _setting = gameObject.transform.GetChild(10).gameObject;
+            _createRoomPanel = transform.GetChild(8).gameObject;
+            _createQuizPanel = transform.GetChild(9).gameObject;
             _basic = _setting.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _control = _setting.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
         }
     }
 
@@ -147,7 +151,7 @@ public class UI_PublicManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !_rebinding.activeSelf)
             {
                 Set_setting();
             }
@@ -381,8 +385,13 @@ public class UI_PublicManager : MonoBehaviour
     {
         if (_setting.activeSelf)
         {
-            _setting.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            if (!Singleton.Inst.controled)
+            {
+                _setting.SetActive(false);
+                if (!_createRoomPanel.activeSelf && !_createQuizPanel.activeSelf) Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+                Singleton.Inst.controled = false;
         }
         else
         {

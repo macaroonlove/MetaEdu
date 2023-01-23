@@ -72,8 +72,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log("서브 클라이언트 룸리스트 업데이트");
-
         if (callback != null)
         {
             callback(roomList);

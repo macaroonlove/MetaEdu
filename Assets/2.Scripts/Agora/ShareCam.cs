@@ -276,7 +276,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
             _myCam.name = _id;
             videoSample._screenUid = connection.localUid;
             Singleton.Inst.localUid = _id;
-            Debug.Log(GameObject.Find(PhotonNetwork.LocalPlayer.NickName));
             GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(_id);
 
             _myCam.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = CamColor();

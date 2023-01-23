@@ -19,12 +19,6 @@ public class PlayerInputPress : MonoBehaviour
     public bool cursorInputForLook = true;
 	public static CursorLockMode CLM;
 
-	private GameObject Chatting;
-    void Start()
-    {
-		Chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
-	}
-
     #region 키가 눌렸는가?
     public void OnEyesight(InputValue value)
     {
@@ -90,19 +84,9 @@ public class PlayerInputPress : MonoBehaviour
 
 	private void SetCursorState(bool newState)
 	{
-        try
-        {
-			if (!Chatting.activeSelf)
-			{
-				Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
-				CLM = Cursor.lockState;
-				cursorLocked = !newState;
-			}
-		}
-        catch
-        {
-			Chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
-		}        
+		Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
+		CLM = Cursor.lockState;
+		cursorLocked = !newState; 
 	}
     #endregion
 }

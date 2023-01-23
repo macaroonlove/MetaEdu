@@ -15,6 +15,8 @@ public class Singleton : MonoBehaviour
     [Header("Basic Setting")]
     public int showName;
     public float rotSpeed;
+    [Header("Control Setting")]
+    public bool controled;
     [Header("Display Setting")]
     public int resolution;
     public int screenMode;
