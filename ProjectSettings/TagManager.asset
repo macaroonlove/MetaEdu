@@ -9,6 +9,7 @@ TagManager:
   - Canvas
   - Potal
   - Fog
+  - Bus
   layers:
   - Default
   - TransparentFX

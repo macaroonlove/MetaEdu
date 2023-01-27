@@ -216,9 +216,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void LateUpdate()
     {
-        LimitInput();
-        if (PV.IsMine && Cursor.lockState == CursorLockMode.Locked)
-            CameraRotation();
+        if (PV.IsMine)
+        {
+            LimitInput();
+            if (Cursor.lockState == CursorLockMode.Locked) CameraRotation();
+        }
     }
 
     void LimitInput()
@@ -461,7 +463,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         else if (other.CompareTag("Fog") && PV.IsMine)
         {
-            GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>().JCRLL();
+            RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
+        }
+        else if (other.CompareTag("Bus") && PV.IsMine)
+        {
+            RoomChangeManager.Instance.RoomOut("null#5.Goldenball", 4);
         }
     }
 

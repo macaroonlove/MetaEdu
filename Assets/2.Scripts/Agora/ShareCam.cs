@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,15 @@ public class ShareCam : MonoBehaviourPunCallbacks
     private string _channelName = "";
     private string _token = "";
     private long _remoteUid;
-    private uint _screenUid;
+    private uint secondChannelUid = 100;
+    private RtcConnection _screenConn = new();
 
     internal VideoSurface LocalView; // 내 화면
     internal VideoSurface RemoteView; // 상대 화면
     internal VideoSurface ScreenView;
 
     internal static IRtcEngine RtcEngine; // 캠 RTC 엔진의 정보를 저장할 변수
+    internal static IRtcEngineEx RtcEngineEx; // 스크린 RTC 엔진의 정보를 저장할 변수
 
     public Sprite noCam;
     public TMP_FontAsset EliceDigital;
@@ -33,7 +36,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
     private RawImage _mainScreen;
     private Image _screenOnOffImage;
     private bool _sharingScreen = false;
-    private int _displayNum;
+    private int _displayNum = 0;
 
     void Start()
     {
@@ -46,25 +49,28 @@ public class ShareCam : MonoBehaviourPunCallbacks
         InitEventHandler();
     }
 
-    #region 카메라 공유
+
     void Setup()
     {
         if (RtcEngine == null)
         {
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
-            RtcEngineContext context = new RtcEngineContext(_appId, 0, CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_COMMUNICATION, AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
+            RtcEngineContext context = new RtcEngineContext(_appId, 0, CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING, AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
             RtcEngine.Initialize(context);
         }
     }
 
     void SetupUI()
     {
+        #region 카메라 UI 세팅
         myCam = GameObject.Find("MyCam");
         cMyName = myCam.transform.GetChild(1).gameObject;
         cMyName.SetActive(false);
         LocalView = myCam.GetComponent<VideoSurface>();
         LocalView.SetForUser(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_CAMERA);
+        #endregion
 
+        #region 화면공유 UI 세팅
         if (SceneManager.GetActiveScene().name.Contains("3"))
         {
             _mainScreen = GameObject.Find("mainScreen").GetComponent<RawImage>();
@@ -73,18 +79,26 @@ public class ShareCam : MonoBehaviourPunCallbacks
             _shareMenu = _screenOnOffImage.transform.GetChild(0).gameObject;
         }
         else
-        {
             GameObject.Find("ScreenOnOff").SetActive(false);
-        }
+        #endregion
     }
 
+    #region 카메라
     void JoinChannel()
     {
+
         RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER); // OnUserJoined 또는 OnUserOffline(USER_OFFLINE_BECOME_AUDIENCE) 이벤트 호출
         RtcEngine.EnableVideo();
         RtcEngine.EnableLocalVideo(false);
         RtcEngine.EnableLocalAudio(false);
         RtcEngine.JoinChannel(_token, _channelName);
+    }
+
+    public void Test()
+    {
+        string callid = "";
+        RtcEngine.GetCallId(ref callid);
+        Debug.Log(callid);
     }
 
     public void OnCam()
@@ -115,20 +129,44 @@ public class ShareCam : MonoBehaviourPunCallbacks
     #endregion
 
     #region 화면공유
+    void SetupEx()
+    {
+        if (RtcEngineEx == null)
+        {
+            RtcEngineEx = Agora.Rtc.RtcEngine.InstanceEx;
+            RtcEngineContext context = new RtcEngineContext(_appId, 0, CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING, AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
+            RtcEngineEx.Initialize(context);
+        }
+    }
+
+    void JoinChannelEx()
+    {
+        RtcEngineEx.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
+        ChannelMediaOptions channelOptions = new ChannelMediaOptions();
+        //channelOptions.publishScreenTrack.SetValue(true);
+        //channelOptions.publishSecondaryScreenTrack.SetValue(true);
+        _screenConn.channelId = _channelName;
+        _screenConn.localUid = secondChannelUid;
+        RtcEngineEx.JoinChannelEx(_token, _screenConn, channelOptions);
+        VideoCanvas vc = new VideoCanvas();
+        vc.sourceType = VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE;
+        RtcEngineEx.SetupRemoteVideoEx(vc, _screenConn);
+    }
+
     // 화면공유 아이콘을 눌렀을 때
     public void ControlScreenVideo()
     {
         if (!_sharingScreen) // 화면공유중이 아닐 때
         {
             SIZE t = new SIZE(360, 240);
-            SIZE s = new SIZE(360, 240);
-            var info = RtcEngine.GetScreenCaptureSources(t, s, true);
-            _displayNum = 0;
-            for (int i = 0; i < info.Length; i++) if (info[i].sourceName.Contains("DISPLAY")) _displayNum++;
-            if (_displayNum == 1)
+            var info = RtcEngine.GetScreenCaptureSources(t, t, true);
+            Debug.Log(info);
+            if (_displayNum == 0)
             {
-                StartScreenShare(0);
+                for (int i = 0; i < info.Length; i++) if (info[i].sourceName.Contains("DISPLAY")) _displayNum++;
             }
+            if (_displayNum == 1)
+                StartScreenShare(0);
             else if (_shareMenu.activeSelf)
             {
                 for (int i = 0; i < 6; i++)
@@ -144,38 +182,32 @@ public class ShareCam : MonoBehaviourPunCallbacks
         }
         else // 화면공유 중일 때
         {
-            RtcEngine.StopSecondaryScreenCapture();
-            updateChannelPublishOptions(false);
+            DisableScreen();
             _screenOnOffImage.sprite = screenButtonSprite[0];
             _sharingScreen = false;
         }
     }
+
     // 화면공유를 할 디스플레이를 선택했을 때
     public void StartScreenShare(int i)
     {
-        SIZE t = new SIZE(360, 240);
-        SIZE s = new SIZE(360, 240);
-        var info = RtcEngine.GetScreenCaptureSources(t, s, true);
-        // 전체 화면을 공유할 첫 번째 소스 ID를 가져옵니다.
-        ulong dispId = info[0].sourceId;
+        SetupEx();
+        JoinChannelEx();
+        EnableScreen(i);
+    }
 
-        ScreenCaptureConfiguration config = new();
-        //config.displayId = System.Convert.ToUInt32(dispId);
-        config.windowId = System.Convert.ToUInt32(dispId);
-        config.screenRect = new Rectangle();
-        config.isCaptureWindow = true;
-        config.parameters = default;
-        RtcEngine.StartSecondaryScreenCapture(config);
-
-        // 화면의 일부를 공유하려면 Rectangle 클래스를 사용하여 화면 너비와 크기를 지정합니다.
-        //int a = RtcEngine.StartScreenCaptureByWindowId(dispId, new Rectangle(), default(ScreenCaptureParameters));
-        //Debug.Log(a);
-
-        // 화면 트랙을 게시하고 로컬 비디오 트랙을 게시 취소합니다.
+    void EnableScreen(int i)
+    {
         updateChannelPublishOptions(true);
 
-        // 로컬 뷰에 화면 트랙을 표시합니다.
-        setupLocalVideo(_displayNum, i);
+        SIZE t = new SIZE(360, 240);
+        var info = RtcEngineEx.GetScreenCaptureSources(t, t, true);
+        // 전체 화면을 공유할 첫 번째 소스 ID를 가져옵니다.
+        ulong dispId = info[i].sourceId;
+
+        RtcEngineEx.StartScreenCaptureByDisplayId(System.Convert.ToUInt32(dispId), new Rectangle(), default(ScreenCaptureParameters));
+
+        //setupLocalVideo(_displayNum, i);
         _screenOnOffImage.sprite = screenButtonSprite[1];
         _shareMenu.SetActive(false);
         // 화면 공유 상태를 업데이트합니다.
@@ -186,61 +218,48 @@ public class ShareCam : MonoBehaviourPunCallbacks
     private void updateChannelPublishOptions(bool publishMediaPlayer)
     {
         ChannelMediaOptions channelOptions = new ChannelMediaOptions();
-        channelOptions.publishScreenTrack.SetValue(publishMediaPlayer); // 화면에서 캡처한 비디오를 게시할지 여부
+        channelOptions.publishScreenTrack.SetValue(publishMediaPlayer);
         channelOptions.publishSecondaryScreenTrack.SetValue(publishMediaPlayer);
-        //channelOptions.publishMicrophoneTrack.SetValue(true);
-        channelOptions.publishCameraTrack.SetValue(!publishMediaPlayer);
-        RtcEngine.UpdateChannelMediaOptions(channelOptions);
+        RtcEngineEx.UpdateChannelMediaOptionsEx(channelOptions, _screenConn);
     }
 
-    private void setupLocalVideo(int displayNum, int i) // 화면공유
+    //private void setupLocalVideo(int displayNum, int i) // 화면공유
+    //{
+    //    ScreenView.SetEnable(true);
+    //    ScreenView.SetForUser(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN);
+    //    //PV.RPC(nameof(ScreenViewRPC), RpcTarget.OthersBuffered, displayNum, i);
+    //}
+
+    //[PunRPC]
+    //void ScreenViewRPC(int displayNum, int i)
+    //{
+    //    ScreenView.SetEnable(true);
+    //    ScreenView.SetForUser(secondChannelUid, _channelName, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
+    //}
+
+    void DisableScreen()
     {
-        ScreenRect(displayNum, i);
-        ScreenView.SetForUser(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN);
-        PV.RPC(nameof(ScreenViewRPC), RpcTarget.OthersBuffered, (int)_screenUid, displayNum, i);
+        RtcEngineEx.StopScreenCapture();
+        updateChannelPublishOptions(false);
+        RtcEngineEx.LeaveChannelEx(_screenConn);
+        if (ScreenView != null)
+            ScreenView.SetEnable(false);
+        //RtcEngineEx.Dispose();
+        RtcEngineEx = null;
     }
 
-    [PunRPC]
-    void ScreenViewRPC(int uid, int displayNum, int i)
-    {
-        ScreenRect(displayNum, i);
-        ScreenView.SetForUser((uint)uid, _channelName, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
-    }
-
-    void ScreenRect(int displayNum, int i)
-    {
-        if (displayNum == 1)
-        {
-            _mainScreen.uvRect = new Rect(0, 0, 1, 1);
-        }
-        else if (displayNum == 2)
-        {
-            if (i == 0)
-                _mainScreen.uvRect = new Rect(0, 0, 0.5f, 1);
-            else if (i == 1)
-                _mainScreen.uvRect = new Rect(0.5f, 0, 0.5f, 1);
-        }
-        else if (displayNum == 3)
-        {
-            if (i == 0)
-                _mainScreen.uvRect = new Rect(0, 0, 0.333f, 1);
-            else if (i == 1)
-                _mainScreen.uvRect = new Rect(0.333f, 0, 0.333f, 1);
-            else if (i == 2)
-                _mainScreen.uvRect = new Rect(0.666f, 0, 0.333f, 1);
-        }
-    }
     #endregion
 
     #region 이벤트
     void InitEventHandler()
     {
-        AgoraEventHandler handler = new AgoraEventHandler(this, noCam, EliceDigital, myCam);
+        AgoraEventHandler handler = new AgoraEventHandler(this, noCam, EliceDigital, PV, myCam);
         RtcEngine.InitEventHandler(handler);
     }
 
     internal class AgoraEventHandler : IRtcEngineEventHandler
     {
+        private PhotonView PV;
         private GameObject _myCam;
         private Sprite noCam;
         private TMP_FontAsset EliceDigital;
@@ -248,8 +267,9 @@ public class ShareCam : MonoBehaviourPunCallbacks
         private TextMeshProUGUI NoTR;
         private TextMeshProUGUI CNTMP;
 
-        internal AgoraEventHandler(ShareCam sampleVideo, Sprite NC, TMP_FontAsset ED, GameObject Cam)
+        internal AgoraEventHandler(ShareCam sampleVideo, Sprite NC, TMP_FontAsset ED, PhotonView PVO, GameObject Cam)
         {
+            PV = PVO;
             _myCam = Cam;
             videoSample = sampleVideo;
             noCam = NC;
@@ -259,12 +279,12 @@ public class ShareCam : MonoBehaviourPunCallbacks
         Color CamColor()
         {
             float[] xyz = { 0.529f, 0.529f, 0.529f };
-            int nc = Random.Range(0, 2);
+            int nc = UnityEngine.Random.Range(0, 2);
             for (int i = 0; i < 3; i++)
             {
                 if (i != nc)
                 {
-                    xyz[i] = Random.Range(135.0f, 255.0f) / 255.0f;
+                    xyz[i] = UnityEngine.Random.Range(135.0f, 255.0f) / 255.0f;
                 }
             }
             return new Color(xyz[0], xyz[1], xyz[2]);
@@ -272,36 +292,41 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         public override void OnJoinChannelSuccess(RtcConnection connection, int elapsed)
         {
-            string _id = connection.localUid.ToString();
-            _myCam.name = _id;
-            videoSample._screenUid = connection.localUid;
-            Singleton.Inst.localUid = _id;
-            GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(_id);
-
-            _myCam.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = CamColor();
+            Debug.Log(connection.localUid);
+            if (connection.localUid != videoSample.secondChannelUid)
+            {
+                string _id = connection.localUid.ToString();
+                _myCam.name = _id;
+                Singleton.Inst.localUid = _id;
+                GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(_id);
+                _myCam.transform.GetChild(0).GetChild(0).GetComponent<Image>().color = CamColor();
+            }
+            else
+            {
+                videoSample.ScreenView.SetEnable(true);
+                videoSample.ScreenView.SetForUser(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN);
+            }
         }
 
         public override void OnUserJoined(RtcConnection connection, uint remoteUid, int elapsed)
         {
-            videoSample.RemoteView = CamSurface(remoteUid.ToString());
-            videoSample.RemoteView.SetForUser(remoteUid, connection.channelId, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
-            videoSample._remoteUid = remoteUid;
-            videoSample.RemoteView.SetEnable(true);
-        }
-
-        public override void OnLocalAudioStateChanged(RtcConnection connection, LOCAL_AUDIO_STREAM_STATE state, LOCAL_AUDIO_STREAM_ERROR error) // EnableLocalAudio
-        {
-            Debug.Log("로컬 오디오" + connection.localUid);
-        }
-
-        public override void OnRemoteAudioStateChanged(RtcConnection connection, uint remoteUid, REMOTE_AUDIO_STATE state, REMOTE_AUDIO_STATE_REASON reason, int elapsed)
-        {
-            Debug.Log("리모트 오디오" + connection.localUid);
+            Debug.Log(connection.localUid + ", " + remoteUid);
+            if (connection.localUid != videoSample.secondChannelUid)
+            {
+                videoSample.RemoteView = CamSurface(remoteUid.ToString());
+                videoSample.RemoteView.SetForUser(remoteUid, connection.channelId, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
+                //videoSample._remoteUid = remoteUid;
+                videoSample.RemoteView.SetEnable(true);
+            }
+            else
+            {
+                videoSample.ScreenView.SetEnable(true);
+                videoSample.ScreenView.SetForUser(connection.localUid, connection.channelId, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
+            }
         }
 
         public override void OnRemoteVideoStateChanged(RtcConnection connection, uint remoteUid, REMOTE_VIDEO_STATE state, REMOTE_VIDEO_STATE_REASON reason, int elapsed)
         {
-            Debug.Log(reason);
             if (reason.Equals(REMOTE_VIDEO_STATE_REASON.REMOTE_VIDEO_STATE_REASON_REMOTE_MUTED))
             {
                 Transform go = GameObject.Find($"{remoteUid}").transform;
@@ -325,8 +350,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
             GameObject goNoN = new GameObject();
             GameObject goCN = new GameObject();
 
-            Vector2 camsize = new Vector2((int)((Screen.width / 1920) * 200), (int)((Screen.height / 1080) * 200));
-
             if (WC == null || goNo == null || goNoI == null || goNoN == null || goCN == null) return null;
 
             WC.name = goName;
@@ -344,19 +367,23 @@ public class ShareCam : MonoBehaviourPunCallbacks
             GameObject Cam_Content = GameObject.Find("Cam_Content");
             if (Cam_Content != null)
             {
-                WC.transform.parent = Cam_Content.transform;
-                goNo.transform.parent = WC.transform;
-                goNoI.transform.parent = goNo.transform;
-                goNoN.transform.parent = goNoI.transform;
-                goCN.transform.parent = WC.transform;
+                WC.transform.SetParent(Cam_Content.transform, false);
+                goNo.transform.SetParent(WC.transform, false);
+                goNoI.transform.SetParent(goNo.transform, false);
+                goNoN.transform.SetParent(goNoI.transform, false);
+                goCN.transform.SetParent(WC.transform, false);
             }
 
-            WC.GetComponent<RectTransform>().sizeDelta = camsize;
-
-            goNo.GetComponent<RectTransform>().sizeDelta = camsize;
+            goNo.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+            goNo.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+            goNo.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+            goNo.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
 
             RectTransform NRT = goNoI.GetComponent<RectTransform>();
-            NRT.sizeDelta = goNo.GetComponent<RectTransform>().sizeDelta = camsize;
+            NRT.anchorMin = new Vector2(0, 0);
+            NRT.anchorMax = new Vector2(1, 1);
+            NRT.offsetMin = new Vector2(0, 0);
+            NRT.offsetMax = new Vector2(0, 0);
             goNoI.GetComponent<Image>().color = CamColor();
 
             goNoN.GetComponent<RectTransform>().sizeDelta = new Vector2(170, 50);
@@ -405,7 +432,12 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     void OnDisable()
     {
-        Leave();
+        RtcEngine.LeaveChannel();
+        RtcEngine.EnableLocalVideo(false);
+        if (RtcEngineEx != null)
+        {
+            DisableScreen();
+        }
     }
 
     void OnApplicationQuit()
@@ -415,7 +447,10 @@ public class ShareCam : MonoBehaviourPunCallbacks
             Leave();
             RtcEngine.Dispose();
             RtcEngine = null;
-
+        }
+        if (RtcEngineEx != null)
+        {
+            DisableScreen();
         }
     }
 }

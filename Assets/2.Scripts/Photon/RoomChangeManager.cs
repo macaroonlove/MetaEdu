@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RoomChangeManager : MonoBehaviour
+public class RoomChangeManager : MonoBehaviourPunCallbacks
 {
     /* Singleton */
     private static RoomChangeManager _instance;
@@ -38,6 +38,11 @@ public class RoomChangeManager : MonoBehaviour
 
     public Image loadingBar;
 
+    public override void OnConnectedToMaster()
+    {
+        PhotonNetwork.JoinLobby();
+    }
+
     public void RoomOut(string roomName, int maxPlayer)
     {
         PhotonNetwork.LeaveRoom();
@@ -51,19 +56,32 @@ public class RoomChangeManager : MonoBehaviour
     IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer)
     {
         transform.GetChild(0).gameObject.SetActive(true);
-        if (isJoin)
+        loadingBar.fillAmount = 0.1f;
+        while (true)
         {
-            loadingBar.fillAmount = 0.1f;
-            yield return new WaitForSeconds(0.5f);
+            if (PhotonNetwork.InLobby)
+            {
+                Debug.Log(roomName);
+                PhotonNetwork.JoinOrCreateRoom(roomName.Contains("null") ? null : roomName, new RoomOptions { MaxPlayers = (byte)maxPlayer }, null);
+
+                yield break;
+            }
+            yield return null;
         }
-        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)maxPlayer }, null);
+    }
+
+    public override void OnJoinedRoom()
+    {
         loadingBar.fillAmount = 0.2f;
-        yield return new WaitForSeconds(1f);
-        PhotonNetwork.LoadLevel(roomName.Split("#")[1]);
-        PhotonNetwork.IsMessageQueueRunning = false;
+        StartCoroutine(LevelRoom());
+    }
+
+    IEnumerator LevelRoom()
+    {
+        PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
         while (PhotonNetwork.LevelLoadingProgress < 1)
         {
-            loadingBar.fillAmount = 0.2f + PhotonNetwork.LevelLoadingProgress * 0.4f;
+            loadingBar.fillAmount = 0.2f + PhotonNetwork.LevelLoadingProgress * 0.7f;
             if (PhotonNetwork.LevelLoadingProgress == 0.9f)
             {
                 StartCoroutine(LoadPetty());
@@ -77,33 +95,53 @@ public class RoomChangeManager : MonoBehaviour
         if (!Singleton.Inst.isPatty)
         {
             Singleton.Inst.isPatty = true;
-            AsyncOperation op = SceneManager.LoadSceneAsync("Petty", LoadSceneMode.Additive);
-            op.allowSceneActivation = false;
-
+            SceneManager.LoadScene("Petty", LoadSceneMode.Additive);
             float timer = 0f;
             while (true)
             {
                 yield return null;
-                if(op.progress < 0.85f)
+                timer += Time.unscaledDeltaTime;
+                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
+                if (loadingBar.fillAmount == 1f)
                 {
-                    loadingBar.fillAmount = 0.6f + (op.progress * 0.3f);
-                }
-                else
-                {
-                    op.allowSceneActivation = true;
-                    timer += Time.unscaledDeltaTime;
-                    loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                    if(loadingBar.fillAmount >= 1f)
-                    {
-                        yield return new WaitForSeconds(0.5f);
-                        transform.GetChild(0).gameObject.SetActive(false);
-                        PhotonNetwork.IsMessageQueueRunning = true;
-                        yield break;
-                    }
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    break;
                 }
             }
         }
+
+        //if (!Singleton.Inst.isPatty)
+        //{
+        //    Singleton.Inst.isPatty = true;
+        //    SceneManager.LoadScene("Petty", LoadSceneMode.Additive);
+        //    transform.GetChild(0).gameObject.SetActive(false);
+        //    listener.enabled = false;
+        //    yield return null;
+        //    AsyncOperation op = SceneManager.LoadSceneAsync("Petty", LoadSceneMode.Additive);
+        //    op.allowSceneActivation = true;
+
+        //    float timer = 0f;
+        //    while (true)
+        //    {
+        //        yield return null;
+        //        if (op.progress < 0.85f)
+        //        {
+        //            loadingBar.fillAmount = 0.6f + (op.progress * 0.3f);
+        //        }
+        //        else
+        //        {
+        //            //op.allowSceneActivation = true;
+        //            listener.enabled = false;
+        //            timer += Time.unscaledDeltaTime;
+        //            loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
+        //            if (loadingBar.fillAmount >= 1f)
+        //            {
+        //                yield return new WaitForSeconds(1f);
+        //                transform.GetChild(0).gameObject.SetActive(false);
+        //                yield break;
+        //            }
+        //        }
+        //    }
+        //}
     }
-
-
 }

@@ -30,17 +30,27 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     void Awake() // 2번 실행
     {
-        if (SceneManager.GetActiveScene().name.Contains("Battle"))
+        _isCreate = false;
+        string _sn = SceneManager.GetActiveScene().name;
+        if (_sn.Equals("2.Campus"))
         {
+            StartPosition = new Vector3(-25f, 0.3f, 25f);
+            StartRotation = Quaternion.Euler(0, -45.0f, 0f);
+        }
+        else if (_sn.Equals("3_1.ClassRoom"))
+        {
+            StartPosition = new Vector3(5.5f, -2f, -1.25f);
+            StartRotation = Quaternion.Euler(0, -90.0f, 0f);
+        }
+        else if (_sn.Equals("4.Battle"))
+        {
+            StartPosition = new Vector3(-25f, 0.3f, 25f);
+            StartRotation = Quaternion.Euler(0, -45.0f, 0f);
             QuizManager.SetActive(true);
             BattleUI.SetActive(true);
         }
 
         // 캐릭터 생성
-        _isCreate = false;
-        StartPosition = new Vector3(-25f, 0.3f, 25f);
-        StartRotation = Quaternion.Euler(0, -45.0f, 0f);
-
         var request = new GetUserDataRequest() { PlayFabId = Singleton.Inst.Playfab_ID };
         PlayFabClientAPI.GetUserData(request, GetDataSuccess, (error) => print("실패"));
         PhotonNetwork.IsMessageQueueRunning = true;
@@ -142,10 +152,10 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    #region 방 이동
-    public void JCRLL()
-    {
-        RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
-    }
-    #endregion
+    //#region 방 이동
+    //public void JCRLL()
+    //{
+    //    RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
+    //}
+    //#endregion
 }

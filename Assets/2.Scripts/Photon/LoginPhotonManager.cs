@@ -19,8 +19,6 @@ public class LoginPhotonManager : MonoBehaviourPunCallbacks
     #region 서버 연결 => 로비 입장
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
-    public override void OnConnectedToMaster() => PhotonNetwork.JoinLobby();
-
     public override void OnJoinedLobby()
     {
         RoomChangeManager.Instance.RoomChange(LobbyRoom);
