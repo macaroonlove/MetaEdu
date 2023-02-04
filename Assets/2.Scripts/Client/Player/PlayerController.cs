@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _settingPanel = cv.GetChild(10).gameObject;
             _createRoomPanel = cv.GetChild(8).gameObject;
             _createQuizPanel = cv.GetChild(9).gameObject;
-            vcamOne = transform.GetChild(0).GetChild(0).GetComponent<CinemachineVirtualCamera>();
+            vcamOne = CinemachineCameraTarget.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
             vcamThree = GameObject.Find("3rd_Vcam").GetComponent<CinemachineVirtualCamera>();
         }
     }

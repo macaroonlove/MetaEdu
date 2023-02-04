@@ -126,7 +126,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     #region 채팅 구현
     public void Send()
     {
-        PV.RPC("Chating", RpcTarget.All, "<color=\"green\">" + PhotonNetwork.LocalPlayer.NickName + "</color>\n" + SendChat.text);
+        PV.RPC(nameof(Chating), RpcTarget.All, "<color=\"green\">" + PhotonNetwork.LocalPlayer.NickName + "</color>\n" + SendChat.text);
         SendChat.text = "";
     }
 
@@ -140,6 +140,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
             {
                 isInput = true;
                 ChatText[i].text = msg;
+                //ChatText[i].transform.SetAsFirstSibling();
                 break;
             }
         }
@@ -151,11 +152,4 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         }
     }
     #endregion
-
-    //#region 방 이동
-    //public void JCRLL()
-    //{
-    //    RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
-    //}
-    //#endregion
 }

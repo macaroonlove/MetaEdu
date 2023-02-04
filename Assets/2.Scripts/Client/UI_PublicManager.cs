@@ -30,16 +30,11 @@ public class UI_PublicManager : MonoBehaviour
     private GameObject _createRoomPanel;
     private GameObject _createQuizPanel;
 
-    public Sprite[] camButtonSprite;
-    private Image _camOnOffImg;
     private bool _camState = false;
+    private bool _voiceState = false;
     private Animator _sideBarAnim;
     private Toggle _camToggle;
     private Toggle _quizToggle;
-
-    public Sprite[] voiceButtonSprite;
-    private Image _voiceOnOffImg;
-    private bool VoiceState = false;
 
     public Sprite[] chatButtonSprite;
     private Image _chatOnOffImg;
@@ -87,8 +82,6 @@ public class UI_PublicManager : MonoBehaviour
             _sideBarAnim = GameObject.Find("LSideBar").GetComponent<Animator>();
             _camToggle = _sideBarAnim.transform.GetChild(0).GetComponent<Toggle>();
             _quizToggle = _sideBarAnim.transform.GetChild(1).GetComponent<Toggle>();
-            _camOnOffImg = GameObject.Find("CamOnOff").GetComponent<Image>();
-            _voiceOnOffImg = GameObject.Find("VoiceOnOff").GetComponent<Image>();
             _chatOnOffImg = GameObject.Find("ChatOnOff").GetComponent<Image>();
             _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
             _chatInput = _chatPanel.transform.GetChild(1).gameObject;
@@ -333,30 +326,26 @@ public class UI_PublicManager : MonoBehaviour
         if (_camState) // ²ô±â
         {
             _agManager.OffCam();
-            _camOnOffImg.sprite = camButtonSprite[0];
             _camState = false;
         }
         else // ½ÇÇà
         {
             _agManager.OnCam();
-            _camOnOffImg.sprite = camButtonSprite[1];
             _camState = true;
         }
     }
 
     public void VoiceOnOffButton()
     {
-        if (VoiceState) // ²ô±â
+        if (_voiceState) // ²ô±â
         {
             _agManager.OffAudio();
-            _voiceOnOffImg.sprite = voiceButtonSprite[0];
-            VoiceState = false;
+            _voiceState = false;
         }
         else
         {
             _agManager.OnAudio();
-            _voiceOnOffImg.sprite = voiceButtonSprite[1];
-            VoiceState = true;
+            _voiceState = true;
         }
     }
 

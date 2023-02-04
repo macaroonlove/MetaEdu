@@ -292,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4073543645166645750}
   - component: {fileID: 1283327403132026484}
+  - component: {fileID: 4819539436383278628}
   m_Layer: 7
   m_Name: rp_eric_rigged_001_geo
   m_TagString: Untagged
@@ -334,7 +335,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1482011925563478528, guid: 7e2abffac14f6004fa9dd03920e636f3, type: 3}
+  - {fileID: 2100000, guid: 7c1e2a089feff9747bb8c235a12f2505, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -455,6 +456,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.012351632, y: 0.9262319, z: 0.03740394}
     m_Extent: {x: 0.9206972, y: 0.93241686, z: 0.17829758}
   m_DirtyAABB: 0
+--- !u!114 &4819539436383278628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434060233758976444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254da95ae2bf58c49848234d03f17fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mtrlOrg: {fileID: 2100000, guid: 1d2458c7a5fdded42bcc9c5aec5c7859, type: 2}
+  first: -0.5
+  last: 2.1
 --- !u!1 &705248091654542026
 GameObject:
   m_ObjectHideFlags: 0
