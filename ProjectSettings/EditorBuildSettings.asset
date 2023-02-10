@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/1.Scenes/4.Battle.unity
     guid: 39d82a22bda13494da781549fd0d461b
   - enabled: 1
+    path: Assets/1.Scenes/5.Goldenball.unity
+    guid: 90a2ecc3aff18764988ea17f52d05db0
+  - enabled: 1
     path: Assets/1.Scenes/Petty.unity
     guid: baa1a17d37474a948983b1e9ab6ab59a
   m_configObjects: {}

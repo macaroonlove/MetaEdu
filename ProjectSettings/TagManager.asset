@@ -21,9 +21,9 @@ TagManager:
   - Player
   - OhterPlayer
   - Monster
-  - 
-  - 
-  - 
+  - Wall
+  - Chair
+  - Face
   - 
   - 
   - 

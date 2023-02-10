@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerSpawn : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerSpawn : MonoBehaviour
         while(first < last)
         {
             yield return null;
-            first += 0.005f;
+            first += Time.deltaTime;
             _renderer.material.SetFloat("_Split_Value", first);
         }
         _renderer.material = mtrlOrg;

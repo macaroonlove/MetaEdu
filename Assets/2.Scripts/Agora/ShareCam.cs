@@ -14,11 +14,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
     private string _appId = "";
     private string _channelName = "";
     private string _token = "";
-    private long _remoteUid;
-    private uint _screenUid;
 
     internal VideoSurface LocalView; // 내 화면
-    internal VideoSurface ScreenView;
 
     internal static IRtcEngineEx RtcEngine; // 캠 RTC 엔진의 정보를 저장할 변수
 
@@ -33,9 +30,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
     public Sprite[] voiceButtonSprite;
     public Sprite[] screenButtonSprite;
     
-    private GameObject _myCam;
     private GameObject _shareMenu;
-    private RawImage _mainScreen;
     private Image _camOnOffImage;
     private Image _voiceOnOffImg;
     private Image _screenOnOffImage;
@@ -73,7 +68,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
         #region 화면공유 UI 세팅
         if (SceneManager.GetActiveScene().name.Contains("3"))
         {
-            ScreenView = GameObject.Find("mainScreen").GetComponent<VideoSurface>();
             _screenOnOffImage = GameObject.Find("ScreenOnOff").GetComponent<Image>();
             _shareMenu = _screenOnOffImage.transform.GetChild(0).gameObject;
         }
@@ -223,27 +217,12 @@ public class ShareCam : MonoBehaviourPunCallbacks
     private void StopScreenShare()
     {
         ScreenShareLeaveChannel();
+        
         _screenOnOffImage.sprite = screenButtonSprite[0];
         _sharingScreen = false;
         RtcEngine.StopScreenCapture();
     }
 
-
-    private void setupLocalVideo(int displayNum, int i) // 화면공유
-    {
-        ScreenView.SetEnable(true);
-        ScreenView.SetForUser(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN);
-        PV.RPC(nameof(ScreenViewRPC), RpcTarget.OthersBuffered, (int)_screenUid, displayNum, i);
-    }
-
-    [PunRPC]
-    void ScreenViewRPC(int uid, int displayNum, int i)
-    {
-        ScreenView.SetEnable(true);
-        VideoSubscriptionOptions options = new();
-        RtcEngine.SetRemoteVideoSubscriptionOptions((uint)uid, options);
-        ScreenView.SetForUser((uint)uid, _channelName, VIDEO_SOURCE_TYPE.VIDEO_SOURCE_REMOTE);
-    }
     #endregion
 
     #region 이벤트

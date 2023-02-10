@@ -16,8 +16,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     public GameObject QuizManager;
     public GameObject BattleUI;
 
-    public TextMeshProUGUI StatusText;
-
     public Transform quizContent;
 
     Vector3 StartPosition;
@@ -63,7 +61,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        StatusText.text = "Æ÷Åæ: " + PhotonNetwork.NetworkClientState.ToString();
     }
 
     public void BackLobby()
@@ -119,6 +116,14 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         myCharacter.layer = 7;
         _isCreate = true;
 
+        if (_sex.Equals("Q"))
+        {
+            for(int i = 3; i < 9; i++)
+            {
+                myCharacter.transform.GetChild(i).gameObject.layer = 12;
+            }
+        }
+
         GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
     }
     #endregion
@@ -140,7 +145,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
             {
                 isInput = true;
                 ChatText[i].text = msg;
-                //ChatText[i].transform.SetAsFirstSibling();
                 break;
             }
         }

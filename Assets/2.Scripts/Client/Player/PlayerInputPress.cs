@@ -11,6 +11,7 @@ public class PlayerInputPress : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool run;
+    public bool interact;
 
 	public bool analogMovement;
 
@@ -47,9 +48,14 @@ public class PlayerInputPress : MonoBehaviour
 	{
 		RunInput(value.isPressed);
 	}
-    #endregion
 
-    #region 키에대한 로직
+	public void OnInteract(InputValue value)
+    {
+		InteractInput(value.isPressed);
+    }
+	#endregion
+
+	#region 키에대한 로직
 	public void EyeInput(bool newEyeState)
     {
 		eye = newEyeState;
@@ -73,6 +79,17 @@ public class PlayerInputPress : MonoBehaviour
 	public void RunInput(bool newRunState)
 	{
 		run = newRunState;
+	}
+
+	public void InteractInput(bool newInteractState)
+    {
+		interact = newInteractState;
+		Invoke(nameof(initButton), 0.5f);
+	}
+
+	void initButton()
+    {
+		interact = false;
 	}
 	#endregion
 

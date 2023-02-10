@@ -13,8 +13,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
     Action<List<RoomInfo>> callback = null;
     LoadBalancingClient client = null;
 
-    public TextMeshProUGUI subState;
-
     List<RoomInfo> MyList = new List<RoomInfo>();
     public Button[] JoinRoomButton;
     public Button PrevButton;
@@ -62,8 +60,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
 
     void OnStateChanged(ClientState previousState, ClientState state)
     {
-        subState.text = "¼­ºê: " + state;
-
         if (state == ClientState.ConnectedToMasterServer)
         {
             client.OpJoinLobby(null);
