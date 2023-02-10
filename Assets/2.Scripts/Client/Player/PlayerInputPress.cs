@@ -11,6 +11,7 @@ public class PlayerInputPress : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool run;
+    public bool interact;
 
 	public bool analogMovement;
 
@@ -18,12 +19,6 @@ public class PlayerInputPress : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 	public static CursorLockMode CLM;
-
-	private GameObject Chatting;
-    void Start()
-    {
-		Chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
-	}
 
     #region 키가 눌렸는가?
     public void OnEyesight(InputValue value)
@@ -53,9 +48,14 @@ public class PlayerInputPress : MonoBehaviour
 	{
 		RunInput(value.isPressed);
 	}
-    #endregion
 
-    #region 키에대한 로직
+	public void OnInteract(InputValue value)
+    {
+		InteractInput(value.isPressed);
+    }
+	#endregion
+
+	#region 키에대한 로직
 	public void EyeInput(bool newEyeState)
     {
 		eye = newEyeState;
@@ -80,6 +80,17 @@ public class PlayerInputPress : MonoBehaviour
 	{
 		run = newRunState;
 	}
+
+	public void InteractInput(bool newInteractState)
+    {
+		interact = newInteractState;
+		Invoke(nameof(initButton), 0.5f);
+	}
+
+	void initButton()
+    {
+		interact = false;
+	}
 	#endregion
 
 	#region 마우스 OnOff (준비중)
@@ -90,19 +101,9 @@ public class PlayerInputPress : MonoBehaviour
 
 	private void SetCursorState(bool newState)
 	{
-        try
-        {
-			if (!Chatting.activeSelf)
-			{
-				Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
-				CLM = Cursor.lockState;
-				cursorLocked = !newState;
-			}
-		}
-        catch
-        {
-			Chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
-		}        
+		Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
+		CLM = Cursor.lockState;
+		cursorLocked = !newState; 
 	}
     #endregion
 }

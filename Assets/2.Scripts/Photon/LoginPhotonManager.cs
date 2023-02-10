@@ -8,46 +8,38 @@ using Photon.Realtime;
 
 public class LoginPhotonManager : MonoBehaviourPunCallbacks
 {
-    private string LobbyRoom = "Campus#2.Campus";
+    private string LobbyRoom = "Campus#3_1.ClassRoom"; // Campus#2.Campus
     void Start()
     {
+        SoundManager.Instance.Login_BGM();
+        SoundManager.Instance.EffectExample();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     #region 서버 연결 => 로비 입장
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
-    public override void OnConnectedToMaster() => PhotonNetwork.JoinLobby();
-
     public override void OnJoinedLobby()
     {
-        PhotonNetwork.JoinRoom(LobbyRoom);
+        RoomChangeManager.Instance.RoomChange(LobbyRoom);
     }
 
     public void Disconnect() => PhotonNetwork.Disconnect();
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
+    //public override void OnJoinedRoom()
+    //{
+    //    RoomChangeManager.Instance.RoomChange("2.Campus");
+    //}
 
-    }
+    //public override void OnJoinRoomFailed(short returnCode, string message)
+    //{
+    //    // 방 생성
+    //    PhotonNetwork.CreateRoom(LobbyRoom, new RoomOptions { MaxPlayers = 20 });
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        // 방 입장
-        PhotonNetwork.LoadLevel("2.Campus");
-        PhotonNetwork.IsMessageQueueRunning = false;
-    }
-
-
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        // 방 생성
-        PhotonNetwork.CreateRoom(LobbyRoom, new RoomOptions { MaxPlayers = 20 });
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.Log("방 생성에 실패");
-    }
+    //public override void OnCreateRoomFailed(short returnCode, string message)
+    //{
+    //    Debug.Log("방 생성에 실패");
+    //}
     #endregion
 }
