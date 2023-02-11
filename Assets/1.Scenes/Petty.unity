@@ -15966,7 +15966,6 @@ MonoBehaviour:
   PV: {fileID: 496445276}
   QuizManager: {fileID: 0}
   BattleUI: {fileID: 0}
-  GoldenballUI: {fileID: 0}
   quizContent: {fileID: 1791716920}
   SendChat: {fileID: 1628746168}
   ChatText:
@@ -29423,7 +29422,6 @@ GameObject:
   m_Component:
   - component: {fileID: 993674633}
   - component: {fileID: 993674634}
-  - component: {fileID: 993674635}
   m_Layer: 0
   m_Name: SingletonManager
   m_TagString: Untagged
@@ -29475,18 +29473,6 @@ MonoBehaviour:
   question: []
   currSelect: 0
   isPatty: 0
---- !u!114 &993674635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993674631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa938f18d3232d48b7a0bfaa7ea2378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &995920455
 GameObject:
   m_ObjectHideFlags: 0

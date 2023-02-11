@@ -10,12 +10,11 @@ public class QuestAnim : MonoBehaviour
 
     private void OnEnable()
     {
-        anim.SetBool("isStart", true);
+        anim.SetTrigger("isStart");
     }
     private void OnDisable()
     {
-        anim.SetBool("isStart", false);
-        anim.SetTrigger("isClose");
+        //anim.SetBool("isStart", false);
     }
     public void questAnim()
     {

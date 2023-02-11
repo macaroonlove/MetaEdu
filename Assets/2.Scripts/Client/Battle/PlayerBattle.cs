@@ -20,14 +20,14 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     [Header("파이어볼 이펙트")]
     public GameObject FirePos;
-    public bool AttackState = true;
+    public bool AttackState =true;
     public GameObject Effect;
 
     private QuizManager quizManager;
     void Awake()
     {
         PV = gameObject.GetComponent<PhotonView>();
-        CreateFireballs(5);
+        CreateFireballs(7);
         if (!SceneManager.GetActiveScene().name.Contains("Battle"))
         {
             this.enabled = false;
@@ -78,9 +78,9 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         QuestMonster.SetActive(true);
         AttackState = false;
         quizManager.battleText.SetActive(false);
-
+        
         Transform[] allChildren = GetComponentsInChildren<Transform>();
-        for (int i = 0; i < allChildren.Length; i++)
+        for(int i =0; i < allChildren.Length; i++)
         {
             allChildren[i].gameObject.layer = 0;
         }
@@ -94,7 +94,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     public void OnAttack()
     {
-        PV.RPC("Attack", RpcTarget.AllViaServer);
+        PV.RPC("Attack", RpcTarget.AllViaServer) ;
     }
 
     [PunRPC]
@@ -132,7 +132,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     void CreateFireballs(int FireballCount)
     {
-        for (int i = 0; i < FireballCount; i++)
+        for(int i =0; i < FireballCount; i++)
         {
             GameObject fireball = Instantiate(Effect) as GameObject;
             fireball.SetActive(false);
@@ -144,16 +144,16 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         GameObject reqFireball = null;
 
-        for (int i = 0; i < FireballPool.Count; i++)
+        for(int i =0; i<FireballPool.Count; i++)
         {
-            if (FireballPool[i].activeSelf == false)
+            if(FireballPool[i].activeSelf == false)
             {
                 reqFireball = FireballPool[i];
                 break;
             }
         }
 
-        if (reqFireball == null)
+        if(reqFireball == null)
         {
             GameObject newFireball = Instantiate<GameObject>(Effect) as GameObject;
             reqFireball = newFireball;

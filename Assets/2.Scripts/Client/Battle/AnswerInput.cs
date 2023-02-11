@@ -22,12 +22,6 @@ public class AnswerInput : MonoBehaviour
     void Awake()
     {
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
-        if (gameObject.name == "Descriptive" || gameObject.name == "Short")
-        {
-            inputAnswer = transform.GetChild(0).GetComponent<TMP_InputField>();
-        }
-        else
-            answer = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     public void CheckAnswer()

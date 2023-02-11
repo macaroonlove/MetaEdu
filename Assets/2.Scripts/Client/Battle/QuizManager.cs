@@ -29,6 +29,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
         
     public GameObject QuestionPanel;
     public GameObject AnswerPanel;
+    public GameObject FadeEffect;
     public GameObject battleText;
     public PhotonView PV;
 

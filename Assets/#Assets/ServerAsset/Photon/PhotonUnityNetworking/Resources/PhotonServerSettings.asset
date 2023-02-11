@@ -44,9 +44,6 @@ MonoBehaviour:
   - SendCreateMonster
   - SendMonsterDie
   - StunMode
-  - OnEffect
-  - SendAnswer
-  - SendScore
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
