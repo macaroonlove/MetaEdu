@@ -15,6 +15,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     public GameObject QuizManager;
     public GameObject BattleUI;
+    public GameObject GoldenballUI;
 
     public Transform quizContent;
 
@@ -44,8 +45,26 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         {
             StartPosition = new Vector3(-25f, 0.3f, 25f);
             StartRotation = Quaternion.Euler(0, -45.0f, 0f);
-            QuizManager.SetActive(true);
-            BattleUI.SetActive(true);
+        }
+
+        else if(_sn.Equals("Goldenball"))
+        {
+            int curPlayer = PhotonNetwork.PlayerList.Length;
+            switch (curPlayer)
+            {
+                case 1:
+                    this.transform.SetPositionAndRotation(new Vector3(-4.38f, 1, -0.2f), new Quaternion(0, 1, 0, 0));
+                    break;
+                case 2:
+                    this.transform.SetPositionAndRotation(new Vector3(-2.48f, 1, -0.2f), new Quaternion(0, 1, 0, 0));
+                    break;
+                case 3:
+                    this.transform.SetPositionAndRotation(new Vector3(-0.58f, 1, -0.2f), new Quaternion(0, 1, 0, 0));
+                    break;
+                case 4:
+                    this.transform.SetPositionAndRotation(new Vector3(1.32f, 1, -0.2f), new Quaternion(0, 1, 0, 0));
+                    break;
+            }
         }
 
         // 캐릭터 생성

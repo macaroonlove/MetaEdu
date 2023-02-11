@@ -35,12 +35,6 @@ public class GoldenBall_backup : MonoBehaviour
         _currTime = 5;
         googleSheet = GameObject.Find("SingletonManager").GetComponent<GoogleSheet>();
         score = GameObject.Find("ScoreManager").GetComponent<Score>();
-        FullScreen = GameObject.Find("FullScreenQuestion");
-        LED_QuestionText = GameObject.Find("LED_Question").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        QuestionText = FullScreen.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-        AnswerText = FullScreen.transform.GetChild(1).GetChild(1).GetComponent<TMP_InputField>();
-        TimeText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
-        fadeEffect = GameObject.Find("FadeEffect").GetComponent<FadeEffect>();
         Quizs = googleSheet.Quizs;
         AddQuestion();
     }
