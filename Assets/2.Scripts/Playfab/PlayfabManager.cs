@@ -7,6 +7,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayfabManager : MonoBehaviour
 
     [Header("캐릭터 생성")]
     public TMP_InputField nickNameText;
+    public ToggleGroup toggleGroup;
     public TextMeshProUGUI createError;
     private string _sex = "M";
 
@@ -100,7 +102,7 @@ public class PlayfabManager : MonoBehaviour
     private void GetAccountSuccess(GetAccountInfoResult result)
     {
         string nickname = result.AccountInfo.TitleInfo.DisplayName;
-        if (nickname.Equals(null))
+        if (nickname == null)
         {
             var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "NewCRT", "N" } } };
             PlayFabClientAPI.UpdateUserData(request, (result) => print("정보 저장 성공"), (Error) => print("정보 저장 실패"));
@@ -122,13 +124,16 @@ public class PlayfabManager : MonoBehaviour
         else if (result.Data["NewCRT"].Value.Equals("Y"))
         {
             photonMgr.Connect();
-            //SceneManager.LoadScene(1);
         }
     }
     #endregion
 
     #region 캐릭터 생성
-    public void SButton(string s) => _sex = s;
+    public void SButton(bool isOn)
+    {
+        if(isOn)
+            _sex = toggleGroup.ActiveToggles().FirstOrDefault().name;
+    }
 
     public void CharacterNickNameOk()
     {
@@ -139,7 +144,7 @@ public class PlayfabManager : MonoBehaviour
 
     void DisplayNameUpdateSuccess(UpdateUserTitleDisplayNameResult result)
     {
-        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "_sex", _sex }, { "NickName", result.DisplayName }, { "Question", "문제모음" } } };
+        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Sex", _sex }, { "NickName", result.DisplayName }, { "Question", "문제모음" } } };
         PlayFabClientAPI.UpdateUserData(request, NewCRTUpdateSuccess, (Error) => createError.text = "캐릭터를 생성에 실패했습니다.");
     }
 

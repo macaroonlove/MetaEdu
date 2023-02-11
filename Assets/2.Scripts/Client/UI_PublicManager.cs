@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Photon.Pun;
-using Photon.Realtime;
 using TMPro;
 
 public class UI_PublicManager : MonoBehaviour
@@ -29,17 +27,14 @@ public class UI_PublicManager : MonoBehaviour
     [Header("∆‰∆ºæ¿")]
     private ShareCam _agManager;
     private IngamePhotonManager _ptManager;
+    private GameObject _createRoomPanel;
+    private GameObject _createQuizPanel;
 
-    public Sprite[] camButtonSprite;
-    private Image _camOnOffImg;
     private bool _camState = false;
+    private bool _voiceState = false;
     private Animator _sideBarAnim;
     private Toggle _camToggle;
     private Toggle _quizToggle;
-
-    public Sprite[] voiceButtonSprite;
-    private Image _voiceOnOffImg;
-    private bool VoiceState = false;
 
     public Sprite[] chatButtonSprite;
     private Image _chatOnOffImg;
@@ -56,6 +51,7 @@ public class UI_PublicManager : MonoBehaviour
 
     [Header("º≥¡§√¢")]
     private GameObject _setting;
+    private GameObject _rebinding;
     private TextMeshProUGUI _basic;
     private TextMeshProUGUI _control;
     private TextMeshProUGUI _display;
@@ -86,17 +82,18 @@ public class UI_PublicManager : MonoBehaviour
             _sideBarAnim = GameObject.Find("LSideBar").GetComponent<Animator>();
             _camToggle = _sideBarAnim.transform.GetChild(0).GetComponent<Toggle>();
             _quizToggle = _sideBarAnim.transform.GetChild(1).GetComponent<Toggle>();
-            _camOnOffImg = GameObject.Find("CamOnOff").GetComponent<Image>();
-            _voiceOnOffImg = GameObject.Find("VoiceOnOff").GetComponent<Image>();
             _chatOnOffImg = GameObject.Find("ChatOnOff").GetComponent<Image>();
             _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
             _chatInput = _chatPanel.transform.GetChild(1).gameObject;
             _sendChat = _chatInput.GetComponent<TMP_InputField>();
-            _setting = gameObject.transform.GetChild(8).gameObject;
+            _setting = gameObject.transform.GetChild(10).gameObject;
+            _createRoomPanel = transform.GetChild(8).gameObject;
+            _createQuizPanel = transform.GetChild(9).gameObject;
             _basic = _setting.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _control = _setting.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
         }
     }
 
@@ -147,7 +144,7 @@ public class UI_PublicManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !_rebinding.activeSelf)
             {
                 Set_setting();
             }
@@ -329,30 +326,26 @@ public class UI_PublicManager : MonoBehaviour
         if (_camState) // ≤Ù±‚
         {
             _agManager.OffCam();
-            _camOnOffImg.sprite = camButtonSprite[0];
             _camState = false;
         }
         else // Ω««‡
         {
             _agManager.OnCam();
-            _camOnOffImg.sprite = camButtonSprite[1];
             _camState = true;
         }
     }
 
     public void VoiceOnOffButton()
     {
-        if (VoiceState) // ≤Ù±‚
+        if (_voiceState) // ≤Ù±‚
         {
             _agManager.OffAudio();
-            _voiceOnOffImg.sprite = voiceButtonSprite[0];
-            VoiceState = false;
+            _voiceState = false;
         }
         else
         {
             _agManager.OnAudio();
-            _voiceOnOffImg.sprite = voiceButtonSprite[1];
-            VoiceState = true;
+            _voiceState = true;
         }
     }
 
@@ -381,8 +374,13 @@ public class UI_PublicManager : MonoBehaviour
     {
         if (_setting.activeSelf)
         {
-            _setting.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            if (!Singleton.Inst.controled)
+            {
+                _setting.SetActive(false);
+                if (!_createRoomPanel.activeSelf && !_createQuizPanel.activeSelf) Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+                Singleton.Inst.controled = false;
         }
         else
         {

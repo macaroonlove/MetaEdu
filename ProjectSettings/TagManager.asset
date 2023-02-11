@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
+  - fireball
+  - Canvas
+  - Potal
+  - Fog
+  - Bus
   layers:
   - Default
   - TransparentFX
@@ -15,9 +21,9 @@ TagManager:
   - Player
   - OhterPlayer
   - Monster
-  - 
-  - 
-  - 
+  - Wall
+  - Chair
+  - Face
   - 
   - 
   - 

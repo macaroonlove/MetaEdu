@@ -1,37 +1,51 @@
+using Cinemachine;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class QuestMonsterAI : MonoBehaviour
 {
-    QuizManager quizManager;
+    private PhotonView PV;
+    private CinemachineVirtualCamera battle_vcam;
+    private QuizManager quizManager;
     private void OnEnable()
     {
-        QuestUIInput.OnMonsterDie += this.OnMonsterDie;
-        quizManager.FadeEffect.SetActive(true);
+        AnswerInput.OnMonsterDie += this.OnMonsterDie;
+        quizManager.CreateQuiz();
         quizManager.QuestionPanel.SetActive(true);
-        quizManager.ChoiceAnswerPanel.SetActive(true);
-        Invoke("Fade", 3.0f);
+        if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "0")
+        {
+            quizManager.AnswerPanel.SetActive(true);
+            quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "1")
+        {
+            quizManager.AnswerPanel.SetActive(true);
+            quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "2")
+        {
+            quizManager.AnswerPanel.SetActive(true);
+            quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(true);
+        }
     }
 
     private void OnDisable()
     {
-        QuestUIInput.OnMonsterDie -= this.OnMonsterDie;
-        this.gameObject.GetComponentInParent<PlayerBattle>().Battle_Vcam.Priority = 5;
+        AnswerInput.OnMonsterDie -= this.OnMonsterDie;
+        battle_vcam.Priority = 5;
     }
     private void Awake()
     { 
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+        battle_vcam = gameObject.GetComponentInParent<PlayerBattle>().Battle_Vcam;
+        PV = gameObject.GetComponentInParent<PhotonView>();
     }
     void OnMonsterDie()
     {
-        this.gameObject.GetComponentInParent<PhotonView>().RPC("SendMonsterDie", RpcTarget.AllBuffered);
+        PV.RPC("SendMonsterDie", RpcTarget.AllBuffered);
         this.gameObject.SetActive(false);
-    }
-
-    void Fade()
-    {
-        quizManager.FadeEffect.SetActive(false);
     }
 }

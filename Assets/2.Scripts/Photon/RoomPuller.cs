@@ -13,8 +13,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
     Action<List<RoomInfo>> callback = null;
     LoadBalancingClient client = null;
 
-    public TextMeshProUGUI subState;
-
     List<RoomInfo> MyList = new List<RoomInfo>();
     public Button[] JoinRoomButton;
     public Button PrevButton;
@@ -62,8 +60,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
 
     void OnStateChanged(ClientState previousState, ClientState state)
     {
-        subState.text = "서브: " + state;
-
         if (state == ClientState.ConnectedToMasterServer)
         {
             client.OpJoinLobby(null);
@@ -72,8 +68,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log("서브 클라이언트 룸리스트 업데이트");
-
         if (callback != null)
         {
             callback(roomList);
@@ -91,19 +85,21 @@ public class RoomPuller : MonoBehaviourPunCallbacks
             client.Disconnect();
             client = null;
             callback = null;
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.AddCallbackTarget(this);
+            RoomChangeManager.Instance.RoomOut(MyList[multiple + num].Name, 20);
+            //PhotonNetwork.LeaveRoom();
+            //PhotonNetwork.AddCallbackTarget(this);
 
-            StartCoroutine("JR", num);
+            //StartCoroutine("JR", num);
         }
         MyListRenewal();
     }
 
-    IEnumerator JR(int num)
-    {
-        yield return new WaitForSeconds(0.5f);
-        PhotonNetwork.JoinRoom(MyList[multiple + num].Name);
-    }
+    //IEnumerator JR(int num)
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+        
+    //    //PhotonNetwork.JoinRoom(MyList[multiple + num].Name);
+    //}
 
     void MyListRenewal()
     {
@@ -160,41 +156,40 @@ public class RoomPuller : MonoBehaviourPunCallbacks
         client.Disconnect();
         client = null;
         callback = null;
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.AddCallbackTarget(this);
+        RoomChangeManager.Instance.RoomOut((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "님의 방" : RoomName.text) + "#" + roomSet, RoomMax.value + 2);
 
-        Invoke("CR", 0.5f);
+        //Invoke("CR", 0.5f);
     }
 
-    void CR()
-    {
-        PhotonNetwork.CreateRoom((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "님의 방" : RoomName.text) + "#" + roomSet, new RoomOptions { MaxPlayers = (byte)(RoomMax.value + 2) });
-    }
+    //void CR()
+    //{
+    //    PhotonNetwork.CreateRoom((RoomName.text == "" ? PhotonNetwork.LocalPlayer.NickName + "님의 방" : RoomName.text) + "#" + roomSet, new RoomOptions { MaxPlayers = (byte)(RoomMax.value + 2) });
+    //}
 
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        RoomName.text = "";
-        CreateRoom();
-    }
+    //public override void OnCreateRoomFailed(short returnCode, string message)
+    //{
+    //    RoomName.text = "";
+    //    CreateRoom();
+    //}
 
-    public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
+    //public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        RoomName.text = "";
-        CreateRoom();
-    }
+    //public override void OnJoinRandomFailed(short returnCode, string message)
+    //{
+    //    RoomName.text = "";
+    //    CreateRoom();
+    //}
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        PhotonNetwork.JoinOrCreateRoom("Campus", new RoomOptions { MaxPlayers = 20 }, null);
-        PhotonNetwork.LoadLevel(1);
-    }
+    //public override void OnJoinRoomFailed(short returnCode, string message)
+    //{
+    //    PhotonNetwork.JoinOrCreateRoom("Campus", new RoomOptions { MaxPlayers = 20 }, null);
+    //    PhotonNetwork.LoadLevel(1);
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        Singleton.Inst.isPatty = false;
-        PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
-        PhotonNetwork.IsMessageQueueRunning = false;
-    }
+    //public override void OnJoinedRoom()
+    //{
+    //    Singleton.Inst.isPatty = false;
+    //    PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name.Split("#")[1]);
+    //    PhotonNetwork.IsMessageQueueRunning = false;
+    //}
 }

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     //private Camera MCC;
     private CinemachineVirtualCamera vcamOne;
     private CinemachineVirtualCamera vcamThree;
+    //private TPSCamera tpsCamera;
 
     private const float threshold = 0.01f;
     private bool hasAnim;
@@ -50,6 +51,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private int _animIDJump;
     private int _animIDFreeFall;
     private int _animIDMotionSpeed;
+    private int _animIDSitting;
+    private int _animAsking;
+    private int _animClap;
+    private int _animShout;
 
     [Header("플레이어 소리")]
     public AudioClip LandingAudioClip;
@@ -68,15 +73,22 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public float BottomClamp = -30.0f;
     public float CameraAngleOverride = 0.0f;
     public bool LockCameraPosition = false;
+    private RaycastHit _hit;
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
 
     [Header("잡다")]
-    private GameObject Chatting;
-    private GameObject RoomListPanel;
-    private GameObject CreatePanel;
+    private GameObject _chatting;
+    private GameObject _roomListPanel;
+    private GameObject _createRoomPanel;
+    private GameObject _createQuizPanel;
+    private GameObject _settingPanel;
     private TMP_InputField _nickName;
     private Slider _playerRot;
+
+    [Header("의자")]
+    private bool _isSit = false;
+    //private Chair _chair;
 
     private bool IsCurrentDeviceMouse
     {
@@ -95,19 +107,22 @@ public class PlayerController : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
-        _nickName = cv.GetChild(8).GetChild(4).GetChild(2).GetChild(1).GetComponent<TMP_InputField>();
-        _playerRot = cv.GetChild(8).GetChild(4).GetChild(6).GetChild(1).GetComponent<Slider>();
+        _nickName = cv.GetChild(10).GetChild(4).GetChild(2).GetChild(1).GetComponent<TMP_InputField>();
+        _playerRot = cv.GetChild(10).GetChild(4).GetChild(6).GetChild(1).GetComponent<Slider>();
         _nickName.onEndEdit.AddListener(ChangeNick);
         _playerRot.onValueChanged.AddListener(ChangeRotSp);
 
         if (mainCamera == null && PV.IsMine)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            Chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
-            RoomListPanel = cv.GetChild(0).gameObject;
-            CreatePanel = cv.GetChild(9).gameObject;
-            vcamOne = transform.GetChild(0).GetChild(0).GetComponent<CinemachineVirtualCamera>();
+            _chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
+            _roomListPanel = cv.GetChild(0).gameObject;
+            _settingPanel = cv.GetChild(10).gameObject;
+            _createRoomPanel = cv.GetChild(8).gameObject;
+            _createQuizPanel = cv.GetChild(9).gameObject;
+            vcamOne = CinemachineCameraTarget.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
             vcamThree = GameObject.Find("3rd_Vcam").GetComponent<CinemachineVirtualCamera>();
+            //tpsCamera = vcamThree.GetComponent<TPSCamera>();
         }
     }
 
@@ -173,6 +188,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             vcamThree.Follow = transform.GetChild(0);
             vcamThree.LookAt = transform.GetChild(0);
+            //tpsCamera.enabled = true;
 
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
@@ -195,6 +211,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         _animIDJump = Animator.StringToHash("Jump");
         _animIDFreeFall = Animator.StringToHash("FreeFall");
         _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        _animIDSitting = Animator.StringToHash("Sitting");
+        _animAsking = Animator.StringToHash("Asking");
+        _animClap = Animator.StringToHash("Clap");
+        _animShout = Animator.StringToHash("Shout");
     }
 
     void Update()
@@ -203,40 +223,85 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             hasAnim = TryGetComponent(out anim);
 
-            GrammaticalPerson();
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            if (!_isSit)
+            {
+                GrammaticalPerson();
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            }
         }
     }
 
     void LateUpdate()
     {
-        if (Cursor.lockState == CursorLockMode.Locked && PV.IsMine)
-            CameraRotation();
+        if (PV.IsMine)
+        {
+            LimitInput();
+            if (Cursor.lockState == CursorLockMode.Locked) CameraRotation();
+        }
+    }
+
+    void LimitInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (_settingPanel.activeSelf || _createRoomPanel.activeSelf || _createQuizPanel.activeSelf || _chatting.activeSelf)
+            {
+                if (playerInput.enabled)
+                    playerInput.enabled = false;
+            }
+            else
+            {
+                if (!playerInput.enabled)
+                    playerInput.enabled = true;
+            }
+        }
     }
 
     void GrammaticalPerson()
     {
-        if (SceneManager.GetActiveScene().name == "G_Running")
+        if (inputPress.eye)
         {
-            vcamThree.Priority = 11;
-            vcamOne.Priority = 10;
+            vcamThree.Priority = 10;
+            vcamOne.Priority = 11;
+            Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("Face"));
         }
         else
         {
-            if (inputPress.eye)
+            vcamThree.Priority = 11;
+            vcamOne.Priority = 10;
+            Camera.main.cullingMask = -1;
+        }
+    }
+
+    public void Interaction()
+    {
+        if (hasAnim)
+        {
+            if (_isSit)
             {
-                vcamThree.Priority = 10;
-                vcamOne.Priority = 11;
-                //MCC.cullingMask = ~(1 << LayerMask.NameToLayer("Player"));
+                anim.SetBool(_animIDSitting, false);
+                _isSit = false;
             }
             else
             {
-                vcamThree.Priority = 11;
-                vcamOne.Priority = 10;
-                //MCC.cullingMask = -1;
-            }
+                anim.SetBool(_animIDSitting, true);
+                _isSit = true;
+            } 
+        }
+    }
+
+    public void AnimTrigger(int num)
+    {
+        if (hasAnim)
+        {
+            if (num.Equals(0))
+                anim.SetTrigger(_animAsking);
+            else if(num.Equals(1))
+                anim.SetTrigger(_animClap);
+            else if(num.Equals(2))
+                anim.SetTrigger(_animShout);
         }
     }
 
@@ -245,7 +310,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         float targetSpeed = inputPress.run ? RunSpeed : MoveSpeed;
 
         // 입력이 없으면 목표속도를 0으로 설정
-        if (inputPress.move == Vector2.zero || Cursor.lockState == CursorLockMode.None || Chatting.activeSelf) targetSpeed = 0.0f;
+        if (inputPress.move == Vector2.zero || Cursor.lockState == CursorLockMode.None) targetSpeed = 0.0f;
 
         // magnitude: 벡터의 길이 반환
         float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
@@ -282,7 +347,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         else
         {
             // 이동에 대한 입력이 있으면 플레이어가 이동할 때, 카메라를 기준으로 플레이어를 회전
-            if (inputPress.move != Vector2.zero && Cursor.lockState == CursorLockMode.Locked && !Chatting.activeSelf)
+            if (inputPress.move != Vector2.zero && Cursor.lockState == CursorLockMode.Locked)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
@@ -360,7 +425,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 _verticalVelocity = -2f;
             }
 
-            if (inputPress.jump && _jumpTimeoutDelta <= 0.0f && Cursor.lockState == CursorLockMode.Locked && !Chatting.activeSelf)
+            if (inputPress.jump && _jumpTimeoutDelta <= 0.0f)
             {
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
@@ -431,15 +496,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
+    //private void OnDestroy()
+    //{
+    //    tpsCamera.enabled = false;
+    //}
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Potal") && PV.IsMine)
         {
-            RoomListPanel.SetActive(true);
+            _roomListPanel.SetActive(true);
         }
         else if (other.CompareTag("Fog") && PV.IsMine)
         {
-            GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>().JCRLL();
+            RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
+        }
+        else if (other.CompareTag("Bus") && PV.IsMine)
+        {
+            RoomChangeManager.Instance.RoomOut("null#5.Goldenball", 4);
         }
     }
 
@@ -447,8 +521,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (other.tag == "Potal" && PV.IsMine)
         {
-            RoomListPanel.SetActive(false);
-            CreatePanel.SetActive(false);
+            _roomListPanel.SetActive(false);
+            _createRoomPanel.SetActive(false);
         }
     }
 }
