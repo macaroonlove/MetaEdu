@@ -1321,17 +1321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3efdbb7a7f46df46ab59439cb45eccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireballPool: []
   controller: {fileID: 8651240522815727490}
   QuestMonster: {fileID: 3522355120684048116}
   Battle_Vcam: {fileID: 2009919028229612686}
-  Effect:
-  - {fileID: 1223526616464650, guid: c590b17884b119046bc6412066500b7d, type: 3}
-  - {fileID: 1518366863219760, guid: 3d35e81bdc5955041be098ef22e82a3b, type: 3}
-  - {fileID: 1725317912486240, guid: e55149ba6f4d00741984987e258c3378, type: 3}
-  - {fileID: 1975959190090480, guid: eca000ab44c908d4dab395f654753038, type: 3}
-  - {fileID: 1434627103891488, guid: 52d340ed9c2714c4f8aabf1f82df1b58, type: 3}
+  PV: {fileID: 0}
   FirePos: {fileID: 5356044642174363357}
   AttackState: 1
+  Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}
 --- !u!1 &2435078618616560346
 GameObject:
   m_ObjectHideFlags: 0

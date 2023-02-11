@@ -12,28 +12,29 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBattle : MonoBehaviourPunCallbacks
 {
+    public List<GameObject> FireballPool = new List<GameObject>();
     public PlayerController controller;
     public GameObject QuestMonster;
-    private PhotonView PV;
     public CinemachineVirtualCamera Battle_Vcam;
-    QuizManager quizManager;
+    public PhotonView PV;
 
     [Header("파이어볼 이펙트")]
-    public GameObject[] Effect;
     public GameObject FirePos;
     public bool AttackState =true;
-    // Start is called before the first frame update
+    public GameObject Effect;
 
+    private QuizManager quizManager;
     void Awake()
     {
+        PV = gameObject.GetComponent<PhotonView>();
+        CreateFireballs(7);
         if (!SceneManager.GetActiveScene().name.Contains("Battle"))
         {
             this.enabled = false;
-            //gameObject.GetComponent<PlayerBattle>().enabled = false;
         }
     }
 
-    void Start()
+    new void OnEnable()
     {
         PV = GetComponent<PhotonView>();
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
@@ -73,20 +74,18 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     void OnBattle(int MonsterID)
     {
-        //other.GetComponent<NavMeshAgent>().isStopped = true;
-        //카메라 변경
         Battle_Vcam.Priority = 20;
         QuestMonster.SetActive(true);
         AttackState = false;
         quizManager.battleText.SetActive(false);
         
         Transform[] allChildren = GetComponentsInChildren<Transform>();
-        foreach (Transform child in allChildren)
+        for(int i =0; i < allChildren.Length; i++)
         {
-            child.gameObject.layer = 0;
+            allChildren[i].gameObject.layer = 0;
         }
 
-        Camera.main.cullingMask = ~(1 << 10) & ~(1 << 8);
+        Camera.main.cullingMask = ~(1 << 9) & ~(1 << 8);
 
         Cursor.lockState = CursorLockMode.None;
 
@@ -95,19 +94,16 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     public void OnAttack()
     {
-        if (PV.IsMine)
-        {
-            PV.RPC("Attack", RpcTarget.AllBuffered);
-        }
+        PV.RPC("Attack", RpcTarget.AllViaServer) ;
     }
 
     [PunRPC]
     public void Attack()
     {
-        GameObject FireBall = Instantiate(Effect[Random.Range(0, 5)], FirePos.transform.position, Quaternion.Euler(-90.0f, 0, 0));
-
-        FireBall.GetComponent<Rigidbody>().AddForce(Camera.main.transform.localRotation * Vector3.forward * 1200);
-        Destroy(FireBall, 1);
+        GameObject FireBall = GetFireball();
+        FireBall.transform.SetPositionAndRotation(FirePos.transform.position, FirePos.transform.rotation);
+        FireBall.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+        StartCoroutine("OnRelease", FireBall);
     }
 
     [PunRPC]
@@ -134,4 +130,45 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         gameObject.layer = 0;
     }
 
+    void CreateFireballs(int FireballCount)
+    {
+        for(int i =0; i < FireballCount; i++)
+        {
+            GameObject fireball = Instantiate(Effect) as GameObject;
+            fireball.SetActive(false);
+            FireballPool.Add(fireball);
+        }
+    }
+
+    public GameObject GetFireball()
+    {
+        GameObject reqFireball = null;
+
+        for(int i =0; i<FireballPool.Count; i++)
+        {
+            if(FireballPool[i].activeSelf == false)
+            {
+                reqFireball = FireballPool[i];
+                break;
+            }
+        }
+
+        if(reqFireball == null)
+        {
+            GameObject newFireball = Instantiate<GameObject>(Effect) as GameObject;
+            reqFireball = newFireball;
+        }
+
+        reqFireball.SetActive(true);
+
+        return reqFireball;
+    }
+
+    private IEnumerator OnRelease(GameObject fireball)
+    {
+        var wfs = new WaitForSeconds(1f);
+        yield return wfs;
+        fireball.SetActive(false);
+        yield break;
+    }
 }

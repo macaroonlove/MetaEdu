@@ -44,8 +44,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         {
             StartPosition = new Vector3(-25f, 0.3f, 25f);
             StartRotation = Quaternion.Euler(0, -45.0f, 0f);
-            QuizManager.SetActive(true);
-            BattleUI.SetActive(true);
         }
 
         // 캐릭터 생성

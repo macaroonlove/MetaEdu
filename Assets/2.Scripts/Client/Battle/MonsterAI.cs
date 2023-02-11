@@ -13,7 +13,8 @@ using TMPro;
 
 public class MonsterAI : MonoBehaviourPunCallbacks
 {
-
+    public enum State { IDLE, MOVE, ESCAPE, STUN, DIE };
+    public State state = State.IDLE;
 
     public PhotonView PV;
     public NavMeshAgent agent;
@@ -24,30 +25,17 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     private Vector3 tartget;
     private GameObject playerPos = null;
     private Vector3 escapePos;
-    public enum State { IDLE, MOVE, ESCAPE, STUN ,DIE };
-    public State state = State.IDLE;
 
     private int monsterHP=100;
 
-    private
-    void OnEnable()
+    new void OnEnable()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
-            agent.destination = tartget;
-            state = State.MOVE;
-            StartCoroutine("CheckState");
-            monsterHP = 100;
-        }
-        //QuestUIInput.OnMonsterDie += this.OnMonsterDie;
+        tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+        agent.destination = tartget;
+        state = State.MOVE;
+        StartCoroutine("CheckState");
+        monsterHP = 100;
     }
-
-    void OnDisable()
-    {
-        //QuestUIInput.OnMonsterDie -= this.OnMonsterDie;
-    }
-
     IEnumerator CheckState()
     {
         while (state != State.DIE)
@@ -57,7 +45,6 @@ public class MonsterAI : MonoBehaviourPunCallbacks
 
             if (distance < 5f && state == State.MOVE && state != State.STUN)
             {
-                agent.isStopped = false;
                 tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
                 agent.destination = tartget;
             }
@@ -74,7 +61,6 @@ public class MonsterAI : MonoBehaviourPunCallbacks
             {
                 if (state != State.ESCAPE && state != State.STUN)
                 {
-                    agent.isStopped = false;
                     escapePos = (transform.position - colliders[i].transform.position).normalized;
                     playerPos = colliders[i].gameObject;
                     agent.speed = 8;
@@ -84,7 +70,6 @@ public class MonsterAI : MonoBehaviourPunCallbacks
             }
             if (state == State.ESCAPE && state != State.STUN)
             {
-                agent.isStopped = false;
                 agent.speed = 8;
                 escapePos = (transform.position - playerPos.transform.position).normalized;
                 agent.destination = transform.position + escapePos * 7.0f;
@@ -103,29 +88,27 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     {
         if(other.gameObject.CompareTag("fireball") && PV.IsMine)
         {
-            if (PV.IsMine)
-            {
-                Destroy(other.gameObject);
-                Vector3 pos = other.GetContact(0).point;
-                Quaternion rot = Quaternion.LookRotation(-other.GetContact(0).normal);
-                PV.RPC("StunMode", RpcTarget.AllBuffered, 34, pos, rot);
-            }
+            other.gameObject.SetActive(false);
+            Vector3 pos = other.GetContact(0).point;
+            Quaternion rot = Quaternion.LookRotation(-other.GetContact(0).normal);
+            PV.RPC("StunMode", RpcTarget.AllBuffered, 34, pos);
         }
     }
 
     void Recovery()
     {
+        agent.isStopped = false;
         state = State.MOVE;
         monsterHP = 100;
         StunEffect.SetActive(false);
     }
 
     [PunRPC]
-    void StunMode(int a, Vector3 pos, Quaternion rot)
+    void StunMode(int a, Vector3 pos)
     {
         monsterHP -= a;
-        //GameObject explose = Instantiate<GameObject>(ExploseEffect, pos, rot);
-        //Destroy(explose,1.0f);
+        GameObject exp = Instantiate(ExploseEffect, pos, Quaternion.identity);
+        Destroy(exp, 1);
         if (monsterHP < 0)
         {
             state = State.STUN;
