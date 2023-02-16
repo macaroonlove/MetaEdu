@@ -26,6 +26,11 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     public TMP_InputField SendChat;
     public TextMeshProUGUI[] ChatText;
 
+    public void Test()
+    {
+        Debug.Log(PhotonNetwork.CurrentRoom.Name + "\n" + PhotonNetwork.CurrentRoom.MaxPlayers + "\n" + PhotonNetwork.CurrentRoom.PlayerCount + "\n" + PhotonNetwork.CurrentRoom.CustomProperties["type"]);
+    }
+
     void Awake() // 2번 실행
     {
         _isCreate = false;
@@ -47,6 +52,11 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
             QuizManager.SetActive(true);
             BattleUI.SetActive(true);
         }
+        else if (_sn.Equals("5.Goldenball"))
+        {
+            StartPosition = new Vector3(-3f, 0f, 0.5f);
+            StartRotation = Quaternion.Euler(0, 60f, 0f);
+        }
 
         // 캐릭터 생성
         var request = new GetUserDataRequest() { PlayFabId = Singleton.Inst.Playfab_ID };
@@ -59,10 +69,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < ChatText.Length; i++) ChatText[i].text = "";
     }
 
-    void Update()
-    {
-    }
-
     public void BackLobby()
     {
         if (SceneManager.GetActiveScene().name.Equals("2.Campus"))
@@ -72,7 +78,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            RoomChangeManager.Instance.RoomOut("Campus#2.Campus", 20);
+            RoomChangeManager.Instance.RoomOut("Campus#2.Campus", 20, 0);
         }
     }
 
@@ -93,10 +99,9 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         {
             _sex = "Q";
         }
-        else
+        else if (s == "W")
         {
             _sex = "W";
-
         }
         PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
         if (!_isCreate) CreateCharacter();
