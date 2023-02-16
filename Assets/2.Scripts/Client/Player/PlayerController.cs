@@ -104,6 +104,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void Awake()
     {
+        if (SceneManager.GetActiveScene().name.Equals("5.Goldenball"))
+        {
+            playerInput.enabled = false;
+            enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+        }
+            
+
         PV = GetComponent<PhotonView>();
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
@@ -509,11 +517,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         else if (other.CompareTag("Fog") && PV.IsMine)
         {
-            RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20);
+            RoomChangeManager.Instance.RoomOut("Battle#4.Battle", 20, 2);
         }
         else if (other.CompareTag("Bus") && PV.IsMine)
         {
-            RoomChangeManager.Instance.RoomOut("null#5.Goldenball", 4);
+            RoomChangeManager.Instance.RoomOut("null", 4, 3);
         }
     }
 

@@ -8,7 +8,7 @@ using Photon.Realtime;
 
 public class LoginPhotonManager : MonoBehaviourPunCallbacks
 {
-    private string LobbyRoom = "Campus#3_1.ClassRoom"; // Campus#2.Campus
+    private string LobbyRoom = "Campus#2.Campus";
     void Start()
     {
         SoundManager.Instance.Login_BGM();
