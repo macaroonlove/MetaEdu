@@ -9,6 +9,7 @@ using TMPro;
 public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDragHandler
 {
     public static int tableGroup = 0;
+    public static bool groupChannel;
     private EventSystem _system;
     private PlayerController _playerController;
     private ShareCam _agoraManager;
@@ -22,10 +23,11 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
     private Vector2 _moveOffset;
 
     public static bool isGetUp = true;
-    public Canvas _dashBoard;
+    public Canvas[] dashBoard;
+    public RectTransform[] dashBoardRect;
     public TextMeshProUGUI _stateText;
-    private RectTransform _dashBoardRect;
     private Vector2 _vt = new Vector2(3.84f, 2.16f);
+    private Vector2 _st = new Vector2(1f, 1f);
 
     [SerializeField]
     private TextMeshProUGUI _minimalizeText;
@@ -33,8 +35,9 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
     private void Awake()
     {
         _anim = GetComponent<Animator>();
-        _dashBoardRect = _dashBoard.GetComponent<RectTransform>();
+            
         _system = EventSystem.current;
+        groupChannel = false;
         // 이동 대상 UI를 지정하지 않은 경우, 자동으로 부모로 초기화
         if (_targetTr == null)
             _targetTr = transform.parent;
@@ -78,8 +81,17 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
         {
             _system.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().color = _skyBlue;
             _system.currentSelectedGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().color = _skyBlue;
-            _dashBoard.renderMode = RenderMode.ScreenSpaceCamera;
-            _dashBoard.sortingOrder = -1;
+            if (groupChannel)
+            {
+                dashBoard[tableGroup].transform.parent.rotation = Quaternion.Euler(90, 0, 0);
+                dashBoard[tableGroup].renderMode = RenderMode.ScreenSpaceOverlay;
+                dashBoard[tableGroup].sortingOrder = -1;
+            }
+            else
+            {
+                dashBoard[0].renderMode = RenderMode.ScreenSpaceOverlay;
+                dashBoard[0].sortingOrder = -1;
+            }
             _stateText.text = "";
             isGetUp = false;
         }
@@ -87,9 +99,22 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
         {
             _system.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().color = Color.white;
             _system.currentSelectedGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().color = Color.white;
-            _dashBoard.renderMode = RenderMode.WorldSpace;
-            _dashBoardRect.sizeDelta = _vt;
-            _dashBoardRect.anchoredPosition = Vector2.zero;
+            if (groupChannel)
+            {
+                dashBoard[tableGroup].transform.parent.localRotation = Quaternion.Euler(80, 0, 0);
+                dashBoard[tableGroup].renderMode = RenderMode.WorldSpace;
+                dashBoardRect[tableGroup].sizeDelta = _st;
+                dashBoardRect[tableGroup].anchoredPosition3D = Vector3.zero;
+                dashBoardRect[tableGroup].localScale = Vector3.one;
+                dashBoardRect[tableGroup].localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                dashBoard[0].renderMode = RenderMode.WorldSpace;
+                dashBoardRect[0].sizeDelta = _vt;
+                dashBoardRect[0].anchoredPosition = Vector2.zero;
+
+            }
             _stateText.text = "상호작용 키를 눌러 일어날 수 있습니다.";
             isGetUp = true;
         }
@@ -105,6 +130,7 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
 
     public void SmallRoom(bool isOn)
     {
+        groupChannel = isOn;
         _system.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().color = isOn ? _skyBlue : Color.white;
         _system.currentSelectedGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().color = isOn ? _skyBlue : Color.white;
         _agoraManager.SmallRoom(isOn);

@@ -412,7 +412,26 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         private VideoSurface MakeScreenSurface()
         {
-            GameObject MS = GameObject.Find("mainScreen");
+            GameObject MS = null;
+            if (SitMenu.groupChannel)
+            {
+                if(SitMenu.tableGroup.Equals(1))
+                    MS = GameObject.Find("oneScreen");
+                else if (SitMenu.tableGroup.Equals(2))
+                    MS = GameObject.Find("twoScreen");
+                else if (SitMenu.tableGroup.Equals(3))
+                    MS = GameObject.Find("threeScreen");
+                else if (SitMenu.tableGroup.Equals(4))
+                    MS = GameObject.Find("fourScreen");
+                else if (SitMenu.tableGroup.Equals(5))
+                    MS = GameObject.Find("fiveScreen");
+                else if (SitMenu.tableGroup.Equals(6))
+                    MS = GameObject.Find("sixScreen");
+            }
+            else
+            {
+                MS = GameObject.Find("mainScreen");
+            }
 
             if (MS == null) return null;
 
