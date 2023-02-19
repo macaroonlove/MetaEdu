@@ -24,6 +24,9 @@ public class Singleton : MonoBehaviour
     public int shadow;
     public int fvDis;
     public int tvDis;
+    [Header("Sound Setting")]
+    public float bgmSound;
+    public float effectSound;
     [Header("Quiz MGR")]
     public string questions = "";
     public List<string> question = new();
@@ -51,7 +54,7 @@ public class Singleton : MonoBehaviour
 
     void Load()
     {
-        if (PlayerPrefs.HasKey("resolution"))
+        try
         {
             showName = PlayerPrefs.GetInt("ShowName");
             rotSpeed = PlayerPrefs.GetFloat("RotSpeed");
@@ -61,8 +64,10 @@ public class Singleton : MonoBehaviour
             shadow = PlayerPrefs.GetInt("Shadow");
             fvDis = PlayerPrefs.GetInt("FVDis");
             tvDis = PlayerPrefs.GetInt("TVDis");
+            bgmSound = PlayerPrefs.GetFloat("BGMSound");
+            effectSound = PlayerPrefs.GetFloat("EffectSound");
         }
-        else
+        catch
         {
             showName = 0;
             rotSpeed = 1.0f;
@@ -72,7 +77,11 @@ public class Singleton : MonoBehaviour
             shadow = 0;
             fvDis = 1;
             tvDis = 1;
+            bgmSound = 1;
+            effectSound = 1;
         }
+        SoundManager.Instance.BGMVolume(bgmSound);
+        SoundManager.Instance.EffectVolume(effectSound);
     }
 
     public void QuestionInit()
@@ -100,6 +109,8 @@ public class Singleton : MonoBehaviour
         PlayerPrefs.SetInt("Shadow", shadow);
         PlayerPrefs.SetInt("FVDis", fvDis);
         PlayerPrefs.SetInt("TVDis", tvDis);
+        PlayerPrefs.SetFloat("BGMSound", bgmSound);
+        PlayerPrefs.SetFloat("EffectSound", effectSound);
         PlayerPrefs.Save();
     }
 }

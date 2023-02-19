@@ -97,6 +97,16 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(audioClip);
     }
 
+    public void BGMVolume(float volume)
+    {
+        _audioSources[(int)Sound.Bgm].volume = volume;
+    }
+
+    public void EffectVolume(float volume)
+    {
+        _audioSources[(int)Sound.Effect].volume = volume;
+    }
+
     #region Sound Resources
     public AudioClip login;
     public AudioClip effect;

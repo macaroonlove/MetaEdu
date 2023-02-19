@@ -40,6 +40,11 @@ public class Setting : MonoBehaviour
     private CinemachineVirtualCamera _fCamera; // 1인칭
     private CinemachineVirtualCamera _tCamera; // 3인칭
 
+    /* 사운드 */
+    private Transform _soundPanel;
+    private Slider _bgm;
+    private Slider _soundEffect;
+
     void Start()
     {
         StartCoroutine("PostPetty");
@@ -50,8 +55,6 @@ public class Setting : MonoBehaviour
         enableName = basic.GetChild(3).GetChild(1).GetComponent<Image>();
         disableName = basic.GetChild(3).GetChild(2).GetComponent<Image>();
         _playerRot = basic.GetChild(6).GetChild(1).GetComponent<Slider>();
-
-        //keySetting.FindAction("Move").ChangeBindingWithGroup("WASD");
 
         DisplaySetting = SettingPanel.GetChild(6).transform;
         Resolution = DisplaySetting.GetChild(1).GetChild(1).GetComponent<TMP_Dropdown>();
@@ -67,6 +70,10 @@ public class Setting : MonoBehaviour
         _volumeProfile.TryGet(out _colorAdj);
         _directional = GameObject.Find("Directional").GetComponent<Light>();
         _tCamera = GameObject.Find("3rd_Vcam").GetComponent<CinemachineVirtualCamera>();
+
+        _soundPanel = SettingPanel.GetChild(7).transform;
+        _bgm = _soundPanel.GetChild(1).GetChild(1).GetComponent<Slider>();
+        _soundEffect = _soundPanel.GetChild(2).GetChild(1).GetComponent<Slider>();
     }
 
     IEnumerator PostPetty()
@@ -84,6 +91,9 @@ public class Setting : MonoBehaviour
         Shadow.value = Singleton.Inst.shadow;
         FVDis.value = Singleton.Inst.fvDis;
         TVDis.value = Singleton.Inst.tvDis;
+
+        _bgm.value = Singleton.Inst.bgmSound;
+        _soundEffect.value = Singleton.Inst.effectSound;
     }
 
     #region 기본
@@ -229,6 +239,20 @@ public class Setting : MonoBehaviour
             _tCamera.m_Lens.FarClipPlane = 1000;
             Singleton.Inst.tvDis = 3;
         }
+    }
+    #endregion
+
+    #region 사운드
+    public void SetBGMVolume(float volume)
+    {
+        SoundManager.Instance.BGMVolume(volume);
+        Singleton.Inst.bgmSound = volume;
+    }
+
+    public void SetEffectVolume(float volume)
+    {
+        SoundManager.Instance.EffectVolume(volume);
+        Singleton.Inst.effectSound = volume;
     }
     #endregion
 }
