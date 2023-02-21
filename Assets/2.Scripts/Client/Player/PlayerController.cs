@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             //Debug.Log("Wait: " + _id);
-            PV.RPC(nameof(RPCNick), RpcTarget.AllBuffered, _id);
+            PV.RPC(nameof(RPCNick), RpcTarget.All, _id);
         }
     }
 

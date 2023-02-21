@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using TMPro;
 
 public class Chair : MonoBehaviour
 {
+    public int tableGroup;
     public TextMeshProUGUI stateText;
     public GameObject menu;
 
+    private bool _chairRot = false;
     private MeshRenderer _mr;
     private GameObject _player;
     private PlayerController _playerController;
@@ -19,7 +19,8 @@ public class Chair : MonoBehaviour
 
     void OnEnable()
     {
-        
+        if (SceneManager.GetActiveScene().name.Equals("3_1.ClassRoom"))
+            _chairRot = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -47,8 +48,9 @@ public class Chair : MonoBehaviour
             {
                 if (!_isSit)
                 {
+                    SitMenu.tableGroup = this.tableGroup;
                     _player.transform.position = pos;
-                    _player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    _player.transform.rotation = _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation;
                     _mr.enabled = false;
                     _isSit = true;
                     menu.SetActive(true);

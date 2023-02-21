@@ -1325,7 +1325,7 @@ MonoBehaviour:
   controller: {fileID: 8651240522815727490}
   QuestMonster: {fileID: 3522355120684048116}
   Battle_Vcam: {fileID: 2009919028229612686}
-  PV: {fileID: 0}
+  PV: {fileID: -4378187279246367735}
   FirePos: {fileID: 5356044642174363357}
   AttackState: 1
   Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}

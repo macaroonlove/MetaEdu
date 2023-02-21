@@ -45,6 +45,11 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
             StartPosition = new Vector3(5.5f, -2f, -1.25f);
             StartRotation = Quaternion.Euler(0, -90.0f, 0f);
         }
+        else if (_sn.Equals("3_2.ClassRoom"))
+        {
+            StartPosition = new Vector3(3.5f, -2.1f, -1.5f);
+            StartRotation = Quaternion.Euler(0, -90.0f, 0f);
+        }
         else if (_sn.Equals("4.Battle"))
         {
             StartPosition = new Vector3(-25f, 0.3f, 25f);
