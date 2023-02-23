@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -37,9 +38,20 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public Sprite[] loadingImage;
+    public Sprite[] loadingImages;
+    private Image loadingImage;
+
+    public string[] loadingTexts;
+    private TextMeshProUGUI loadingText;
     public Image loadingBar;
+    
     private int _type = 0;
+
+    void Start()
+    {
+        loadingImage = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        loadingText = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+    }
 
     public override void OnConnectedToMaster()
     {
@@ -59,7 +71,8 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
     IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type) // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
     {
         transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = type.Equals(0) ? loadingImage[0] : type.Equals(2) ? loadingImage[1] : type.Equals(3) ? loadingImage[2] : roomName.Split("#")[1].Equals("3_1.ClassRoom") ? loadingImage[3] : loadingImage[4];
+        loadingImage.sprite = type.Equals(0) ? loadingImages[0] : type.Equals(2) ? loadingImages[1] : type.Equals(3) ? loadingImages[2] : roomName.Split("#")[1].Equals("3_1.ClassRoom") ? loadingImages[3] : loadingImages[4];
+        loadingText.text = loadingTexts[Random.Range(0, loadingTexts.Length)];
         loadingBar.fillAmount = 0.1f;
         while (true)
         {
@@ -95,7 +108,6 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log(message);
         CreateRoomWithConditions();
     }
 

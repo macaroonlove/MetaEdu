@@ -28,7 +28,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     public void Test()
     {
-        Debug.Log(PhotonNetwork.CurrentRoom.Name + "\n" + PhotonNetwork.CurrentRoom.MaxPlayers + "\n" + PhotonNetwork.CurrentRoom.PlayerCount + "\n" + PhotonNetwork.CurrentRoom.CustomProperties["type"]);
+        Debug.Log(PhotonNetwork.CountOfPlayers);
     }
 
     void Awake() // 2¹ø ½ÇÇà

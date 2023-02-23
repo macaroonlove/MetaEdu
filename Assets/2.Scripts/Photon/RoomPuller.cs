@@ -26,15 +26,10 @@ public class RoomPuller : MonoBehaviourPunCallbacks
     private String[] roomSets = { "3_1.ClassRoom", "3_2.ClassRoom" };
     private String roomSet = "3_1.ClassRoom";
 
-    void OnEnable()
+    void Awake()
     {
         PullRoomList();
-    }
-
-    void OnDisable()
-    {
-        if (client != null)
-            client.Disconnect();
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -73,7 +68,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
             callback(roomList);
         }
     }
-
 
     public void MyListClick(int num)
     {

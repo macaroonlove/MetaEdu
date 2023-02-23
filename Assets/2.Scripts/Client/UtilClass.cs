@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-
 public static class UtilClass
 {
     #region 이벤트 트리거
