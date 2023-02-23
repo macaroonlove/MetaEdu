@@ -8,6 +8,8 @@ public class GBSetting : MonoBehaviourPunCallbacks
 {
     public TextMeshProUGUI currPlayer;
     public bool a = true;
+    public GameObject Time;
+    public GameObject goldenBallManager;
 
     IEnumerator Start()
     {
@@ -28,6 +30,12 @@ public class GBSetting : MonoBehaviourPunCallbacks
             }
         }
         gameObject.SetActive(false);
+        Time.SetActive(true);
+        goldenBallManager.SetActive(true);
+        yield return wfs;
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<Score>().enabled = false;
+        player.GetComponent<Score>().enabled = true;
         yield break;
     }
 }

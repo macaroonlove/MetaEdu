@@ -108,12 +108,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (SceneManager.GetActiveScene().name.Equals("5.Goldenball"))
         {
-            playerInput.enabled = false;
             enabled = false;
             Cursor.lockState = CursorLockMode.None;
         }
             
-
         PV = GetComponent<PhotonView>();
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
