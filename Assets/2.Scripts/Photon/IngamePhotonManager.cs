@@ -131,7 +131,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
                 myCharacter.transform.GetChild(i).gameObject.layer = 12;
             }
         }
-
         GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
     }
     #endregion

@@ -78,7 +78,7 @@ public class Setting : MonoBehaviour
 
     IEnumerator PostPetty()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         _fCamera = GameObject.Find(PhotonNetwork.LocalPlayer.NickName).transform.GetChild(0).GetChild(0).GetComponent<CinemachineVirtualCamera>();
         yield return new WaitForSeconds(0.2f);
         changeName.text = PhotonNetwork.LocalPlayer.NickName;

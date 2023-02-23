@@ -1,11 +1,7 @@
-using Agora.Rtc;
 using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviourPunCallbacks
 {
@@ -25,12 +21,15 @@ public class Score : MonoBehaviourPunCallbacks
 
     new public void OnEnable()
     {
-        PV = GetComponent<PhotonView>();
-        currScore = 0;
-        player1Text = GameObject.Find("Podium1").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-        player2Text = GameObject.Find("Podium2").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-        player3Text = GameObject.Find("Podium3").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-        player4Text = GameObject.Find("Podium4").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().name.Equals("5.Goldenball"))
+        {
+            PV = GetComponent<PhotonView>();
+            currScore = 0;
+            player1Text = GameObject.Find("Podium1").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+            player2Text = GameObject.Find("Podium2").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+            player3Text = GameObject.Find("Podium3").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+            player4Text = GameObject.Find("Podium4").transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
     }
 
     [PunRPC]

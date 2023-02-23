@@ -32,7 +32,7 @@ public class GBSetting : MonoBehaviourPunCallbacks
         Time.SetActive(true);
         goldenBallManager.SetActive(true);
         GameObject player = GameObject.FindWithTag("Player");
-        Debug.Log(player);
+        player.GetComponent<Score>().enabled = false;
         player.GetComponent<Score>().enabled = true;
         gameObject.SetActive(false);
         yield break;

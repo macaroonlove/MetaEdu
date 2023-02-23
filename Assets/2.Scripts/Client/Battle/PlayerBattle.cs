@@ -156,6 +156,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         for(int i =0; i < FireballCount; i++)
         {
             GameObject fireball = Instantiate(Effect) as GameObject;
+            fireball.transform.SetParent(transform);
             fireball.SetActive(false);
             FireballPool.Add(fireball);
         }
