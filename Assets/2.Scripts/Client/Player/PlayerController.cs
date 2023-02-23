@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private const float threshold = 0.01f;
     private bool hasAnim;
 
+    public bool grammaticalPersonState;
+
     [Header("플레이어 이동")]
     public float MoveSpeed = 2.0f;              // 걷기 속도
     public float RunSpeed = 5.0f;               // 뛰기 속도
@@ -269,17 +271,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void GrammaticalPerson()
     {
-        if (inputPress.eye)
+        if(grammaticalPersonState)
         {
-            vcamThree.Priority = 10;
-            vcamOne.Priority = 11;
-            Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("Face"));
-        }
-        else
-        {
-            vcamThree.Priority = 11;
-            vcamOne.Priority = 10;
-            Camera.main.cullingMask = -1;
+            if (inputPress.eye)
+            {
+                vcamThree.Priority = 10;
+                vcamOne.Priority = 11;
+                Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("Face"));
+            }
+            else
+            {
+                vcamThree.Priority = 11;
+                vcamOne.Priority = 10;
+                Camera.main.cullingMask = -1;
+            }
         }
     }
 

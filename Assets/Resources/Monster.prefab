@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stun
       objectReference: {fileID: 0}
+    - target: {fileID: 1692517446758730, guid: b18e9e2d4fab5524ab20b2819a72e6e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4166505909902172, guid: b18e9e2d4fab5524ab20b2819a72e6e3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -221,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4166505909902172, guid: b18e9e2d4fab5524ab20b2819a72e6e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 4166505909902172, guid: b18e9e2d4fab5524ab20b2819a72e6e3, type: 3}
       propertyPath: m_LocalPosition.z

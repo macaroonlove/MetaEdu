@@ -10,6 +10,7 @@ TagManager:
   - Potal
   - Fog
   - Bus
+  - OtherPlayer
   layers:
   - Default
   - TransparentFX

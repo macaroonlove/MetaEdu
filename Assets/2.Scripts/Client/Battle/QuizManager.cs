@@ -100,7 +100,6 @@ public class QuizManager : MonoBehaviourPunCallbacks
         {
             Question.Add(questionList.Split("¢Ç")[i]);
         }
-        Shuffle(Question);
     }
 
     public void CreateQuiz()

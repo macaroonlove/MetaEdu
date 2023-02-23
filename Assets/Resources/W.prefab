@@ -4345,9 +4345,10 @@ GameObject:
   - component: {fileID: 5866666020330520722}
   - component: {fileID: 5866666020330520721}
   - component: {fileID: 5866666020330520720}
-  m_Layer: 0
+  - component: {fileID: 3880742818580483601}
+  m_Layer: 8
   m_Name: W
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4484,6 +4485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grammaticalPersonState: 0
   MoveSpeed: 2
   RunSpeed: 8
   RotationSmoothTime: 0.03
@@ -4520,13 +4522,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireballPool: []
-  controller: {fileID: 0}
-  QuestMonster: {fileID: 0}
-  Battle_Vcam: {fileID: 0}
+  controller: {fileID: 5866666020330520724}
+  QuestMonster: {fileID: 6314522770626692029}
+  Battle_Vcam: {fileID: 7677954159893963084}
   PV: {fileID: 0}
-  FirePos: {fileID: 0}
+  FirePos: {fileID: 495367612593734218}
   AttackState: 1
-  Effect: {fileID: 0}
+  Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}
+  smoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!114 &5866666020330520722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4612,6 +4615,26 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &3880742818580483601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540017446967065636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4826f77e80e8eb142aa53fa9b781a1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Text: {fileID: 0}
+  player2Text: {fileID: 0}
+  player3Text: {fileID: 0}
+  player4Text: {fileID: 0}
+  Attack: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
+  PV: {fileID: 0}
+  scoreText: {fileID: 0}
+  currScore: 0
 --- !u!1 &7707715545422057203
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SparkSphere
-  m_Shader: {fileID: -6465566751694194690, guid: 97ae18f56456e864badd6796dec2d5a7,
+  m_Shader: {fileID: -6465566751694194690, guid: 95e0bd79ed0227843aceb24a94d4f2cb,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 31679c4b857f0d140bd9566b86eb8674, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88028be2d384700448cdc08a68a120a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:

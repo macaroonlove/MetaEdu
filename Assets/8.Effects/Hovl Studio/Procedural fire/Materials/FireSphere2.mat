@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FireSphere2
-  m_Shader: {fileID: -6465566751694194690, guid: 97ae18f56456e864badd6796dec2d5a7,
+  m_Shader: {fileID: -6465566751694194690, guid: 95e0bd79ed0227843aceb24a94d4f2cb,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a52c2b00382a3264cbea32cfc2c36b34, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71dd10d95b3b7304fa71af3a09e608b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:

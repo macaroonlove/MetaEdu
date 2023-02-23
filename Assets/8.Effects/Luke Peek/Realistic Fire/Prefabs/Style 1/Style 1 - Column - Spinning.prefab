@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19859724}
   - component: {fileID: 19912870}
   - component: {fileID: 9569584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4760,7 +4760,7 @@ GameObject:
   - component: {fileID: 462560}
   - component: {fileID: 19851238}
   - component: {fileID: 19911442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flame Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9488,7 +9488,7 @@ GameObject:
   - component: {fileID: 411358}
   - component: {fileID: 19836304}
   - component: {fileID: 19911862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14174,7 +14174,7 @@ GameObject:
   - component: {fileID: 3098106894073148382}
   - component: {fileID: 1819554952632149651}
   - component: {fileID: -5301736797894448235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Style 1 - Column - Spinning
   m_TagString: fireball
   m_Icon: {fileID: 0}

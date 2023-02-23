@@ -48,7 +48,6 @@ public class AnswerInput : MonoBehaviour
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(false);
-            Camera.main.cullingMask = -1;
         }
         else
         {
@@ -65,7 +64,6 @@ public class AnswerInput : MonoBehaviour
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(false);
-            Camera.main.cullingMask = -1;
         }
         else
         {
@@ -90,7 +88,6 @@ public class AnswerInput : MonoBehaviour
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(false);
-            Camera.main.cullingMask = -1;
         }
         else
         {

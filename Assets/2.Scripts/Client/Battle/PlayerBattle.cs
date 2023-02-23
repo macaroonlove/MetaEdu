@@ -9,6 +9,7 @@ using Cinemachine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PlayerBattle : MonoBehaviourPunCallbacks
 {
@@ -18,15 +19,20 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     public CinemachineVirtualCamera Battle_Vcam;
     public PhotonView PV;
 
-    [Header("∆ƒ¿ÃæÓ∫º ¿Ã∆Â∆Æ")]
+    [Header("¿Ã∆Â∆Æ")]
     public GameObject FirePos;
     public bool AttackState =true;
     public GameObject Effect;
+    public GameObject smoke;
 
     private QuizManager quizManager;
+    private PlayerController _playerController;
+    private SkinnedMeshRenderer[] _skin;
+    private GameObject[] _otherPlayer;
     void Awake()
     {
-        PV = gameObject.GetComponent<PhotonView>();
+        _playerController = GetComponent<PlayerController>();
+        PV = GetComponent<PhotonView>();
         CreateFireballs(7);
         if (!SceneManager.GetActiveScene().name.Contains("Battle"))
         {
@@ -45,7 +51,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 2.5f, 1 << 9);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 2.6f, 1 << 9);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject.GetComponent<MonsterAI>().state == MonsterAI.State.STUN)
@@ -78,23 +84,44 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         QuestMonster.SetActive(true);
         AttackState = false;
         quizManager.battleText.SetActive(false);
-        
-        Transform[] allChildren = GetComponentsInChildren<Transform>();
-        for(int i =0; i < allChildren.Length; i++)
-        {
-            allChildren[i].gameObject.layer = 0;
-        }
+        _playerController.grammaticalPersonState = false;
 
-        Camera.main.cullingMask = ~(1 << 9) & ~(1 << 8);
-
+        Camera.main.cullingMask = ~(1 << 8) & ~(1 << 9);
         Cursor.lockState = CursorLockMode.None;
 
-        PV.RPC("Battle", RpcTarget.AllBuffered, MonsterID);
+        _otherPlayer = GameObject.FindGameObjectsWithTag("OtherPlayer");
+
+        if(_otherPlayer!= null)
+        {
+            for (int i = 0; i < _otherPlayer.Length; i++)
+            {
+                _skin = _otherPlayer[i].GetComponentsInChildren<SkinnedMeshRenderer>();
+                for (int j = 0; j < _skin.Length; j++)
+                {
+                    _skin[j].enabled = false;
+                }
+            }
+        }
+
+        PV.RPC("Battle", RpcTarget.All, MonsterID);
+        PV.RPC("SendBattleEffect", RpcTarget.OthersBuffered);
     }
 
     public void OnAttack()
     {
         PV.RPC("Attack", RpcTarget.AllViaServer) ;
+    }
+
+    public void Renderer()
+    {
+
+        for (int i = 0; i < _otherPlayer.Length; i++)
+        {
+            for (int j = 0; j < _skin.Length; j++)
+            {
+                _skin[j].enabled = true;
+            }
+        }
     }
 
     [PunRPC]
@@ -109,25 +136,19 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     [PunRPC]
     void SendMonsterDie()
     {
-        if (PV.IsMine)
-        {
-            gameObject.layer = 7;
-        }
-        else if (PV.IsMine == false)
-        {
-            gameObject.layer = 8;
-        }
-        gameObject.tag = "Player";
+        smoke.SetActive(false);
+    }
 
-        AttackState = true;
+    [PunRPC]
+    void SendBattleEffect()
+    {
+        smoke.SetActive(true);
     }
 
     [PunRPC]
     void Battle(int MonsterID)
     {
         PhotonNetwork.GetPhotonView(MonsterID).gameObject.SetActive(false);
-        gameObject.tag = "Untagged";
-        gameObject.layer = 0;
     }
 
     void CreateFireballs(int FireballCount)
@@ -166,7 +187,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     private IEnumerator OnRelease(GameObject fireball)
     {
-        var wfs = new WaitForSeconds(1f);
+        var wfs = new WaitForSeconds(1.5f);
         yield return wfs;
         fireball.SetActive(false);
         yield break;

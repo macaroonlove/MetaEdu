@@ -2,7 +2,6 @@ using Cinemachine;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class QuestMonsterAI : MonoBehaviour
@@ -10,6 +9,7 @@ public class QuestMonsterAI : MonoBehaviour
     private PhotonView PV;
     private CinemachineVirtualCamera battle_vcam;
     private QuizManager quizManager;
+    private PlayerController _playerController;
     private void OnEnable()
     {
         AnswerInput.OnMonsterDie += this.OnMonsterDie;
@@ -36,16 +36,20 @@ public class QuestMonsterAI : MonoBehaviour
     {
         AnswerInput.OnMonsterDie -= this.OnMonsterDie;
         battle_vcam.Priority = 5;
+        _playerController.grammaticalPersonState = true;
+        GetComponentInParent<PlayerBattle>().Renderer();
     }
     private void Awake()
     { 
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
-        battle_vcam = gameObject.GetComponentInParent<PlayerBattle>().Battle_Vcam;
-        PV = gameObject.GetComponentInParent<PhotonView>();
+        battle_vcam = GetComponentInParent<PlayerBattle>().Battle_Vcam;
+        PV = GetComponentInParent<PhotonView>();
+        _playerController = GetComponentInParent<PlayerController>();
     }
     void OnMonsterDie()
     {
-        PV.RPC("SendMonsterDie", RpcTarget.AllBuffered);
+        gameObject.GetComponentInParent<PlayerBattle>().AttackState = true;
+        PV.RPC("SendMonsterDie", RpcTarget.OthersBuffered);
         this.gameObject.SetActive(false);
     }
 }

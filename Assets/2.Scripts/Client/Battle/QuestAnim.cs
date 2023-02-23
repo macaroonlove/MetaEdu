@@ -14,7 +14,7 @@ public class QuestAnim : MonoBehaviour
     }
     private void OnDisable()
     {
-        //anim.SetBool("isStart", false);
+        anim.SetTrigger("isIDLE");
     }
     public void questAnim()
     {

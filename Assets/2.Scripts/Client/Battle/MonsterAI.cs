@@ -38,18 +38,24 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     }
     IEnumerator CheckState()
     {
-        while (state != State.DIE)
+        var wfs = new WaitForSeconds(1f);
+        if(PhotonNetwork.IsMasterClient)
         {
-            yield return new WaitForSeconds(0.3f);
-            float distance = Vector3.Distance(transform.position, tartget);
-
-            if (distance < 5f && state == State.MOVE && state != State.STUN)
+            while (state != State.DIE)
             {
-                tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
-                agent.destination = tartget;
+                yield return wfs;
+                float distance = Vector3.Distance(transform.position, tartget);
+
+                if (distance < 5f && state == State.MOVE)
+                {
+                    agent.isStopped = false;
+                    tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+                    agent.destination = tartget;
+                }
             }
+            yield return null;
         }
-        yield return null;
+        yield break;
     }
 
     private void Update()
@@ -68,13 +74,13 @@ public class MonsterAI : MonoBehaviourPunCallbacks
                     state = State.ESCAPE;
                 }
             }
-            if (state == State.ESCAPE && state != State.STUN)
+            if (state == State.ESCAPE)
             {
                 agent.speed = 8;
                 escapePos = (transform.position - playerPos.transform.position).normalized;
                 agent.destination = transform.position + escapePos * 7.0f;
             }
-            if (colliders.Length == 0 && state == State.ESCAPE && state != State.STUN)
+            if (colliders.Length == 0 && state == State.ESCAPE)
             {
                 state = State.MOVE;
                 agent.speed = 5;
@@ -97,7 +103,6 @@ public class MonsterAI : MonoBehaviourPunCallbacks
 
     void Recovery()
     {
-        agent.isStopped = false;
         state = State.MOVE;
         monsterHP = 100;
         StunEffect.SetActive(false);
