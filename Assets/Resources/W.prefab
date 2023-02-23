@@ -4345,10 +4345,10 @@ GameObject:
   - component: {fileID: 5866666020330520722}
   - component: {fileID: 5866666020330520721}
   - component: {fileID: 5866666020330520720}
-  - component: {fileID: 6714938131628822870}
+  - component: {fileID: 3880742818580483601}
   m_Layer: 8
   m_Name: W
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4485,8 +4485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grammaticalPersonState: 1
-  score: {fileID: 0}
+  grammaticalPersonState: 0
   MoveSpeed: 2
   RunSpeed: 8
   RotationSmoothTime: 0.03
@@ -4616,7 +4615,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &6714938131628822870
+--- !u!114 &3880742818580483601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4632,7 +4631,6 @@ MonoBehaviour:
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
   player4Text: {fileID: 0}
-  flame: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
   Attack: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
   PV: {fileID: 0}
   scoreText: {fileID: 0}

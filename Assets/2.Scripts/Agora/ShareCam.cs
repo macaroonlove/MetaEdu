@@ -10,7 +10,7 @@ using Agora.Rtc;
 
 public class ShareCam : MonoBehaviourPunCallbacks
 {
-    private PhotonView PV;
+    public PhotonView PV;
 
     private string _appId = "";
     private string _channelName = "";
@@ -33,7 +33,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
     public Sprite[] camButtonSprite;
     public Sprite[] voiceButtonSprite;
     public Sprite[] screenButtonSprite;
-    
+
+    GameObject Cam_Content;
     private GameObject _shareMenu;
     private Image _camOnOffImage;
     private Image _voiceOnOffImg;
@@ -43,7 +44,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        PV = GetComponent<PhotonView>();
         _appId = Singleton.Inst.Agora_AppID;
         _channelName = PhotonNetwork.CurrentRoom.Name.Split("#")[2];
         Uid1 = (uint)Random.Range(10000, 99999);
@@ -60,6 +60,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
         RtcEngineContext context = new RtcEngineContext(_appId, 0, CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING, AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
         RtcEngine.Initialize(context);
         RtcEngine.InitEventHandler(handler);
+        RtcEngine.AdjustRecordingSignalVolume(400);
     }
 
     void SetupUI()
@@ -67,6 +68,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
         #region 카메라 UI 세팅
         _camOnOffImage = GameObject.Find("CamOnOff").GetComponent<Image>();
         _voiceOnOffImg = GameObject.Find("VoiceOnOff").GetComponent<Image>();
+        Cam_Content = GameObject.Find("Cam_Content");
         #endregion
 
         #region 화면공유 UI 세팅
@@ -121,6 +123,30 @@ public class ShareCam : MonoBehaviourPunCallbacks
     {
         RtcEngine.LeaveChannelEx(new RtcConnection(_channelName, Uid2));
     }
+
+    public void SmallRoom(bool isOn)
+    {
+        OffCam();
+        OffAudio();
+        if(_sharingScreen)
+            StopScreenShare();
+        RtcEngine.LeaveChannel();
+        Transform[] camList = Cam_Content.GetComponentsInChildren<Transform>();
+        for(int i = 1; i < camList.Length; i++)
+        {
+            Destroy(camList[i].gameObject);
+        }
+        if (isOn)
+        {
+            _channelName = PhotonNetwork.CurrentRoom.Name.Split("#")[2] + SitMenu.tableGroup;
+        }
+        else
+        {
+            _channelName = PhotonNetwork.CurrentRoom.Name.Split("#")[2];
+        }
+        JoinChannel();
+    }
+
     #endregion
 
     #region 온·오프 버튼
@@ -261,9 +287,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
     internal class AgoraEventHandler : IRtcEngineEventHandler
     {
         private readonly ShareCam videoSample;
-        private TextMeshProUGUI NoTR;
-        private TextMeshProUGUI CNTMP;
-
+        
         internal AgoraEventHandler(ShareCam sampleVideo)
         {
             videoSample = sampleVideo;
@@ -362,6 +386,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 }
                 else
                 {
+                    GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(videoSample.Uid1.ToString());
                     videoSurface = MakeImageSurface(uid.ToString());
                 }
             }
@@ -387,7 +412,26 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         private VideoSurface MakeScreenSurface()
         {
-            GameObject MS = GameObject.Find("mainScreen");
+            GameObject MS = null;
+            if (SitMenu.groupChannel)
+            {
+                if(SitMenu.tableGroup.Equals(1))
+                    MS = GameObject.Find("oneScreen");
+                else if (SitMenu.tableGroup.Equals(2))
+                    MS = GameObject.Find("twoScreen");
+                else if (SitMenu.tableGroup.Equals(3))
+                    MS = GameObject.Find("threeScreen");
+                else if (SitMenu.tableGroup.Equals(4))
+                    MS = GameObject.Find("fourScreen");
+                else if (SitMenu.tableGroup.Equals(5))
+                    MS = GameObject.Find("fiveScreen");
+                else if (SitMenu.tableGroup.Equals(6))
+                    MS = GameObject.Find("sixScreen");
+            }
+            else
+            {
+                MS = GameObject.Find("mainScreen");
+            }
 
             if (MS == null) return null;
 
@@ -412,16 +456,18 @@ public class ShareCam : MonoBehaviourPunCallbacks
             goCN.name = "CMyName";
             WC.AddComponent<RawImage>().uvRect = new Rect(0, 0, -1, -1);
             EventTrigger et = WC.AddComponent<EventTrigger>();
-            et.AddListener(EventTriggerType.PointerClick, videoSample.CamClick);
+            if (goName.Equals(videoSample.Uid1))
+            {
+                et.AddListener(EventTriggerType.PointerClick, videoSample.CamClick);
+            }
             goNo.AddComponent<Image>();
             goNoI.AddComponent<Image>().sprite = videoSample.noCam;
             goNoN.AddComponent<TextMeshProUGUI>();
             goCN.AddComponent<TextMeshProUGUI>();
 
-            GameObject Cam_Content = GameObject.Find("Cam_Content");
-            if (Cam_Content != null)
+            if (videoSample.Cam_Content != null)
             {
-                WC.transform.SetParent(Cam_Content.transform, false);
+                WC.transform.SetParent(videoSample.Cam_Content.transform, false);
                 goNo.transform.SetParent(WC.transform, false);
                 goNoI.transform.SetParent(goNo.transform, false);
                 goNoN.transform.SetParent(goNoI.transform, false);

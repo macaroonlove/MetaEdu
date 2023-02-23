@@ -11,8 +11,6 @@ TagManager:
   - Fog
   - Bus
   - OtherPlayer
-  - Attack
-  - Flame
   layers:
   - Default
   - TransparentFX

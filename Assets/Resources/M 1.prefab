@@ -1070,10 +1070,10 @@ GameObject:
   - component: {fileID: 2049642581581357325}
   - component: {fileID: -5775548239840167904}
   - component: {fileID: 9127003820858856439}
-  - component: {fileID: 860344437609276812}
+  - component: {fileID: 7388583324685969719}
   m_Layer: 8
   m_Name: M 1
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1202,8 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grammaticalPersonState: 1
-  score: {fileID: 0}
+  grammaticalPersonState: 0
   MoveSpeed: 2
   RunSpeed: 8
   RotationSmoothTime: 0.03
@@ -1333,7 +1332,7 @@ MonoBehaviour:
   AttackState: 1
   Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}
   smoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
---- !u!114 &860344437609276812
+--- !u!114 &7388583324685969719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1349,7 +1348,6 @@ MonoBehaviour:
   player2Text: {fileID: 0}
   player3Text: {fileID: 0}
   player4Text: {fileID: 0}
-  flame: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
   Attack: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
   PV: {fileID: 0}
   scoreText: {fileID: 0}
@@ -3392,7 +3390,7 @@ MonoBehaviour:
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 3
+    m_BlendHint: 0
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
@@ -3985,11 +3983,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QuestMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 6627192640532317606, guid: 8737d8e54bca18747be6645b1b761785,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6627192640532317606, guid: 8737d8e54bca18747be6645b1b761785,
         type: 3}

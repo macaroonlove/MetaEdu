@@ -478,7 +478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetTr: {fileID: 102201077}
-  _dashBoard: {fileID: 535433560}
+  dashBoard:
+  - {fileID: 2133306095}
+  dashBoardRect:
+  - {fileID: 2133306096}
   _stateText: {fileID: 592972593}
   _minimalizeText: {fileID: 489583967}
 --- !u!1001 &112544019

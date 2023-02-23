@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/1.Scenes/3_1.ClassRoom.unity
     guid: 0d2759de16cc7ff4696a9f57c1662ad2
   - enabled: 1
+    path: Assets/1.Scenes/3_2.ClassRoom.unity
+    guid: 3b23c0dd1a559c548acd37b2166fb193
+  - enabled: 1
     path: Assets/1.Scenes/4.Battle.unity
     guid: 39d82a22bda13494da781549fd0d461b
   - enabled: 1

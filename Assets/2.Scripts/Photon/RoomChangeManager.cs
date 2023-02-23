@@ -37,6 +37,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public Sprite[] loadingImage;
     public Image loadingBar;
     private int _type = 0;
 
@@ -55,9 +56,10 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
 
     public void RoomChange(string roomName) => StartCoroutine(LoadRoom(roomName, false, 20, 0));
 
-    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type)
+    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type) // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
     {
         transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = type.Equals(0) ? loadingImage[0] : type.Equals(2) ? loadingImage[1] : type.Equals(3) ? loadingImage[2] : roomName.Split("#")[1].Equals("3_1.ClassRoom") ? loadingImage[3] : loadingImage[4];
         loadingBar.fillAmount = 0.1f;
         while (true)
         {
@@ -133,16 +135,16 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
             while (true)
             {
                 yield return null;
-                timer += Time.unscaledDeltaTime;
+                timer += Time.unscaledDeltaTime * 0.3f;
                 loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
                 if (loadingBar.fillAmount == 1f)
                 {
-                    float findRoom = 0;
-                    while (findRoom < 2f)
-                    {
-                        yield return null;
-                        findRoom += Time.deltaTime;
-                    }
+                    //float findRoom = 0;
+                    //while (findRoom < 2f)
+                    //{
+                    //    yield return null;
+                    //    findRoom += Time.deltaTime;
+                    //}
                     transform.GetChild(0).gameObject.SetActive(false);
                     yield break;
                 }

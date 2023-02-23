@@ -180,10 +180,10 @@ GameObject:
   - component: {fileID: 6376348996159537824}
   - component: {fileID: 6376348996159537823}
   - component: {fileID: 6376348996159537822}
-  - component: {fileID: 2592374325400861209}
+  - component: {fileID: 4931994613400368390}
   m_Layer: 8
   m_Name: Q
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,8 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grammaticalPersonState: 1
-  score: {fileID: 0}
+  grammaticalPersonState: 0
   MoveSpeed: 2
   RunSpeed: 8
   RotationSmoothTime: 0.03
@@ -361,10 +360,10 @@ MonoBehaviour:
   controller: {fileID: 6376348996159537826}
   QuestMonster: {fileID: 4368853984972449972}
   Battle_Vcam: {fileID: 5575764511011206350}
-  PV: {fileID: 0}
+  PV: {fileID: 6376348996159537824}
   FirePos: {fileID: 5921893632711185160}
   AttackState: 1
-  Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}
+  Effect: {fileID: 1845955007268882, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
   smoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!114 &6376348996159537824
 MonoBehaviour:
@@ -451,7 +450,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &2592374325400861209
+--- !u!114 &4931994613400368390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -514,7 +513,7 @@ GameObject:
   - component: {fileID: 5720228400467691798}
   - component: {fileID: 9077292902626399106}
   - component: {fileID: 5913713105152779778}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EyeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +713,7 @@ GameObject:
   - component: {fileID: 2571827665211686236}
   - component: {fileID: 3966567445551566148}
   - component: {fileID: 6802417483129063829}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wolf3D_Teeth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1403,7 @@ GameObject:
   - component: {fileID: 1124942594523419588}
   - component: {fileID: 5496454248090313352}
   - component: {fileID: 2474694900701212828}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EyeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2612,7 +2611,7 @@ GameObject:
   - component: {fileID: 8815265830806770158}
   - component: {fileID: 3020098539417053053}
   - component: {fileID: 4155690637918391823}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wolf3D_Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2974,7 +2973,7 @@ GameObject:
   - component: {fileID: 1791809449955698011}
   - component: {fileID: 4912258346962071524}
   - component: {fileID: 2750667643329651928}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wolf3D_Outfit_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4507,7 +4506,7 @@ GameObject:
   - component: {fileID: 1429268200192960661}
   - component: {fileID: 4115430139124499468}
   - component: {fileID: 6768284534159969845}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wolf3D_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
