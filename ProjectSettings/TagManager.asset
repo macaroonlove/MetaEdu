@@ -10,6 +10,9 @@ TagManager:
   - Potal
   - Fog
   - Bus
+  - OtherPlayer
+  - Attack
+  - Flame
   layers:
   - Default
   - TransparentFX

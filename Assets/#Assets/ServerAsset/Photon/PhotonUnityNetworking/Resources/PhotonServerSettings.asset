@@ -47,6 +47,20 @@ MonoBehaviour:
   - OnEffect
   - SendAnswer
   - SendScore
+  - SendBattleEffect
+  - CheckAnswer
+  - CreateQuiz
+  - PunRPCAddQuestion
+  - PunRPCcreateQuiz
+  - OnGoldenBall
+  - currTime
+  - RPCaddQuestion
+  - SendAddQuestion
+  - End
+  - RPCend
+  - GetInfo
+  - RPCcreateQuiz
+  - SendCreateQuiz
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

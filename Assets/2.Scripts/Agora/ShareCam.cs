@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using TMPro;
 using Photon.Pun;
 using Agora.Rtc;
@@ -21,6 +22,9 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     public uint Uid1;
     public uint Uid2 = 10;
+
+    public Transform soundPanel;
+    private uint _currUint = 0;
 
     public Sprite noCam;
     public TMP_FontAsset EliceDigital;
@@ -41,7 +45,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         _appId = Singleton.Inst.Agora_AppID;
-        _channelName = PhotonNetwork.CurrentRoom.Name;
+        _channelName = PhotonNetwork.CurrentRoom.Name.Split("#")[2];
         Uid1 = (uint)Random.Range(10000, 99999);
         InitEngine();
         SetupUI();
@@ -148,6 +152,34 @@ public class ShareCam : MonoBehaviourPunCallbacks
     {
         _voiceOnOffImg.sprite = voiceButtonSprite[0];
         RtcEngine.EnableLocalAudio(false);
+    }
+    #endregion
+
+    #region 음량 조절
+    void CamClick(BaseEventData eventData)
+    {
+        PointerEventData pointerData = (PointerEventData)eventData;
+        if (pointerData.button.Equals(PointerEventData.InputButton.Right))
+        {
+            _currUint = uint.Parse(pointerData.pointerPress.name);
+            soundPanel.parent.gameObject.SetActive(true);
+            soundPanel.position = pointerData.position;
+        }
+    }
+
+    public void CamBackground()
+    {
+        soundPanel.parent.gameObject.SetActive(false);
+    }
+
+    public void UserSound(float volume)
+    {
+        RtcEngine.AdjustUserPlaybackSignalVolume(_currUint, (int)volume);
+    }
+
+    public void UserMute(bool isOn)
+    {
+        RtcEngine.MuteRemoteAudioStream(_currUint, isOn);
     }
     #endregion
 
@@ -379,7 +411,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
             goNoN.name = "NCMyName";
             goCN.name = "CMyName";
             WC.AddComponent<RawImage>().uvRect = new Rect(0, 0, -1, -1);
-            WC.AddComponent<Button>();
+            EventTrigger et = WC.AddComponent<EventTrigger>();
+            et.AddListener(EventTriggerType.PointerClick, videoSample.CamClick);
             goNo.AddComponent<Image>();
             goNoI.AddComponent<Image>().sprite = videoSample.noCam;
             goNoN.AddComponent<TextMeshProUGUI>();

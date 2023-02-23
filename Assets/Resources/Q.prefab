@@ -180,7 +180,8 @@ GameObject:
   - component: {fileID: 6376348996159537824}
   - component: {fileID: 6376348996159537823}
   - component: {fileID: 6376348996159537822}
-  m_Layer: 0
+  - component: {fileID: 2592374325400861209}
+  m_Layer: 8
   m_Name: Q
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,6 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grammaticalPersonState: 1
+  score: {fileID: 0}
   MoveSpeed: 2
   RunSpeed: 8
   RotationSmoothTime: 0.03
@@ -361,7 +364,8 @@ MonoBehaviour:
   PV: {fileID: 0}
   FirePos: {fileID: 5921893632711185160}
   AttackState: 1
-  Effect: {fileID: 0}
+  Effect: {fileID: 197080, guid: 6200dd495109f4eb2bce5950964208ec, type: 3}
+  smoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!114 &6376348996159537824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +451,26 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &2592374325400861209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457748640083729116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4826f77e80e8eb142aa53fa9b781a1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Text: {fileID: 0}
+  player2Text: {fileID: 0}
+  player3Text: {fileID: 0}
+  player4Text: {fileID: 0}
+  Attack: {fileID: 139322, guid: 379b31ccbf65549b2a1dbfd9fad68de0, type: 3}
+  PV: {fileID: 0}
+  scoreText: {fileID: 0}
+  currScore: 0
 --- !u!1 &735033483967960945
 GameObject:
   m_ObjectHideFlags: 0
