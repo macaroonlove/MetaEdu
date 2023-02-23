@@ -14,7 +14,7 @@ public class GBSetting : MonoBehaviourPunCallbacks
     IEnumerator Start()
     {
         var wfs = new WaitForSeconds(2f);
-        while (!PhotonNetwork.CurrentRoom.PlayerCount.Equals(4))
+        while (!PhotonNetwork.CurrentRoom.PlayerCount.Equals(2))
         {
             currPlayer.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString();
             yield return wfs;
@@ -29,13 +29,12 @@ public class GBSetting : MonoBehaviourPunCallbacks
                 myCRT.transform.rotation = i.Equals(0) ? Quaternion.Euler(0, -60f, 0f) : i.Equals(1) ? Quaternion.Euler(0, -20f, 0f) : i.Equals(2) ? Quaternion.Euler(0, 20f, 0f) : Quaternion.Euler(0, 60f, 0f);
             }
         }
-        gameObject.SetActive(false);
         Time.SetActive(true);
         goldenBallManager.SetActive(true);
-        yield return wfs;
         GameObject player = GameObject.FindWithTag("Player");
-        player.GetComponent<Score>().enabled = false;
+        Debug.Log(player);
         player.GetComponent<Score>().enabled = true;
+        gameObject.SetActive(false);
         yield break;
     }
 }
