@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
-using System.Net.NetworkInformation;
-using UnityEngine.AI;
 using Cinemachine;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class PlayerBattle : MonoBehaviourPunCallbacks
 {
@@ -70,9 +65,12 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (AttackState)
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    OnAttack();
+                    if (AttackState)
+                    {
+                        OnAttack();
+                    }
                 }
             }
         }
@@ -156,7 +154,6 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         for(int i =0; i < FireballCount; i++)
         {
             GameObject fireball = Instantiate(Effect) as GameObject;
-            fireball.transform.SetParent(transform);
             fireball.SetActive(false);
             FireballPool.Add(fireball);
         }

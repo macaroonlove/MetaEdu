@@ -88,6 +88,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private TMP_InputField _nickName;
     private Slider _playerRot;
 
+    [Header("배틀")]
+    private GameObject _battlePanel = null;
+    private bool _isBattle = false;
+    private bool _isBattlePanel = false;
+
     [Header("의자")]
     private bool _isSit = false;
     //private Chair _chair;
@@ -105,13 +110,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     void Awake()
-    {
-        if (SceneManager.GetActiveScene().name.Equals("5.Goldenball"))
-        {
-            enabled = false;
-            Cursor.lockState = CursorLockMode.None;
-        }
-            
+    {            
         PV = GetComponent<PhotonView>();
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
@@ -130,7 +129,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _createQuizPanel = cv.GetChild(9).gameObject;
             vcamOne = CinemachineCameraTarget.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
             vcamThree = GameObject.Find("3rd_Vcam").GetComponent<CinemachineVirtualCamera>();
-            //tpsCamera = vcamThree.GetComponent<TPSCamera>();
+            string _sn = SceneManager.GetActiveScene().name;
+            if (_sn.Equals("5.Goldenball"))
+            {
+                enabled = false;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else if (_sn.Equals("4.Battle"))
+            {
+                _battlePanel = GameObject.Find("BattleScene").transform.GetChild(0).gameObject;
+                _isBattle = true;
+            }
         }
     }
 
@@ -192,11 +201,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
+            grammaticalPersonState = true;
             Cursor.lockState = CursorLockMode.Locked;
-
+            
             vcamThree.Follow = transform.GetChild(0);
             vcamThree.LookAt = transform.GetChild(0);
-            //tpsCamera.enabled = true;
 
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
@@ -254,10 +263,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (Input.anyKeyDown)
         {
-            if (_settingPanel.activeSelf || _createRoomPanel.activeSelf || _createQuizPanel.activeSelf || _chatting.activeSelf)
+            _isBattlePanel = _isBattle ? _battlePanel.activeSelf : false;
+            if (_settingPanel.activeSelf || _createRoomPanel.activeSelf || _createQuizPanel.activeSelf || _chatting.activeSelf || _isBattlePanel)
             {
                 if (playerInput.enabled)
+                {
                     playerInput.enabled = false;
+                }
+                    
             }
             else
             {
@@ -269,7 +282,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void GrammaticalPerson()
     {
-        if(grammaticalPersonState)
+        if (grammaticalPersonState)
         {
             if (inputPress.eye)
             {
