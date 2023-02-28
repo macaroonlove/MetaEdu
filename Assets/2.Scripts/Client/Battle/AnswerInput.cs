@@ -73,7 +73,7 @@ public class AnswerInput : MonoBehaviour
 
     public void DescriptiveAnswer()
     {
-        for (int i = 1; i < quizManager.Question[quizManager.currQuiz].Split("¢È")[2].Split("#").Length; i++)
+        for (int i = 0; i < quizManager.Question[quizManager.currQuiz].Split("¢È")[2].Split("#").Length; i++)
         {
             if (inputAnswer.text.Contains(quizManager.Question[quizManager.currQuiz].Split("¢È")[2].Split("#")[i]))
             {

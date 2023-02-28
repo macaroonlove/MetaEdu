@@ -57,6 +57,8 @@ public class UI_PublicManager : MonoBehaviour
     private TextMeshProUGUI _display;
     private TextMeshProUGUI _sound;
 
+    private QuizManager _quizManager;
+    private bool _battleScene;
     void Start()
     {
         _sceneName = SceneManager.GetActiveScene().name;
@@ -74,6 +76,29 @@ public class UI_PublicManager : MonoBehaviour
             _sPwText = GameObject.Find("SPW_Input").GetComponent<TMP_InputField>();
             _srPwText = GameObject.Find("SRPW_Input").GetComponent<TMP_InputField>();
             _sErrText = GameObject.Find("SError_Text").GetComponent<TextMeshProUGUI>();
+            _battleScene = false;
+        }
+        else if(_sceneName == "4.Battle")
+        {
+            _agManager = GameObject.Find("AgoraManager").GetComponent<ShareCam>();
+            _ptManager = GameObject.Find("PhotonManager")?.GetComponent<IngamePhotonManager>();
+            _sideBarAnim = GameObject.Find("LSideBar").GetComponent<Animator>();
+            _camToggle = _sideBarAnim.transform.GetChild(0).GetComponent<Toggle>();
+            _quizToggle = _sideBarAnim.transform.GetChild(1).GetComponent<Toggle>();
+            _chatOnOffImg = GameObject.Find("ChatOnOff").GetComponent<Image>();
+            _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
+            _chatInput = _chatPanel.transform.GetChild(1).gameObject;
+            _sendChat = _chatInput.GetComponent<TMP_InputField>();
+            _setting = gameObject.transform.GetChild(10).gameObject;
+            _createRoomPanel = transform.GetChild(8).gameObject;
+            _createQuizPanel = transform.GetChild(9).gameObject;
+            _basic = _setting.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            _control = _setting.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
+            _quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+            _battleScene = true;
         }
         else
         {
@@ -94,6 +119,7 @@ public class UI_PublicManager : MonoBehaviour
             _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
             _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
+            _battleScene = false;
         }
     }
 
@@ -239,6 +265,12 @@ public class UI_PublicManager : MonoBehaviour
         if (isOn == true)
         {
             Singleton.Inst.currSelect = int.Parse(system.currentSelectedGameObject.name);
+            if(_battleScene)
+            {
+                _quizManager.questionList = Singleton.Inst.question[Singleton.Inst.currSelect];
+                _quizManager.Question.Clear();
+                _quizManager.AddQuestion();
+            }
         }
     }
 
