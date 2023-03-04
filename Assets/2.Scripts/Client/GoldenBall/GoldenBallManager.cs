@@ -1,10 +1,6 @@
 using Photon.Pun;
-using PlayFab.ClientModels;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +21,11 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
     public TMP_InputField AnswerText;
     public TextMeshProUGUI TimeText;
 
+    [Header("Ranking")]
+    public TextMeshProUGUI[] RankingText;
+    public GameObject Ranking;
+
+
     public bool countTime = true;
     public PhotonView PV;
 
@@ -33,6 +34,10 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
     private int _currQuiz;
     private bool _start = false;
     private bool _end = false;
+
+    private int[] _finalSocre = new int[4];
+    private int[] _rank = new int[4];
+    private int _count;
     void Start()
     {
         _currTime = 8;
@@ -46,7 +51,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (Question != null && countTime)
+        if (countTime)
         {
             if(PhotonNetwork.IsMasterClient)
             {
@@ -100,7 +105,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void CreateQuiz()
     {
-        if (Question.Count > 0)
+        if (Answer.Count > 0)
         {
             score.PV.RPC("SendScore", RpcTarget.All, score.currScore);
 
@@ -114,6 +119,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             _start = true;
             countTime = true;
         }
+        /*
         else
         {
             if (!PhotonNetwork.IsMasterClient)
@@ -128,6 +134,13 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
                     _end = true;
                 }
             }
+        }
+        */
+        
+        if (Answer.Count == 0)
+        {
+            score.PV.RPC("SendScore", RpcTarget.AllViaServer, score.currScore);
+            PV.RPC("Rank", RpcTarget.AllViaServer);
         }
     }
 
@@ -168,6 +181,37 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
     public void OffFullScreen()
     {
         FullScreen.SetActive(false);
+    }
+
+    [PunRPC]
+    public void Rank()
+    {
+        TimeText.gameObject.SetActive(false);
+
+        int.TryParse(score.player1Text.text, out _finalSocre[0]);
+        int.TryParse(score.player2Text.text, out _finalSocre[1]);
+        int.TryParse(score.player3Text.text, out _finalSocre[2]);
+        int.TryParse(score.player4Text.text, out _finalSocre[3]);
+
+        for (int i = 0; i < 4; i++)
+        {
+            _count = 1;
+            for (int j = 0; j < 4; j++)
+            {
+                if (_finalSocre[i] < _finalSocre[j])
+                {
+                    _count++;
+                }
+            }
+            _rank[i] = _count++;
+        }
+
+        Ranking.SetActive(true);
+
+        for (int i = 0; i < 3; i++)
+        {
+            RankingText[i].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i]; ;
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
