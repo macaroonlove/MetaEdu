@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scenes/Petty.unity
     guid: baa1a17d37474a948983b1e9ab6ab59a
+  - enabled: 1
+    path: Assets/1.Scenes/6.MineFind.unity
+    guid: 0b0a4f31671754b4b87eec0bc5433898
   m_configObjects: {}

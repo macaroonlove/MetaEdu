@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2800835152625559937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2800835152625559938}
+  - component: {fileID: 2800835152625559941}
+  - component: {fileID: 2800835152625559940}
+  - component: {fileID: 2800835152625559939}
+  - component: {fileID: -7036294069742344072}
+  m_Layer: 5
+  m_Name: tilePrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2800835152625559938
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800835152625559937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -910, y: -490}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2800835152625559941
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800835152625559937}
+  m_CullTransparentMesh: 1
+--- !u!114 &2800835152625559940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800835152625559937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 919dbb5a04239f049a903405adcc473c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2800835152625559939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800835152625559937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146cef553b401db4989c0e979d32b096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  isMine: 0
+  state: 0
+  sprites:
+  - {fileID: 21300000, guid: fe4c34e736a863042a52fe26ebc84002, type: 3}
+  - {fileID: 21300000, guid: d987e994e6b2e7e47aaace0b33c8bb28, type: 3}
+  - {fileID: 21300000, guid: a23310f7c489d07498edd624b8a3d8b6, type: 3}
+  - {fileID: 21300000, guid: 5eb2359a305908b4cb8302687d04104c, type: 3}
+  - {fileID: 21300000, guid: 510dd04aeddcde04cba7d66289e24896, type: 3}
+  - {fileID: 21300000, guid: 3e801516743d05444a7b8c1dfe043c84, type: 3}
+  - {fileID: 21300000, guid: cdccc50067f436b40b063374c13eddba, type: 3}
+  - {fileID: 21300000, guid: 9445b54a8a032f9478080d39c0075971, type: 3}
+  - {fileID: 21300000, guid: d30ed8a39451eca439b4892dd0110217, type: 3}
+  - {fileID: 21300000, guid: f3913627925a4e74b8ff78f31b064cd0, type: 3}
+  mineSprite: {fileID: 21300000, guid: 436c5e63723127948af8857e903f658a, type: 3}
+  hiddenSprite: {fileID: 21300000, guid: 919dbb5a04239f049a903405adcc473c, type: 3}
+  adjacentMines: 0
+--- !u!114 &-7036294069742344072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800835152625559937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
