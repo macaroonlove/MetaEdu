@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Billboard : MonoBehaviour
@@ -17,15 +14,15 @@ public class Billboard : MonoBehaviour
     {
         try
         {
-            if (Singleton.Inst.showName == 1 && nickText.activeSelf)
+            if (Singleton.Inst.showName.Equals(1) && nickText.activeSelf)
             {
                 nickText.SetActive(false);
             }
-            else if (Singleton.Inst.showName == 0 && !nickText.activeSelf)
+            else if (Singleton.Inst.showName.Equals(0) && !nickText.activeSelf)
             {
                 nickText.SetActive(true);
             }
-            else if (Singleton.Inst.showName == 0)
+            else if (Singleton.Inst.showName.Equals(0))
             {
                 transform.LookAt(transform.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
             }

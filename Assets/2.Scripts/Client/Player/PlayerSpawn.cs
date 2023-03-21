@@ -1,17 +1,16 @@
 using System.Collections;
 using UnityEngine;
-using Photon.Pun;
 
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private Material mtrlOrg;
     [SerializeField] private float first = -1.1f;
     [SerializeField] private float last = 1.1f;
-    private Renderer _renderer;
-    // Start is called before the first frame update
+    private SkinnedMeshRenderer _renderer;
+
     void Start()
     {
-        _renderer = GetComponent<SkinnedMeshRenderer>();
+        TryGetComponent(out _renderer);
         StartCoroutine(Spawn());
     }
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -123,8 +122,8 @@ public class QuestionManager : MonoBehaviour
     public void PNP(int num)
     {
         TempSave();
-        if (num == -2) --currentPage; // 이전
-        else if (num == -1) ++currentPage; // 다음
+        if (num.Equals(-2)) --currentPage; // 이전
+        else if (num.Equals(-1)) ++currentPage; // 다음
         else // 새로만들기
         {
             ++currentPage;
@@ -145,7 +144,7 @@ public class QuestionManager : MonoBehaviour
         }
         catch
         {
-            if(num == 0)
+            if(num.Equals(0))
             {
                 ResetQuiz();
             }
@@ -166,7 +165,7 @@ public class QuestionManager : MonoBehaviour
     void QuizInit(string[] init)
     {
         problem.text = init[1];
-        if (init[0] == "0")
+        if (init[0].Equals("0"))
         {
             type.value = 0;
             ansPanel[0].SetActive(true);
@@ -174,7 +173,7 @@ public class QuestionManager : MonoBehaviour
             ansPanel[2].SetActive(false);
             for (int i = 0; i < 4; i++)
             {
-                if (init[i + 2] != "")
+                if (!init[i + 2].Equals(""))
                 {
                     multiAnswer[i].gameObject.SetActive(true);
                     multiAnswer[i].text = init[i + 2];
@@ -188,7 +187,7 @@ public class QuestionManager : MonoBehaviour
             }
                 
         }
-        else if (init[0] == "1")
+        else if (init[0].Equals("1"))
         {
             type.value = 1;
             ansPanel[0].SetActive(false);
@@ -196,7 +195,7 @@ public class QuestionManager : MonoBehaviour
             ansPanel[2].SetActive(false);
             for (int i = 0; i < 9; i++)
             {
-                if (init[i + 2] != "")
+                if (!init[i + 2].Equals(""))
                 {
                     shortAnswer[i].gameObject.SetActive(true);
                     shortAnswer[i].text = init[i + 2];
@@ -224,18 +223,18 @@ public class QuestionManager : MonoBehaviour
     {
         if(data.Count < currentPage) // 새로운 페이지가 추가되면 리스트 추가
         {
-            if (type.value == 0)
+            if (type.value.Equals(0))
                 data.Add(new Question(type.value + "", problem.text, multiAnswer[0].text, multiAnswer[1].text, multiAnswer[2].text, multiAnswer[3].text));
-            else if (type.value == 1)
+            else if (type.value.Equals(1))
                 data.Add(new Question(type.value + "", problem.text, shortAnswer[0].text, shortAnswer[1].text, shortAnswer[2].text, shortAnswer[3].text, shortAnswer[4].text, shortAnswer[5].text, shortAnswer[6].text, shortAnswer[7].text, shortAnswer[8].text));
             else
                 data.Add(new Question(type.value + "", problem.text, essayAnswer.text, keyword.text));
         }
         else
         {
-            if (type.value == 0)
+            if (type.value.Equals(0))
                 data[currentPage - 1] = new Question(type.value + "", problem.text, multiAnswer[0].text, multiAnswer[1].text, multiAnswer[2].text, multiAnswer[3].text);
-            else if (type.value == 1)
+            else if (type.value.Equals(1))
                 data[currentPage - 1] = new Question(type.value + "", problem.text, shortAnswer[0].text, shortAnswer[1].text, shortAnswer[2].text, shortAnswer[3].text, shortAnswer[4].text, shortAnswer[5].text, shortAnswer[6].text, shortAnswer[7].text, shortAnswer[8].text);
             else
                 data[currentPage - 1] = new Question(type.value + "", problem.text, essayAnswer.text, keyword.text);
@@ -247,14 +246,14 @@ public class QuestionManager : MonoBehaviour
         TempSave();
         data.RemoveAt(currentPage - 1);
         maxPage--;
-        if (maxPage == 1) delButton.SetActive(false);
+        if (maxPage.Equals(1)) delButton.SetActive(false);
         if (currentPage > maxPage) currentPage--;
         QuizRenewal(0);
     }
 
     public void PopUp()
     {
-        string tl = title.text == "" ? "이름없음" : title.text;
+        string tl = title.text.Equals("") ? "이름없음" : title.text;
         exitPopup.text = $"\'{tl}\'의\n변경내용 을 저장하시겠습니까?";
     }
 
@@ -290,7 +289,7 @@ public class QuestionManager : MonoBehaviour
         }
         for (int i = 0; i < Singleton.Inst.question.Count; i++)
         {
-            if(i == Singleton.Inst.currSelect)
+            if(i.Equals(Singleton.Inst.currSelect))
                 Singleton.Inst.questions += "";
             else
                 Singleton.Inst.questions += "▦" + Singleton.Inst.question[i];

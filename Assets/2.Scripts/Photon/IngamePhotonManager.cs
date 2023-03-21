@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -13,23 +10,15 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
 
-    public GameObject QuizManager;
-    public GameObject BattleUI;
-
     public Transform quizContent;
 
-    Vector3 StartPosition;
-    Quaternion StartRotation;
-    bool _isCreate = false;
-    string _sex;
+    private Vector3 _startPosition;
+    private Quaternion _startRotation;
+    private bool _isCreate = false;
+    private string _sex;
 
-    public TMP_InputField SendChat;
-    public TextMeshProUGUI[] ChatText;
-
-    public void Test()
-    {
-        Debug.Log(PhotonNetwork.CountOfPlayers);
-    }
+    public TMP_InputField sendChat;
+    public TextMeshProUGUI[] chatText;
 
     void Awake() // 2번 실행
     {
@@ -37,28 +26,28 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         string _sn = SceneManager.GetActiveScene().name;
         if (_sn.Equals("2.Campus"))
         {
-            StartPosition = new Vector3(-25f, 0.3f, 25f);
-            StartRotation = Quaternion.Euler(0, -45.0f, 0f);
+            _startPosition = new Vector3(-25f, 0.3f, 25f);
+            _startRotation = Quaternion.Euler(0, -45.0f, 0f);
         }
         else if (_sn.Equals("3_1.ClassRoom"))
         {
-            StartPosition = new Vector3(5.5f, -2f, -1.25f);
-            StartRotation = Quaternion.Euler(0, -90.0f, 0f);
+            _startPosition = new Vector3(5.5f, -2f, -1.25f);
+            _startRotation = Quaternion.Euler(0, -90.0f, 0f);
         }
         else if (_sn.Equals("3_2.ClassRoom"))
         {
-            StartPosition = new Vector3(3.5f, -2.1f, -1.5f);
-            StartRotation = Quaternion.Euler(0, -90.0f, 0f);
+            _startPosition = new Vector3(3.5f, -2.1f, -1.5f);
+            _startRotation = Quaternion.Euler(0, -90.0f, 0f);
         }
         else if (_sn.Equals("4.Battle"))
         {
-            StartPosition = new Vector3(-25f, 0.3f, 25f);
-            StartRotation = Quaternion.Euler(0, -45.0f, 0f);
+            _startPosition = new Vector3(-25f, 0.3f, 25f);
+            _startRotation = Quaternion.Euler(0, -45.0f, 0f);
         }
         else if (_sn.Equals("5.Goldenball"))
         {
-            StartPosition = new Vector3(-3f, 0f, 0.5f);
-            StartRotation = Quaternion.Euler(0, 60f, 0f);
+            _startPosition = new Vector3(-3f, 0f, 0.5f);
+            _startRotation = Quaternion.Euler(0, 60f, 0f);
         }
 
         // 캐릭터 생성
@@ -69,7 +58,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        for (int i = 0; i < ChatText.Length; i++) ChatText[i].text = "";
+        for (int i = 0; i < chatText.Length; i++) chatText[i].text = "";
     }
 
     public void BackLobby()
@@ -93,23 +82,12 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     #region 캐릭터 생성 및 문제 초기화 작업
     void GetDataSuccess(GetUserDataResult result)
     {
-        string s = result.Data["Sex"].Value;
-        if (s == "M")
-        {
-            _sex = "M";
-        }
-        else if (s == "Q")
-        {
-            _sex = "Q";
-        }
-        else if (s == "W")
-        {
-            _sex = "W";
-        }
+        _sex = result.Data["Sex"].Value;
+        
         PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
         if (!_isCreate) CreateCharacter();
 
-        if (Singleton.Inst.questions == "")
+        if (Singleton.Inst.questions.Equals(""))
         {
             Singleton.Inst.questions = result.Data["Question"].Value;
         }
@@ -118,19 +96,12 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
     void CreateCharacter()
     {
-        GameObject myCharacter = PhotonNetwork.Instantiate(_sex, StartPosition, StartRotation);
+        GameObject myCharacter = PhotonNetwork.Instantiate(_sex, _startPosition, _startRotation);
         myCharacter.name = PhotonNetwork.LocalPlayer.NickName;
         myCharacter.tag = "Player";
         myCharacter.layer = 7;
         _isCreate = true;
 
-        if (_sex.Equals("Q"))
-        {
-            for(int i = 3; i < 9; i++)
-            {
-                myCharacter.transform.GetChild(i).gameObject.layer = 12;
-            }
-        }
         GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
     }
     #endregion
@@ -138,28 +109,28 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     #region 채팅 구현
     public void Send()
     {
-        PV.RPC(nameof(Chating), RpcTarget.All, "<color=\"green\">" + PhotonNetwork.LocalPlayer.NickName + "</color>\n" + SendChat.text);
-        SendChat.text = "";
+        PV.RPC(nameof(Chating), RpcTarget.All, "<color=\"green\">" + PhotonNetwork.LocalPlayer.NickName + "</color>\n" + sendChat.text);
+        sendChat.text = "";
     }
 
     [PunRPC]
     void Chating(string msg)
     {
         bool isInput = false;
-        for (int i = 0; i < ChatText.Length; i++)
+        for (int i = 0; i < chatText.Length; i++)
         {
-            if (ChatText[i].text == "")
+            if (chatText[i].text == "")
             {
                 isInput = true;
-                ChatText[i].text = msg;
+                chatText[i].text = msg;
                 break;
             }
         }
         if (!isInput)
         {
-            for (int i = 1; i < ChatText.Length; i++)
-                ChatText[i - 1].text = ChatText[i].text;
-            ChatText[ChatText.Length - 1].text = msg;
+            for (int i = 1; i < chatText.Length; i++)
+                chatText[i - 1].text = chatText[i].text;
+            chatText[chatText.Length - 1].text = msg;
         }
     }
     #endregion

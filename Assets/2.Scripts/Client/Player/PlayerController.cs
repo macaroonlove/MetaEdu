@@ -1,43 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Cinemachine;
 using Photon.Pun;
-using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
-    PhotonView PV;
-
+    private PhotonView PV;
     private PlayerInput playerInput;
     private Animator anim;
     private CharacterController controller;
     private PlayerInputPress inputPress;
     private GameObject mainCamera;
-    //private Camera MCC;
     private CinemachineVirtualCamera vcamOne;
     private CinemachineVirtualCamera vcamThree;
-    //private TPSCamera tpsCamera;
 
     private const float threshold = 0.01f;
     private bool hasAnim;
 
-    public bool grammaticalPersonState;
-
     [Header("플레이어 이동")]
-    public float MoveSpeed = 2.0f;              // 걷기 속도
-    public float RunSpeed = 5.0f;               // 뛰기 속도
-    public float RotationSmoothTime = 0.12f;    // 회전 속도(3인칭)
-    public float RotationSpeed = 1.0f;          // 회전 속도(1인칭)
-    public float SpeedChangeRate = 10.0f;       // 걷다가 뛰거나
-    public float JumpHeight = 1.5f;
-    public float Gravity = -15.0f;
-    public float JumpTimeout = 0.5f;
-    public float FallTimeout = 0.15f;
+    public float moveSpeed = 2.0f;              // 걷기 속도
+    public float runSpeed = 8.0f;               // 뛰기 속도
+    public float rotationSmoothTime = 0.03f;    // 회전 속도(3인칭)
+    public float rotationSpeed = 1.0f;          // 회전 속도(1인칭)
+    public float speedChangeRate = 10.0f;       // 걷다가 뛰거나
+    public float jumpHeight = 1.5f;
+    public float gravity = -15.0f;
+    public float jumpTimeout = 0.5f;
+    public float fallTimeout = 0.15f;
     private float _speed;
     private float _animationBlend;
     private float _targetRotation = 0.0f;
@@ -63,23 +56,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public AudioClip[] FootstepAudioClips;
     [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
-    [Header("바닥")]
-    public bool Ground = true;
-    public float GroundOffset = -0.14f;
-    public float GroundRadius = 0.28f;
-    public LayerMask GroundLayers;
+    [Header("지면 검사")]
+    public bool ground = true;
+    public float groundOffset = -0.14f;
+    public float groundRadius = 0.28f;
+    public LayerMask groundLayers;
 
     [Header("시네머신")]
     public GameObject CinemachineCameraTarget;
-    public float Topclamp = 70.0f;
-    public float BottomClamp = -30.0f;
-    public float CameraAngleOverride = 0.0f;
-    public bool LockCameraPosition = false;
+    public float topclamp = 25.0f;
+    public float bottomClamp = -45.0f;
+    public float cameraAngleOverride = 0.0f;
+    public bool lockCameraPosition = false;
+    public bool grammaticalPersonState;
     private RaycastHit _hit;
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
 
-    [Header("잡다")]
+    [Header("페티")]
     private GameObject _chatting;
     private GameObject _roomListPanel;
     private GameObject _createRoomPanel;
@@ -95,7 +89,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     [Header("의자")]
     private bool _isSit = false;
-    //private Chair _chair;
 
     private bool IsCurrentDeviceMouse
     {
@@ -110,16 +103,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     void Awake()
-    {            
-        PV = GetComponent<PhotonView>();
+    {
+        TryGetComponent(out PV);
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
-        _nickName = cv.GetChild(10).GetChild(4).GetChild(2).GetChild(1).GetComponent<TMP_InputField>();
-        _playerRot = cv.GetChild(10).GetChild(4).GetChild(6).GetChild(1).GetComponent<Slider>();
+        cv.GetChild(10).GetChild(4).GetChild(2).GetChild(1).TryGetComponent(out _nickName);
+        cv.GetChild(10).GetChild(4).GetChild(6).GetChild(1).TryGetComponent(out _playerRot);
         _nickName.onEndEdit.AddListener(ChangeNick);
         _playerRot.onValueChanged.AddListener(ChangeRotSp);
 
-        if (mainCamera == null && PV.IsMine)
+        if (ReferenceEquals(mainCamera, null) && PV.IsMine)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             _chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
@@ -127,8 +120,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _settingPanel = cv.GetChild(10).gameObject;
             _createRoomPanel = cv.GetChild(8).gameObject;
             _createQuizPanel = cv.GetChild(9).gameObject;
-            vcamOne = CinemachineCameraTarget.transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
-            vcamThree = GameObject.Find("3rd_Vcam").GetComponent<CinemachineVirtualCamera>();
+            CinemachineCameraTarget.transform.GetChild(0).TryGetComponent(out vcamOne);
+            GameObject.Find("3rd_Vcam").TryGetComponent(out vcamThree);
             string _sn = SceneManager.GetActiveScene().name;
             if (_sn.Equals("5.Goldenball"))
             {
@@ -147,7 +140,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     #region 닉네임 변경
     void ChangeNick(string text)
     {
-        if (text != "")
+        if (!text.Equals(""))
         {
             WaitNick(Singleton.Inst.localUid);
         }
@@ -157,7 +150,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
-            //Debug.Log("Wait: " + _id);
             PV.RPC(nameof(RPCNick), RpcTarget.All, _id);
         }
     }
@@ -165,7 +157,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [PunRPC]
     void RPCNick(string myCam)
     {
-        //Debug.Log("RPC: " + myCam);
         StartCoroutine(AgoraNick(myCam));
     }
 
@@ -191,7 +182,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     #region 회전량 변경
     void ChangeRotSp(float value)
     {
-        RotationSpeed = value;
+        rotationSpeed = value;
         Singleton.Inst.rotSpeed = value;
     }
     #endregion
@@ -210,12 +201,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
             hasAnim = TryGetComponent(out anim);
-            controller = GetComponent<CharacterController>();
-            inputPress = GetComponent<PlayerInputPress>();
-            playerInput = GetComponent<PlayerInput>();
+            TryGetComponent(out controller);
+            TryGetComponent(out inputPress);
+            TryGetComponent(out playerInput);
 
-            _jumpTimeoutDelta = JumpTimeout;
-            _fallTimeoutDelta = FallTimeout;
+            _jumpTimeoutDelta = jumpTimeout;
+            _fallTimeoutDelta = fallTimeout;
 
             AssignmentAnimID();
         }
@@ -255,7 +246,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             LimitInput();
-            if (Cursor.lockState == CursorLockMode.Locked) CameraRotation();
+            if (Cursor.lockState.Equals(CursorLockMode.Locked)) CameraRotation();
         }
     }
 
@@ -331,10 +322,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void Move()
     {
-        float targetSpeed = inputPress.run ? RunSpeed : MoveSpeed;
+        float targetSpeed = inputPress.run ? runSpeed : moveSpeed;
 
         // 입력이 없으면 목표속도를 0으로 설정
-        if (inputPress.move == Vector2.zero || Cursor.lockState == CursorLockMode.None) targetSpeed = 0.0f;
+        if (inputPress.move.Equals(Vector2.zero) || Cursor.lockState.Equals(CursorLockMode.None)) targetSpeed = 0.0f;
 
         // magnitude: 벡터의 길이 반환
         float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
@@ -345,7 +336,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         // 목표속도로 가속 또는 감속
         if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
+            _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * speedChangeRate);
             _speed = Mathf.Round(_speed * 1000f) / 1000f;
         }
         else
@@ -353,7 +344,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _speed = targetSpeed;
         }
 
-        _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+        _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * speedChangeRate);
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
         // 입력방향 정규화
@@ -361,7 +352,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         if (inputPress.eye)
         {
-            if (inputPress.move != Vector2.zero)
+            if (!inputPress.move.Equals(Vector2.zero))
             {
                 inputDirection = transform.right * inputPress.move.x + transform.forward * inputPress.move.y;
             }
@@ -371,10 +362,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         else
         {
             // 이동에 대한 입력이 있으면 플레이어가 이동할 때, 카메라를 기준으로 플레이어를 회전
-            if (inputPress.move != Vector2.zero && Cursor.lockState == CursorLockMode.Locked)
+            if (!inputPress.move.Equals(Vector2.zero) && Cursor.lockState.Equals(CursorLockMode.Locked))
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
+                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, rotationSmoothTime);
 
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
@@ -395,28 +386,28 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         // sqrMagnitude: 2차원에서의 두 점 사이의 거리(빠름), Distance: 3차원에서의 두 점 사이의 거리(느림)
         // 입력이 있고, 카메라 위치가 고정되지 않았다면
-        if (inputPress.look.sqrMagnitude >= threshold && !LockCameraPosition)
+        if (inputPress.look.sqrMagnitude >= threshold && !lockCameraPosition)
         {
             float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
             if (!inputPress.eye)
-                _cinemachineTargetYaw += inputPress.look.x * RotationSpeed * deltaTimeMultiplier;
+                _cinemachineTargetYaw += inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
             else
-                _rotationVelocity = inputPress.look.x * RotationSpeed * deltaTimeMultiplier;
+                _rotationVelocity = inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
 
 
-            _cinemachineTargetPitch += inputPress.look.y * RotationSpeed * deltaTimeMultiplier;
+            _cinemachineTargetPitch += inputPress.look.y * rotationSpeed * deltaTimeMultiplier;
         }
 
         if (!inputPress.eye)
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-        _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, Topclamp);
+        _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topclamp);
 
-        if (inputPress.look == Vector2.zero)
+        if (inputPress.look.Equals(Vector2.zero))
             _rotationVelocity = 0.0f;
 
         if (!inputPress.eye)
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride, _cinemachineTargetYaw, 0.0f);
         else
         {
             CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
@@ -433,9 +424,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void JumpAndGravity()
     {
-        if (Ground)
+        if (ground)
         {
-            _fallTimeoutDelta = FallTimeout;
+            _fallTimeoutDelta = fallTimeout;
 
             if (hasAnim)
             {
@@ -451,7 +442,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (inputPress.jump && _jumpTimeoutDelta <= 0.0f)
             {
-                _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
                 if (hasAnim)
                 {
@@ -466,7 +457,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         else
         {
-            _jumpTimeoutDelta = JumpTimeout;
+            _jumpTimeoutDelta = jumpTimeout;
 
             if (_fallTimeoutDelta >= 0.0f)
             {
@@ -485,18 +476,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         if (_verticalVelocity < _terminalVelocity)
         {
-            _verticalVelocity += Gravity * Time.deltaTime;
+            _verticalVelocity += gravity * Time.deltaTime;
         }
     }
 
     void GroundedCheck()
     {
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundOffset, transform.position.z);
-        Ground = Physics.CheckSphere(spherePosition, GroundRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - groundOffset, transform.position.z);
+        ground = Physics.CheckSphere(spherePosition, groundRadius, groundLayers, QueryTriggerInteraction.Ignore);
 
         if (hasAnim)
         {
-            anim.SetBool(_animIDGrounded, Ground);
+            anim.SetBool(_animIDGrounded, ground);
         }
     }
 
@@ -520,11 +511,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
-    //private void OnDestroy()
-    //{
-    //    tpsCamera.enabled = false;
-    //}
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Potal") && PV.IsMine)
@@ -543,7 +529,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Potal" && PV.IsMine)
+        if (other.CompareTag("Potal") && PV.IsMine)
         {
             _roomListPanel.SetActive(false);
             _createRoomPanel.SetActive(false);

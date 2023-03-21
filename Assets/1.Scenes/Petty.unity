@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4624,7 +4624,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &114419500
@@ -5779,7 +5779,6 @@ GameObject:
   m_Component:
   - component: {fileID: 147726030}
   - component: {fileID: 147726029}
-  - component: {fileID: 147726031}
   m_Layer: 0
   m_Name: 3rd_Vcam
   m_TagString: Untagged
@@ -5841,19 +5840,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &147726031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147726028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc1fff24f3df7ea48a105864ceb7fc04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Character: {fileID: 0}
 --- !u!1 &149003315
 GameObject:
   m_ObjectHideFlags: 0
@@ -6735,7 +6721,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &163400672
@@ -16553,7 +16539,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &442396248
@@ -17993,11 +17979,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 496445276}
-  QuizManager: {fileID: 0}
-  BattleUI: {fileID: 0}
   quizContent: {fileID: 1791716920}
-  SendChat: {fileID: 1628746168}
-  ChatText:
+  sendChat: {fileID: 1628746168}
+  chatText:
   - {fileID: 270004333}
   - {fileID: 1055352357}
   - {fileID: 93620443}
@@ -29138,15 +29122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec748270616c25d40935ecdf2bd38861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JoinRoomButton:
+  joinRoomButton:
   - {fileID: 595543791}
   - {fileID: 2133293761}
   - {fileID: 1459391013}
-  PrevButton: {fileID: 1168361373}
-  NextButton: {fileID: 1468362163}
+  prevButton: {fileID: 1168361373}
+  nextButton: {fileID: 1468362163}
   currentPageText: {fileID: 1861615976}
-  RoomName: {fileID: 654390269}
-  RoomMax: {fileID: 1901662722}
+  roomName: {fileID: 654390269}
+  roomMax: {fileID: 1901662722}
 --- !u!1 &858941365
 GameObject:
   m_ObjectHideFlags: 0
@@ -37573,7 +37557,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1068681345
@@ -38871,7 +38855,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1102534769
@@ -46173,7 +46157,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1303927980
@@ -49119,7 +49103,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1395050305
@@ -56039,8 +56023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52cd31251ed1dc4eadfe1378ee108cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keySetting: {fileID: -944628639613478452, guid: da63b427a4a856f418ebd1196a0fd90b,
-    type: 3}
 --- !u!114 &1603706562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68364,7 +68346,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1987324074
@@ -71702,7 +71684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 2091047937}
-  ReceivePlayer:
+  receivePlayer:
   - {fileID: 274960760}
   - {fileID: 1031798567}
   - {fileID: 543334280}
@@ -73481,7 +73463,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2133088699

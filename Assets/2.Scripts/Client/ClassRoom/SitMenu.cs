@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -34,21 +32,19 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
 
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
-            
+        TryGetComponent(out _anim);
+
         _system = EventSystem.current;
         groupChannel = false;
         // 이동 대상 UI를 지정하지 않은 경우, 자동으로 부모로 초기화
-        if (_targetTr == null)
+        if (ReferenceEquals(_targetTr, null))
             _targetTr = transform.parent;
     }
 
     private void OnEnable()
     {
-        if(_playerController == null)
-            _playerController = GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>();
-        if (_agoraManager == null)
-            _agoraManager = GameObject.Find("AgoraManager").GetComponent<ShareCam>();
+        GameObject.Find(PhotonNetwork.LocalPlayer.NickName).TryGetComponent(out _playerController);
+        GameObject.Find("AgoraManager").TryGetComponent(out _agoraManager);
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)

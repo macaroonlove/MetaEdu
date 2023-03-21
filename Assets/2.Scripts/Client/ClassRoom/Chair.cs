@@ -27,13 +27,13 @@ public class Chair : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (_mr == null)
+            if (ReferenceEquals(_mr, null))
             {
                 _mr = GetComponent<MeshRenderer>();
                 _player = GameObject.Find(PhotonNetwork.LocalPlayer.NickName);
                 pos = new Vector3(transform.position.x, _player.transform.position.y, transform.position.z);
-                _playerController = _player.GetComponent<PlayerController>();
-                _playerInput = _player.GetComponent<PlayerInputPress>();
+                _player.TryGetComponent(out _playerController);
+                _player.TryGetComponent(out _playerInput);
             }
             stateText.text = "상호작용 키를 눌러 의자에 앉을 수 있습니다.";
             _mr.enabled = true;
@@ -49,8 +49,9 @@ public class Chair : MonoBehaviour
                 if (!_isSit)
                 {
                     SitMenu.tableGroup = this.tableGroup;
-                    _player.transform.position = pos;
-                    _player.transform.rotation = _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation;
+                    //_player.transform.position = pos;
+                    //_player.transform.rotation = _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation;
+                    _player.transform.SetPositionAndRotation(pos, _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation);
                     _mr.enabled = false;
                     _isSit = true;
                     menu.SetActive(true);

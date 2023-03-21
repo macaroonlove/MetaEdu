@@ -7,7 +7,7 @@ public static class UtilClass
     #region 이벤트 트리거
     public static void AddListener(this EventTrigger trigger, EventTriggerType triggerType, UnityAction<BaseEventData> callback)
     {
-        if (trigger == null)
+        if (ReferenceEquals(trigger, null))
         {
             Debug.LogError("EventTrigger is NULL.");
             return;
@@ -22,7 +22,7 @@ public static class UtilClass
 
     public static void RemoveListener(this EventTrigger trigger, EventTriggerType triggerType, UnityAction<BaseEventData> callback)
     {
-        if (trigger == null)
+        if (ReferenceEquals(trigger, null))
         {
             Debug.LogError("EventTrigger is NULL.");
             return;
@@ -34,7 +34,7 @@ public static class UtilClass
 
     public static void RemoveAllListeners(this EventTrigger trigger, EventTriggerType triggerType)
     {
-        if (trigger == null)
+        if (ReferenceEquals(trigger, null))
         {
             Debug.LogError("EventTrigger is NULL.");
             return;

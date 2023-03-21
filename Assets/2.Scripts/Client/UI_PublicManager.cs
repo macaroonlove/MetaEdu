@@ -17,6 +17,7 @@ public class UI_PublicManager : MonoBehaviour
     private Animator _loginPanelAnim;
     private Animator _signupPanelAnim;
     private GameObject _characterPanel;
+    private GameObject _characterModel;
     private Button _loginButton;
     private Button _signupButton;
     private Button _crpButton;
@@ -63,69 +64,57 @@ public class UI_PublicManager : MonoBehaviour
     {
         _sceneName = SceneManager.GetActiveScene().name;
         system = EventSystem.current;
-        if (_sceneName == "1.Login")
+        if (_sceneName.Equals("1.Login"))
         {
-            _idAnim = GameObject.Find("LID_Input").GetComponent<Animator>();
-            _pwAnim = GameObject.Find("LPW_Input").GetComponent<Animator>();
-            _loginPanelAnim = GameObject.Find("LoginPanel").GetComponent<Animator>();
-            _signupPanelAnim = GameObject.Find("SignupPanel").GetComponent<Animator>();
+            GameObject.Find("LID_Input").TryGetComponent(out _idAnim);
+            GameObject.Find("LPW_Input").TryGetComponent(out _pwAnim);
+            GameObject.Find("LoginPanel").TryGetComponent(out _loginPanelAnim);
+            GameObject.Find("SignupPanel").TryGetComponent(out _signupPanelAnim);
             _characterPanel = transform.GetChild(3).gameObject;
-            _loginButton = GameObject.Find("Login_Button").GetComponent<Button>();
-            _signupButton = GameObject.Find("SignUp_Button").GetComponent<Button>();
-            _crpButton = transform.GetChild(3).GetChild(7).GetComponent<Button>();
-            _sPwText = GameObject.Find("SPW_Input").GetComponent<TMP_InputField>();
-            _srPwText = GameObject.Find("SRPW_Input").GetComponent<TMP_InputField>();
-            _sErrText = GameObject.Find("SError_Text").GetComponent<TextMeshProUGUI>();
+            _characterModel = GameObject.Find("CreateCharacter");
+            _characterModel.SetActive(false);
+            GameObject.Find("Login_Button").TryGetComponent(out _loginButton);
+            GameObject.Find("SignUp_Button").TryGetComponent(out _signupButton);
+            transform.GetChild(3).GetChild(7).TryGetComponent(out _crpButton);
+            GameObject.Find("SPW_Input").TryGetComponent(out _sPwText);
+            GameObject.Find("SRPW_Input").TryGetComponent(out _srPwText);
+            GameObject.Find("SError_Text").TryGetComponent(out _sErrText);
             _battleScene = false;
-        }
-        else if(_sceneName == "4.Battle")
-        {
-            _agManager = GameObject.Find("AgoraManager").GetComponent<ShareCam>();
-            _ptManager = GameObject.Find("PhotonManager")?.GetComponent<IngamePhotonManager>();
-            _sideBarAnim = GameObject.Find("LSideBar").GetComponent<Animator>();
-            _camToggle = _sideBarAnim.transform.GetChild(0).GetComponent<Toggle>();
-            _quizToggle = _sideBarAnim.transform.GetChild(1).GetComponent<Toggle>();
-            _chatOnOffImg = GameObject.Find("ChatOnOff").GetComponent<Image>();
-            _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
-            _chatInput = _chatPanel.transform.GetChild(1).gameObject;
-            _sendChat = _chatInput.GetComponent<TMP_InputField>();
-            _setting = gameObject.transform.GetChild(10).gameObject;
-            _createRoomPanel = transform.GetChild(8).gameObject;
-            _createQuizPanel = transform.GetChild(9).gameObject;
-            _basic = _setting.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            _control = _setting.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-            _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
-            _quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
-            _battleScene = true;
         }
         else
         {
-            _agManager = GameObject.Find("AgoraManager").GetComponent<ShareCam>();
-            _ptManager = GameObject.Find("PhotonManager")?.GetComponent<IngamePhotonManager>();
-            _sideBarAnim = GameObject.Find("LSideBar").GetComponent<Animator>();
-            _camToggle = _sideBarAnim.transform.GetChild(0).GetComponent<Toggle>();
-            _quizToggle = _sideBarAnim.transform.GetChild(1).GetComponent<Toggle>();
-            _chatOnOffImg = GameObject.Find("ChatOnOff").GetComponent<Image>();
+            GameObject.Find("AgoraManager").TryGetComponent(out _agManager);
+            GameObject.Find("PhotonManager").TryGetComponent(out _ptManager);
+            GameObject.Find("LSideBar").TryGetComponent(out _sideBarAnim);
+            _sideBarAnim.transform.GetChild(0).TryGetComponent(out _camToggle);
+            _sideBarAnim.transform.GetChild(1).TryGetComponent(out _quizToggle);
+            GameObject.Find("ChatOnOff").TryGetComponent(out _chatOnOffImg);
             _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
             _chatInput = _chatPanel.transform.GetChild(1).gameObject;
-            _sendChat = _chatInput.GetComponent<TMP_InputField>();
+            _chatInput.TryGetComponent(out _sendChat);
             _setting = gameObject.transform.GetChild(10).gameObject;
             _createRoomPanel = transform.GetChild(8).gameObject;
             _createQuizPanel = transform.GetChild(9).gameObject;
-            _basic = _setting.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            _control = _setting.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-            _display = _setting.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            _sound = _setting.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            _setting.transform.GetChild(0).TryGetComponent(out _basic);
+            _setting.transform.GetChild(1).TryGetComponent(out _control);
+            _setting.transform.GetChild(2).TryGetComponent(out _display);
+            _setting.transform.GetChild(3).TryGetComponent(out _sound);
             _rebinding = _setting.transform.GetChild(5).GetChild(2).gameObject;
-            _battleScene = false;
+            if (_sceneName.Equals("4.Battle"))
+            {
+                GameObject.Find("QuizManager").TryGetComponent(out _quizManager);
+                _battleScene = true;
+            }
+            else
+            {
+                _battleScene = false;
+            }
         }
     }
 
     void Update()
     {
-        if (_sceneName == "1.Login")
+        if (_sceneName.Equals("1.Login"))
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
@@ -164,7 +153,7 @@ public class UI_PublicManager : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && _chatInput.activeSelf)
                 {
-                    if (_sendChat.text != "")
+                    if (!_sendChat.text.Equals(""))
                         _ptManager.Send();
                     _chatInput.SetActive(false);
                 }
@@ -193,13 +182,13 @@ public class UI_PublicManager : MonoBehaviour
 
     public void DeSelectID()
     {
-        if (_idAnim.GetComponent<TMP_InputField>().text == "") _idAnim.SetBool("ClickInput", false);
+        if (_idAnim.GetComponent<TMP_InputField>().text.Equals("")) _idAnim.SetBool("ClickInput", false);
     }
     public void SelectPW() => _pwAnim.SetBool("ClickInput", true);
 
     public void DeSelectPW()
     {
-        if (_pwAnim.GetComponent<TMP_InputField>().text == "") _pwAnim.SetBool("ClickInput", false);
+        if (_pwAnim.GetComponent<TMP_InputField>().text.Equals("")) _pwAnim.SetBool("ClickInput", false);
     }
 
 
@@ -219,9 +208,9 @@ public class UI_PublicManager : MonoBehaviour
 
     public void PW_Match()
     {
-        if (_sPwText.text != "" && _srPwText.text != "")
+        if (!_sPwText.text.Equals("") && !_srPwText.text.Equals(""))
         {
-            if (_sPwText.text != _srPwText.text)
+            if (!_sPwText.text.Equals(_srPwText.text))
             {
                 _sErrText.text = "비밀번호가 일치하지 않습니다.";
             }
@@ -234,6 +223,7 @@ public class UI_PublicManager : MonoBehaviour
     {
         _loginPanelAnim.SetBool("On", true);
         _characterPanel.SetActive(true);
+        _characterModel.SetActive(true);
     }
     #endregion
 
@@ -262,7 +252,7 @@ public class UI_PublicManager : MonoBehaviour
     #region 문제 생성 UI관련
     public void QuizToggle(bool isOn)
     {
-        if (isOn == true)
+        if (isOn.Equals(true))
         {
             Singleton.Inst.currSelect = int.Parse(system.currentSelectedGameObject.name);
             if(_battleScene)
@@ -278,7 +268,7 @@ public class UI_PublicManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (i == O)
+            if (i.Equals(O))
                 ansType[O].SetActive(true);
             else
             {
@@ -308,7 +298,7 @@ public class UI_PublicManager : MonoBehaviour
 
     public void AddAnswer()
     {
-        if (_answerZone == null)
+        if (ReferenceEquals(_answerZone, null))
         {
             _answerZone = GameObject.Find("AnswerZone").transform;
         }
@@ -317,7 +307,7 @@ public class UI_PublicManager : MonoBehaviour
             if (!_answerZone.GetChild(i).gameObject.activeSelf)
             {
                 _answerZone.GetChild(i).gameObject.SetActive(true);
-                if (i == 8)
+                if (i.Equals(8))
                 {
                     _answerZone.GetChild(9).gameObject.SetActive(false);
                 }
@@ -328,18 +318,18 @@ public class UI_PublicManager : MonoBehaviour
 
     public void MaxKeyword(string text)
     {
-        if (_maxAnswer == null)
+        if (ReferenceEquals(_maxAnswer, null))
         {
-            _maxAnswer = GameObject.Find("MaxKeywordNum").GetComponent<TextMeshProUGUI>();
+            GameObject.Find("MaxKeywordNum").TryGetComponent(out _maxAnswer);
         }
         _maxAnswer.text = (text.Split("#").Length - 1) + "";
     }
 
     public void AnsKeyword(string text)
     {
-        if (_AnsKeyword == null)
+        if (ReferenceEquals(_AnsKeyword, null))
         {
-            _AnsKeyword = GameObject.Find("AnsKeyword_input").GetComponent<TMP_InputField>();
+            GameObject.Find("AnsKeyword_input").TryGetComponent(out _AnsKeyword);
         }
         if (int.Parse(text) < 0)
         {
