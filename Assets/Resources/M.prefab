@@ -1204,29 +1204,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grammaticalPersonState: 0
-  MoveSpeed: 2
-  RunSpeed: 8
-  RotationSmoothTime: 0.03
-  RotationSpeed: 1
-  SpeedChangeRate: 10
-  JumpHeight: 1.5
-  Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
+  moveSpeed: 2
+  runSpeed: 8
+  rotationSmoothTime: 0.03
+  rotationSpeed: 1
+  speedChangeRate: 10
+  jumpHeight: 1.5
+  gravity: -15
+  jumpTimeout: 0.5
+  fallTimeout: 0.15
   LandingAudioClip: {fileID: 8300000, guid: 1e6a20bc359c3304d85810065d18bd28, type: 3}
   FootstepAudioClips: []
   FootstepAudioVolume: 0.5
-  Ground: 1
-  GroundOffset: -0.14
-  GroundRadius: 0.28
-  GroundLayers:
+  ground: 1
+  groundOffset: -0.14
+  groundRadius: 0.28
+  groundLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   CinemachineCameraTarget: {fileID: 8811833266138822277}
-  Topclamp: 25
-  BottomClamp: -45
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
+  topclamp: 25
+  bottomClamp: -45
+  cameraAngleOverride: 0
+  lockCameraPosition: 0
 --- !u!114 &-4378187279246367735
 MonoBehaviour:
   m_ObjectHideFlags: 0

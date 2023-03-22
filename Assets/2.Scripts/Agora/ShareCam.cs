@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -66,15 +64,15 @@ public class ShareCam : MonoBehaviourPunCallbacks
     void SetupUI()
     {
         #region 카메라 UI 세팅
-        _camOnOffImage = GameObject.Find("CamOnOff").GetComponent<Image>();
-        _voiceOnOffImg = GameObject.Find("VoiceOnOff").GetComponent<Image>();
+        GameObject.Find("CamOnOff").TryGetComponent(out _camOnOffImage);
+        GameObject.Find("VoiceOnOff").TryGetComponent(out _voiceOnOffImg);
         Cam_Content = GameObject.Find("Cam_Content");
         #endregion
 
         #region 화면공유 UI 세팅
         if (SceneManager.GetActiveScene().name.Contains("3"))
         {
-            _screenOnOffImage = GameObject.Find("ScreenOnOff").GetComponent<Image>();
+            GameObject.Find("ScreenOnOff").TryGetComponent(out _screenOnOffImage);
             _shareMenu = _screenOnOffImage.transform.GetChild(0).gameObject;
         }
         else
@@ -219,7 +217,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
             var info = RtcEngine.GetScreenCaptureSources(t, t, true);
             _displayNum = 0;
             for (int i = 0; i < info.Length; i++) if (info[i].sourceName.Contains("DISPLAY")) _displayNum++;
-            if (_displayNum == 1)
+            if (_displayNum.Equals(1))
                 StartScreenShare(0);
             else if (_shareMenu.activeSelf)
             {
@@ -287,7 +285,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
     internal class AgoraEventHandler : IRtcEngineEventHandler
     {
         private readonly ShareCam videoSample;
-        
+        private PlayerController _playerctl;
+
         internal AgoraEventHandler(ShareCam sampleVideo)
         {
             videoSample = sampleVideo;
@@ -295,11 +294,11 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         public override void OnJoinChannelSuccess(RtcConnection connection, int elapsed)
         {
-            if (connection.localUid == videoSample.Uid1)
+            if (connection.localUid.Equals(videoSample.Uid1))
             {
                 MakeVideoView(connection.localUid);
             }
-            else if (connection.localUid == videoSample.Uid2)
+            else if (connection.localUid.Equals(videoSample.Uid2))
             {
                 MakeVideoView(0, "", VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN);
             }
@@ -307,11 +306,11 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         public override void OnLeaveChannel(RtcConnection connection, RtcStats stats)
         {
-            if (connection.localUid == videoSample.Uid1)
+            if (connection.localUid.Equals(videoSample.Uid1))
             {
                 DestroyVideoView(videoSample.Uid1.ToString());
             }
-            else if (connection.localUid == videoSample.Uid2)
+            else if (connection.localUid.Equals(videoSample.Uid2))
             {
                 GameObject MS = GameObject.Find("mainScreen");
                 Destroy(MS.GetComponent<VideoSurface>());
@@ -363,36 +362,39 @@ public class ShareCam : MonoBehaviourPunCallbacks
         #region Video Render UI
         private void MakeVideoView(uint uid, string channelId = "", VIDEO_SOURCE_TYPE videoSourceType = VIDEO_SOURCE_TYPE.VIDEO_SOURCE_CAMERA)
         {
-            VideoSurface videoSurface = new VideoSurface();
+            if(ReferenceEquals(_playerctl, null))
+                GameObject.Find(PhotonNetwork.LocalPlayer.NickName).TryGetComponent(out _playerctl);
 
-            if (videoSourceType == VIDEO_SOURCE_TYPE.VIDEO_SOURCE_CAMERA)
+            VideoSurface videoSurface; // = new VideoSurface();
+
+            if (videoSourceType.Equals(VIDEO_SOURCE_TYPE.VIDEO_SOURCE_CAMERA))
             {
                 string _id = uid.ToString();
                 videoSurface = MakeImageSurface(_id);
                 videoSample.LocalView = videoSurface;
                 videoSample.cMyName = videoSurface.transform.GetChild(1).gameObject;
                 Singleton.Inst.localUid = _id;
-                GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(_id);
+                _playerctl.WaitNick(_id);
             }
-            else if (videoSourceType == VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN)
+            else if (videoSourceType.Equals(VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN))
             {
                 videoSurface = MakeScreenSurface();
             }
             else
             {
-                if(uid == 10)
+                if(uid.Equals(10))
                 {
                     videoSurface = MakeScreenSurface();
                 }
                 else
                 {
-                    GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<PlayerController>().WaitNick(videoSample.Uid1.ToString());
+                    _playerctl.WaitNick(videoSample.Uid1.ToString());
                     videoSurface = MakeImageSurface(uid.ToString());
                 }
             }
             if (ReferenceEquals(videoSurface, null)) return;
             // configure videoSurface
-            videoSurface.SetForUser(channelId == "" ? 0 : uid, channelId, videoSourceType);
+            videoSurface.SetForUser(channelId.Equals("") ? 0 : uid, channelId, videoSourceType);
             videoSurface.SetEnable(true);
         }
 
@@ -433,7 +435,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 MS = GameObject.Find("mainScreen");
             }
 
-            if (MS == null) return null;
+            if (ReferenceEquals(MS, null)) return null;
 
             VideoSurface videoSurface = MS.AddComponent<VideoSurface>();
             return videoSurface;
@@ -447,7 +449,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
             GameObject goNoN = new GameObject();
             GameObject goCN = new GameObject();
 
-            if (WC == null || goNo == null || goNoI == null || goNoN == null || goCN == null) return null;
+            if (ReferenceEquals(WC, null) || ReferenceEquals(goNo, null) || ReferenceEquals(goNoI, null) || ReferenceEquals(goNoN, null) || ReferenceEquals(goCN, null)) return null;
 
             WC.name = goName;
             goNo.name = "NoCam";
@@ -523,8 +525,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     private void OnDestroy()
     {
-        Debug.Log("OnDestroy");
-        if (RtcEngine == null) return;
+        if (ReferenceEquals(RtcEngine, null)) return;
         RtcEngine.InitEventHandler(null);
         RtcEngine.LeaveChannel();
         RtcEngine.Dispose();
@@ -532,8 +533,7 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     void OnApplicationQuit()
     {
-        Debug.Log("OnQuit");
-        if (RtcEngine == null) return;
+        if (ReferenceEquals(RtcEngine, null)) return;
         RtcEngine.InitEventHandler(null);
         RtcEngine.LeaveChannel();
         RtcEngine.Dispose();

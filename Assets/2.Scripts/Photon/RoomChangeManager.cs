@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -17,7 +16,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
     {
         get
         {
-            if (_instance == null)
+            if (ReferenceEquals(_instance, null))
             {
                 _instance = new RoomChangeManager();
             }
@@ -27,7 +26,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        if (_instance == null)
+        if (ReferenceEquals(_instance, null))
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -49,8 +48,8 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        loadingImage = transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        loadingText = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        transform.GetChild(0).GetChild(0).TryGetComponent(out loadingImage);
+        transform.GetChild(0).GetChild(0).GetChild(1).TryGetComponent(out loadingText);
     }
 
     public override void OnConnectedToMaster()
@@ -129,7 +128,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
         while (PhotonNetwork.LevelLoadingProgress < 1)
         {
             loadingBar.fillAmount = 0.2f + PhotonNetwork.LevelLoadingProgress * 0.7f;
-            if (PhotonNetwork.LevelLoadingProgress == 0.9f)
+            if (PhotonNetwork.LevelLoadingProgress.Equals(0.9f))
             {
                 StartCoroutine(LoadPetty());
             }
@@ -149,52 +148,12 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
                 yield return null;
                 timer += Time.unscaledDeltaTime * 0.3f;
                 loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                if (loadingBar.fillAmount == 1f)
+                if (loadingBar.fillAmount.Equals(1f))
                 {
-                    //float findRoom = 0;
-                    //while (findRoom < 2f)
-                    //{
-                    //    yield return null;
-                    //    findRoom += Time.deltaTime;
-                    //}
                     transform.GetChild(0).gameObject.SetActive(false);
                     yield break;
                 }
             }
         }
-
-        //if (!Singleton.Inst.isPatty)
-        //{
-        //    Singleton.Inst.isPatty = true;
-        //    SceneManager.LoadScene("Petty", LoadSceneMode.Additive);
-        //    transform.GetChild(0).gameObject.SetActive(false);
-        //    listener.enabled = false;
-        //    yield return null;
-        //    AsyncOperation op = SceneManager.LoadSceneAsync("Petty", LoadSceneMode.Additive);
-        //    op.allowSceneActivation = true;
-
-        //    float timer = 0f;
-        //    while (true)
-        //    {
-        //        yield return null;
-        //        if (op.progress < 0.85f)
-        //        {
-        //            loadingBar.fillAmount = 0.6f + (op.progress * 0.3f);
-        //        }
-        //        else
-        //        {
-        //            //op.allowSceneActivation = true;
-        //            listener.enabled = false;
-        //            timer += Time.unscaledDeltaTime;
-        //            loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-        //            if (loadingBar.fillAmount >= 1f)
-        //            {
-        //                yield return new WaitForSeconds(1f);
-        //                transform.GetChild(0).gameObject.SetActive(false);
-        //                yield break;
-        //            }
-        //        }
-        //    }
-        //}
     }
 }
