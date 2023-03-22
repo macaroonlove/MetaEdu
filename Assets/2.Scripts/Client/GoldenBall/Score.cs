@@ -110,7 +110,7 @@ public class Score : MonoBehaviourPunCallbacks
             Destroy(f, 2.2f);
         }
     }
-    public void OnAttack()
+    public void OnAttackFlame()
     {
         GameObject a = Instantiate(Attack, new Vector3(0.108000003f, 2.46199989f, 3.23099995f),new Quaternion(-0.128541797f, -0.40415743f, 0.0574816652f, 0.903786302f));
         a.SetActive(true);

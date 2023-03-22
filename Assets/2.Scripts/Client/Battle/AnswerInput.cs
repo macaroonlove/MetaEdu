@@ -1,8 +1,3 @@
-using Cinemachine;
-using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,9 +6,8 @@ using UnityEngine.UI;
 public class AnswerInput : MonoBehaviour
 {
     QuizManager quizManager;
+    PlayerBattle playerBattle;
 
-    public delegate void MonsterDie();
-    public static event MonsterDie OnMonsterDie;
     public TMP_InputField inputAnswer;
     public TextMeshProUGUI answer;
 
@@ -22,6 +16,7 @@ public class AnswerInput : MonoBehaviour
     void Awake()
     {
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+        playerBattle = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBattle>();
     }
 
     public void CheckAnswer()
@@ -44,14 +39,24 @@ public class AnswerInput : MonoBehaviour
     {
         if (answer.text.Contains(quizManager.choiceAnswer))
         {
-            OnMonsterDie();
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(false);
+
+            if (playerBattle.hasAnim)
+            {
+                playerBattle.anim.SetTrigger(playerBattle.animFinish);
+            }
         }
         else
         {
-            Debug.Log("틀림");
+            quizManager.QuestionPanel.SetActive(false);
+            quizManager.AnswerPanel.SetActive(false);
+            quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(false);
+
+            playerBattle.anim.SetTrigger(playerBattle.animReact);
+
+            Invoke("UIanim1", 2.8f);
         }
     }
 
@@ -59,21 +64,32 @@ public class AnswerInput : MonoBehaviour
     {
         if (inputAnswer.text.Contains(quizManager.shortAnswer))
         {
-            OnMonsterDie();
             inputAnswer.text = "";
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(false);
+
+            if (playerBattle.hasAnim)
+            {
+                playerBattle.anim.SetTrigger(playerBattle.animFinish);
+            }
         }
         else
         {
-            Debug.Log("틀림");
+            quizManager.QuestionPanel.SetActive(false);
+            quizManager.AnswerPanel.SetActive(false);
+            quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(false);
+
+            playerBattle.anim.SetTrigger(playerBattle.animReact);
+
+
+            Invoke("UIanim2", 2.8f);
         }
     }
 
     public void DescriptiveAnswer()
     {
-        for (int i = 0; i < quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
+        for (int i = 1; i < quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
         {
             if (inputAnswer.text.Contains(quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#")[i]))
             {
@@ -83,16 +99,44 @@ public class AnswerInput : MonoBehaviour
 
         if (_correctDescriptiveAnswer >= int.Parse(quizManager.Question[quizManager.currQuiz].Split("▥")[3]))
         {
-            OnMonsterDie();
             inputAnswer.text = "";
             quizManager.QuestionPanel.SetActive(false);
             quizManager.AnswerPanel.SetActive(false);
             quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(false);
+            
+            if (playerBattle.hasAnim)
+            {
+                playerBattle.anim.SetTrigger(playerBattle.animFinish);
+            }
         }
         else
         {
-            Debug.Log("틀림");
-        }
+            quizManager.QuestionPanel.SetActive(false);
+            quizManager.AnswerPanel.SetActive(false);
+            quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(false);
 
+            playerBattle.anim.SetTrigger(playerBattle.animReact);
+
+            Invoke("UIanim3", 2.8f);
+        }
+    }
+
+    void UIanim1()
+    {
+        quizManager.QuestionPanel.SetActive(true);
+        quizManager.AnswerPanel.SetActive(true);
+        quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(true);
+    }
+    void UIanim2()
+    {
+        quizManager.QuestionPanel.SetActive(true);
+        quizManager.AnswerPanel.SetActive(true);
+        quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(true);
+    }
+    void UIanim3()
+    {
+        quizManager.QuestionPanel.SetActive(true);
+        quizManager.AnswerPanel.SetActive(true);
+        quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(true);
     }
 }

@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 using System.Linq;
 using UnityEngine.TextCore.Text;
 using TMPro;
+using UnityEngine.InputSystem.Android;
 
 public class MonsterAI : MonoBehaviourPunCallbacks
 {
@@ -22,19 +23,34 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     public GameObject StunEffect;
     public GameObject ExploseEffect;
 
+    public Animator anim;
+    public int _hashEscape;
+    public int _hashStun;
+
     private Vector3 tartget;
     private GameObject playerPos = null;
     private Vector3 escapePos;
 
     private int monsterHP=100;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();   
+        _hashEscape = Animator.StringToHash("Escape");
+        _hashStun = Animator.StringToHash("Stun");
+        SpawnPoint = GameObject.Find("SpawnPointsGroup").GetComponentsInChildren<Transform>();
+    }
     new void OnEnable()
     {
-        tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+        tartget = SpawnPoint[Random.Range(1, SpawnPoint.Length)].position;
         agent.destination = tartget;
         state = State.MOVE;
         StartCoroutine("CheckState");
         monsterHP = 100;
+        agent.isStopped = false;
+        StunEffect.SetActive(false);
+        agent.baseOffset = 0.7f;
     }
     IEnumerator CheckState()
     {
@@ -48,9 +64,9 @@ public class MonsterAI : MonoBehaviourPunCallbacks
 
                 if (distance < 5f && state == State.MOVE)
                 {
-                    agent.isStopped = false;
-                    tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+                    tartget = SpawnPoint[Random.Range(1, SpawnPoint.Length)].position;
                     agent.destination = tartget;
+                    anim.SetBool(_hashEscape, false);
                 }
             }
             yield return null;
@@ -72,20 +88,24 @@ public class MonsterAI : MonoBehaviourPunCallbacks
                     agent.speed = 8;
                     agent.destination = transform.position + escapePos * 7.0f;
                     state = State.ESCAPE;
+                    anim.SetBool(_hashEscape, true);
                 }
             }
             if (state == State.ESCAPE)
             {
+                agent.isStopped = false;
                 agent.speed = 8;
                 escapePos = (transform.position - playerPos.transform.position).normalized;
                 agent.destination = transform.position + escapePos * 7.0f;
+                anim.SetBool(_hashEscape, true);
             }
             if (colliders.Length == 0 && state == State.ESCAPE)
             {
                 state = State.MOVE;
                 agent.speed = 5;
-                tartget = SpawnPoint[Random.Range(0, SpawnPoint.Length)].position;
+                tartget = SpawnPoint[Random.Range(1, SpawnPoint.Length)].position;
                 agent.destination = tartget;
+                anim.SetBool(_hashEscape, false);
             }
         }
     }
@@ -103,9 +123,15 @@ public class MonsterAI : MonoBehaviourPunCallbacks
 
     void Recovery()
     {
-        state = State.MOVE;
-        monsterHP = 100;
-        StunEffect.SetActive(false);
+        if(state == State.STUN)
+        {
+            state = State.MOVE;
+            agent.isStopped = false;
+            monsterHP = 100;
+            anim.SetBool(_hashStun, false);
+            StunEffect.SetActive(false);
+            agent.baseOffset = 0.7f;
+        }
     }
 
     [PunRPC]
@@ -119,6 +145,9 @@ public class MonsterAI : MonoBehaviourPunCallbacks
             state = State.STUN;
             agent.isStopped = true;
             StunEffect.SetActive(true);
+            anim.SetBool(_hashEscape, false);
+            anim.SetBool(_hashStun,true);
+            agent.baseOffset = 0;
             Invoke("Recovery", 5.0f);
         }
     }

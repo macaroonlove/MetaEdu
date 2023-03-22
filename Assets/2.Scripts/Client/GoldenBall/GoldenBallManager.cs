@@ -171,7 +171,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             fadeEffect.StartCoroutine("FadeOutStart");
             score.PV.RPC("OnEffect", RpcTarget.All);
-            score.OnAttack();
+            score.OnAttackFlame();
             AnswerText.text = "";
             FullScreen.SetActive(false);
         }
