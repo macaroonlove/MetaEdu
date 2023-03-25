@@ -107,6 +107,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                _correctDescriptiveAnswer = 0;
             }
         }
         else
