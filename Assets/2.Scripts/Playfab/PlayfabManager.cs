@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
-using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
@@ -24,13 +21,8 @@ public class PlayfabManager : MonoBehaviour
     public TMP_InputField nickNameText;
     public ToggleGroup toggleGroup;
     public TextMeshProUGUI createError;
-    private string _sex = "M";
-
-    void Start()
-    {
-        //PlayFabSettings.TitleId = "8BCA4";
-        //PlayFabSettings.DeveloperSecretKey = "OZ1R8MI69UD91C9RGIEUQUFRY66EGGDP6QNEUUR155DU49U1CZ";
-    }
+    public GameObject[] models;
+    private string _sex = "Q";
 
     #region 로그인&회원가입
     public void LId_Changed()
@@ -56,8 +48,6 @@ public class PlayfabManager : MonoBehaviour
     // 로그인에 성공하면
     private void OnLoginSuccess(LoginResult result)
     {
-        //PlayerPrefs.SetString("Username", _lUserName);
-
         Singleton.Inst.Playfab_ID = result.PlayFabId;
 
         var request = new GetAccountInfoRequest { Username = _lUserName };
@@ -102,7 +92,7 @@ public class PlayfabManager : MonoBehaviour
     private void GetAccountSuccess(GetAccountInfoResult result)
     {
         string nickname = result.AccountInfo.TitleInfo.DisplayName;
-        if (nickname == null)
+        if (ReferenceEquals(nickname, null))
         {
             var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "NewCRT", "N" } } };
             PlayFabClientAPI.UpdateUserData(request, (result) => print("정보 저장 성공"), (Error) => print("정보 저장 실패"));
@@ -131,8 +121,10 @@ public class PlayfabManager : MonoBehaviour
     #region 캐릭터 생성
     public void SButton(bool isOn)
     {
-        if(isOn)
+        (_sex.Equals("Q") ? models[0] : _sex.Equals("W") ? models[1] : _sex.Equals("E") ? models[2] : _sex.Equals("R") ? models[3] : _sex.Equals("Y") ? models[4] : models[5]).SetActive(false);
+        if (isOn)
             _sex = toggleGroup.ActiveToggles().FirstOrDefault().name;
+        (_sex.Equals("Q") ? models[0] : _sex.Equals("W") ? models[1] : _sex.Equals("E") ? models[2] : _sex.Equals("R") ? models[3] : _sex.Equals("Y") ? models[4] : models[5]).SetActive(true);
     }
 
     public void CharacterNickNameOk()

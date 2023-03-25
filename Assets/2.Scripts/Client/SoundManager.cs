@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
+            if (ReferenceEquals(_instance, null))
             {
                 _instance = new SoundManager();
             }
@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        if (_instance == null)
+        if (ReferenceEquals(_instance, null))
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -48,7 +48,7 @@ public class SoundManager : MonoBehaviour
     {
         GameObject root = GameObject.Find("@SoundManager");
 
-        if (root == null)
+        if (ReferenceEquals(root, null))
         {
             root = new GameObject("@SoundManager");
             Object.DontDestroyOnLoad(root);
@@ -66,13 +66,13 @@ public class SoundManager : MonoBehaviour
 
     public void Play(AudioClip audioClip, Sound soundtype = Sound.Effect, float pitch = 1.0f)
     {
-        if (audioClip == null)
+        if (ReferenceEquals(audioClip, null))
             return;
 
         AudioSource audioSource = _audioSources[(int)soundtype];
         audioSource.pitch = pitch;
 
-        if (soundtype == Sound.Bgm)
+        if (soundtype.Equals(Sound.Bgm))
         {
             if (audioSource.isPlaying)
                 audioSource.Stop();
@@ -81,7 +81,7 @@ public class SoundManager : MonoBehaviour
             audioSource.Play();
         }
 
-        if (soundtype == Sound.Effect)
+        if (soundtype.Equals(Sound.Effect))
         {
             audioSource.PlayOneShot(audioClip);
         }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -36,9 +35,10 @@ public class Singleton : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         Resources.UnloadUnusedAssets();
         //PlayerPrefs.DeleteAll();
-        if (Inst == null)
+        if (ReferenceEquals(Inst, null))
         {
             Inst = this;
             DontDestroyOnLoad(this.gameObject);
