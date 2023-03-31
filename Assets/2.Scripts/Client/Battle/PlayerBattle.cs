@@ -31,6 +31,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     public int animAttack;
     public int animReact;
     public int animFinish;
+    public int animGoldenballReact;
 
     public Animator anim;
     private QuizManager quizManager;
@@ -47,6 +48,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         animAttack = Animator.StringToHash("Attack");
         animFinish = Animator.StringToHash("Finish");
         animReact = Animator.StringToHash("React");
+        animGoldenballReact = Animator.StringToHash("GoldenballReact");
 
         CreateFireballs(5);
         if (!SceneManager.GetActiveScene().name.Contains("Battle"))
@@ -59,8 +61,13 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+        anim.SetLayerWeight(1, 1f);
     }
 
+    new void OnDisable()
+    {
+        anim.SetLayerWeight(1, 0f);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -118,10 +125,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
             }
         }
 
-        if (hasAnim)
-        {
-            anim.SetBool(animBattle, true);
-        }
+        anim.SetBool(animBattle, true);
 
         PV.RPC("Battle", RpcTarget.All, MonsterID);
         PV.RPC("SendBattleEffect", RpcTarget.OthersBuffered);
@@ -215,7 +219,10 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     void MonsterDieEvent()
     {
-        OnMonsterDieEvent.Invoke();
+        if(OnMonsterDieEvent != null)
+        {
+            OnMonsterDieEvent.Invoke();
+        }
     }
 
     void FailAttack()

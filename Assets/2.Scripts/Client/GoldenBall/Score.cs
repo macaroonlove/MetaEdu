@@ -18,7 +18,12 @@ public class Score : MonoBehaviourPunCallbacks
     public TextMeshProUGUI scoreText;
     public int currScore;
 
+    private PlayerBattle _playerBattle;
 
+    void Awake()
+    {
+        _playerBattle = GetComponent<PlayerBattle>(); 
+    }
     new public void OnEnable()
     {
         if (SceneManager.GetActiveScene().name.Equals("5.Goldenball"))
@@ -109,6 +114,8 @@ public class Score : MonoBehaviourPunCallbacks
             f.SetActive(true);
             Destroy(f, 2.2f);
         }
+
+        _playerBattle.anim.SetTrigger(_playerBattle.animGoldenballReact);
     }
     public void OnAttackFlame()
     {

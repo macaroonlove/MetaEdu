@@ -59,9 +59,6 @@ public class QuestMonsterAI : MonoBehaviour
         _playerBattle.AttackState = true;
         PV.RPC("SendMonsterDie", RpcTarget.OthersBuffered);
         this.gameObject.SetActive(false);
-        if (_playerBattle.hasAnim)
-        {
-            _playerBattle.anim.SetBool(_playerBattle.animBattle, false);
-        }
+        _playerBattle.anim.SetBool(_playerBattle.animBattle, false);
     }
 }

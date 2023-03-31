@@ -1,16 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.AI;
-using Unity.VisualScripting;
-using System.Linq;
-using UnityEngine.TextCore.Text;
 using TMPro;
-using UnityEngine.InputSystem.Android;
 
 public class MonsterAI : MonoBehaviourPunCallbacks
 {

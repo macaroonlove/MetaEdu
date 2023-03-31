@@ -1203,7 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grammaticalPersonState: 0
   moveSpeed: 2
   runSpeed: 8
   rotationSmoothTime: 0.03
@@ -1227,6 +1226,7 @@ MonoBehaviour:
   bottomClamp: -45
   cameraAngleOverride: 0
   lockCameraPosition: 0
+  grammaticalPersonState: 0
 --- !u!114 &-4378187279246367735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,6 +1321,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Finish
+  - Type: 9
+    SynchronizeType: 1
+    Name: GoldenballReact
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

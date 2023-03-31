@@ -121,23 +121,6 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             _start = true;
             countTime = true;
         }
-        /*
-        else
-        {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                if(_end)
-                {
-                    countTime = false;
-                }
-                else
-                {
-                    countTime = true;
-                    _end = true;
-                }
-            }
-        }
-        */
         
         if (Answer.Count == 0)
         {
