@@ -10,6 +10,7 @@ public class PlayerInputPress : MonoBehaviour
     public bool jump;
     public bool run;
     public bool interact;
+	public bool phone;
 
 	public bool analogMovement;
 
@@ -51,6 +52,11 @@ public class PlayerInputPress : MonoBehaviour
     {
 		InteractInput(value.isPressed);
     }
+
+	public void OnPhone(InputValue value)
+    {
+		PhoneInput();
+    }
 	#endregion
 
 	#region 키에대한 로직
@@ -89,9 +95,14 @@ public class PlayerInputPress : MonoBehaviour
     {
 		interact = false;
 	}
+
+	public void PhoneInput()
+    {
+		phone = phone ? false : true;
+	}
 	#endregion
 
-	#region 마우스 OnOff (준비중)
+	#region 마우스 OnOff
 	private void OnCursor(InputValue value)
 	{
 		SetCursorState(cursorLocked);

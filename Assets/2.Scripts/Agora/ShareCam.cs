@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -24,19 +25,18 @@ public class ShareCam : MonoBehaviourPunCallbacks
     public Transform soundPanel;
     private uint _currUint = 0;
 
-    public Sprite noCam;
+    public Sprite camScreen;
+    public Sprite camCircle;
     public TMP_FontAsset EliceDigital;
     private GameObject cMyName;
 
-    public Sprite[] camButtonSprite;
-    public Sprite[] voiceButtonSprite;
-    public Sprite[] screenButtonSprite;
-
-    GameObject Cam_Content;
+    public Button prevButton;
+    public Button nextButton;
+    private GameObject Cam_Content;
+    private int _maxIndex = 0;
+    private int _currentIndex = 0;
     private GameObject _shareMenu;
-    private Image _camOnOffImage;
-    private Image _voiceOnOffImg;
-    private Image _screenOnOffImage;
+    private Toggle _sharingToggle;
     private bool _sharingScreen = false;
     private int _displayNum;
 
@@ -63,20 +63,19 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     void SetupUI()
     {
-        #region 카메라 UI 세팅
-        GameObject.Find("CamOnOff").TryGetComponent(out _camOnOffImage);
-        GameObject.Find("VoiceOnOff").TryGetComponent(out _voiceOnOffImg);
         Cam_Content = GameObject.Find("Cam_Content");
-        #endregion
 
         #region 화면공유 UI 세팅
         if (SceneManager.GetActiveScene().name.Contains("3"))
         {
-            GameObject.Find("ScreenOnOff").TryGetComponent(out _screenOnOffImage);
-            _shareMenu = _screenOnOffImage.transform.GetChild(0).gameObject;
+            GameObject.Find("Sharing").TryGetComponent(out _sharingToggle);
+            _shareMenu = _sharingToggle.transform.GetChild(1).gameObject;
         }
         else
-            GameObject.Find("ScreenOnOff").SetActive(false);
+        {
+            GameObject.Find("Sharing").TryGetComponent(out _sharingToggle);
+            _sharingToggle.interactable = false;
+        }
         #endregion
     }
 
@@ -150,7 +149,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
     #region 온·오프 버튼
     public void OnCam()
     {
-        _camOnOffImage.sprite = camButtonSprite[1];
         LocalView.transform.GetChild(0).gameObject.SetActive(false); // 가림막 Off
         cMyName.SetActive(true);
         LocalView.SetEnable(true);
@@ -159,7 +157,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     public void OffCam()
     {
-        _camOnOffImage.sprite = camButtonSprite[0];
         LocalView.transform.GetChild(0).gameObject.SetActive(true); // 가림막 On
         cMyName.SetActive(false);
         LocalView.SetEnable(false);
@@ -168,13 +165,11 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     public void OnAudio()
     {
-        _voiceOnOffImg.sprite = voiceButtonSprite[1];
         RtcEngine.EnableLocalAudio(true);
     }
 
     public void OffAudio()
     {
-        _voiceOnOffImg.sprite = voiceButtonSprite[0];
         RtcEngine.EnableLocalAudio(false);
     }
     #endregion
@@ -209,9 +204,9 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
     #region 화면공유
     // 화면공유 아이콘을 누르면
-    public void ControlScreenVideo()
+    public void ControlScreenVideo(bool isOn)
     {
-        if (!_sharingScreen) // 화면공유중이 아닐 때
+        if (!_sharingScreen && isOn) // 화면공유중이 아닐 때
         {
             SIZE t = new SIZE(360, 240);
             var info = RtcEngine.GetScreenCaptureSources(t, t, true);
@@ -222,13 +217,13 @@ public class ShareCam : MonoBehaviourPunCallbacks
             else if (_shareMenu.activeSelf)
             {
                 for (int i = 0; i < 6; i++)
-                    _shareMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(i).gameObject.SetActive(false);
+                    _shareMenu.transform.GetChild(1).GetChild(1).GetChild(i).gameObject.SetActive(false);
                 _shareMenu.SetActive(false);
             }
             else
             {
                 for (int i = 0; i < _displayNum; i++)
-                    _shareMenu.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(i).gameObject.SetActive(true);
+                    _shareMenu.transform.GetChild(1).GetChild(1).GetChild(i).gameObject.SetActive(true);
                 _shareMenu.SetActive(true);
             }
         }
@@ -262,7 +257,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
         // 로컬 뷰에 화면 트랙을 표시합니다.
         //setupLocalVideo(_displayNum, i);
-        _screenOnOffImage.sprite = screenButtonSprite[1];
         _shareMenu.SetActive(false);
         // 화면 공유 상태를 업데이트합니다.
         _sharingScreen = true;
@@ -274,7 +268,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
     {
         ScreenShareLeaveChannel();
         
-        _screenOnOffImage.sprite = screenButtonSprite[0];
         _sharingScreen = false;
         RtcEngine.StopScreenCapture();
     }
@@ -338,14 +331,14 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 {
                     Transform go = GameObject.Find($"{remoteUid}").transform;
                     go.GetChild(0).gameObject.SetActive(false);
-                    go.GetChild(1).gameObject.SetActive(true);
+                    go.parent.GetChild(1).gameObject.SetActive(true);
                     go.GetComponent<VideoSurface>().SetEnable(true);
                 }
                 else
                 {
                     Transform go = GameObject.Find($"{remoteUid}").transform;
                     go.GetChild(0).gameObject.SetActive(true);
-                    go.GetChild(1).gameObject.SetActive(false);
+                    go.parent.GetChild(1).gameObject.SetActive(false);
                     go.GetComponent<VideoSurface>().SetEnable(false);
                 }
             }
@@ -356,6 +349,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
             if (uid != videoSample.Uid1 && uid != videoSample.Uid2)
             {
                 DestroyVideoView(uid.ToString());
+                videoSample._maxIndex--;
+                CamRenewal();
             }
         }
 
@@ -372,9 +367,11 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 string _id = uid.ToString();
                 videoSurface = MakeImageSurface(_id);
                 videoSample.LocalView = videoSurface;
-                videoSample.cMyName = videoSurface.transform.GetChild(1).gameObject;
+                videoSample.cMyName = videoSurface.transform.parent.GetChild(1).gameObject;
                 Singleton.Inst.localUid = _id;
                 _playerctl.WaitNick(_id);
+                videoSample._maxIndex++;
+                CamRenewal();
             }
             else if (videoSourceType.Equals(VIDEO_SOURCE_TYPE.VIDEO_SOURCE_SCREEN))
             {
@@ -390,6 +387,8 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 {
                     _playerctl.WaitNick(videoSample.Uid1.ToString());
                     videoSurface = MakeImageSurface(uid.ToString());
+                    videoSample._maxIndex++;
+                    CamRenewal();
                 }
             }
             if (ReferenceEquals(videoSurface, null)) return;
@@ -451,19 +450,20 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
             if (ReferenceEquals(WC, null) || ReferenceEquals(goNo, null) || ReferenceEquals(goNoI, null) || ReferenceEquals(goNoN, null) || ReferenceEquals(goCN, null)) return null;
 
-            WC.name = goName;
-            goNo.name = "NoCam";
-            goNoI.name = "NoCamImage";
+            WC.name = "Mask";
+            goNo.name = goName;
+            goNoI.name = "NoCam";
             goNoN.name = "NCMyName";
             goCN.name = "CMyName";
-            WC.AddComponent<RawImage>().uvRect = new Rect(0, 0, -1, -1);
+            WC.AddComponent<Image>().sprite = videoSample.camScreen;
+            WC.AddComponent<Mask>();
             EventTrigger et = WC.AddComponent<EventTrigger>();
             if (goName.Equals(videoSample.Uid1))
             {
                 et.AddListener(EventTriggerType.PointerClick, videoSample.CamClick);
             }
-            goNo.AddComponent<Image>();
-            goNoI.AddComponent<Image>().sprite = videoSample.noCam;
+            goNo.AddComponent<RawImage>().uvRect = new Rect(0, 0, -1, -1);
+            goNoI.AddComponent<Image>().sprite = videoSample.camCircle;
             goNoN.AddComponent<TextMeshProUGUI>();
             goCN.AddComponent<TextMeshProUGUI>();
 
@@ -475,7 +475,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
                 goNoN.transform.SetParent(goNoI.transform, false);
                 goCN.transform.SetParent(WC.transform, false);
             }
-
             goNo.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
             goNo.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
             goNo.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
@@ -488,10 +487,10 @@ public class ShareCam : MonoBehaviourPunCallbacks
             NRT.offsetMax = new Vector2(0, 0);
             goNoI.GetComponent<Image>().color = CamColor();
 
-            goNoN.GetComponent<RectTransform>().sizeDelta = new Vector2(170, 50);
+            goNoN.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 50);
 
             TextMeshProUGUI NoTR = goNoN.GetComponent<TextMeshProUGUI>();
-            NoTR.fontSize = 36;
+            NoTR.fontSize = 30;
             NoTR.alignment = TextAlignmentOptions.Center;
             NoTR.font = videoSample.EliceDigital;
 
@@ -507,13 +506,27 @@ public class ShareCam : MonoBehaviourPunCallbacks
 
             goCN.SetActive(false);
 
-            VideoSurface videoSurface = WC.AddComponent<VideoSurface>();
+            VideoSurface videoSurface = goNo.AddComponent<VideoSurface>();
             return videoSurface;
+        }
+
+        void CamRenewal()
+        {
+            if(videoSample._maxIndex > 5)
+            {
+                videoSample.prevButton.interactable = (videoSample._currentIndex <= 1) ? false : true;
+                videoSample.nextButton.interactable = (videoSample._currentIndex >= videoSample._maxIndex) ? false : true;
+            }
+            else
+            {
+                videoSample.prevButton.interactable = false;
+                videoSample.nextButton.interactable = false;
+            }
         }
 
         void DestroyVideoView(string name)
         {
-            var go = GameObject.Find(name);
+            var go = GameObject.Find(name).transform.parent.gameObject;
             if (!ReferenceEquals(go, null))
             {
                 Destroy(go);
@@ -522,6 +535,22 @@ public class ShareCam : MonoBehaviourPunCallbacks
         #endregion
     }
     #endregion
+
+    public void camButton(int num)
+    {
+        if (num.Equals(-1))
+        {
+            Cam_Content.transform.GetChild(_currentIndex).gameObject.SetActive(false);
+            Cam_Content.transform.GetChild(_currentIndex+6).gameObject.SetActive(true);
+            _currentIndex++;
+        }
+        else if (num.Equals(-2))
+        {
+            Cam_Content.transform.GetChild(_currentIndex + 5).gameObject.SetActive(false);
+            Cam_Content.transform.GetChild(_currentIndex - 1).gameObject.SetActive(true);
+            _currentIndex--;
+        }
+    }
 
     private void OnDestroy()
     {

@@ -109,11 +109,32 @@ public class SoundManager : MonoBehaviour
 
     #region Sound Resources
     public AudioClip login;
+    public AudioClip[] game;
     public AudioClip effect;
 
     public void Login_BGM()
     {
         this.Play(login, Sound.Bgm);
+    }
+
+    public void BGMPause(bool isOn)
+    {
+        AudioSource audioSource = _audioSources[0];
+        if (isOn)
+        {
+            audioSource.UnPause();
+        }
+        else
+        {
+            audioSource.Pause();
+        }        
+    }
+
+    public string InGame_BGM(int i)
+    {
+        this.Play(game[i], Sound.Bgm);
+
+        return game[i].name;
     }
 
     public void EffectExample()

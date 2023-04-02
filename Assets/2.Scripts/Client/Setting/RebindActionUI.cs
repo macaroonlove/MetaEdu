@@ -316,8 +316,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             string act = action.bindings[bindingIndex].action;
             string acn = action.bindings[bindingIndex].name;
             if (act.Equals("Cursor")) partName = "커서 온오프";
-            else if(act.Equals("Jump")) partName = "점프";
-            else if(act.Equals("Run")) partName = "달리기";
+            else if (act.Equals("Jump")) partName = "점프";
+            else if (act.Equals("Run")) partName = "달리기";
+            else if (act.Equals("Phone")) partName = "휴대폰 열기";
             else if (act.Equals("Move"))
             {
                 if (acn.Equals("up")) partName = "앞으로 이동";

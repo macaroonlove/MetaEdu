@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -9,9 +10,13 @@ public class QuestionSharing : MonoBehaviour
 {
     public PhotonView PV;
     public TextMeshProUGUI[] receivePlayer;
+    public GameObject[] sharedQuiz;
+    public TextMeshProUGUI[] sharedQuizText;
     private List<int> _playerNum = new List<int>();
+    public List<string> _sharedQuiz = new();
+    public int _currQuiz = 0;
 
-    #region 문제 공유
+    #region 문제 공유 하기
     public void SharePanel()
     {
         for(int i = 0; i < receivePlayer.Length; i++)
@@ -46,15 +51,53 @@ public class QuestionSharing : MonoBehaviour
         {
             PV.RPC(nameof(ReceiveQuiz), PhotonNetwork.PlayerListOthers[_playerNum[i]], Singleton.Inst.question[Singleton.Inst.currSelect]);
         }
-        _playerNum.Clear();
+        //_playerNum.Clear();
+    }
+    #endregion
+    #region 문제 공유 받기
+    [PunRPC]
+    private void ReceiveQuiz(string quiz, PhotonMessageInfo info)
+    {
+        _sharedQuiz.Add(quiz);
+        for(int i = 0; i < _sharedQuiz.Count; i++)
+        {
+            sharedQuizText[i].text = "<color=#00FFFF><size=\"17\">" + info.Sender.NickName + "</size></color>\n" + _sharedQuiz[i].Split("▤")[0];
+            sharedQuiz[i].SetActive(true);
+        }
     }
 
-    [PunRPC]
-    private void ReceiveQuiz(string quiz)
+    void RenewalQuiz()
     {
-        Singleton.Inst.questions += "▦" + quiz;
+        for(int i = _currQuiz; i < sharedQuizText.Length - 1; i++)
+        {
+            sharedQuizText[i].text = sharedQuizText[i + 1].text;
+        }
+        sharedQuiz[_sharedQuiz.Count].SetActive(false);
+    }
+
+    public void CurrentQuiz(int i) => _currQuiz = i;
+
+    public void RemoveQuiz()
+    {
+        _sharedQuiz.RemoveAt(_currQuiz);
+        RenewalQuiz();
+    }
+
+    public void RemoveAllQuiz()
+    {
+        if (_sharedQuiz.Count == 0)
+            return;
+
+        for(int i = 0; i < sharedQuiz.Length; i++)
+            sharedQuiz[i].SetActive(false);
+        _sharedQuiz.Clear();
+    }
+
+    public void SaveQuiz()
+    {
+        Singleton.Inst.questions += "▦" + _sharedQuiz[_currQuiz];
         var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Question", Singleton.Inst.questions } } };
-        PlayFabClientAPI.UpdateUserData(request, (result) => { Singleton.Inst.QuestionInit(); }, (Error) => { Debug.Log("공유받기에 실패하셨습니다."); });
+        PlayFabClientAPI.UpdateUserData(request, (result) => { Singleton.Inst.QuestionInit(); _sharedQuiz.RemoveAt(_currQuiz); RenewalQuiz(); }, (Error) => { Debug.Log("공유받기에 실패하셨습니다."); });
     }
     #endregion
 }

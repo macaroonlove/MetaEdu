@@ -50,7 +50,7 @@ public class Setting : MonoBehaviour
     void Start()
     {
         StartCoroutine("PostPetty");
-        _settingPanel = GameObject.Find("Canvas").transform.GetChild(10);
+        _settingPanel = GameObject.Find("Canvas").transform.GetChild(6);
         _basicPanel = _settingPanel.GetChild(4).transform;
         _displayPanel = _settingPanel.GetChild(6).transform;
         _soundPanel = _settingPanel.GetChild(7).transform;

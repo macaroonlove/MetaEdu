@@ -30,6 +30,7 @@ public class Singleton : MonoBehaviour
     public string questions = "";
     public List<string> question = new();
     public int currSelect = 0;
+    private Transform quizContent;
 
     public bool isPatty = false;
 
@@ -86,7 +87,11 @@ public class Singleton : MonoBehaviour
 
     public void QuestionInit()
     {
-        Transform quizContent = GameObject.Find("Quiz_Content").transform;
+        if (quizContent == null)
+        {
+            quizContent = GameObject.Find("Quiz_Content").transform;
+            quizContent.parent.parent.parent.gameObject.SetActive(false);
+        }
         string a = questions;
         question.Clear();
         for (int i = 1; i < a.Split("¢Ë").Length; i++)

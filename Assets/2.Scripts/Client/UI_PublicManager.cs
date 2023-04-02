@@ -28,21 +28,13 @@ public class UI_PublicManager : MonoBehaviour
     [Header("페티씬")]
     private ShareCam _agManager;
     private IngamePhotonManager _ptManager;
+    private Animator _phoneAnim;
+    private Animator _camPanel;
     private GameObject _createRoomPanel;
     private GameObject _createQuizPanel;
 
-    private bool _camState = false;
-    private bool _voiceState = false;
-    private Animator _sideBarAnim;
-    private Toggle _camToggle;
-    private Toggle _quizToggle;
-
-    public Sprite[] chatButtonSprite;
-    private Image _chatOnOffImg;
     private GameObject _chatPanel;
-    private GameObject _chatInput;
     private TMP_InputField _sendChat;
-    private bool _chatState = false;
 
     [Header("문제만들기")]
     public GameObject[] ansType;
@@ -85,16 +77,13 @@ public class UI_PublicManager : MonoBehaviour
         {
             GameObject.Find("AgoraManager").TryGetComponent(out _agManager);
             GameObject.Find("PhotonManager").TryGetComponent(out _ptManager);
-            GameObject.Find("LSideBar").TryGetComponent(out _sideBarAnim);
-            _sideBarAnim.transform.GetChild(0).TryGetComponent(out _camToggle);
-            _sideBarAnim.transform.GetChild(1).TryGetComponent(out _quizToggle);
-            GameObject.Find("ChatOnOff").TryGetComponent(out _chatOnOffImg);
-            _chatPanel = _chatOnOffImg.transform.GetChild(0).gameObject;
-            _chatInput = _chatPanel.transform.GetChild(1).gameObject;
-            _chatInput.TryGetComponent(out _sendChat);
-            _setting = gameObject.transform.GetChild(10).gameObject;
-            _createRoomPanel = transform.GetChild(8).gameObject;
-            _createQuizPanel = transform.GetChild(9).gameObject;
+            _chatPanel = GameObject.Find("ChatPanel");
+            _chatPanel.transform.GetChild(1).TryGetComponent(out _sendChat);
+            _setting = gameObject.transform.GetChild(6).gameObject;
+            transform.GetChild(4).TryGetComponent(out _phoneAnim);
+            transform.GetChild(1).TryGetComponent(out _camPanel);
+            _createRoomPanel = transform.GetChild(3).gameObject;
+            _createQuizPanel = transform.GetChild(5).gameObject;
             _setting.transform.GetChild(0).TryGetComponent(out _basic);
             _setting.transform.GetChild(1).TryGetComponent(out _control);
             _setting.transform.GetChild(2).TryGetComponent(out _display);
@@ -144,18 +133,17 @@ public class UI_PublicManager : MonoBehaviour
         }
         else
         {
-            if (_chatState)
+            if (_chatPanel.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.Return) && !_chatInput.activeSelf)
+                if (Input.GetKeyDown(KeyCode.Return) && Input.GetKey(KeyCode.RightShift))
                 {
-                    _chatInput.SetActive(true);
-                    _sendChat.ActivateInputField();
                 }
-                else if (Input.GetKeyDown(KeyCode.Return) && _chatInput.activeSelf)
+                else if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (!_sendChat.text.Equals(""))
+                    if (!_sendChat.text.Trim().Equals(""))
+                    {
                         _ptManager.Send();
-                    _chatInput.SetActive(false);
+                    }
                 }
             }
 
@@ -228,25 +216,10 @@ public class UI_PublicManager : MonoBehaviour
     #endregion
 
     #region 페티 씬
-    #region 사이드바
-    public void LSideBar()
+    #region 폰
+    public void Topbar(bool isOn)
     {
-        if (_camToggle.isOn)
-        {
-            _quizToggle.transform.GetChild(1).gameObject.SetActive(false);
-            if (!_sideBarAnim.GetBool("sidebarState"))
-                _sideBarAnim.SetBool("sidebarState", true);
-        }
-        else if (_quizToggle.isOn)
-        {
-            _quizToggle.transform.GetChild(1).gameObject.SetActive(true);
-            if (!_sideBarAnim.GetBool("sidebarState"))
-                _sideBarAnim.SetBool("sidebarState", true);
-        }
-        else
-        {
-            _sideBarAnim.SetBool("sidebarState", false);
-        }
+        _phoneAnim.SetBool("Open", isOn);
     }
 
     #region 문제 생성 UI관련
@@ -342,50 +315,33 @@ public class UI_PublicManager : MonoBehaviour
     }
     #endregion
 
-    #region 아고라UI관련
-    public void CamOnOffButton()
+    #region 아고라
+    public void CamPanel(bool isOn)
     {
-        if (_camState) // 끄기
+        _camPanel.SetBool("Open", isOn);
+    }
+
+    public void CamOnOffButton(bool isOn)
+    {
+        if (!isOn) // 끄기
         {
             _agManager.OffCam();
-            _camState = false;
         }
         else // 실행
         {
             _agManager.OnCam();
-            _camState = true;
         }
     }
 
-    public void VoiceOnOffButton()
+    public void VoiceOnOffButton(bool isOn)
     {
-        if (_voiceState) // 끄기
+        if (!isOn) // 끄기
         {
             _agManager.OffAudio();
-            _voiceState = false;
         }
         else
         {
             _agManager.OnAudio();
-            _voiceState = true;
-        }
-    }
-
-    public void ChatOnOffButton()
-    {
-        if (_chatState) // 끄기
-        {
-            _chatPanel.SetActive(false);
-            _chatOnOffImg.sprite = chatButtonSprite[0];
-            _chatState = false;
-            _sendChat.text = "";
-            _chatInput.SetActive(false);
-        }
-        else
-        {
-            _chatPanel.SetActive(true);
-            _chatOnOffImg.sprite = chatButtonSprite[1];
-            _chatState = true;
         }
     }
     #endregion

@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 40
-  m_CharacterLimit: 0
+  m_CharacterLimit: 3
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -5733,7 +5733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a202f79c44741484bb1a43edb631bfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatButtonSprite: []
   ansType: []
 --- !u!1 &963799041
 GameObject:
@@ -9410,6 +9409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   login: {fileID: 8300000, guid: 248c1421f190e3240939058fd120f4cd, type: 3}
+  game:
+  - {fileID: 8300000, guid: 248c1421f190e3240939058fd120f4cd, type: 3}
+  - {fileID: 8300000, guid: 45829ddf47ed3614abd7d902609a4732, type: 3}
+  - {fileID: 8300000, guid: c0d24f9538e941146aa6ae257c9c1de7, type: 3}
+  - {fileID: 8300000, guid: 4245ddab0c8346a48b5541b85966e45d, type: 3}
   effect: {fileID: 8300000, guid: 3f6b92c61e7df9a44886e2be193be12c, type: 3}
 --- !u!4 &1725706079
 Transform:

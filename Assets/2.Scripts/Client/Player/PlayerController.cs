@@ -79,8 +79,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private GameObject _createRoomPanel;
     private GameObject _createQuizPanel;
     private GameObject _settingPanel;
+    private Animator _phoneAnim;
     private TMP_InputField _nickName;
     private Slider _playerRot;
+    private bool _phoneState = false;
 
     [Header("น่ฦฒ")]
     private GameObject _battlePanel = null;
@@ -107,19 +109,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
         TryGetComponent(out PV);
 
         Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
-        cv.GetChild(10).GetChild(4).GetChild(2).GetChild(1).TryGetComponent(out _nickName);
-        cv.GetChild(10).GetChild(4).GetChild(6).GetChild(1).TryGetComponent(out _playerRot);
+        cv.GetChild(6).GetChild(4).GetChild(2).GetChild(1).TryGetComponent(out _nickName);
+        cv.GetChild(6).GetChild(4).GetChild(6).GetChild(1).TryGetComponent(out _playerRot);
         _nickName.onEndEdit.AddListener(ChangeNick);
         _playerRot.onValueChanged.AddListener(ChangeRotSp);
 
         if (ReferenceEquals(mainCamera, null) && PV.IsMine)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            _chatting = GameObject.Find("ChatOnOff").transform.GetChild(0).GetChild(1).gameObject;
+            _chatting = GameObject.Find("ChatPanel");
+            _chatting.SetActive(false);
             _roomListPanel = cv.GetChild(0).gameObject;
-            _settingPanel = cv.GetChild(10).gameObject;
-            _createRoomPanel = cv.GetChild(8).gameObject;
-            _createQuizPanel = cv.GetChild(9).gameObject;
+            _createRoomPanel = cv.GetChild(3).gameObject;
+            cv.GetChild(4).TryGetComponent(out _phoneAnim);
+            _createQuizPanel = cv.GetChild(5).gameObject;
+            _settingPanel = cv.GetChild(6).gameObject;
             CinemachineCameraTarget.transform.GetChild(0).TryGetComponent(out vcamOne);
             GameObject.Find("3rd_Vcam").TryGetComponent(out vcamThree);
             string _sn = SceneManager.GetActiveScene().name;
@@ -167,7 +171,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = pn;
         try
         {
-            Transform mct = GameObject.Find(myCam).transform;
+            Transform mct = GameObject.Find(myCam).transform.parent;
             mct.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = pn;
             mct.GetChild(1).GetComponent<TextMeshProUGUI>().text = pn;
         }
@@ -238,6 +242,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 GroundedCheck();
                 Move();
             }
+
+            if (inputPress.phone)
+            {
+                _phoneState = _phoneState ? false : true;
+                _phoneAnim.SetBool("Phone", _phoneState);
+                _phoneAnim.SetBool("Open", false);
+                inputPress.phone = false;
+            }
         }
     }
 
@@ -260,6 +272,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 if (playerInput.enabled)
                 {
                     playerInput.enabled = false;
+                    Cursor.lockState = CursorLockMode.None;
                 }
                     
             }
