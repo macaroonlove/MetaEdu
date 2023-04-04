@@ -1,15 +1,7 @@
-using Mono.CompilerServices.SymbolWriter;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using Photon.Realtime;
 using Photon.Pun;
-using System;
-using UnityEngine.InputSystem;
-using Unity.Mathematics;
 using TMPro;
-using System.Linq;
 
 public class QuizManager : MonoBehaviourPunCallbacks
 {
@@ -19,7 +11,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
     public List<string> Question;
     public List<TextMeshProUGUI> choiceAnswers;
     public List<string> choiceAnswerList = new List<string>();
-    public String choiceAnswer;
+    public string choiceAnswer;
     public string shortAnswer;
     public string descriptiveAnswer;
     public int currQuiz;
@@ -38,7 +30,6 @@ public class QuizManager : MonoBehaviourPunCallbacks
     private TextMeshProUGUI _questionText;
     void Start()
     {
-        questionList = Singleton.Inst.question[Singleton.Inst.currSelect];
         _spawnPoint = GameObject.Find("SpawnPointsGroup");
         _Monsters = GameObject.Find("MonsterGroup");
 
@@ -47,7 +38,6 @@ public class QuizManager : MonoBehaviourPunCallbacks
         AnswerPanel = GameObject.Find("AnswerPanel");
         battleText = GameObject.Find("BattleText");
         _questionText = QuestionPanel.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-
 
         QuestionPanel.SetActive(false);
         AnswerPanel.SetActive(false);
@@ -65,6 +55,22 @@ public class QuizManager : MonoBehaviourPunCallbacks
 
         InvokeRepeating("CreateMonster", 2.0f, 3.0f);
 
+        if (!Singleton.Inst.question.Count.Equals(0)) InitQuiz();
+        else NoQuiz();
+    }
+
+    void NoQuiz()
+    {
+        int num1 = Random.Range(0, 19);
+        int num2 = Random.Range(0, 19);
+        questionList = "문제가 없습니다. 문제 생성해 주세요.▤0▥" + num1 + "x" + num2 + " = ?▥" + num1 * num2 + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥▥▥▥▥";
+        AddQuestion();
+    }
+
+    public void InitQuiz()
+    {
+        questionList = Singleton.Inst.question[Singleton.Inst.currSelect];
+        
         AddQuestion();
     }
 

@@ -13,7 +13,6 @@ public class QuestMonsterAI : MonoBehaviour
     private PlayerBattle _playerBattle;
     private Animator _anim;
     private int _hashStun;
-    private Rigidbody rigid;
     private void OnEnable()
     {
         PlayerBattle.OnMonsterDieEvent += this.OnMonsterDie;
@@ -44,11 +43,6 @@ public class QuestMonsterAI : MonoBehaviour
         _playerController.grammaticalPersonState = true;
         GetComponentInParent<PlayerBattle>().Renderer();
         _anim.SetBool(_hashStun, false);
-
-        rigid.velocity = Vector3.zero;
-        rigid.angularVelocity = Vector3.zero;
-        rigid.ResetInertiaTensor();
-        rigid.ResetCenterOfMass();
     }
     private void Awake()
     { 
@@ -57,7 +51,6 @@ public class QuestMonsterAI : MonoBehaviour
         battle_vcam = _playerBattle.Battle_Vcam;
         PV = GetComponentInParent<PhotonView>();
         _playerController = GetComponentInParent<PlayerController>();
-        rigid = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
         _hashStun = Animator.StringToHash("Stun");
     }
@@ -72,6 +65,5 @@ public class QuestMonsterAI : MonoBehaviour
     public void RunMonster()
     {
         _anim.SetBool(_hashStun, false);
-        rigid.AddForce(Vector3.up * 400f + Vector3.back * 300f);
     }
 }

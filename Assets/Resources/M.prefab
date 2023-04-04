@@ -1356,6 +1356,7 @@ MonoBehaviour:
   animAttack: 0
   animReact: 0
   animFinish: 0
+  animGoldenballReact: 0
   anim: {fileID: 0}
 --- !u!114 &5956644676008542052
 MonoBehaviour:

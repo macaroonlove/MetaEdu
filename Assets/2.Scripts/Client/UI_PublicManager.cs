@@ -230,9 +230,8 @@ public class UI_PublicManager : MonoBehaviour
             Singleton.Inst.currSelect = int.Parse(system.currentSelectedGameObject.name);
             if(_battleScene)
             {
-                _quizManager.questionList = Singleton.Inst.question[Singleton.Inst.currSelect];
                 _quizManager.Question.Clear();
-                _quizManager.AddQuestion();
+                _quizManager.InitQuiz();
             }
         }
     }

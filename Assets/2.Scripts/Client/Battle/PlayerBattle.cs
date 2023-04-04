@@ -133,7 +133,8 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     public void OnAttack()
     {
-        PV.RPC("Attack", RpcTarget.All) ;
+        if(PV.IsMine)
+            PV.RPC("Attack", RpcTarget.All);
     }
 
     public void Renderer()
