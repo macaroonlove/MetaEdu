@@ -1,4 +1,5 @@
 using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,16 +8,21 @@ public class AnswerInput : MonoBehaviour
 {
     QuizManager quizManager;
     PlayerBattle playerBattle;
+    QuestMonsterAI questMonsterAI;
 
     public TMP_InputField inputAnswer;
     public TextMeshProUGUI answer;
+    public int wrong;
 
     private int _correctDescriptiveAnswer;
+    private Animator QuestAnim;
 
     void Awake()
     {
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
         playerBattle = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBattle>();
+        questMonsterAI = playerBattle.transform.Find("QuestMonster1").GetComponent<QuestMonsterAI>();
+        QuestAnim = GameObject.Find("BattleScene").GetComponent<Animator>();
     }
 
     public void CheckAnswer()
@@ -39,10 +45,7 @@ public class AnswerInput : MonoBehaviour
     {
         if (answer.text.Contains(quizManager.choiceAnswer))
         {
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(false);
-
+            PannelDisable(0);
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
@@ -50,13 +53,19 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(false);
-
-            playerBattle.anim.SetTrigger(playerBattle.animReact);
-
-            Invoke("UIanim1", 2.8f);
+            if(wrong < 3)
+            {
+                QuestAnim.SetTrigger("isIDLE");
+                playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("UIanim", 2.8f);
+                wrong++;
+            }
+            else
+            {
+                PannelDisable(0);
+                questMonsterAI.RunMonster();
+                playerBattle.Invoke("MonsterDieEvent", 1.5f);
+            }
         }
     }
 
@@ -65,10 +74,7 @@ public class AnswerInput : MonoBehaviour
         if (inputAnswer.text.Contains(quizManager.shortAnswer))
         {
             inputAnswer.text = "";
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(false);
-
+            PannelDisable(1);
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
@@ -76,14 +82,19 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(false);
-
-            playerBattle.anim.SetTrigger(playerBattle.animReact);
-
-
-            Invoke("UIanim2", 2.8f);
+            if (wrong < 3)
+            {
+                QuestAnim.SetTrigger("isIDLE");
+                playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("UIanim", 2.8f);
+                wrong++;
+            }
+            else
+            {
+                PannelDisable(1);
+                questMonsterAI.RunMonster();
+                playerBattle.Invoke("MonsterDieEvent", 1.5f);
+            }
         }
     }
 
@@ -91,7 +102,6 @@ public class AnswerInput : MonoBehaviour
     {
         for (int i = 1; i < quizManager.Question[quizManager.currQuiz].Split("¢È")[2].Split("#").Length; i++)
         {
-
             if (inputAnswer.text.Contains(quizManager.Question[quizManager.currQuiz].Split("¢È")[2].Split("#")[i].Replace(" ","")))
             {
                 _correctDescriptiveAnswer++;
@@ -101,10 +111,7 @@ public class AnswerInput : MonoBehaviour
         if (_correctDescriptiveAnswer >= int.Parse(quizManager.Question[quizManager.currQuiz].Split("¢È")[3]))
         {
             inputAnswer.text = "";
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(false);
-            
+            PannelDisable(2);
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
@@ -113,33 +120,31 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            quizManager.QuestionPanel.SetActive(false);
-            quizManager.AnswerPanel.SetActive(false);
-            quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(false);
-
-            playerBattle.anim.SetTrigger(playerBattle.animReact);
-            _correctDescriptiveAnswer = 0;
-
-            Invoke("UIanim3", 2.8f);
+            if (wrong < 3)
+            {
+                QuestAnim.SetTrigger("isIDLE");
+                playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("UIanim", 2.8f);
+                wrong++;
+            }
+            else
+            {
+                PannelDisable(2);
+                questMonsterAI.RunMonster();
+                playerBattle.Invoke("MonsterDieEvent", 1.1f);
+            }
         }
     }
 
-    void UIanim1()
+    public void UIanim()
     {
-        quizManager.QuestionPanel.SetActive(true);
-        quizManager.AnswerPanel.SetActive(true);
-        quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(true);
+        QuestAnim.SetTrigger("isStart");
     }
-    void UIanim2()
+
+    public void PannelDisable(int a)
     {
-        quizManager.QuestionPanel.SetActive(true);
-        quizManager.AnswerPanel.SetActive(true);
-        quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(true);
-    }
-    void UIanim3()
-    {
-        quizManager.QuestionPanel.SetActive(true);
-        quizManager.AnswerPanel.SetActive(true);
-        quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(true);
+        quizManager.QuestionPanel.SetActive(false);
+        quizManager.AnswerPanel.SetActive(false);
+        quizManager.AnswerPanel.transform.GetChild(a).gameObject.SetActive(false);
     }
 }

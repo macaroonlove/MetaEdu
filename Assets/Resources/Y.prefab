@@ -1093,9 +1093,9 @@ GameObject:
   - component: {fileID: 951745144627097767}
   - component: {fileID: -4912439679954084273}
   - component: {fileID: 519009413150905741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Y
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,7 +1307,6 @@ MonoBehaviour:
   animReact: 0
   animFinish: 0
   animGoldenballReact: 0
-  animBattleState: 0
   anim: {fileID: 0}
 --- !u!114 &951745144627097767
 MonoBehaviour:
@@ -1409,6 +1408,8 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!1 &2485063806707760946
 GameObject:
   m_ObjectHideFlags: 0

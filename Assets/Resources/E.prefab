@@ -3138,9 +3138,9 @@ GameObject:
   - component: {fileID: -2341633110834292224}
   - component: {fileID: 6964265148712440562}
   - component: {fileID: 7880211944138677857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: E
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3330,6 +3330,7 @@ MonoBehaviour:
   animAttack: 0
   animReact: 0
   animFinish: 0
+  animGoldenballReact: 0
   anim: {fileID: 0}
 --- !u!114 &7564132098807394314
 MonoBehaviour:
@@ -3431,6 +3432,8 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &7880211944138677857
 MonoBehaviour:
   m_ObjectHideFlags: 0

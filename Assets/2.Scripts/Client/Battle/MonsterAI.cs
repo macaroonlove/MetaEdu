@@ -121,11 +121,11 @@ public class MonsterAI : MonoBehaviourPunCallbacks
         if(state == State.STUN)
         {
             state = State.MOVE;
-            agent.isStopped = false;
             monsterHP = 100;
             anim.SetBool(_hashStun, false);
             StunEffect.SetActive(false);
             agent.baseOffset = 0.7f;
+            agent.isStopped = false;
         }
     }
 

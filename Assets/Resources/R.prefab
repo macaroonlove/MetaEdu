@@ -1731,9 +1731,9 @@ GameObject:
   - component: {fileID: 4241095308419819805}
   - component: {fileID: -4154155490319544730}
   - component: {fileID: 6948779089490828615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R
-  m_TagString: Untagged
+  m_TagString: OtherPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1923,6 +1923,7 @@ MonoBehaviour:
   animAttack: 0
   animReact: 0
   animFinish: 0
+  animGoldenballReact: 0
   anim: {fileID: 0}
 --- !u!114 &-1083491857130348805
 MonoBehaviour:
@@ -2018,9 +2019,14 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 0
     Name: Finish
+  - Type: 9
+    SynchronizeType: 0
+    Name: GoldenballReact
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &6948779089490828615
 MonoBehaviour:
   m_ObjectHideFlags: 0

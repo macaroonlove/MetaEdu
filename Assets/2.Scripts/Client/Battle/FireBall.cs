@@ -12,6 +12,9 @@ public class FireBall : MonoBehaviour
 
     private void OnEnable()
     {
-        rigid.velocity= Vector3.zero;
+        rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
+        rigid.ResetInertiaTensor();
+        rigid.ResetCenterOfMass();
     }
 }

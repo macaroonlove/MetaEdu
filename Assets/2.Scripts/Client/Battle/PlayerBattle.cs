@@ -217,7 +217,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         yield break;
     }
 
-    void MonsterDieEvent()
+    public void MonsterDieEvent()
     {
         if(OnMonsterDieEvent != null)
         {
