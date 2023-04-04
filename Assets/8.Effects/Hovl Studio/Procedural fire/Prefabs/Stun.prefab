@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4166505909902172}
   - component: {fileID: 198371139109276902}
   - component: {fileID: 199651328102623302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

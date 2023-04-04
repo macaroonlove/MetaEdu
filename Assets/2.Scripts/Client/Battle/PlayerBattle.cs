@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class PlayerBattle : MonoBehaviourPunCallbacks
 {
+    public delegate void MonsterDie();
+    public static event MonsterDie OnMonsterDieEvent;
+
     public List<GameObject> FireballPool = new List<GameObject>();
     public PlayerController controller;
     public GameObject QuestMonster;
@@ -17,9 +20,20 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     [Header("이펙트")]
     public GameObject FirePos;
     public bool AttackState =true;
-    public GameObject Effect;
+    public GameObject effect;
     public GameObject smoke;
+    public GameObject fail;
+    public GameObject finish;
 
+    [Header("애니메이션")]
+    public bool hasAnim;
+    public int animBattle;
+    public int animAttack;
+    public int animReact;
+    public int animFinish;
+    public int animGoldenballReact;
+
+    public Animator anim;
     private QuizManager quizManager;
     private PlayerController _playerController;
     private SkinnedMeshRenderer[] _skin;
@@ -28,7 +42,15 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         _playerController = GetComponent<PlayerController>();
         PV = GetComponent<PhotonView>();
-        CreateFireballs(7);
+
+        hasAnim = TryGetComponent(out anim);
+        animBattle = Animator.StringToHash("Battle");
+        animAttack = Animator.StringToHash("Attack");
+        animFinish = Animator.StringToHash("Finish");
+        animReact = Animator.StringToHash("React");
+        animGoldenballReact = Animator.StringToHash("GoldenballReact");
+
+        CreateFireballs(5);
         if (!SceneManager.GetActiveScene().name.Contains("Battle"))
         {
             this.enabled = false;
@@ -39,8 +61,13 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         quizManager = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+        anim.SetLayerWeight(1, 1f);
     }
 
+    new void OnDisable()
+    {
+        anim.SetLayerWeight(1, 0f);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -65,12 +92,9 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (!EventSystem.current.IsPointerOverGameObject())
+                if (!EventSystem.current.IsPointerOverGameObject() && AttackState)
                 {
-                    if (AttackState)
-                    {
-                        OnAttack();
-                    }
+                    anim.SetTrigger(animAttack);
                 }
             }
         }
@@ -101,13 +125,15 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
             }
         }
 
+        anim.SetBool(animBattle, true);
+
         PV.RPC("Battle", RpcTarget.All, MonsterID);
         PV.RPC("SendBattleEffect", RpcTarget.OthersBuffered);
     }
 
     public void OnAttack()
     {
-        PV.RPC("Attack", RpcTarget.AllViaServer) ;
+        PV.RPC("Attack", RpcTarget.All) ;
     }
 
     public void Renderer()
@@ -153,7 +179,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     {
         for(int i =0; i < FireballCount; i++)
         {
-            GameObject fireball = Instantiate(Effect) as GameObject;
+            GameObject fireball = Instantiate(effect) as GameObject;
             fireball.SetActive(false);
             FireballPool.Add(fireball);
         }
@@ -174,7 +200,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
         if(reqFireball == null)
         {
-            GameObject newFireball = Instantiate<GameObject>(Effect) as GameObject;
+            GameObject newFireball = Instantiate<GameObject>(effect) as GameObject;
             reqFireball = newFireball;
         }
 
@@ -189,5 +215,27 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         yield return wfs;
         fireball.SetActive(false);
         yield break;
+    }
+
+    public void MonsterDieEvent()
+    {
+        if(OnMonsterDieEvent != null)
+        {
+            OnMonsterDieEvent.Invoke();
+        }
+    }
+
+    void FailAttack()
+    {
+        GameObject g = Instantiate(fail) as GameObject;
+        g.transform.position = FirePos.transform.position - new Vector3(-0.2f, 0.35f, -0.39f);
+        Destroy(g, 0.5f);
+    }
+
+    void FinishlAttack()
+    {
+        GameObject g = Instantiate(finish) as GameObject;
+        g.transform.SetPositionAndRotation(FirePos.transform.position - new Vector3(-0.2f, 1.7f, -0.39f), FirePos.transform.rotation) ;
+        Destroy(g, 1.6f);
     }
 }

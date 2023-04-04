@@ -1,5 +1,7 @@
 using Photon.Pun;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -119,23 +121,6 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             _start = true;
             countTime = true;
         }
-        /*
-        else
-        {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                if(_end)
-                {
-                    countTime = false;
-                }
-                else
-                {
-                    countTime = true;
-                    _end = true;
-                }
-            }
-        }
-        */
         
         if (Answer.Count == 0)
         {
@@ -156,7 +141,10 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         score.PV.RPC("SendAnswer", RpcTarget.All, AnswerText.text);
 
-        if (Answer[_currQuiz].Contains(AnswerText.text) && AnswerText.text != "")
+        AnswerText.text = Regex.Replace(AnswerText.text, @"[^0-9a-zA-Z°¡-ÆR]", "");
+        Answer[_currQuiz] = Regex.Replace(Answer[_currQuiz], @"[^0-9a-zA-Z°¡-ÆR]", "");
+
+        if (AnswerText.text.Replace(" ", "") == Answer[_currQuiz].Replace(" ", "") && AnswerText.text != "")
         {
             score.currScore += 100;
             AnswerText.text = "";
@@ -166,7 +154,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             fadeEffect.StartCoroutine("FadeOutStart");
             score.PV.RPC("OnEffect", RpcTarget.All);
-            score.OnAttack();
+            score.OnAttackFlame();
             AnswerText.text = "";
             FullScreen.SetActive(false);
         }
@@ -208,7 +196,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
 
         Ranking.SetActive(true);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             RankingText[i].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i]; ;
         }
