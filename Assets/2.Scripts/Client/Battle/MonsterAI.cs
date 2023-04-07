@@ -116,6 +116,7 @@ public class MonsterAI : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
     void Recovery()
     {
         if(state == State.STUN)

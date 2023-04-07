@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1466,7 +1466,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288571211933654694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1741,7 +1741,8 @@ MonoBehaviour:
   m_text: "\uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 485e1179f7fe4c941bf94cd163639932, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 304295601452761592, guid: 485e1179f7fe4c941bf94cd163639932,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1804,7 +1805,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!224 &288571212043438689
@@ -2584,7 +2585,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 288571213327959775}
         m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-        m_MethodName: CheckAnswer
+        m_MethodName: ShortAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3255,10 +3256,10 @@ GameObject:
   - component: {fileID: 288571212873874925}
   - component: {fileID: 288571212873874921}
   - component: {fileID: 288571212873874926}
-  - component: {fileID: 288571212873874927}
   - component: {fileID: 288571212873874924}
+  - component: {fileID: 288571212873874927}
   m_Layer: 5
-  m_Name: Choice4 (1)
+  m_Name: Choice4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3291,7 +3292,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 288571212873874927}
           m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-          m_MethodName: CheckAnswer
+          m_MethodName: ChoicAnswer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3366,7 +3367,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571213718384619}
-  wrong: 0
 --- !u!222 &288571212874270177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3392,9 +3392,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 288571212874270183}
+        - m_Target: {fileID: 288571212874270203}
           m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-          m_MethodName: CheckAnswer
+          m_MethodName: ChoicAnswer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3455,7 +3455,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &288571212874270183
+--- !u!1 &288571212874270202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288571212874270181}
+  - component: {fileID: 288571212874270177}
+  - component: {fileID: 288571212874270182}
+  - component: {fileID: 288571212874270180}
+  - component: {fileID: 288571212874270203}
+  m_Layer: 5
+  m_Name: 'Choice2 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &288571212874270203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3469,27 +3489,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571212738689334}
-  wrong: 0
---- !u!1 &288571212874270202
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 288571212874270181}
-  - component: {fileID: 288571212874270177}
-  - component: {fileID: 288571212874270182}
-  - component: {fileID: 288571212874270183}
-  - component: {fileID: 288571212874270180}
-  m_Layer: 5
-  m_Name: Choice2 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &288571212946216520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3665,30 +3664,15 @@ GameObject:
   - component: {fileID: 288571213052055608}
   - component: {fileID: 288571213052055588}
   - component: {fileID: 288571213052055589}
-  - component: {fileID: 288571213052055610}
   - component: {fileID: 288571213052055611}
+  - component: {fileID: 288571213052055612}
   m_Layer: 5
-  m_Name: Choice1 (1)
+  m_Name: Choice1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &288571213052055610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288571213052055609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8623246f9da5ef041bf8b698721e7fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputAnswer: {fileID: 0}
-  answer: {fileID: 288571212141879634}
-  wrong: 0
 --- !u!114 &288571213052055611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3706,9 +3690,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 288571213052055610}
+        - m_Target: {fileID: 288571213052055612}
           m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-          m_MethodName: CheckAnswer
+          m_MethodName: ChoicAnswer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3718,6 +3702,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &288571213052055612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288571213052055609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8623246f9da5ef041bf8b698721e7fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputAnswer: {fileID: 0}
+  answer: {fileID: 288571212141879634}
 --- !u!114 &288571213228848932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3904,7 +3902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 288571212142945326}
   answer: {fileID: 0}
-  wrong: 0
 --- !u!224 &288571213346538848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4125,30 +4122,15 @@ GameObject:
   - component: {fileID: 288571213421679616}
   - component: {fileID: 288571213421679628}
   - component: {fileID: 288571213421679629}
-  - component: {fileID: 288571213421679618}
   - component: {fileID: 288571213421679619}
+  - component: {fileID: 288571213421679630}
   m_Layer: 5
-  m_Name: Choice3 (1)
+  m_Name: Choice3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &288571213421679618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288571213421679617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8623246f9da5ef041bf8b698721e7fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputAnswer: {fileID: 0}
-  answer: {fileID: 288571211932454943}
-  wrong: 0
 --- !u!114 &288571213421679619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4166,9 +4148,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 288571213421679618}
+        - m_Target: {fileID: 288571213421679630}
           m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-          m_MethodName: CheckAnswer
+          m_MethodName: ChoicAnswer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4216,6 +4198,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &288571213421679630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288571213421679617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8623246f9da5ef041bf8b698721e7fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputAnswer: {fileID: 0}
+  answer: {fileID: 288571211932454943}
 --- !u!224 &288571213485902900
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4269,7 +4265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 288571211981271200}
   answer: {fileID: 0}
-  wrong: 0
 --- !u!224 &288571213718384616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4542,7 +4537,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 288571213485902903}
         m_TargetAssemblyTypeName: AnswerInput, Assembly-CSharp
-        m_MethodName: CheckAnswer
+        m_MethodName: DescriptiveAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

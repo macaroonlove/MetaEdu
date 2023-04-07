@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private int _animAsking;
     private int _animClap;
     private int _animShout;
+    private int _animPhone;
 
     [Header("플레이어 소리")]
     public AudioClip LandingAudioClip;
@@ -227,6 +228,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         _animAsking = Animator.StringToHash("Asking");
         _animClap = Animator.StringToHash("Clap");
         _animShout = Animator.StringToHash("Shout");
+        _animPhone = Animator.StringToHash("Phone");
     }
 
     void Update()
@@ -246,11 +248,23 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (inputPress.phone)
             {
                 _phoneState = _phoneState ? false : true;
+
+                if (_phoneState)
+                    anim.SetLayerWeight(2, 1);
+                else if (!_phoneState)
+                    Invoke("ChangeAnimLayerWeight", 1f);
+
+                anim.SetBool(_animPhone, _phoneState);
                 _phoneAnim.SetBool("Phone", _phoneState);
                 _phoneAnim.SetBool("Open", false);
                 inputPress.phone = false;
             }
         }
+    }
+
+    void ChangeAnimLayerWeight()
+    {
+        anim.SetLayerWeight(2, 0);
     }
 
     void LateUpdate()
