@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: ae3c0302d725ff747b0a55a8076a37d5
+guid: 4914ea0378c72694d84879fd43b96212
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Open
+    second: Raise
   - first:
-      74: -3100369314251171874
-    second: Idle
-  - first:
-      74: -4630339522487117836
-    second: Stun
-  - first:
-      74: -998496362607748373
+      74: -8545842244855702659
     second: Escape
   externalObjects: {}
   materials:
@@ -45,69 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Open
+      name: Raise
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 15
       lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Idle
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 25
-      lastFrame: 85
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Stun
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 20
-      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -135,8 +71,8 @@ ModelImporter:
       name: Escape
       takeName: Take 001
       internalID: 0
-      firstFrame: 23
-      lastFrame: 25
+      firstFrame: 25
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -12,7 +12,7 @@ public class QuestMonsterAI : MonoBehaviour
     private PlayerController _playerController;
     private PlayerBattle _playerBattle;
     private Animator _anim;
-    private int _hashStun;
+    private int _hashEsc;
     private void OnEnable()
     {
         PlayerBattle.OnMonsterDieEvent += this.OnMonsterDie;
@@ -33,7 +33,6 @@ public class QuestMonsterAI : MonoBehaviour
             quizManager.AnswerPanel.SetActive(true);
             quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(true);
         }
-        _anim.SetBool(_hashStun, true);
     }
 
     private void OnDisable()
@@ -42,7 +41,6 @@ public class QuestMonsterAI : MonoBehaviour
         battle_vcam.Priority = 5;
         _playerController.grammaticalPersonState = true;
         GetComponentInParent<PlayerBattle>().Renderer();
-        _anim.SetBool(_hashStun, false);
     }
     private void Awake()
     { 
@@ -51,8 +49,8 @@ public class QuestMonsterAI : MonoBehaviour
         battle_vcam = _playerBattle.Battle_Vcam;
         PV = GetComponentInParent<PhotonView>();
         _playerController = GetComponentInParent<PlayerController>();
-        _anim = GetComponent<Animator>();
-        _hashStun = Animator.StringToHash("Stun");
+        TryGetComponent(out _anim);
+        _hashEsc = Animator.StringToHash("Escape");
     }
     void OnMonsterDie()
     {
@@ -64,6 +62,6 @@ public class QuestMonsterAI : MonoBehaviour
 
     public void RunMonster()
     {
-        _anim.SetBool(_hashStun, false);
+        _anim.SetTrigger(_hashEsc);
     }
 }

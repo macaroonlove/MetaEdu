@@ -53,7 +53,7 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            if(wrong < 3)
+            if(wrong < 2)
             {
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
@@ -64,7 +64,8 @@ public class AnswerInput : MonoBehaviour
             {
                 PannelDisable(0);
                 questMonsterAI.RunMonster();
-                playerBattle.Invoke("MonsterDieEvent", 1.5f);
+                wrong = 0;
+                playerBattle.Invoke("MonsterDieEvent", 3f);
             }
         }
     }
@@ -82,7 +83,7 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            if (wrong < 3)
+            if (wrong < 2)
             {
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
@@ -93,7 +94,8 @@ public class AnswerInput : MonoBehaviour
             {
                 PannelDisable(1);
                 questMonsterAI.RunMonster();
-                playerBattle.Invoke("MonsterDieEvent", 1.5f);
+                wrong = 0;
+                playerBattle.Invoke("MonsterDieEvent", 3f);
             }
         }
     }
@@ -120,7 +122,7 @@ public class AnswerInput : MonoBehaviour
         }
         else
         {
-            if (wrong < 3)
+            if (wrong < 2)
             {
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
@@ -131,7 +133,8 @@ public class AnswerInput : MonoBehaviour
             {
                 PannelDisable(2);
                 questMonsterAI.RunMonster();
-                playerBattle.Invoke("MonsterDieEvent", 1.1f);
+                wrong = 0;
+                playerBattle.Invoke("MonsterDieEvent", 3f);
             }
         }
     }

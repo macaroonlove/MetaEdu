@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -339,7 +339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537815270
 GameObject:
@@ -739,7 +739,7 @@ Transform:
   - {fileID: 1424118726}
   - {fileID: 537815271}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &767456091
 GameObject:
@@ -835,7 +835,7 @@ RectTransform:
   m_Children:
   - {fileID: 288571213725039221}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -921,7 +921,7 @@ Transform:
   - {fileID: 679375579}
   - {fileID: 1572946592}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1409607132
 PrefabInstance:
@@ -3366,6 +3366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571213718384619}
+  wrong: 0
 --- !u!222 &288571212874270177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3468,6 +3469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571212738689334}
+  wrong: 0
 --- !u!1 &288571212874270202
 GameObject:
   m_ObjectHideFlags: 0
@@ -3686,6 +3688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571212141879634}
+  wrong: 0
 --- !u!114 &288571213052055611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3901,6 +3904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 288571212142945326}
   answer: {fileID: 0}
+  wrong: 0
 --- !u!224 &288571213346538848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4144,6 +4148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 0}
   answer: {fileID: 288571211932454943}
+  wrong: 0
 --- !u!114 &288571213421679619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4264,6 +4269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAnswer: {fileID: 288571211981271200}
   answer: {fileID: 0}
+  wrong: 0
 --- !u!224 &288571213718384616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4604,7 +4610,7 @@ PrefabInstance:
     - target: {fileID: 514906957221944168, guid: 4d3d87fdf66f56745935e61d196fbc28,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 514906957221944168, guid: 4d3d87fdf66f56745935e61d196fbc28,
         type: 3}
