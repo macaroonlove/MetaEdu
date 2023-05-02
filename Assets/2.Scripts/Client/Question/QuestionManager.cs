@@ -45,7 +45,7 @@ public class Question
     #endregion
     public string[] load()
     {
-        return arr; 
+        return arr;
     }
 
     public string arrtostr()

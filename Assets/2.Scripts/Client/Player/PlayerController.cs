@@ -247,12 +247,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (inputPress.phone)
             {
-                _phoneState = !_phoneState;
+                _phoneState = _phoneState ? false : true;
 
                 if (_phoneState)
                     anim.SetLayerWeight(2, 1);
                 else if (!_phoneState)
-                    Invoke("ChangeAnimLayerWeight", 0.8f);
+                    Invoke("ChangeAnimLayerWeight", 1f);
 
                 anim.SetBool(_animPhone, _phoneState);
                 _phoneAnim.SetBool("Phone", _phoneState);
@@ -561,12 +561,5 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _roomListPanel.SetActive(false);
             _createRoomPanel.SetActive(false);
         }
-    }
-
-    void OnDisable()
-    {
-        anim.SetFloat(_animIDSpeed, 0);
-        anim.SetFloat(_animIDMotionSpeed, 0);
-        controller.Move(Vector3.zero);
     }
 }
