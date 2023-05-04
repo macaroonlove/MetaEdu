@@ -136,6 +136,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 
         GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
         GameObject.Find("Stick").GetComponent<VirtualJoystick>().enabled = true;
+        GameObject.Find("Look").GetComponent<VirtualJoystick>().enabled = true;
     }
     #endregion
 

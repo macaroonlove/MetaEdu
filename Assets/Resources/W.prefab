@@ -4465,16 +4465,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9369601e9eedf22459e7bd4363349fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eye: 0
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jump: 0
   run: 0
   interact: 0
   phone: 0
+  esc: 0
   analogMovement: 0
   cursorLocked: 1
-  cursorInputForLook: 1
 --- !u!114 &5866666020330520724
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -238,7 +238,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (!_isSit)
             {
-                GrammaticalPerson();
                 JumpAndGravity();
                 GroundedCheck();
                 Move();
@@ -303,25 +302,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
-    void GrammaticalPerson()
-    {
-        if (grammaticalPersonState)
-        {
-            if (inputPress.eye)
-            {
-                vcamThree.Priority = 10;
-                vcamOne.Priority = 11;
-                Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("Face"));
-            }
-            else
-            {
-                vcamThree.Priority = 11;
-                vcamOne.Priority = 10;
-                Camera.main.cullingMask = -1;
-            }
-        }
-    }
-
     public void Interaction()
     {
         if (hasAnim)
@@ -382,30 +362,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
         // 입력방향 정규화
         Vector3 inputDirection = new Vector3(inputPress.move.x, 0.0f, inputPress.move.y).normalized;
 
-        if (inputPress.eye)
+        // 이동에 대한 입력이 있으면 플레이어가 이동할 때, 카메라를 기준으로 플레이어를 회전
+        if (!inputPress.move.Equals(Vector2.zero))
         {
-            if (!inputPress.move.Equals(Vector2.zero))
-            {
-                inputDirection = transform.right * inputPress.move.x + transform.forward * inputPress.move.y;
-            }
+            _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
+            float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, rotationSmoothTime);
 
-            controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
-        else
-        {
-            // 이동에 대한 입력이 있으면 플레이어가 이동할 때, 카메라를 기준으로 플레이어를 회전
-            if (!inputPress.move.Equals(Vector2.zero))
-            {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, rotationSmoothTime);
 
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-            }
+        Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-
-            controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-        }
+        controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
         if (hasAnim)
         {
@@ -422,29 +390,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-            if (!inputPress.eye)
-                _cinemachineTargetYaw += inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
-            else
-                _rotationVelocity = inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
-
+            _cinemachineTargetYaw += inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
 
             _cinemachineTargetPitch += inputPress.look.y * rotationSpeed * deltaTimeMultiplier;
         }
 
-        if (!inputPress.eye)
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+        _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topclamp);
 
         if (inputPress.look.Equals(Vector2.zero))
             _rotationVelocity = 0.0f;
 
-        if (!inputPress.eye)
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride, _cinemachineTargetYaw, 0.0f);
-        else
-        {
-            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-            transform.Rotate(Vector3.up * _rotationVelocity);
-        }
+       
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(-_cinemachineTargetPitch + cameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+        inputPress.look = Vector2.zero;
     }
 
     static float ClampAngle(float lfAngle, float lfMin, float lfMax)

@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerInputPress : MonoBehaviour
 {
 	[Header("플레이어 이동")]
-	public bool eye;
     public Vector2 move;
     public Vector2 look;
     public bool jump;
@@ -19,11 +18,6 @@ public class PlayerInputPress : MonoBehaviour
 	public static CursorLockMode CLM;
 
     #region 키가 눌렸는가?
-    public void OnEyesight(InputValue value)
-    {
-		EyeInput(value.isPressed);
-    }
-
 	public void OnMove(InputValue value)
 	{
 		MoveInput(value.Get<Vector2>());
@@ -31,7 +25,6 @@ public class PlayerInputPress : MonoBehaviour
 
 	public void OnLook(InputValue value)
 	{
-		Debug.Log(value.Get<Vector2>());
 		LookInput(value.Get<Vector2>());
 	}
 
@@ -65,11 +58,6 @@ public class PlayerInputPress : MonoBehaviour
 	#endregion
 
 	#region 키에대한 로직
-	public void EyeInput(bool newEyeState)
-    {
-		eye = newEyeState;
-	}
-
 	public void MoveInput(Vector2 newMoveDirection)
 	{
 		move = newMoveDirection;

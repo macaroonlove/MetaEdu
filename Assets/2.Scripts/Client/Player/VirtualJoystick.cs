@@ -1,16 +1,20 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // 키보드, 마우스, 터치를 이벤트로 오브젝트에 보낼 수 있는 기능을 지원
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
-using UnityEngine.InputSystem.Layouts;
 using Photon.Pun;
+using UnityEngine.InputSystem;
 
 public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    public bool _lr = true;
+
     public float movementRange
     {
         get => m_MovementRange;
         set => m_MovementRange = value;
     }
+
+    Vector2 prevDelta = new Vector2(0, 0);
 
     [FormerlySerializedAs("movementRange")]
     [SerializeField]
@@ -46,12 +50,28 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         ((RectTransform)transform).anchoredPosition = m_StartPos + (Vector3)delta;
 
         var newPos = new Vector2(delta.x / movementRange, delta.y / movementRange);
-        _pip.MoveInput(newPos);
+        if (_lr)
+            _pip.MoveInput(newPos);
+        else
+        {
+            _pip.LookInput(delta);
+            if (delta.Equals(prevDelta))
+                return;
+            prevDelta = delta;
+        }
+            
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         ((RectTransform)transform).anchoredPosition = m_StartPos;
-        _pip.MoveInput(Vector2.zero);
+        if (_lr)
+        {
+            _pip.MoveInput(Vector2.zero);
+        }
+        else
+        {
+            _pip.LookInput(Vector2.zero);
+        }
     }
 }

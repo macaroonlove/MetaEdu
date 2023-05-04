@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Eyesight",
-                    "type": "Button",
-                    "id": "9adac229-a81d-49ba-800f-f3985010f5c3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "a776e913-b4e9-4030-b595-ee0078aef26a",
@@ -82,10 +73,21 @@
                 {
                     "name": "",
                     "id": "2ff78a98-f3a5-41ea-9403-f869a4427dc7",
-                    "path": "<Touchscreen>/delta",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "InvertVector2(invertX=false),ScaleVector2(x=8,y=4)",
-                    "groups": "PC;Mobile",
+                    "groups": "Mobile",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cad1441-f11c-4f0f-95d5-9e74ad0b47b9",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -166,39 +168,6 @@
                     "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "07a90786-e6c1-4604-85bd-2fcf05ffe19f",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Eyesight",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "968c3a48-a310-4607-9bd1-14e5e16edf0f",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Eyesight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "8bc06ac1-412f-4743-8f8e-56fe2ed0bdf9",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Eyesight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
