@@ -17,6 +17,8 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     private bool _isCreate = false;
     private string _sex;
 
+    public GameObject selectEL;
+
     public TMP_InputField sendChat;
     public TextMeshProUGUI[] chatText;
 
@@ -79,12 +81,28 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     {
         if (SceneManager.GetActiveScene().name.Equals("2.Campus"))
         {
-            Singleton.Inst.isPatty = false;
-            PhotonNetwork.Disconnect();
+            selectEL.SetActive(true);
         }
         else
         {
             RoomChangeManager.Instance.RoomOut("Campus#2.Campus", 20, 0);
+        }
+    }
+
+    public void ExitOrLogin(bool exit)
+    {
+        if (exit)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+        }
+        else
+        {
+            Singleton.Inst.isPatty = false;
+            PhotonNetwork.Disconnect();
         }
     }
 
@@ -117,6 +135,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         _isCreate = true;
 
         GameObject.Find("AgoraManager").GetComponent<ShareCam>().enabled = true;
+        GameObject.Find("Stick").GetComponent<VirtualJoystick>().enabled = true;
     }
     #endregion
 

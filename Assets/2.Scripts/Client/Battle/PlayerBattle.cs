@@ -109,7 +109,6 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         _playerController.grammaticalPersonState = false;
 
         Camera.main.cullingMask = ~(1 << 8) & ~(1 << 9);
-        Cursor.lockState = CursorLockMode.None;
 
         _otherPlayer = GameObject.FindGameObjectsWithTag("OtherPlayer");
 

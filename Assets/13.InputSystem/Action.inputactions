@@ -51,15 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cursor",
-                    "type": "Button",
-                    "id": "50f374b8-99e3-434a-bd6c-4d7c06c51e53",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "a776e913-b4e9-4030-b595-ee0078aef26a",
@@ -76,16 +67,25 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Setting",
+                    "type": "Button",
+                    "id": "54cf19c7-9dd9-4f0e-8e21-1705ba55441b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "2ff78a98-f3a5-41ea-9403-f869a4427dc7",
-                    "path": "<Pointer>/delta",
+                    "path": "<Touchscreen>/delta",
                     "interactions": "",
                     "processors": "InvertVector2(invertX=false),ScaleVector2(x=8,y=4)",
-                    "groups": "PC",
+                    "groups": "PC;Mobile",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -202,17 +202,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f60441f2-8a6a-43d6-b697-dfee0b42de96",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Cursor",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9e298d2f-eec7-401f-883b-548c6c243e18",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -230,6 +219,17 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Phone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "487380ef-a1dc-4e1f-a16d-1b22eb7187c3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Setting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -259,6 +259,26 @@
             "devices": [
                 {
                     "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<AndroidJoystick>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<AndroidGamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -241,7 +241,6 @@ public class ShareCam : MonoBehaviourPunCallbacks
             parameters2.captureAudio = true;
             parameters2.captureVideo = true;
             var nRet = RtcEngine.StartScreenCapture(parameters2);
-            this.Log.UpdateLog("StartScreenCapture :" + nRet);
 #else
         RtcEngine.StopScreenCapture();
 

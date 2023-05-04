@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private TMP_InputField _nickName;
     private Slider _playerRot;
     private bool _phoneState = false;
+    private bool _setState = false;
 
     [Header("배틀")]
     private GameObject _battlePanel = null;
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         TryGetComponent(out PV);
 
-        Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform;
+        Transform cv = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0);
         cv.GetChild(6).GetChild(4).GetChild(2).GetChild(1).TryGetComponent(out _nickName);
         cv.GetChild(6).GetChild(4).GetChild(6).GetChild(1).TryGetComponent(out _playerRot);
         _nickName.onEndEdit.AddListener(ChangeNick);
@@ -131,7 +132,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (_sn.Equals("5.Goldenball"))
             {
                 enabled = false;
-                Cursor.lockState = CursorLockMode.None;
             }
             else if (_sn.Equals("4.Battle"))
             {
@@ -198,7 +198,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             grammaticalPersonState = true;
-            Cursor.lockState = CursorLockMode.Locked;
             
             vcamThree.Follow = transform.GetChild(0);
             vcamThree.LookAt = transform.GetChild(0);
@@ -245,6 +244,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 Move();
             }
 
+            if (inputPress.esc)
+            {
+                _setState = !_setState;
+                _settingPanel.SetActive(_setState);
+                inputPress.esc = false;
+            }
+
             if (inputPress.phone)
             {
                 _phoneState = !_phoneState;
@@ -272,7 +278,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             LimitInput();
-            if (Cursor.lockState.Equals(CursorLockMode.Locked)) CameraRotation();
+            CameraRotation();
         }
     }
 
@@ -286,7 +292,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 if (playerInput.enabled)
                 {
                     playerInput.enabled = false;
-                    Cursor.lockState = CursorLockMode.None;
                 }
                     
             }
@@ -352,7 +357,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         float targetSpeed = inputPress.run ? runSpeed : moveSpeed;
 
         // 입력이 없으면 목표속도를 0으로 설정
-        if (inputPress.move.Equals(Vector2.zero) || Cursor.lockState.Equals(CursorLockMode.None)) targetSpeed = 0.0f;
+        if (inputPress.move.Equals(Vector2.zero)) targetSpeed = 0.0f;
 
         // magnitude: 벡터의 길이 반환
         float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
@@ -389,7 +394,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         else
         {
             // 이동에 대한 입력이 있으면 플레이어가 이동할 때, 카메라를 기준으로 플레이어를 회전
-            if (!inputPress.move.Equals(Vector2.zero) && Cursor.lockState.Equals(CursorLockMode.Locked))
+            if (!inputPress.move.Equals(Vector2.zero))
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, rotationSmoothTime);

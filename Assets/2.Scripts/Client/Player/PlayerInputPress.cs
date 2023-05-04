@@ -11,12 +11,11 @@ public class PlayerInputPress : MonoBehaviour
     public bool run;
     public bool interact;
 	public bool phone;
-
+	public bool esc = false;
 	public bool analogMovement;
 
 	[Header("마우스 잠금")]
     public bool cursorLocked = true;
-    public bool cursorInputForLook = true;
 	public static CursorLockMode CLM;
 
     #region 키가 눌렸는가?
@@ -32,10 +31,8 @@ public class PlayerInputPress : MonoBehaviour
 
 	public void OnLook(InputValue value)
 	{
-		if (cursorInputForLook)
-		{
-			LookInput(value.Get<Vector2>());
-		}
+		Debug.Log(value.Get<Vector2>());
+		LookInput(value.Get<Vector2>());
 	}
 
 	public void OnJump(InputValue value)
@@ -45,7 +42,10 @@ public class PlayerInputPress : MonoBehaviour
 
 	public void OnRun(InputValue value)
 	{
-		RunInput(value.isPressed);
+        if (value.isPressed)
+        {
+			RunInput();
+		}
 	}
 
 	public void OnInteract(InputValue value)
@@ -56,6 +56,11 @@ public class PlayerInputPress : MonoBehaviour
 	public void OnPhone(InputValue value)
     {
 		PhoneInput();
+    }
+
+	public void OnSetting(InputValue value)
+    {
+		EscInput();
     }
 	#endregion
 
@@ -80,9 +85,9 @@ public class PlayerInputPress : MonoBehaviour
 		jump = newJumpState;
 	}
 
-	public void RunInput(bool newRunState)
+	public void RunInput()
 	{
-		run = newRunState;
+		run = run ? false : true;
 	}
 
 	public void InteractInput(bool newInteractState)
@@ -100,19 +105,10 @@ public class PlayerInputPress : MonoBehaviour
     {
 		phone = phone ? false : true;
 	}
+
+	public void EscInput()
+    {
+		esc = esc ? false : true;
+    }
 	#endregion
-
-	#region 마우스 OnOff
-	private void OnCursor(InputValue value)
-	{
-		SetCursorState(cursorLocked);
-	}
-
-	private void SetCursorState(bool newState)
-	{
-		Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
-		CLM = Cursor.lockState;
-		cursorLocked = !newState; 
-	}
-    #endregion
 }

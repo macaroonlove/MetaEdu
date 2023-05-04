@@ -26,7 +26,7 @@ namespace OpenAI
 
         private string title = "°úÇÐ";
         private string recieveMsg = "";
-        private OpenAIApi openai = new OpenAIApi();
+        private OpenAIApi openai = new OpenAIApi("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", "org-oA5JjhJNe5EJ8gMYv11UMkaD");
 
         private List<ChatMessage> messages = new List<ChatMessage>();
         private string prompt = "You are a brilliant AI that creates new problems.\nMake sure your answer is exactly correct.\nAttempt to solve the following problem:";

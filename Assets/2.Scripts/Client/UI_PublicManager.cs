@@ -62,12 +62,12 @@ public class UI_PublicManager : MonoBehaviour
             GameObject.Find("LPW_Input").TryGetComponent(out _pwAnim);
             GameObject.Find("LoginPanel").TryGetComponent(out _loginPanelAnim);
             GameObject.Find("SignupPanel").TryGetComponent(out _signupPanelAnim);
-            _characterPanel = transform.GetChild(3).gameObject;
+            _characterPanel = transform.GetChild(1).GetChild(2).gameObject;
             _characterModel = GameObject.Find("CreateCharacter");
             _characterModel.SetActive(false);
             GameObject.Find("Login_Button").TryGetComponent(out _loginButton);
             GameObject.Find("SignUp_Button").TryGetComponent(out _signupButton);
-            transform.GetChild(3).GetChild(7).TryGetComponent(out _crpButton);
+            transform.GetChild(1).GetChild(2).GetChild(7).TryGetComponent(out _crpButton);
             GameObject.Find("SPW_Input").TryGetComponent(out _sPwText);
             GameObject.Find("SRPW_Input").TryGetComponent(out _srPwText);
             GameObject.Find("SError_Text").TryGetComponent(out _sErrText);
@@ -79,11 +79,11 @@ public class UI_PublicManager : MonoBehaviour
             GameObject.Find("PhotonManager").TryGetComponent(out _ptManager);
             _chatPanel = GameObject.Find("ChatPanel");
             _chatPanel.transform.GetChild(1).TryGetComponent(out _sendChat);
-            _setting = gameObject.transform.GetChild(6).gameObject;
-            transform.GetChild(4).TryGetComponent(out _phoneAnim);
-            transform.GetChild(1).TryGetComponent(out _camPanel);
-            _createRoomPanel = transform.GetChild(3).gameObject;
-            _createQuizPanel = transform.GetChild(5).gameObject;
+            _setting = transform.GetChild(0).GetChild(6).gameObject;
+            transform.GetChild(0).GetChild(4).TryGetComponent(out _phoneAnim);
+            transform.GetChild(0).GetChild(1).TryGetComponent(out _camPanel);
+            _createRoomPanel = transform.GetChild(0).GetChild(3).gameObject;
+            _createQuizPanel = transform.GetChild(0).GetChild(5).gameObject;
             _setting.transform.GetChild(0).TryGetComponent(out _basic);
             _setting.transform.GetChild(1).TryGetComponent(out _control);
             _setting.transform.GetChild(2).TryGetComponent(out _display);
@@ -100,61 +100,6 @@ public class UI_PublicManager : MonoBehaviour
             }
         }
     }
-
-    void Update()
-    {
-        if (_sceneName.Equals("1.Login"))
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                // Tab은 아래의 Selectable 객체를 선택
-                Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
-                if (next != null)
-                {
-                    next.Select();
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                if (_signupPanelAnim.GetBool("On"))
-                {
-                    _signupButton.onClick.Invoke();
-                }
-                else if (_characterPanel.activeSelf)
-                {
-                    _crpButton.onClick.Invoke();
-                }
-                else
-                {
-                    _loginButton.onClick.Invoke();
-                }
-
-            }
-        }
-        else
-        {
-            if (_chatPanel.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Return) && Input.GetKey(KeyCode.RightShift))
-                {
-                }
-                else if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (!_sendChat.text.Trim().Equals(""))
-                    {
-                        _ptManager.Send();
-                    }
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape) && !_rebinding.activeSelf)
-            {
-                Set_setting();
-            }
-        }
-    }
-
-
 
     public void GameExit()
     {
@@ -347,25 +292,6 @@ public class UI_PublicManager : MonoBehaviour
     #endregion
 
     #region 세팅
-    public void Set_setting()
-    {
-        if (_setting.activeSelf)
-        {
-            if (!Singleton.Inst.controled)
-            {
-                _setting.SetActive(false);
-                if (!_createRoomPanel.activeSelf && !_createQuizPanel.activeSelf) Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-                Singleton.Inst.controled = false;
-        }
-        else
-        {
-            _setting.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
-
     public void SetTitleColor()
     {
         _basic.color = new Color(0.76f, 0.76f, 0.76f);
