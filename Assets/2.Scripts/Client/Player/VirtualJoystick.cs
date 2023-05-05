@@ -14,8 +14,6 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         set => m_MovementRange = value;
     }
 
-    Vector2 prevDelta = new Vector2(0, 0);
-
     [FormerlySerializedAs("movementRange")]
     [SerializeField]
     private float m_MovementRange = 50;
@@ -55,9 +53,7 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         else
         {
             _pip.LookInput(delta);
-            if (delta.Equals(prevDelta))
-                return;
-            prevDelta = delta;
+            m_PointerDownPos = position;
         }
             
     }
