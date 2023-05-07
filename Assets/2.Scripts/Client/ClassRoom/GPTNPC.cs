@@ -14,7 +14,6 @@ namespace OpenAI
         private int ans = 2;
         private string ansTxt = "";
         [SerializeField] private GameObject _talkPanel;
-        [SerializeField] private TextMeshProUGUI _stateText;
         [SerializeField] private TextMeshProUGUI _talk;
         [SerializeField] private GameObject _choicesObj;
         [SerializeField] private TextMeshProUGUI[] _choices;
@@ -23,6 +22,9 @@ namespace OpenAI
         private PlayerController playerInput;
         private PlayerInputPress inputPress;
 
+        private GameObject _mCanvas;
+        private GameObject _jump;
+        private GameObject _interact;
 
         private string title = "과학";
         private string recieveMsg = "";
@@ -86,9 +88,13 @@ namespace OpenAI
                 {
                     other.TryGetComponent(out inputPress);
                     other.TryGetComponent(out playerInput);
+                    _mCanvas = GameObject.Find("Mobile_Canvas");
+                    _jump = _mCanvas.transform.GetChild(1).GetChild(1).gameObject;
+                    _interact = _mCanvas.transform.GetChild(1).GetChild(2).gameObject;
                 }
 
-                _stateText.text = "상호작용 키를 눌러 npc와 대화할 수 있습니다.";
+                _jump.SetActive(false);
+                _interact.SetActive(true);
             }
         }
 
@@ -99,7 +105,7 @@ namespace OpenAI
                 if (inputPress.interact && state.Equals(State.IDLE))
                 {
                     playerInput.enabled = false;
-                    _stateText.text = "";
+                    _mCanvas.SetActive(false);
                     state = State.WHAT;
                     TalkingToNPC();
                     _talkPanel.SetActive(true);
@@ -162,7 +168,7 @@ namespace OpenAI
                 {
                     _talkPanel.SetActive(false);
                     playerInput.enabled = true;
-                    _stateText.text = "상호작용 키를 눌러 npc와 대화할 수 있습니다.";
+                    _mCanvas.SetActive(true);
                     state = State.IDLE;
                 }
             }
@@ -185,7 +191,8 @@ namespace OpenAI
 
         IEnumerator WaitForInput()
         {
-            while (!inputPress.interact)
+            yield return new WaitForSeconds(0.5f);
+            while (Input.touchCount.Equals(0)) // interact => false !inputPress.interact || 
             {
                 yield return null;
             }
@@ -199,7 +206,8 @@ namespace OpenAI
             if (other.CompareTag("Player"))
             {
                 playerInput.enabled = true;
-                _stateText.text = "";
+                _jump.SetActive(true);
+                _interact.SetActive(false);
             }
         }
     }

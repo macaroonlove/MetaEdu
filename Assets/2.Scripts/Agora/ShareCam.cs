@@ -237,10 +237,11 @@ public class ShareCam : MonoBehaviourPunCallbacks
     public void StartScreenShare(int i)
     {
 #if UNITY_ANDROID || UNITY_IPHONE
-            var parameters2 = new ScreenCaptureParameters2();
-            parameters2.captureAudio = true;
-            parameters2.captureVideo = true;
-            var nRet = RtcEngine.StartScreenCapture(parameters2);
+        Debug.Log("모바일에서는 지원하지 않는 기능입니다.");
+        var parameters2 = new ScreenCaptureParameters2();
+        parameters2.captureAudio = true;
+        parameters2.captureVideo = true;
+        var nRet = RtcEngine.StartScreenCapture(parameters2);
 #else
         RtcEngine.StopScreenCapture();
 

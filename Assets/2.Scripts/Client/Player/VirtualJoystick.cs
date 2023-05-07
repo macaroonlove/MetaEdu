@@ -41,21 +41,23 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (eventData == null)
             throw new System.ArgumentNullException(nameof(eventData));
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponentInParent<RectTransform>(), eventData.position, eventData.pressEventCamera, out var position);
-        var delta = position - m_PointerDownPos;
-
-        delta = Vector2.ClampMagnitude(delta, movementRange);
-        ((RectTransform)transform).anchoredPosition = m_StartPos + (Vector3)delta;
-
-        var newPos = new Vector2(delta.x / movementRange, delta.y / movementRange);
-        if (_lr)
-            _pip.MoveInput(newPos);
-        else
+        if (Input.touchCount.Equals(1))
         {
-            _pip.LookInput(delta);
-            m_PointerDownPos = position;
-        }
-            
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponentInParent<RectTransform>(), eventData.position, eventData.pressEventCamera, out var position);
+            var delta = position - m_PointerDownPos;
+
+            delta = Vector2.ClampMagnitude(delta, movementRange);
+            ((RectTransform)transform).anchoredPosition = m_StartPos + (Vector3)delta;
+
+            var newPos = new Vector2(delta.x / movementRange, delta.y / movementRange);
+            if (_lr)
+                _pip.MoveInput(newPos);
+            else
+            {
+                _pip.LookInput(delta);
+                m_PointerDownPos = position;
+            }
+        }            
     }
 
     public void OnPointerUp(PointerEventData eventData)

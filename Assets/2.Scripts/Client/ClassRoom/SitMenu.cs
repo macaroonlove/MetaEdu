@@ -12,6 +12,7 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
     private PlayerController _playerController;
     private ShareCam _agoraManager;
     private Animator _anim;
+    private GameObject _mCanvas;
     private Color _skyBlue = new Color(0, 1, 1);
     [SerializeField]
     private Transform _targetTr; // 이동될 UI
@@ -23,7 +24,6 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
     public static bool isGetUp = true;
     public Canvas[] dashBoard;
     public RectTransform[] dashBoardRect;
-    public TextMeshProUGUI _stateText;
     private Vector2 _vt = new Vector2(3.84f, 2.16f);
     private Vector2 _st = new Vector2(1f, 1f);
 
@@ -43,8 +43,12 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
 
     private void OnEnable()
     {
-        GameObject.Find(PhotonNetwork.LocalPlayer.NickName).TryGetComponent(out _playerController);
-        GameObject.Find("AgoraManager").TryGetComponent(out _agoraManager);
+        if(ReferenceEquals(_playerController, null))
+        {
+            GameObject.Find(PhotonNetwork.LocalPlayer.NickName).TryGetComponent(out _playerController);
+            GameObject.Find("AgoraManager").TryGetComponent(out _agoraManager);
+            _mCanvas = GameObject.Find("Mobile_Canvas");
+        }
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
@@ -88,7 +92,7 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
                 dashBoard[0].renderMode = RenderMode.ScreenSpaceOverlay;
                 dashBoard[0].sortingOrder = -1;
             }
-            _stateText.text = "";
+            _mCanvas.SetActive(false);
             isGetUp = false;
         }
         else
@@ -109,9 +113,8 @@ public class SitMenu : MonoBehaviour, IPointerDownHandler, IDragHandler ,IEndDra
                 dashBoard[0].renderMode = RenderMode.WorldSpace;
                 dashBoardRect[0].sizeDelta = _vt;
                 dashBoardRect[0].anchoredPosition = Vector2.zero;
-
             }
-            _stateText.text = "상호작용 키를 눌러 일어날 수 있습니다.";
+            _mCanvas.SetActive(true);
             isGetUp = true;
         }
     }

@@ -6,9 +6,11 @@ using TMPro;
 public class Chair : MonoBehaviour
 {
     public int tableGroup;
-    public TextMeshProUGUI stateText;
     public GameObject menu;
 
+    private GameObject _mCanvas;
+    private GameObject _jump;
+    private GameObject _interact;
     private bool _chairRot = false;
     private MeshRenderer _mr;
     private GameObject _player;
@@ -34,8 +36,12 @@ public class Chair : MonoBehaviour
                 pos = new Vector3(transform.position.x, _player.transform.position.y, transform.position.z);
                 _player.TryGetComponent(out _playerController);
                 _player.TryGetComponent(out _playerInput);
+                _mCanvas = GameObject.Find("Mobile_Canvas").transform.GetChild(1).gameObject;
+                _jump = _mCanvas.transform.GetChild(1).gameObject;
+                _interact = _mCanvas.transform.GetChild(2).gameObject;
             }
-            stateText.text = "상호작용 키를 눌러 의자에 앉을 수 있습니다.";
+            _jump.SetActive(false);
+            _interact.SetActive(true);
             _mr.enabled = true;
         }
     }
@@ -49,20 +55,18 @@ public class Chair : MonoBehaviour
                 if (!_isSit)
                 {
                     SitMenu.tableGroup = this.tableGroup;
-                    //_player.transform.position = pos;
-                    //_player.transform.rotation = _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation;
                     _player.transform.SetPositionAndRotation(pos, _chairRot ? Quaternion.Euler(0, 0, 0) : transform.parent.rotation);
                     _mr.enabled = false;
                     _isSit = true;
                     menu.SetActive(true);
-                    stateText.text = "상호작용 키를 눌러 일어날 수 있습니다.";
+                    _mCanvas.SetActive(false);
                 }
                 else
                 {
                     _mr.enabled = true;
                     _isSit = false;
+                    _mCanvas.SetActive(true);
                     menu.SetActive(false);
-                    stateText.text = "상호작용 키를 눌러 의자에 앉을 수 있습니다.";
                 }
                 _playerController.Interaction();
                 _playerInput.interact = false;
@@ -74,7 +78,8 @@ public class Chair : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            stateText.text = "";
+            _jump.SetActive(true);
+            _interact.SetActive(false);
             _mr.enabled = false;
         }
     }
