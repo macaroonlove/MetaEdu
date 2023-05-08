@@ -112,7 +112,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         quizManager.battleText.SetActive(false);
         _playerController.grammaticalPersonState = false;
 
-        Camera.main.cullingMask = ~(1 << 8) & ~(1 << 9);
+        Camera.main.cullingMask = ~(1 << 8) & ~(1 << 9) & ~(1 << 13);
         Cursor.lockState = CursorLockMode.None;
 
         _otherPlayer = GameObject.FindGameObjectsWithTag("OtherPlayer");

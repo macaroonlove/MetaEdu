@@ -22,6 +22,24 @@ public class QuestMonsterAI : MonoBehaviour
         {
             quizManager.AnswerPanel.SetActive(true);
             quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(true);
+            switch(quizManager.choiceAnswerList.Count)
+            {
+                case 1:
+                    quizManager.choiceAnswers[3].transform.parent.gameObject.SetActive(false);
+                    quizManager.choiceAnswers[2].transform.parent.gameObject.SetActive(false);
+                    quizManager.choiceAnswers[1].transform.parent.gameObject.SetActive(false);
+                    break;
+                case 2:
+                    quizManager.choiceAnswers[3].transform.parent.gameObject.SetActive(false);
+                    quizManager.choiceAnswers[2].transform.parent.gameObject.SetActive(false);
+                    break;
+                case 3:
+                    quizManager.choiceAnswers[3].transform.parent.gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
+            quizManager.choiceAnswerList.Clear();
         }
         else if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "1")
         {

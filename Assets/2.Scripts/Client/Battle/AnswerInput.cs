@@ -31,6 +31,10 @@ public class AnswerInput : MonoBehaviour
     {
         if (answer.text.Contains(quizManager.choiceAnswer))
         {
+            for (int i = 0; i < 4; i++)
+            {
+                quizManager.AnswerPanel.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+            }
             PannelDisable(0);
             if (playerBattle.hasAnim)
             {

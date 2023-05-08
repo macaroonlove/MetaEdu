@@ -127,7 +127,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
             {
                 choiceAnswers[i].text = choiceAnswerList[i];
             }
-            choiceAnswerList.Clear();
+
         }
         else if (Question[currQuiz].Split("¢È")[0] == "1")
         {

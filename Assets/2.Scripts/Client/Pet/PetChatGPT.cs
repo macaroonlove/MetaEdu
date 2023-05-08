@@ -16,12 +16,13 @@ namespace OpenAI
 
         private OpenAIApi openai = new OpenAIApi("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", "org-GfZ86Cd8GkAqZHYHn6X5JdHu");
         private string userInput;
-        private string Instruction = "In the chat room, please act as a teacher, guide, helper, who helps people according to the context of the conversation.\nQ: ";
+        private string Instruction = "In the chat room, please act as a teacher, guide, helper,firend who helps people according to the context of the conversation.\nQ: ";
         private PlayerController Player;
         private PetController _petController;
         private void Start()
         {
             button.onClick.AddListener(SendReply);
+            textArea.text = "무엇을 도와드릴까요?";
         }
 
 
@@ -60,10 +61,10 @@ namespace OpenAI
             _petController.SpeechBubble.SetActive(false);
             Player.GPTAnim.SetBool(Player.animGPT, false);
             Player.GPTAnim.SetBool(Player.animInputUI, false);
-            choice1.SetActive(true);
+            choice2.SetActive(true);
             Player.GPTState = false;
             Player.vcamPetGPT.Priority = 5;
-            textArea.text = "";
+            textArea.text = "무엇을 도와드릴까요?";
             inputField.text = "";
         }
 
@@ -75,7 +76,7 @@ namespace OpenAI
                 _petController = GameObject.FindWithTag("Pet").GetComponent<PetController>();
             }
             Player.GPTAnim.SetBool(Player.animInputUI, true);
-            choice1.SetActive(false);
+            choice2.SetActive(false);
         }
     }
 }

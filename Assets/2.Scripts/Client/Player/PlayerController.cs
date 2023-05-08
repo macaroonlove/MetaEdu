@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _createQuizPanel = cv.GetChild(5).gameObject;
             _settingPanel = cv.GetChild(6).gameObject;
             CinemachineCameraTarget.transform.GetChild(0).TryGetComponent(out vcamOne);
+            vcamPetGPT = transform.Find("Pet_Vcam").GetComponent<CinemachineVirtualCamera>();
             GameObject.Find("3rd_Vcam").TryGetComponent(out vcamThree);
             string _sn = SceneManager.GetActiveScene().name;
 
@@ -227,7 +228,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _PhotonManager = GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>();
             _PhotonManager.CreatePet(transform.position, transform.rotation, _PhotonManager.DateLevel);
             _PhotonManager.MyPet.Player = this.gameObject;
-            vcamPetGPT = _PhotonManager.MyPet.GetComponent<PetController>().Petvcam;
         }
     }
 
