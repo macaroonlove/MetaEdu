@@ -111,7 +111,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip login;
     public AudioClip[] game;
     public AudioClip effect;
-
+    public AudioClip[] goldenBall;
     public void Login_BGM()
     {
         this.Play(login, Sound.Bgm);

@@ -11,6 +11,7 @@ TagManager:
   - Fog
   - Bus
   - OtherPlayer
+  - Pet
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class PlayerInputPress : MonoBehaviour
     public bool run;
     public bool interact;
 	public bool phone;
+	public bool GPT;
 
 	public bool analogMovement;
 
@@ -57,10 +58,15 @@ public class PlayerInputPress : MonoBehaviour
     {
 		PhoneInput();
     }
-	#endregion
 
-	#region 키에대한 로직
-	public void EyeInput(bool newEyeState)
+	public void OnChatGPT(InputValue value)
+	{
+        chatGPTInput();
+	}
+    #endregion
+
+    #region 키에대한 로직
+    public void EyeInput(bool newEyeState)
     {
 		eye = newEyeState;
 	}
@@ -100,10 +106,15 @@ public class PlayerInputPress : MonoBehaviour
     {
 		phone = phone ? false : true;
 	}
-	#endregion
 
-	#region 마우스 OnOff
-	private void OnCursor(InputValue value)
+    public void chatGPTInput()
+	{
+        GPT = GPT ? false :true;
+    }
+    #endregion
+
+    #region 마우스 OnOff
+    private void OnCursor(InputValue value)
 	{
 		SetCursorState(cursorLocked);
 	}

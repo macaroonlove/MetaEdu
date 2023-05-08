@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private const float threshold = 0.01f;
     private bool hasAnim;
 
+    public CinemachineVirtualCamera vcamPetGPT;
+
     [Header("플레이어 이동")]
     public float moveSpeed = 2.0f;              // 걷기 속도
     public float runSpeed = 8.0f;               // 뛰기 속도
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private int _animClap;
     private int _animShout;
     private int _animPhone;
+    public int animGPT;
+    public int animInputUI;
 
     [Header("플레이어 소리")]
     public AudioClip LandingAudioClip;
@@ -84,6 +88,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private TMP_InputField _nickName;
     private Slider _playerRot;
     private bool _phoneState = false;
+    private IngamePhotonManager _PhotonManager;
+    public Animator GPTAnim;
+    public bool GPTState = false;
 
     [Header("배틀")]
     private GameObject _battlePanel = null;
@@ -123,11 +130,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _roomListPanel = cv.GetChild(0).gameObject;
             _createRoomPanel = cv.GetChild(3).gameObject;
             cv.GetChild(4).TryGetComponent(out _phoneAnim);
+            cv.GetChild(7).TryGetComponent(out GPTAnim);
             _createQuizPanel = cv.GetChild(5).gameObject;
             _settingPanel = cv.GetChild(6).gameObject;
             CinemachineCameraTarget.transform.GetChild(0).TryGetComponent(out vcamOne);
             GameObject.Find("3rd_Vcam").TryGetComponent(out vcamThree);
             string _sn = SceneManager.GetActiveScene().name;
+
             if (_sn.Equals("5.Goldenball"))
             {
                 enabled = false;
@@ -214,6 +223,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _fallTimeoutDelta = fallTimeout;
 
             AssignmentAnimID();
+
+            _PhotonManager = GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>();
+            _PhotonManager.CreatePet(transform.position, transform.rotation, _PhotonManager.DateLevel);
+            _PhotonManager.MyPet.Player = this.gameObject;
+            vcamPetGPT = _PhotonManager.MyPet.GetComponent<PetController>().Petvcam;
         }
     }
 
@@ -229,6 +243,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         _animClap = Animator.StringToHash("Clap");
         _animShout = Animator.StringToHash("Shout");
         _animPhone = Animator.StringToHash("Phone");
+        animGPT = Animator.StringToHash("GPT");
+        animInputUI = Animator.StringToHash("inputUI");
     }
 
     void Update()
@@ -259,6 +275,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 _phoneAnim.SetBool("Open", false);
                 inputPress.phone = false;
             }
+
+            if(inputPress.GPT)
+            {
+                GPTState = !GPTState;
+                GPTAnim.SetBool(animGPT, GPTState);
+                if(GPTState = true)
+                {
+                    _PhotonManager.MyPet.GetComponent<PetController>().SpeechBubble.SetActive(true);
+                    vcamPetGPT.Priority = 20;
+                }
+                inputPress.GPT = false;
+            }
         }
     }
 
@@ -281,7 +309,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (Input.anyKeyDown)
         {
             _isBattlePanel = _isBattle ? _battlePanel.activeSelf : false;
-            if (_settingPanel.activeSelf || _createRoomPanel.activeSelf || _createQuizPanel.activeSelf || _chatting.activeSelf || _isBattlePanel)
+            if (_settingPanel.activeSelf || _createRoomPanel.activeSelf || _createQuizPanel.activeSelf || _chatting.activeSelf || _isBattlePanel || GPTState)
             {
                 if (playerInput.enabled)
                 {

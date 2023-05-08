@@ -4686,7 +4686,11 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Spine1'\n\tTransform 'RightForeArm'\n\tTransform
+    'RightShoulder'\n\tTransform 'RightArm'\n\tTransform 'RightHand'\n\tTransform
+    'Head'\n\tFrom animation clip 'UsePhone'\n\tFrom animation clip 'UsePhone'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -4758,6 +4762,7 @@ MonoBehaviour:
   run: 0
   interact: 0
   phone: 0
+  GPT: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -4773,6 +4778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0db4040c7377e4f8918c627ecc2611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vcamPetGPT: {fileID: 0}
   moveSpeed: 2
   runSpeed: 8
   rotationSmoothTime: 0.03
@@ -4782,6 +4788,8 @@ MonoBehaviour:
   gravity: -15
   jumpTimeout: 0.5
   fallTimeout: 0.15
+  animGPT: 0
+  animInputUI: 0
   LandingAudioClip: {fileID: 8300000, guid: 1e6a20bc359c3304d85810065d18bd28, type: 3}
   FootstepAudioClips: []
   FootstepAudioVolume: 0.5
@@ -4797,6 +4805,8 @@ MonoBehaviour:
   cameraAngleOverride: 0
   lockCameraPosition: 0
   grammaticalPersonState: 0
+  GPTAnim: {fileID: 0}
+  GPTState: 0
 --- !u!114 &4055015192755138693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4924,11 +4934,16 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: GoldenballReact
+  - Type: 4
+    SynchronizeType: 0
+    Name: Phone
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
   - SynchronizeType: 0
     LayerIndex: 1
+  - SynchronizeType: 0
+    LayerIndex: 2
 --- !u!114 &-2526592445955987101
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using PlayFab.ClientModels;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using System.Collections.Generic;
 
 public class IngamePhotonManager : MonoBehaviourPunCallbacks
 {
@@ -24,6 +25,11 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     public TextMeshProUGUI roomType;
     public TextMeshProUGUI playerNum;
     public TextMeshProUGUI[] attendance;
+
+    [Header("펫")]
+    public Pet MyPet;
+    public int DateEx;
+    public int DateLevel;
 
     void Awake() // 2번 실행
     {
@@ -97,7 +103,9 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     void GetDataSuccess(GetUserDataResult result)
     {
         _sex = result.Data["Sex"].Value;
-        
+        DateEx = int.Parse(result.Data["Ex"].Value);
+        DateLevel = int.Parse(result.Data["Level"].Value);
+        DateLevel = 1;
         PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
         if (!_isCreate) CreateCharacter();
 
@@ -172,4 +180,42 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     }
 
     #endregion
+
+    #region 펫 생성
+    public void CreatePet(Vector3 position, Quaternion rotation, int Level)
+    {
+        AbsFactory factory = new PetFactory();
+        MyPet = factory.CreatePet(position, rotation, Level);
+        MyPet.level = DateLevel;
+        MyPet.ex = DateEx;
+        MyPet.transform.SetParent(transform);
+    }
+
+    public void AddEx()
+    {
+        DateEx += 20;
+        if (DateEx >= 100)
+        {
+            DateLevel += 1;
+            MyPet.level = DateLevel;
+            MyPet = MyPet.Evolution();
+            MyPet.level = DateLevel;
+            ChangeLevel();
+            DateEx = 0;
+        }
+    }
+
+    public void ChangeLevel()
+    {
+        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() {{ "Level", DateLevel.ToString() } } };
+        PlayFabClientAPI.UpdateUserData(request, (result) => print("성공"), (error) => print("실패"));
+    }
+
+    private void OnApplicationQuit()
+    {
+        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Ex", DateEx.ToString() }, { "Level", DateLevel.ToString() } } };
+        PlayFabClientAPI.UpdateUserData(request, (result) => print("성공"), (error) => print("실패"));
+    }
+    #endregion
+
 }

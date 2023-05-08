@@ -5,6 +5,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System.Data;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -136,7 +137,7 @@ public class PlayfabManager : MonoBehaviour
 
     void DisplayNameUpdateSuccess(UpdateUserTitleDisplayNameResult result)
     {
-        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Sex", _sex }, { "NickName", result.DisplayName }, { "Question", "문제모음" } } };
+        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Sex", _sex }, { "NickName", result.DisplayName }, { "Question", "문제모음" }, { "Ex", "0" }, { "Level", "1" } } };
         PlayFabClientAPI.UpdateUserData(request, NewCRTUpdateSuccess, (Error) => createError.text = "캐릭터를 생성에 실패했습니다.");
     }
 

@@ -9415,6 +9415,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0d24f9538e941146aa6ae257c9c1de7, type: 3}
   - {fileID: 8300000, guid: 4245ddab0c8346a48b5541b85966e45d, type: 3}
   effect: {fileID: 8300000, guid: 3f6b92c61e7df9a44886e2be193be12c, type: 3}
+  goldenBall:
+  - {fileID: 8300000, guid: 9902c97ebc83247428e88975f17d9fae, type: 3}
+  - {fileID: 8300000, guid: b5b5207b5c167a44b8d047aaf65f052c, type: 3}
 --- !u!4 &1725706079
 Transform:
   m_ObjectHideFlags: 0
