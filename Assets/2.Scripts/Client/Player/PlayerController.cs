@@ -593,11 +593,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void OnDisable()
     {
-        if(!ReferenceEquals(anim, null))
-        {
-            anim.SetFloat(_animIDSpeed, 0);
-            anim.SetFloat(_animIDMotionSpeed, 0);
-            controller.Move(Vector3.zero);
-        }
+        anim.SetFloat(_animIDSpeed, 0);
+        anim.SetFloat(_animIDMotionSpeed, 0);
+        controller.Move(Vector3.zero);
     }
 }

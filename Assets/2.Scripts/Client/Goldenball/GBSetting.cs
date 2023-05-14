@@ -1,14 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
 
 public class GBSetting : MonoBehaviourPunCallbacks
 {
-    private PlayerInputPress _inputPress;
-    private Animator _phoneAnim;
-    private bool _phoneState = false;
-
     public TextMeshProUGUI currPlayer;
     public bool a = true;
     public GameObject Time;
@@ -37,25 +34,7 @@ public class GBSetting : MonoBehaviourPunCallbacks
         GameObject player = GameObject.FindWithTag("Player");
         player.GetComponent<Score>().enabled = false;
         player.GetComponent<Score>().enabled = true;
-        player.TryGetComponent(out _inputPress);
-        GameObject.Find("Phone").TryGetComponent(out _phoneAnim);
-        transform.GetChild(0).gameObject.SetActive(false);
-        wfs = new WaitForSeconds(0.1f);
-        while (true)
-        {
-            if (_inputPress.phone)
-            {
-                _phoneState = !_phoneState;
-                _phoneAnim.SetBool("Phone", _phoneState);
-                _phoneAnim.SetBool("Open", false);
-                _inputPress.phone = false;
-            }
-            yield return wfs;
-        }
-    }
-
-    public void BackLobby()
-    {
-        RoomChangeManager.Instance.RoomOut("Campus#2.Campus", 20, 0);
+        gameObject.SetActive(false);
+        yield break;
     }
 }
