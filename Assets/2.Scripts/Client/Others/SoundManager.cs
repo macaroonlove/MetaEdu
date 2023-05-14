@@ -113,6 +113,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip effect;
     public AudioClip[] goldenBall;
     public AudioClip[] battle;
+    public int currentMusic = 0;
     public void Login_BGM()
     {
         this.Play(login, Sound.Bgm);
@@ -131,11 +132,12 @@ public class SoundManager : MonoBehaviour
         }        
     }
 
-    public string InGame_BGM(int i)
+    public string InGame_BGM(bool i)
     {
-        this.Play(game[i], Sound.Bgm);
+        if(i)
+            this.Play(game[currentMusic], Sound.Bgm);
 
-        return game[i].name;
+        return game[currentMusic].name;
     }
 
     public void EffectExample()
@@ -155,7 +157,7 @@ public class SoundManager : MonoBehaviour
 
     public void FireballSound()
     {
-        this.Play(battle[0],Sound.Effect, 1.7f);
+        this.Play(battle[0], Sound.Effect, 1.7f);
     }
     #endregion
 }

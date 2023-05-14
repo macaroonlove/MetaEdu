@@ -13,6 +13,7 @@ namespace OpenAI
         public List<int> cho = new List<int>() { 2, 3, 4, 5 };
         private int ans = 2;
         private string ansTxt = "";
+        [SerializeField] private Transform _npc;
         [SerializeField] private GameObject _talkPanel;
         [SerializeField] private TextMeshProUGUI _stateText;
         [SerializeField] private TextMeshProUGUI _talk;
@@ -38,7 +39,7 @@ namespace OpenAI
 
         private void AppendMessage(ChatMessage message)
         {
-            Debug.Log(message.Content);
+            //Debug.Log(message.Content);
             for(int i = 1; i < 6; i++)
             {
                 recieveMsg = message.Content.Split("▦")[i];
@@ -112,6 +113,8 @@ namespace OpenAI
         {
             if (state.Equals(State.WHAT))
             {
+                _npc.LookAt(inputPress.transform);
+                inputPress.transform.LookAt(_npc.transform);
                 _choicesObj.SetActive(true);
                 _talk.text = "무슨일로 왔니?";
                 _choiceObj[0].SetActive(false);
@@ -163,6 +166,7 @@ namespace OpenAI
                     _talkPanel.SetActive(false);
                     playerInput.enabled = true;
                     _stateText.text = "상호작용 키를 눌러 npc와 대화할 수 있습니다.";
+                    _npc.rotation = Quaternion.Euler(Vector3.zero);
                     state = State.IDLE;
                 }
             }
