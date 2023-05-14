@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9418,6 +9418,9 @@ MonoBehaviour:
   goldenBall:
   - {fileID: 8300000, guid: 9902c97ebc83247428e88975f17d9fae, type: 3}
   - {fileID: 8300000, guid: b5b5207b5c167a44b8d047aaf65f052c, type: 3}
+  battle:
+  - {fileID: 8300000, guid: b91dd1f8b5aed80458391f5310e70a6e, type: 3}
+  currentMusic: 0
 --- !u!4 &1725706079
 Transform:
   m_ObjectHideFlags: 0

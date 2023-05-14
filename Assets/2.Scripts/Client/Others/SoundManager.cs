@@ -157,7 +157,7 @@ public class SoundManager : MonoBehaviour
 
     public void FireballSound()
     {
-        this.Play(battle[0], Sound.Effect, 1.7f);
+        this.Play(battle[0], Sound.Effect, 2f);
     }
     #endregion
 }
