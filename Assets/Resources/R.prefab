@@ -2126,9 +2126,6 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 0
     Name: Finish
-  - Type: 9
-    SynchronizeType: 0
-    Name: GoldenballReact
   - Type: 4
     SynchronizeType: 0
     Name: Phone
@@ -4364,15 +4361,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7516319058707912603}
-  m_LocalRotation: {x: 0, y: -0.44619772, z: 0, w: 0.89493436}
-  m_LocalPosition: {x: 1.907, y: 1.599, z: -0.539}
+  m_LocalRotation: {x: -0, y: -0.5432075, z: -0, w: 0.83959854}
+  m_LocalPosition: {x: 1.916, y: 1.599, z: -0.199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4655914590215129425}
   m_Father: {fileID: 4590623548421844461}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: -53, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -65.805, z: 0}
 --- !u!114 &74674698492934091
 MonoBehaviour:
   m_ObjectHideFlags: 0

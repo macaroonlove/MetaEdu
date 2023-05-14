@@ -38,13 +38,10 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     private PlayerController _playerController;
     private SkinnedMeshRenderer[] _skin;
     private GameObject[] _otherPlayer;
-    private IngamePhotonManager _photonManager;
     void Awake()
     {
         _playerController = GetComponent<PlayerController>();
         PV = GetComponent<PhotonView>();
-        _photonManager = GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>();
-
 
         hasAnim = TryGetComponent(out anim);
         animBattle = Animator.StringToHash("Battle");
@@ -98,7 +95,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
                 if (!EventSystem.current.IsPointerOverGameObject() && AttackState)
                 {
                     anim.SetTrigger(animAttack);
-                    _photonManager.AddEx();
+                    SoundManager.Instance.FireballSound();
                 }
             }
         }

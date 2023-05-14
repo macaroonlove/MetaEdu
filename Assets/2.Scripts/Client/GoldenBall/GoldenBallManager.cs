@@ -146,14 +146,15 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (AnswerText.text.Replace(" ", "") == Answer[_currQuiz].Replace(" ", "") && AnswerText.text != "")
         {
+            SoundManager.Instance.GoldenBallCorrect();
             score.currScore += 100;
             AnswerText.text = "";
             FullScreen.SetActive(false);
         }
         else
         {
+            SoundManager.Instance.GoldenBallWrong();
             fadeEffect.StartCoroutine("FadeOutStart");
-            score.PV.RPC("OnEffect", RpcTarget.All);
             AnswerText.text = "";
             FullScreen.SetActive(false);
         }

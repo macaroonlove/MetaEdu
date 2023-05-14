@@ -191,9 +191,9 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         MyPet.transform.SetParent(transform);
     }
 
-    public void AddEx()
+    public void AddEx(int ex)
     {
-        DateEx += 20;
+        DateEx += ex;
         if (DateEx >= 100)
         {
             DateLevel += 1;

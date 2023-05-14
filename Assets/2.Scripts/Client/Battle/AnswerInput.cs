@@ -15,6 +15,7 @@ public class AnswerInput : MonoBehaviour
 
     private int _correctDescriptiveAnswer;
     private Animator QuestAnim;
+    private IngamePhotonManager _photonManager;
     private void OnEnable()
     {
         wrong = 0;
@@ -25,6 +26,7 @@ public class AnswerInput : MonoBehaviour
         playerBattle = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBattle>();
         questMonsterAI = playerBattle.transform.Find("QuestMonster1").GetComponent<QuestMonsterAI>();
         QuestAnim = GameObject.Find("BattleScene").GetComponent<Animator>();
+        _photonManager = GameObject.Find("PhotonManager").GetComponent<IngamePhotonManager>();
     }
 
     public void ChoicAnswer()
@@ -39,6 +41,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                _photonManager.AddEx(20);
             }
         }
         else
@@ -67,6 +70,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                _photonManager.AddEx(20);
             }
         }
         else
@@ -107,6 +111,7 @@ public class AnswerInput : MonoBehaviour
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
                 _correctDescriptiveAnswer = 0;
+                _photonManager.AddEx(20);
             }
         }
         else

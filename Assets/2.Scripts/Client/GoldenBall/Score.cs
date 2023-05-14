@@ -87,10 +87,4 @@ public class Score : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    public void OnEffect()
-    {
-        _playerBattle.anim.SetTrigger(_playerBattle.animGoldenballReact);
-    }
-
 }
