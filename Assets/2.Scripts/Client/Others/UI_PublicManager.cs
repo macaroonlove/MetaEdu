@@ -227,7 +227,7 @@ public class UI_PublicManager : MonoBehaviour
     {
         if (isOn.Equals(true))
         {
-            Singleton.Inst.currSelect = int.Parse(system.currentSelectedGameObject.name);
+            QuestionManager.Inst.selectQuestion = int.Parse(system.currentSelectedGameObject.name);
             if(_battleScene)
             {
                 _quizManager.Question.Clear();

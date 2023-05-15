@@ -10,8 +10,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
 
-    public Transform quizContent;
-
     private Vector3 _startPosition;
     private Quaternion _startRotation;
     private bool _isCreate = false;
@@ -100,12 +98,6 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         
         PhotonNetwork.LocalPlayer.NickName = result.Data["NickName"].Value;
         if (!_isCreate) CreateCharacter();
-
-        if (Singleton.Inst.questions.Equals(""))
-        {
-            Singleton.Inst.questions = result.Data["Question"].Value;
-        }
-        Singleton.Inst.QuestionInit();
     }
 
     void CreateCharacter()

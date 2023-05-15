@@ -85,25 +85,6 @@ public class Singleton : MonoBehaviour
         SoundManager.Instance.EffectVolume(effectSound);
     }
 
-    public void QuestionInit()
-    {
-        if (quizContent == null)
-        {
-            quizContent = GameObject.Find("Quiz_Content").transform;
-            quizContent.parent.parent.parent.gameObject.SetActive(false);
-        }
-        string a = questions;
-        question.Clear();
-        for (int i = 1; i < a.Split("¢Ë").Length; i++)
-        {
-            string b = a.Split("¢Ë")[i];
-            question.Add(b);
-            Transform c = quizContent.GetChild(i - 1);
-            c.gameObject.SetActive(true);
-            c.GetChild(1).GetComponent<TextMeshProUGUI>().text = b.Split("¢Ç")[0];
-        }
-    }
-
     void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("ShowName", showName);
