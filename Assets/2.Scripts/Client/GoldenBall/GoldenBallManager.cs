@@ -49,6 +49,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         PV = GetComponent<PhotonView>();
         Quizs = googleSheet.Quizs;
         Invoke("AddQuestion", 4f);
+        InvokeRepeating("BeepSound", 0f, 1.0f);
     }
 
     void Update()
@@ -59,7 +60,9 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 _currTime -= Time.deltaTime;
             }
+
             TimeText.text = ((int)_currTime).ToString();
+
             if (_currTime < 0)
             {
                 if (_start)
@@ -77,6 +80,13 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    public void BeepSound()
+    {
+        if(_currTime >= 0 &&_currTime < 5)
+        {
+            SoundManager.Instance.GoldenBallTime();
+        }
+    }
 
     void AddQuestion()
     {
@@ -85,8 +95,6 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             _QuizTitle = UnityEngine.Random.Range(0, Quizs.Count);
             PV.RPC("SendAddQuestion", RpcTarget.All, _QuizTitle);
         }
-
-
     }
 
     [PunRPC]

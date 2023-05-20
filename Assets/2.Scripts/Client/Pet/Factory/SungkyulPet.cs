@@ -25,10 +25,7 @@ public class SungkyulPet : Pet
         {
             Pet = PhotonNetwork.Instantiate("Level_4", transform.position, transform.rotation);
         }   
-        else if(level == 5)
-        {
-            Pet = PhotonNetwork.Instantiate("Level_5", transform.position, transform.rotation);
-        }
+
         Pet.GetComponent<Pet>().Player = this.Player;
         PhotonNetwork.Destroy(gameObject);
         return Pet.GetComponent<Pet>();

@@ -41,6 +41,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                Invoke("DelayFinishAttackSound", 1.7f);
                 _photonManager.AddEx(20);
             }
         }
@@ -50,6 +51,7 @@ public class AnswerInput : MonoBehaviour
             {
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("UIanim", 2.8f);
                 wrong++;
             }
@@ -57,6 +59,7 @@ public class AnswerInput : MonoBehaviour
             {
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 PannelDisable(0);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("EscapeMonster", 2.8f);
             }
         }
@@ -70,6 +73,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                Invoke("DelayFinishAttackSound", 1.7f);
                 _photonManager.AddEx(20);
             }
         }
@@ -80,6 +84,7 @@ public class AnswerInput : MonoBehaviour
                 inputAnswer.text = "";
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("UIanim", 2.8f);
                 wrong++;
             }
@@ -88,6 +93,7 @@ public class AnswerInput : MonoBehaviour
                 inputAnswer.text = "";
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 PannelDisable(1);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("EscapeMonster", 2.8f);
             }
         }
@@ -110,6 +116,7 @@ public class AnswerInput : MonoBehaviour
             if (playerBattle.hasAnim)
             {
                 playerBattle.anim.SetTrigger(playerBattle.animFinish);
+                Invoke("DelayFinishAttackSound", 1.7f);
                 _correctDescriptiveAnswer = 0;
                 _photonManager.AddEx(20);
             }
@@ -121,6 +128,7 @@ public class AnswerInput : MonoBehaviour
                 inputAnswer.text = "";
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("UIanim", 2.8f);
                 wrong++;
             }
@@ -129,6 +137,7 @@ public class AnswerInput : MonoBehaviour
                 inputAnswer.text = "";
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 PannelDisable(2);
+                Invoke("DelayAttackFailSound", 2.0f);
                 Invoke("EscapeMonster",2.8f);
             }
         }
@@ -150,5 +159,18 @@ public class AnswerInput : MonoBehaviour
     {
         questMonsterAI.RunMonster();
         playerBattle.Invoke("MonsterDieEvent", 3f);
+        Invoke("DelayEscapeSound", 1f);
+    }
+    public void DelayEscapeSound()
+    {
+        SoundManager.Instance.EscapeSound();
+    }
+    public void DelayFinishAttackSound()
+    {
+        SoundManager.Instance.FinishAttackSound();
+    }
+    public void DelayAttackFailSound()
+    {
+        SoundManager.Instance.AttackFailSound();
     }
 }

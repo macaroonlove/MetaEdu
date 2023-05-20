@@ -155,9 +155,34 @@ public class SoundManager : MonoBehaviour
         this.Play(goldenBall[1]);
     }
 
+    public void GoldenBallTime()
+    {
+        this.Play(goldenBall[2]);
+    }
+
     public void FireballSound()
     {
         this.Play(battle[0], Sound.Effect, 2f);
+    }
+
+    public void FinishAttackSound()
+    {
+        this.Play(battle[1]);
+    }
+
+    public void EscapeSound()
+    {
+        this.Play(battle[2]);
+    }
+
+    public void AttackFailSound()
+    {
+        this.Play(battle[3]);
+    }
+
+    public void ExplosionSound()
+    {
+        this.Play(battle[4]);
     }
     #endregion
 }

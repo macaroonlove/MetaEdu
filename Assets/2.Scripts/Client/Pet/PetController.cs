@@ -3,15 +3,18 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PetController : MonoBehaviour
 {
     public GameObject Player;
     public GameObject SpeechBubble;
     private Vector3 _target;
-    private Vector3 _offset = new Vector3(0.634f, 1.65f, -0.361f);
+    private Vector3 _offset = new Vector3(0.834f, 0, 0.681f);
+    private Quaternion _petHead;
     private PlayerController _playerController;
     private PhotonView _pv;
+    private Animator _petAnim;
     void Start()
     {
         Player = GetComponent<SungkyulPet>().Player;
@@ -19,7 +22,7 @@ public class PetController : MonoBehaviour
         if(GetComponent<PhotonView>().IsMine)
         {
             _playerController = Player.GetComponent<PlayerController>();
-            SpeechBubble = transform.GetChild(0).gameObject;
+            _petAnim = GetComponent<Animator>();
         }
         else
             GetComponent<PetController>().enabled = false;
@@ -31,7 +34,12 @@ public class PetController : MonoBehaviour
         {
             _target = Player.transform.position + Player.transform.forward * _offset.z + Player.transform.up * _offset.y + Player.transform.right * _offset.x;
             transform.position = Vector3.Lerp(transform.position, _target, Time.deltaTime * 5);
-            transform.LookAt(_target);
+            _petHead = Quaternion.LookRotation((_target - transform.position).normalized);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _petHead, Time.deltaTime * 3);
+            if (Vector3.Distance(transform.position, Player.transform.position) < 0.95f)
+            {
+                transform.LookAt(Player.transform);
+            }
         }
         else
             ChatPosition();
@@ -39,8 +47,8 @@ public class PetController : MonoBehaviour
 
     public void ChatPosition()
     {
-        Vector3 newTarget = Player.transform.position + Player.transform.forward * 1.271f + Player.transform.up * 1.75f + Player.transform.right * 0.145f;
+        Vector3 newTarget = Player.transform.position + Player.transform.forward * 3.271f + Player.transform.right * -0.345f;
         transform.position = Vector3.Lerp(transform.position, newTarget, Time.deltaTime * 3);
-        transform.LookAt(_target);
+        transform.LookAt(Player.transform);
     }
 }

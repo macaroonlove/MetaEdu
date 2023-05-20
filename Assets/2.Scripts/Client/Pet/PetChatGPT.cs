@@ -16,7 +16,7 @@ namespace OpenAI
 
         private OpenAIApi openai = new OpenAIApi("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", "org-GfZ86Cd8GkAqZHYHn6X5JdHu");
         private string userInput;
-        private string Instruction = "In the chat room, please act as a teacher, guide, helper,firend who helps people according to the context of the conversation.\nQ: ";
+        private string Instruction = "ChatGPT를 활용한 PBL 수업을 위해 개발된 교육용 메타버스 플랫폼에서 ChatGPT와 G-러닝을 활용한 자기주도적 학습을 위해서 너가 이제 플레이어들에 안내 및 선생님, 역할을 하는 펫이 되는거야\nQ: ";
         private PlayerController Player;
         private PetController _petController;
         private void Start()

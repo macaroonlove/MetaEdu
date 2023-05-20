@@ -109,6 +109,7 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     {
         if(other.gameObject.CompareTag("fireball") && PV.IsMine)
         {
+            SoundManager.Instance.ExplosionSound();
             other.gameObject.SetActive(false);
             Vector3 pos = other.GetContact(0).point;
             Quaternion rot = Quaternion.LookRotation(-other.GetContact(0).normal);
@@ -121,12 +122,12 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     {
         if(state == State.STUN)
         {
+            agent.isStopped = false;
+            agent.baseOffset = 0.7f;
             state = State.MOVE;
             monsterHP = 100;
             anim.SetBool(_hashStun, false);
             StunEffect.SetActive(false);
-            agent.baseOffset = 0.7f;
-            agent.isStopped = false;
         }
     }
 

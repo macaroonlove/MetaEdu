@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 40
-  m_CharacterLimit: 3
+  m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -9418,8 +9418,13 @@ MonoBehaviour:
   goldenBall:
   - {fileID: 8300000, guid: 9902c97ebc83247428e88975f17d9fae, type: 3}
   - {fileID: 8300000, guid: b5b5207b5c167a44b8d047aaf65f052c, type: 3}
+  - {fileID: 8300000, guid: d28a6313eeba24054aa27b21baac4666, type: 3}
   battle:
   - {fileID: 8300000, guid: b91dd1f8b5aed80458391f5310e70a6e, type: 3}
+  - {fileID: 8300000, guid: 792c7696178c5bf44b35c8ce6f200805, type: 3}
+  - {fileID: 8300000, guid: 4061fb19148500246aff6c65aa2cb999, type: 3}
+  - {fileID: 8300000, guid: 9adbef80485759d4d918b74770fde1c1, type: 3}
+  - {fileID: 8300000, guid: 7b900d8866fd9664daed7b95a03058e7, type: 3}
   currentMusic: 0
 --- !u!4 &1725706079
 Transform:

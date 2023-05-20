@@ -24,10 +24,6 @@ public class PetFactory : AbsFactory
         {
             sungkyulPet = PhotonNetwork.Instantiate("Level_4", position, rotation);
         }
-        else if (Level == 5)
-        {
-            sungkyulPet = PhotonNetwork.Instantiate("Level_5", position, rotation);
-        }
 
         return sungkyulPet.GetComponent<SungkyulPet>();
     }
