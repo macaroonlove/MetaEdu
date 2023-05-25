@@ -1,6 +1,5 @@
 using Photon.Pun;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -35,7 +34,6 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
     private float _currTime;
     private int _currQuiz;
     private bool _start = false;
-    private bool _end = false;
 
     private int[] _finalSocre = new int[4];
     private int[] _rank = new int[4];
@@ -206,7 +204,22 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
-            RankingText[i].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i]; ;
+            if(_rank[i] == 1)
+            {
+                RankingText[0].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+            }
+            else if (_rank[i] == 2)
+            {
+                RankingText[1].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+            }
+            else if (_rank[i] == 3)
+            {
+                RankingText[2].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+            }
+            else if (_rank[i] == 4)
+            {
+                RankingText[3].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+            }
         }
     }
 

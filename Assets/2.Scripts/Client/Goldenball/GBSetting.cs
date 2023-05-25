@@ -17,7 +17,7 @@ public class GBSetting : MonoBehaviourPunCallbacks
     IEnumerator Start()
     {
         var wfs = new WaitForSeconds(2f);
-        while (!PhotonNetwork.CurrentRoom.PlayerCount.Equals(1))
+        while (!PhotonNetwork.CurrentRoom.PlayerCount.Equals(4))
         {
             currPlayer.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString();
             yield return wfs;
