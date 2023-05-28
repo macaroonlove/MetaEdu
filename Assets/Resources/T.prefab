@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 2238710636240363961}
   - component: {fileID: 8656216394863376797}
   - component: {fileID: 8777154975940686622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3100,7 +3100,7 @@ GameObject:
   - component: {fileID: 4898953710184315250}
   - component: {fileID: 5197778849271101810}
   - component: {fileID: 345005253084543158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4686,7 +4686,11 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Spine1'\n\tTransform 'RightForeArm'\n\tTransform
+    'RightShoulder'\n\tTransform 'RightArm'\n\tTransform 'RightHand'\n\tTransform
+    'Head'\n\tFrom animation clip 'UsePhone'\n\tFrom animation clip 'UsePhone'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

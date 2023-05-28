@@ -38,6 +38,7 @@ public class QuestionManager : MonoBehaviour
     #endregion
 
     public List<QuestionData> questionDatas = new List<QuestionData>();
+    public List<QuestionData> titleDatas = new List<QuestionData>();
     public int selectQuestion = 0;
 
     private Transform quizContent;
@@ -47,6 +48,7 @@ public class QuestionManager : MonoBehaviour
         GetUserData();
     }
 
+    #region 유저 타이틀 데이터
     void GetUserData()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
@@ -95,6 +97,49 @@ public class QuestionManager : MonoBehaviour
             quizSet.GetChild(1).GetComponent<TextMeshProUGUI>().text = questionDatas[i].title;
         }
     }
+    #endregion
+
+    #region 타이틀 데이터
+    public void GetTitleData()
+    {
+        PlayFabClientAPI.GetTitleData(new GetTitleDataRequest()
+        {
+        }, result => {
+            string data = result.Data["Question"];
+            if (data is not null)
+            {
+                titleDatas = PlayFabSimpleJson.DeserializeObject<List<QuestionData>>(data);
+            }
+            QuestionInit();
+        }, error => {
+            Debug.Log(error.GenerateErrorReport());
+        });
+    }
+
+    public void CallCloudScriptFunction(string functionName)
+    {
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = functionName,
+            FunctionParameter = new { questionJson = questionDatas[selectQuestion] },
+            GeneratePlayStreamEvent = true // PlayStream 이벤트 생성 여부
+        };
+
+        PlayFabClientAPI.ExecuteCloudScript(request, 
+        result => {
+            if (result.FunctionResult != null && result.FunctionResult is Dictionary<string, object> functionResult)
+            {
+                if (functionResult.TryGetValue("message", out var messageObj) && messageObj is string message)
+                {
+                    Debug.Log("Message: " + message);
+                    // 클라우드 스크립트에서 반환한 메시지를 출력하거나 원하는 방식으로 처리할 수 있습니다.
+                }
+            }
+        }, error => {
+            Debug.Log("실패");
+        });
+    }
+    #endregion
 }
 
 [System.Serializable]

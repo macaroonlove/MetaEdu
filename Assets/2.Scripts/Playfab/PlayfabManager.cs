@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using PlayFab.GroupsModels;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -146,5 +148,8 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.UpdateUserData(request, (result) => photonMgr.Connect(), (Error) => createError.text = "유저 저장에 실패했습니다.");
     }
     #endregion
+    
+
+
     #endregion
 }

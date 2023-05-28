@@ -13,6 +13,11 @@ public class QuestionSharing : MonoBehaviour
     public List<QuestionData> _sharedQuiz = new();
     public int _currQuiz = 0;
 
+    void Start()
+    {
+        QuestionManager.Inst.QuestionInit();
+    }
+
     #region 문제 공유 하기
     public void SharePanel()
     {
