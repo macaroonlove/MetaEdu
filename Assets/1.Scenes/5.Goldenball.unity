@@ -2981,7 +2981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1882596636}
         m_TargetAssemblyTypeName: GBSetting, Assembly-CSharp
         m_MethodName: BackLobby
         m_Mode: 1
