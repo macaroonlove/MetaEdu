@@ -5,7 +5,6 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-using System.Data;
 
 public class PlayfabManager : MonoBehaviour
 {
