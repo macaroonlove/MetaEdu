@@ -103,6 +103,7 @@ public class PlayfabManager : MonoBehaviour
         {
             var request = new GetUserDataRequest() { PlayFabId = Singleton.Inst.Playfab_ID };
             PlayFabClientAPI.GetUserData(request, GetDataSuccess, (error) => print("실패"));
+            Singleton.Inst.displayId = nickname;
         }
     }
 
@@ -137,6 +138,7 @@ public class PlayfabManager : MonoBehaviour
 
     void DisplayNameUpdateSuccess(UpdateUserTitleDisplayNameResult result)
     {
+        Singleton.Inst.displayId = result.DisplayName;
         var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Sex", _sex }, { "NickName", result.DisplayName }, { "Question", "문제모음" }, { "Ex", "0" }, { "Level", "1" } } };
         PlayFabClientAPI.UpdateUserData(request, NewCRTUpdateSuccess, (Error) => createError.text = "캐릭터를 생성에 실패했습니다.");
     }
