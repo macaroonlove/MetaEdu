@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: 5041ce6a32399424dac1faded0992a4a
+<<<<<<<< HEAD:Assets/5.Objects/Pet.meta
+guid: bb5e0ac9df00bf342a5ce6c5efb3b00e
 folderAsset: yes
 DefaultImporter:
+========
+guid: 46e5bc0efac750546a0ce50ebdc7da49
+NativeFormatImporter:
+>>>>>>>> MINIGAME:Assets/7.Animations/Petty/Phone_Window.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

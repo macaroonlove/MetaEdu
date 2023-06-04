@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/3.Images/Pet.meta
 guid: d7efe403879bb9040b0666a379639521
+========
+guid: ce525ab5f6b98324886b3e3092043eb1
+>>>>>>>> MINIGAME:Assets/3.Images/2.Campus/Notice_Board.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

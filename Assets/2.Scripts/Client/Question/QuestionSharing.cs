@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
-using PlayFab;
-using PlayFab.ClientModels;
 using TMPro;
 
 public class QuestionSharing : MonoBehaviour
@@ -13,8 +10,13 @@ public class QuestionSharing : MonoBehaviour
     public GameObject[] sharedQuiz;
     public TextMeshProUGUI[] sharedQuizText;
     private List<int> _playerNum = new List<int>();
-    public List<string> _sharedQuiz = new();
+    public List<QuestionData> _sharedQuiz = new();
     public int _currQuiz = 0;
+
+    void Start()
+    {
+        QuestionManager.Inst.QuestionInit();
+    }
 
     #region 문제 공유 하기
     public void SharePanel()
@@ -49,19 +51,19 @@ public class QuestionSharing : MonoBehaviour
     {
         for(int i = 0; i < _playerNum.Count; i++)
         {
-            PV.RPC(nameof(ReceiveQuiz), PhotonNetwork.PlayerListOthers[_playerNum[i]], Singleton.Inst.question[Singleton.Inst.currSelect]);
+            PV.RPC(nameof(ReceiveQuiz), PhotonNetwork.PlayerListOthers[_playerNum[i]], QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion]);
         }
         //_playerNum.Clear();
     }
     #endregion
     #region 문제 공유 받기
     [PunRPC]
-    private void ReceiveQuiz(string quiz, PhotonMessageInfo info)
+    private void ReceiveQuiz(QuestionData quiz, PhotonMessageInfo info)
     {
         _sharedQuiz.Add(quiz);
         for(int i = 0; i < _sharedQuiz.Count; i++)
         {
-            sharedQuizText[i].text = "<color=#00FFFF><size=\"17\">" + info.Sender.NickName + "</size></color>\n" + _sharedQuiz[i].Split("▤")[0];
+            sharedQuizText[i].text = "<color=#00FFFF><size=\"17\">" + info.Sender.NickName + "</size></color>\n" + _sharedQuiz[i].title;
             sharedQuiz[i].SetActive(true);
         }
     }
@@ -93,11 +95,20 @@ public class QuestionSharing : MonoBehaviour
         _sharedQuiz.Clear();
     }
 
-    public void SaveQuiz()
+    public async void SaveQuiz()
     {
-        Singleton.Inst.questions += "▦" + _sharedQuiz[_currQuiz];
-        var request = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "Question", Singleton.Inst.questions } } };
-        PlayFabClientAPI.UpdateUserData(request, (result) => { Singleton.Inst.QuestionInit(); _sharedQuiz.RemoveAt(_currQuiz); RenewalQuiz(); }, (Error) => { Debug.Log("공유받기에 실패하셨습니다."); });
+        QuestionManager.Inst.questionDatas.Add(_sharedQuiz[_currQuiz]);
+
+        if (await QuestionManager.Inst.SetUserData())
+        {
+            QuestionManager.Inst.QuestionInit();
+            _sharedQuiz.RemoveAt(_currQuiz);
+            RenewalQuiz();
+        }
+        else
+        {
+            Debug.Log("공유받기에 실패하셨습니다.");
+        }
     }
     #endregion
 }

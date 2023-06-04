@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1010062465702242645}
   - component: {fileID: 421889572048906581}
   - component: {fileID: 4774002497775249142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4196924662376806935}
   - component: {fileID: 3793523919611459914}
   - component: {fileID: 2508811827020159583}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1535,7 +1535,7 @@ GameObject:
   - component: {fileID: 5258082045850440067}
   - component: {fileID: 6454255063531769969}
   - component: {fileID: 3769227208764750190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3250,7 +3250,7 @@ GameObject:
   - component: {fileID: 3565420384331933161}
   - component: {fileID: 2571497156381567843}
   - component: {fileID: 8486961524249487414}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: NickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3531,7 +3531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3177862929246794988}
   - component: {fileID: 2937110818367509786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1st_Vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3825,7 +3825,7 @@ GameObject:
   - component: {fileID: 5974479493438632350}
   - component: {fileID: 3880393092125387194}
   - component: {fileID: 385597431106063759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4548,7 +4548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3640007355802584943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1059722491149269741}
   - component: {fileID: 7603363119367267017}
   - component: {fileID: 7698357962047473288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5947572962901886711}
   - component: {fileID: 6879446346828633420}
   - component: {fileID: 7506441584471622805}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2080,7 +2080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4186125805708506050}
   - component: {fileID: 3527508286301591862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1st_Vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2343,7 +2343,7 @@ GameObject:
   - component: {fileID: 3243728533855468565}
   - component: {fileID: 1027363870500874505}
   - component: {fileID: 3566987462662659651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2497,7 +2497,7 @@ GameObject:
   - component: {fileID: 5262191453444483217}
   - component: {fileID: 6262051130871531969}
   - component: {fileID: 6800821201481105427}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wolf3D_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3438,7 +3438,7 @@ GameObject:
   - component: {fileID: 4372836253888188445}
   - component: {fileID: 2851827370530084871}
   - component: {fileID: 197335477332221856}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: NickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3611,7 +3611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7663469568081925754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3777,7 +3777,7 @@ GameObject:
   - component: {fileID: 5933783855014175270}
   - component: {fileID: 6451306242565005862}
   - component: {fileID: 4460051141640232525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
