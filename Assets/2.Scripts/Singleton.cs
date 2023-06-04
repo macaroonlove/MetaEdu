@@ -11,6 +11,7 @@ public class Singleton : MonoBehaviour
     public string Agora_AppID;
     public string Photon_AppID;
     public string localUid;
+    public string displayId;
     [Header("Basic Setting")]
     public int showName;
     public float rotSpeed;

@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 7995974842261710250}
   - component: {fileID: 3402929081979601551}
   - component: {fileID: 2511141388509575501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 29570389205119453}
   - component: {fileID: 7918218444661130827}
   - component: {fileID: 5127612361356676967}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: NickName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2938,7 +2938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6769181667206482309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3947,7 +3947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3951229801050656815}
   - component: {fileID: 3097536923037200429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1st_Vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,7 +4704,7 @@ GameObject:
   - component: {fileID: 3741848485055392882}
   - component: {fileID: 1543354813423305417}
   - component: {fileID: 5077045340655960470}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

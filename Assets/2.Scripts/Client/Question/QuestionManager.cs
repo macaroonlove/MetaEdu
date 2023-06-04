@@ -46,6 +46,7 @@ public class QuestionManager : MonoBehaviour
     void Start()
     {
         GetUserData();
+        GetTitleData();
     }
 
     #region 유저 타이틀 데이터
@@ -100,8 +101,10 @@ public class QuestionManager : MonoBehaviour
     #endregion
 
     #region 타이틀 데이터
-    public void GetTitleData()
+    public async Task<bool> GetTitleData()
     {
+        var tcs = new TaskCompletionSource<bool>();
+
         PlayFabClientAPI.GetTitleData(new GetTitleDataRequest()
         {
         }, result => {
@@ -110,34 +113,76 @@ public class QuestionManager : MonoBehaviour
             {
                 titleDatas = PlayFabSimpleJson.DeserializeObject<List<QuestionData>>(data);
             }
-            QuestionInit();
+            tcs.SetResult(true);
         }, error => {
             Debug.Log(error.GenerateErrorReport());
+            tcs.SetResult(false);
         });
+
+        return await tcs.Task;
     }
 
-    public void CallCloudScriptFunction(string functionName)
+    public async Task<bool> AddQuestion(string title, string desc)
     {
+        var tcs = new TaskCompletionSource<bool>();
+
         var request = new ExecuteCloudScriptRequest
         {
-            FunctionName = functionName,
-            FunctionParameter = new { questionJson = questionDatas[selectQuestion] },
+            FunctionName = "AddTitleData",
+            FunctionParameter = new { questionTitle = title, questionAnswer = questionDatas[selectQuestion].answer, questionDesc = desc, questionDown = 0, questionOwner = Singleton.Inst.displayId, questionDownloader = "" },
             GeneratePlayStreamEvent = true // PlayStream 이벤트 생성 여부
         };
 
         PlayFabClientAPI.ExecuteCloudScript(request, 
         result => {
-            if (result.FunctionResult != null && result.FunctionResult is Dictionary<string, object> functionResult)
-            {
-                if (functionResult.TryGetValue("message", out var messageObj) && messageObj is string message)
-                {
-                    Debug.Log("Message: " + message);
-                    // 클라우드 스크립트에서 반환한 메시지를 출력하거나 원하는 방식으로 처리할 수 있습니다.
-                }
-            }
+            tcs.SetResult(true);
         }, error => {
-            Debug.Log("실패");
+            tcs.SetResult(false);
         });
+
+        return await tcs.Task;
+    }
+
+    public async Task<bool> DownloadPlus(int idx)
+    {
+        var tcs = new TaskCompletionSource<bool>();
+
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = "DownloadQuestion",
+            FunctionParameter = new { questionIndex = idx, questionDownloader = Singleton.Inst.displayId },
+            GeneratePlayStreamEvent = true // PlayStream 이벤트 생성 여부
+        };
+
+        PlayFabClientAPI.ExecuteCloudScript(request,
+        result => {
+            tcs.SetResult(true);
+        }, error => {
+            tcs.SetResult(false);
+        });
+
+        return await tcs.Task;
+    }
+
+    public async Task<bool> DeleteQuestion(int idx)
+    {
+        var tcs = new TaskCompletionSource<bool>();
+
+        var request = new ExecuteCloudScriptRequest
+        {
+            FunctionName = "DeleteTitleData",
+            FunctionParameter = new { questionIndex = idx },
+            GeneratePlayStreamEvent = true // PlayStream 이벤트 생성 여부
+        };
+
+        PlayFabClientAPI.ExecuteCloudScript(request,
+        result => {
+            tcs.SetResult(true);
+        }, error => {
+            tcs.SetResult(false);
+        });
+
+        return await tcs.Task;
     }
     #endregion
 }
@@ -147,6 +192,10 @@ public class QuestionData
 {
     public string title;
     public List<string> answer = new List<string>();
+    public string desc;
+    public int download;
+    public string owner;
+    public string downloader;
 }
 
 [System.Serializable]

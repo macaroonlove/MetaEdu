@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class QuestionGenerate : MonoBehaviour
@@ -29,6 +30,18 @@ public class QuestionGenerate : MonoBehaviour
 
     private bool _isCreate = true;
 
+    private PlayerInput _playerInput;
+
+    public void InputLimit(bool tf)
+    {
+        if(ReferenceEquals(_playerInput, null))
+        {
+            GameObject.FindGameObjectWithTag("Player").TryGetComponent(out _playerInput);
+        }
+        gameObject.SetActive(tf);
+        _playerInput.enabled = !tf;
+    }
+
     #region 문제 생성 & 수정
     public void CreateQuiz()
     {
@@ -40,7 +53,7 @@ public class QuestionGenerate : MonoBehaviour
         pnpButton[0].interactable = false;
         pnpButton[2].gameObject.SetActive(true);
         ResetQuiz();
-        gameObject.SetActive(true);
+        InputLimit(true);
         _isCreate = true;
     }
 
@@ -55,7 +68,7 @@ public class QuestionGenerate : MonoBehaviour
             data += QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion].answer[i];
 
         LoadQuiz(QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion]);
-        gameObject.SetActive(true);
+        InputLimit(true);
         _isCreate = false;
     }
 
@@ -220,6 +233,8 @@ public class QuestionGenerate : MonoBehaviour
         QuestionData data = new QuestionData();
         data.title = title.text;
         data.answer.AddRange(result);
+        data.download = 0;
+        data.owner = Singleton.Inst.displayId;
 
         if (!_isCreate) // update
         {
@@ -234,7 +249,7 @@ public class QuestionGenerate : MonoBehaviour
         if (await QuestionManager.Inst.SetUserData())
         {
             QuestionManager.Inst.QuestionInit();
-            gameObject.SetActive(false);
+            InputLimit(false);
         }
         else
         {
@@ -254,7 +269,7 @@ public class QuestionGenerate : MonoBehaviour
         if (await QuestionManager.Inst.SetUserData())
         {
             QuestionManager.Inst.QuestionInit();
-            gameObject.SetActive(false);
+            InputLimit(false);
         }
         else
         {
