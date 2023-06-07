@@ -1401,17 +1401,17 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: Finish
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Phone
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: GoldenballReact
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 1
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 2
 --- !u!114 &9127003820858856439
 MonoBehaviour:

@@ -37,27 +37,43 @@ public class Score : MonoBehaviourPunCallbacks
         }
     }
 
+    private void Update()
+    {
+        if (transform.position.x == 3f)
+        {
+            scoreText = player1Text;
+        }
+        else if (transform.position.x == 1.15f)
+        {
+            scoreText = player2Text;
+        }
+        else if (transform.position.x == -1.15f)
+        {
+            scoreText = player3Text;
+        }
+        else if (transform.position.x == -3f)
+        {
+            scoreText = player4Text;
+        }
+    }
+
     [PunRPC]
     public void SendAnswer(string answer)
     {
         if (transform.position.x == 3f)
         {
-            scoreText = player1Text;
             scoreText.text = answer;
         }
         else if (transform.position.x == 1.15f)
         {
-            scoreText = player2Text;
             scoreText.text = answer;
         }
         else if (transform.position.x == -1.15f)
-        {
-            scoreText = player3Text;
+        { 
             scoreText.text = answer;
         }
         else if (transform.position.x == -3f)
         {
-            scoreText = player4Text;
             scoreText.text = answer;
         }
     }
@@ -67,22 +83,18 @@ public class Score : MonoBehaviourPunCallbacks
     {
         if (transform.position.x == 3f)
         {
-            scoreText = player1Text;
             scoreText.text = score.ToString();
         }
         else if (transform.position.x == 1.15f)
         {
-            scoreText = player2Text;
             scoreText.text = score.ToString();
         }
         else if (transform.position.x == -1.15f)
         {
-            scoreText = player3Text;
             scoreText.text = score.ToString();
         }
         else if (transform.position.x == -3f)
         {
-            scoreText = player4Text;
             scoreText.text = score.ToString();
         }
     }

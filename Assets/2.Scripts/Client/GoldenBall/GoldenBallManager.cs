@@ -50,15 +50,11 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         InvokeRepeating("BeepSound", 0f, 1.0f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (countTime)
         {
-            if(PhotonNetwork.IsMasterClient)
-            {
-                _currTime -= Time.deltaTime;
-            }
-
+            _currTime -= Time.deltaTime;
             TimeText.text = ((int)_currTime).ToString();
 
             if (_currTime < 0)
@@ -91,7 +87,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             _QuizTitle = UnityEngine.Random.Range(0, Quizs.Count);
-            PV.RPC("SendAddQuestion", RpcTarget.All, _QuizTitle);
+            PV.RPC("SendAddQuestion", RpcTarget.AllViaServer, _QuizTitle);
         }
     }
 
@@ -116,7 +112,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         if (Answer.Count > 0)
         {
             score.PV.RPC("SendScore", RpcTarget.All, score.currScore);
-
+            
             if (PhotonNetwork.IsMasterClient)
             {
                 _currQuiz = UnityEngine.Random.Range(0, Question.Count);
@@ -131,16 +127,18 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         if (Answer.Count == 0)
         {
             score.PV.RPC("SendScore", RpcTarget.AllViaServer, score.currScore);
-            PV.RPC("Rank", RpcTarget.AllViaServer);
+            Invoke("Rank", 1f);
+
         }
     }
 
     [PunRPC]
     void SendCreateQuiz(int currQuiz)
     {
-        LED_QuestionText.text = Question[currQuiz];
+        _currQuiz = currQuiz;
+        LED_QuestionText.text = Question[_currQuiz];
         QuestionText.text = LED_QuestionText.text;
-        Question.Remove(Question[currQuiz]);
+        Question.Remove(Question[_currQuiz]);
     }
 
     void CheckAnswer()
@@ -150,7 +148,7 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         AnswerText.text = Regex.Replace(AnswerText.text, @"[^0-9a-zA-Z°¡-ÆR]", "");
         Answer[_currQuiz] = Regex.Replace(Answer[_currQuiz], @"[^0-9a-zA-Z°¡-ÆR]", "");
 
-        if (AnswerText.text.Replace(" ", "") == Answer[_currQuiz].Replace(" ", "") && AnswerText.text != "")
+        if (AnswerText.text.Contains(Answer[_currQuiz].Replace(" ","")) && AnswerText.text != "")
         {
             SoundManager.Instance.GoldenBallCorrect();
             score.currScore += 100;
@@ -177,7 +175,6 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         FullScreen.SetActive(false);
     }
 
-    [PunRPC]
     public void Rank()
     {
         TimeText.gameObject.SetActive(false);
@@ -206,15 +203,45 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if(_rank[i] == 1)
             {
-                RankingText[0].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                if(RankingText[0].text != "")
+                {
+                    if (RankingText[1].text != "")
+                    {
+                        if (RankingText[2].text != "")
+                        {
+                            RankingText[3].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                        }
+                        else
+                            RankingText[2].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                    }
+                    else
+                        RankingText[1].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                }
+                else
+                    RankingText[0].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];        
             }
             else if (_rank[i] == 2)
             {
-                RankingText[1].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                if (RankingText[1].text != "")
+                {
+                    if (RankingText[2].text != "")
+                    {
+                        RankingText[3].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                    }
+                    else
+                        RankingText[2].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                }
+                else
+                    RankingText[1].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
             }
             else if (_rank[i] == 3)
             {
-                RankingText[2].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                if (RankingText[2].text != "")
+                {
+                    RankingText[3].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
+                }
+                else
+                    RankingText[2].text = _rank[i].ToString() + ".  " + PhotonNetwork.PlayerList[i].NickName + "  :  " + _finalSocre[i];
             }
             else if (_rank[i] == 4)
             {
@@ -222,22 +249,21 @@ public class GoldenBallManager : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             // We own this player: send the others our data
-            stream.SendNext(_QuizTitle);
+            //stream.SendNext(_QuizTitle);
             stream.SendNext(_currTime);
-            stream.SendNext(_currQuiz);
+            //stream.SendNext(_currQuiz);
         }
         else
         {
             // Network player, receive data
-            this._QuizTitle = (int)stream.ReceiveNext();
+            //this._QuizTitle = (int)stream.ReceiveNext();
             this._currTime = (float)stream.ReceiveNext();
-            this._currQuiz = (int)stream.ReceiveNext();
+            //this._currQuiz = (int)stream.ReceiveNext();
         }
     }
 }
