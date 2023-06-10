@@ -112,7 +112,7 @@ public class RoomPuller : MonoBehaviourPunCallbacks
                     {
                         if (!_myList.Contains(roomList[i])) // 만약 룸리스트에 i번째 항목이 _myList에 없다면
                         {
-                            if (!roomList[i].Name.Split("#")[0].Equals("")) //!roomList[i].Name.Contains("#2.Campus") && 
+                            if (!roomList[i].Name.Split("#")[0].Equals(""))
                                 _myList.Add(roomList[i]); // _myList에 룸리스트의 i번째 항목 추가
                         }
                         else
