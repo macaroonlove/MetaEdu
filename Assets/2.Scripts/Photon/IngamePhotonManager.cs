@@ -37,7 +37,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         string _sn = SceneManager.GetActiveScene().name;
         if (_sn.Equals("2.Campus"))
         {
-            _startPosition = new Vector3(168f, 0.3f, 15f);
+            _startPosition = new Vector3(155f, 1.35f, 45f);
             _startRotation = Quaternion.Euler(0, -45.0f, 0f);
             roomName.transform.parent.gameObject.SetActive(false);
         }
