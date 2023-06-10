@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1010062465702242645}
   - component: {fileID: 421889572048906581}
   - component: {fileID: 4774002497775249142}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3825,7 +3825,7 @@ GameObject:
   - component: {fileID: 5974479493438632350}
   - component: {fileID: 3880393092125387194}
   - component: {fileID: 385597431106063759}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Wolf3D_Outfit_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

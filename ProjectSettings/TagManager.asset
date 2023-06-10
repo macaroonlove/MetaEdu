@@ -12,6 +12,7 @@ TagManager:
   - Bus
   - OtherPlayer
   - QuestWindow
+  - Pet
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Environment
   - Wall
   - Face
-  - 
+  - Body
   - 
   - 
   - 
