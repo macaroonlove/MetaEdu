@@ -64359,7 +64359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "''\uC758\\n\uBCC0\uACBD\uB0B4\uC6A9 \uC744 \uC800\uC7A5\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
+  m_text: "'\uC624\uB958'\uC758\\n\uBCC0\uACBD\uB0B4\uC6A9 \uC744 \uC800\uC7A5\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 485e1179f7fe4c941bf94cd163639932, type: 2}
   m_sharedMaterial: {fileID: 3723925667227010046, guid: 5d0274752de57d94f9849b3469b7925f,
@@ -64858,8 +64858,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuestionManager, Assembly-CSharp
+      - m_Target: {fileID: 1022015959}
+        m_TargetAssemblyTypeName: QuestionGenerate, Assembly-CSharp
         m_MethodName: PopUp
         m_Mode: 1
         m_Arguments:

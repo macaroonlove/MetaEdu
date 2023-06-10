@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1228,10 +1228,10 @@ RectTransform:
   m_Father: {fileID: 2109758259}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 1080, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &156069210
 MonoBehaviour:
@@ -1739,6 +1739,7 @@ MonoBehaviour:
   Agora_AppID: 5fe54abb1c3a441289da2693a5bb1b4e
   Photon_AppID: f87a17ce-657c-4343-ac72-d6d6a8329e88
   localUid: 
+  displayId: 
   showName: 0
   rotSpeed: 0
   controled: 0
@@ -9893,7 +9894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: edf157ab777f8ab4fa26bb6bc6edbaec, type: 3}
+  m_Texture: {fileID: 2800000, guid: ddde578f337a9924d8478fc541c7d7eb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
