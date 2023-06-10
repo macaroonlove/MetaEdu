@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5332813366262742494}
   - component: {fileID: 8298656409744863166}
   - component: {fileID: 1347769465965709301}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: SpeechBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4154143148549125467}
   - component: {fileID: 1047410185264722207}
   - component: {fileID: 1162243615944195931}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 1480982572750753691}
   - component: {fileID: 6416380943546668554}
   - component: {fileID: 6531666574214113420}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Level_2
   m_TagString: Pet
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655024573255016}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655024979567538}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655025526803405}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655025754887304}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655025822241480}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099655025931116242}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7099655025966399805}
   - component: {fileID: 7099655025966399806}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Slime_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 6986601559991908446}
   - component: {fileID: 4103930686365191010}
   - component: {fileID: 8973744684386972153}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,6 +826,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sprout
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: be4fadb40c54934419fd624cd0021acf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4fadb40c54934419fd624cd0021acf, type: 3}

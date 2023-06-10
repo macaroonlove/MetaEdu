@@ -52,7 +52,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else
@@ -85,7 +85,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else
@@ -129,7 +129,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else
