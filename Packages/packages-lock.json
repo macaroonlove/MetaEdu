@@ -12,9 +12,9 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.0.2"
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "5924018f2cc371818f146ea36bddcbdcfeca5af6"
+      "hash": "8d6d57d5aeddd59c665515a11584eedac7b0953c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -108,7 +108,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "3.0.2",
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
