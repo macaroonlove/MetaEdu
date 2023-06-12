@@ -221,7 +221,7 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     public void MonsterDieEvent()
     {
-        if(OnMonsterDieEvent != null)
+        if(OnMonsterDieEvent != null && PV.IsMine)
         {
             OnMonsterDieEvent.Invoke();
         }

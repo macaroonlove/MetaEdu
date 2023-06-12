@@ -7,8 +7,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
 {
 
     [Header("Quiz MGR")]
-    public string questionList;
-    public List<string> Question;
+    public QuestionData questionList;
     public List<TextMeshProUGUI> choiceAnswers;
     public List<string> choiceAnswerList = new List<string>();
     public string choiceAnswer;
@@ -55,7 +54,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
 
         InvokeRepeating("CreateMonster", 2.0f, 3.0f);
 
-        if (!Singleton.Inst.question.Count.Equals(0)) InitQuiz();
+        if (!QuestionManager.Inst.questionDatas.Count.Equals(0)) InitQuiz();
         else NoQuiz();
     }
 
@@ -63,20 +62,21 @@ public class QuizManager : MonoBehaviourPunCallbacks
     {
         int num1 = Random.Range(0, 19);
         int num2 = Random.Range(0, 19);
-        questionList = "문제가 없습니다. 문제 생성해 주세요.▤0▥" + num1 + "x" + num2 + " = ?▥" + num1 * num2 + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥▥▥▥▥";
-        AddQuestion();
+        questionList = new QuestionData();
+        for (int i = 0; i < 10; i++)
+        {
+            questionList.answer.Add("0▥" + num1 + "x" + num2 + " = ?▥" + num1 * num2 + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥" + Random.Range(0, 361) + "▥▥▥▥▥");
+        }
     }
 
     public void InitQuiz()
     {
-        questionList = Singleton.Inst.question[Singleton.Inst.currSelect];
-        
-        AddQuestion();
+        questionList = QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion];
     }
 
     public void CreateMonster()
     {
-        PV.RPC("SendCreateMonster", RpcTarget.AllBuffered);   
+        PV.RPC("SendCreateMonster", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
@@ -100,26 +100,18 @@ public class QuizManager : MonoBehaviourPunCallbacks
         return null;
     }
 
-    public void AddQuestion()
-    {
-        for (int i = 1; i < questionList.Split("▤").Length; i++)
-        {
-            Question.Add(questionList.Split("▤")[i]);
-        }
-    }
-
     public void CreateQuiz()
     {
-        currQuiz = UnityEngine.Random.Range(0, Question.Count);
-        if (Question[currQuiz].Split("▥")[0] == "0")
+        currQuiz = Random.Range(0, questionList.answer.Count);
+        if (questionList.answer[currQuiz].Split("▥")[0] == "0")
         {
-            _questionText.text = Question[currQuiz].Split("▥")[1];
-            for (int i = 2; i < Question[currQuiz].Split("▥").Length; i++)
+            _questionText.text = questionList.answer[currQuiz].Split("▥")[1];
+            for (int i = 2; i < questionList.answer[currQuiz].Split("▥").Length; i++)
             {
-                choiceAnswerList.Add(Question[currQuiz].Split("▥")[i]);
+                choiceAnswerList.Add(questionList.answer[currQuiz].Split("▥")[i]);
             }
 
-            choiceAnswer = Question[currQuiz].Split("▥")[2];
+            choiceAnswer = questionList.answer[currQuiz].Split("▥")[2];
             choiceAnswerList.RemoveAll(s => s == "");
             Shuffle(choiceAnswerList);
 
@@ -129,15 +121,15 @@ public class QuizManager : MonoBehaviourPunCallbacks
             }
 
         }
-        else if (Question[currQuiz].Split("▥")[0] == "1")
+        else if (questionList.answer[currQuiz].Split("▥")[0] == "1")
         {
-            _questionText.text = Question[currQuiz].Split("▥")[1];
-            shortAnswer = Question[currQuiz].Split("▥")[2];
+            _questionText.text = questionList.answer[currQuiz].Split("▥")[1];
+            shortAnswer = questionList.answer[currQuiz].Split("▥")[2];
         }
-        else if (Question[currQuiz].Split("▥")[0] == "2")
+        else if (questionList.answer[currQuiz].Split("▥")[0] == "2")
         {
-            _questionText.text = Question[currQuiz].Split("▥")[1];
-            descriptiveAnswer = Question[currQuiz].Split("▥")[2];
+            _questionText.text = questionList.answer[currQuiz].Split("▥")[1];
+            descriptiveAnswer = questionList.answer[currQuiz].Split("▥")[2];
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using Newtonsoft.Json;
 
 public class QuestionSharing : MonoBehaviour
 {
@@ -49,17 +50,19 @@ public class QuestionSharing : MonoBehaviour
 
     public void ShareQuiz()
     {
+        var json = JsonConvert.SerializeObject(QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion]);
         for(int i = 0; i < _playerNum.Count; i++)
         {
-            PV.RPC(nameof(ReceiveQuiz), PhotonNetwork.PlayerListOthers[_playerNum[i]], QuestionManager.Inst.questionDatas[QuestionManager.Inst.selectQuestion]);
+            PV.RPC(nameof(ReceiveQuiz), PhotonNetwork.PlayerListOthers[_playerNum[i]], json);
         }
         //_playerNum.Clear();
     }
     #endregion
     #region 문제 공유 받기
     [PunRPC]
-    private void ReceiveQuiz(QuestionData quiz, PhotonMessageInfo info)
+    private void ReceiveQuiz(string jsonData, PhotonMessageInfo info)
     {
+        QuestionData quiz = JsonConvert.DeserializeObject<QuestionData>(jsonData);
         _sharedQuiz.Add(quiz);
         for(int i = 0; i < _sharedQuiz.Count; i++)
         {

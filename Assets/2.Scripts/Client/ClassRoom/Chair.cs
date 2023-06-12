@@ -8,6 +8,7 @@ public class Chair : MonoBehaviour
     public int tableGroup;
     public TextMeshProUGUI stateText;
     public GameObject menu;
+    public GameObject cvs;
 
     private bool _chairRot = false;
     private MeshRenderer _mr;
@@ -36,6 +37,7 @@ public class Chair : MonoBehaviour
                 _player.TryGetComponent(out _playerInput);
             }
             stateText.text = "상호작용 키를 눌러 의자에 앉을 수 있습니다.";
+            cvs.SetActive(true);
             _mr.enabled = true;
         }
     }
@@ -56,6 +58,7 @@ public class Chair : MonoBehaviour
                     _isSit = true;
                     menu.SetActive(true);
                     stateText.text = "상호작용 키를 눌러 일어날 수 있습니다.";
+                    cvs.SetActive(false);
                 }
                 else
                 {
@@ -63,6 +66,7 @@ public class Chair : MonoBehaviour
                     _isSit = false;
                     menu.SetActive(false);
                     stateText.text = "상호작용 키를 눌러 의자에 앉을 수 있습니다.";
+                    cvs.SetActive(true);
                 }
                 _playerController.Interaction();
                 _playerInput.interact = false;
@@ -75,6 +79,7 @@ public class Chair : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             stateText.text = "";
+            cvs.SetActive(false);
             _mr.enabled = false;
         }
     }

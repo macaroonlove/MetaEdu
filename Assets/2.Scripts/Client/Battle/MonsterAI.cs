@@ -49,7 +49,7 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     }
     IEnumerator CheckState()
     {
-        var wfs = new WaitForSeconds(1f);
+        var wfs = new WaitForSeconds(0.5f);
         if(PhotonNetwork.IsMasterClient)
         {
             while (state != State.DIE)

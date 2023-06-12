@@ -18,7 +18,7 @@ public class QuestMonsterAI : MonoBehaviour
         PlayerBattle.OnMonsterDieEvent += this.OnMonsterDie;
         quizManager.CreateQuiz();
         quizManager.QuestionPanel.SetActive(true);
-        if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "0")
+        if (quizManager.questionList.answer[quizManager.currQuiz].Split("¢È")[0] == "0")
         {
             quizManager.AnswerPanel.SetActive(true);
             quizManager.AnswerPanel.transform.GetChild(0).gameObject.SetActive(true);
@@ -41,12 +41,12 @@ public class QuestMonsterAI : MonoBehaviour
             }
             quizManager.choiceAnswerList.Clear();
         }
-        else if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "1")
+        else if (quizManager.questionList.answer[quizManager.currQuiz].Split("¢È")[0] == "1")
         {
             quizManager.AnswerPanel.SetActive(true);
             quizManager.AnswerPanel.transform.GetChild(1).gameObject.SetActive(true);
         }
-        else if (quizManager.Question[quizManager.currQuiz].Split("¢È")[0] == "2")
+        else if (quizManager.questionList.answer[quizManager.currQuiz].Split("¢È")[0] == "2")
         {
             quizManager.AnswerPanel.SetActive(true);
             quizManager.AnswerPanel.transform.GetChild(2).gameObject.SetActive(true);

@@ -230,7 +230,7 @@ public class UI_PublicManager : MonoBehaviour
             QuestionManager.Inst.selectQuestion = int.Parse(system.currentSelectedGameObject.name);
             if(_battleScene)
             {
-                _quizManager.Question.Clear();
+                _quizManager.questionList.answer.Clear();
                 _quizManager.InitQuiz();
             }
         }

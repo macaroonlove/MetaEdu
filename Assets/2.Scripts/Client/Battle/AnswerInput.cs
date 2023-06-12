@@ -101,15 +101,15 @@ public class AnswerInput : MonoBehaviour
 
     public void DescriptiveAnswer()
     {
-        for (int i = 1; i < quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
+        for (int i = 1; i < quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
         {
-            if (inputAnswer.text.Contains(quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#")[i].Replace(" ","")))
+            if (inputAnswer.text.Contains(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[2].Split("#")[i].Replace(" ","")))
             {
                 _correctDescriptiveAnswer++;
             }
         }
 
-        if (_correctDescriptiveAnswer >= int.Parse(quizManager.Question[quizManager.currQuiz].Split("▥")[3]))
+        if (_correctDescriptiveAnswer >= int.Parse(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[3]))
         {
             inputAnswer.text = "";
             PannelDisable(2);

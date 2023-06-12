@@ -14,9 +14,11 @@ namespace OpenAI
         private int ans = 2;
         private string ansTxt = "";
         [SerializeField] private Transform _npc;
+        [SerializeField] private GameObject _cvs;
         [SerializeField] private GameObject _talkPanel;
         [SerializeField] private TextMeshProUGUI _stateText;
         [SerializeField] private TextMeshProUGUI _talk;
+        [SerializeField] private GameObject _nextInteractive;
         [SerializeField] private GameObject _choicesObj;
         [SerializeField] private TextMeshProUGUI[] _choices;
         [SerializeField] private GameObject[] _choiceObj;
@@ -89,6 +91,7 @@ namespace OpenAI
                     other.TryGetComponent(out playerInput);
                 }
 
+                _cvs.SetActive(true);
                 _stateText.text = "상호작용 키를 눌러 npc와 대화할 수 있습니다.";
             }
         }
@@ -100,6 +103,7 @@ namespace OpenAI
                 if (inputPress.interact && state.Equals(State.IDLE))
                 {
                     playerInput.enabled = false;
+                    _cvs.SetActive(false);
                     _stateText.text = "";
                     state = State.WHAT;
                     TalkingToNPC();
@@ -165,6 +169,7 @@ namespace OpenAI
                 {
                     _talkPanel.SetActive(false);
                     playerInput.enabled = true;
+                    _cvs.SetActive(true);
                     _stateText.text = "상호작용 키를 눌러 npc와 대화할 수 있습니다.";
                     _npc.rotation = Quaternion.Euler(Vector3.zero);
                     state = State.IDLE;
@@ -173,6 +178,8 @@ namespace OpenAI
             else if (state.Equals(State.QUIZ))
             {
                 _choicesObj.SetActive(false);
+                _nextInteractive.SetActive(true);
+
                 if (ans.Equals(slt - 1))
                 {
                     _talk.text = "축하해! 정답이야.";
@@ -194,6 +201,7 @@ namespace OpenAI
                 yield return null;
             }
 
+            _nextInteractive.SetActive(false);
             state = State.WHAT;
             TalkingToNPC();
         }
@@ -203,6 +211,7 @@ namespace OpenAI
             if (other.CompareTag("Player"))
             {
                 playerInput.enabled = true;
+                _cvs.SetActive(false);
                 _stateText.text = "";
             }
         }

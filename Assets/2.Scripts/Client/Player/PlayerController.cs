@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private GameObject mainCamera;
     private CinemachineVirtualCamera vcamOne;
     private CinemachineVirtualCamera vcamThree;
+    private CinemachineVirtualCamera[] vcamMode = new CinemachineVirtualCamera[3];
 
     private const float threshold = 0.01f;
     private bool hasAnim;
@@ -77,6 +78,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private RaycastHit _hit;
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
+    private int _eyeNum = 2;
+    private bool _isCls = false;
 
     [Header("페티")]
     private GameObject _chatting;
@@ -147,6 +150,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 _battlePanel = GameObject.Find("BattleScene").transform.GetChild(0).gameObject;
                 _isBattle = true;
+            }
+            else if (_sn.Contains("ClassRoom"))
+            {
+                _isCls = true;
+                Transform cm = GameObject.Find("CameraMode").transform;
+                for (int i = 0; i < 3; i++)
+                {
+                    cm.GetChild(i).TryGetComponent(out vcamMode[i]);
+                }
             }
         }
     }
@@ -330,18 +342,54 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (grammaticalPersonState)
         {
-            if (inputPress.eye)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                _eyeNum = 1;
                 vcamThree.Priority = 10;
                 vcamOne.Priority = 11;
                 Camera.main.cullingMask = ~(1 << LayerMask.NameToLayer("Face"));
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                _eyeNum = 2;
                 vcamThree.Priority = 11;
                 vcamOne.Priority = 10;
                 Camera.main.cullingMask = -1;
             }
+            if (_isCls)
+            {
+                if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    vcamMode[0].Priority = 1;
+                    vcamMode[1].Priority = 1;
+                    vcamMode[2].Priority = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    _eyeNum = 3;
+                    vcamMode[0].Priority = 20;
+                    vcamMode[1].Priority = 1;
+                    vcamMode[2].Priority = 1;
+                    Camera.main.cullingMask = -1;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    _eyeNum = 4;
+                    vcamMode[0].Priority = 1;
+                    vcamMode[1].Priority = 20;
+                    vcamMode[2].Priority = 1;
+                    Camera.main.cullingMask = -1;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    _eyeNum = 5;
+                    vcamMode[0].Priority = 1;
+                    vcamMode[1].Priority = 1;
+                    vcamMode[2].Priority = 20;
+                    Camera.main.cullingMask = -1;
+                }
+            }
+            
         }
     }
 
@@ -405,7 +453,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         // 입력방향 정규화
         Vector3 inputDirection = new Vector3(inputPress.move.x, 0.0f, inputPress.move.y).normalized;
 
-        if (inputPress.eye)
+        if (_eyeNum.Equals(1))
         {
             if (!inputPress.move.Equals(Vector2.zero))
             {
@@ -445,7 +493,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-            if (!inputPress.eye)
+            if (!_eyeNum.Equals(1))
                 _cinemachineTargetYaw += inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
             else
                 _rotationVelocity = inputPress.look.x * rotationSpeed * deltaTimeMultiplier;
@@ -454,14 +502,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _cinemachineTargetPitch += inputPress.look.y * rotationSpeed * deltaTimeMultiplier;
         }
 
-        if (!inputPress.eye)
+        if (!_eyeNum.Equals(1))
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topclamp);
 
         if (inputPress.look.Equals(Vector2.zero))
             _rotationVelocity = 0.0f;
 
-        if (!inputPress.eye)
+        if (!_eyeNum.Equals(1))
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + cameraAngleOverride, _cinemachineTargetYaw, 0.0f);
         else
         {

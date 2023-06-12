@@ -3428,7 +3428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9369601e9eedf22459e7bd4363349fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eye: 0
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jump: 0
@@ -4225,6 +4224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce42f3bd58258d0439850b9328e8964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNick: 1
 --- !u!1 &6879212788179570177
 GameObject:
   m_ObjectHideFlags: 0
