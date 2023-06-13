@@ -16,6 +16,7 @@ public class AnswerInput : MonoBehaviour
     private int _correctDescriptiveAnswer;
     private Animator QuestAnim;
     private IngamePhotonManager _photonManager;
+    private int _num;
     private void OnEnable()
     {
         wrong = 0;
@@ -109,7 +110,9 @@ public class AnswerInput : MonoBehaviour
             }
         }
 
-        if (_correctDescriptiveAnswer >= int.Parse(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[3]))
+        int.TryParse(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[3], out _num);
+
+        if (_correctDescriptiveAnswer >= _num)
         {
             inputAnswer.text = "";
             PannelDisable(2);

@@ -59,6 +59,7 @@ public class QuestMonsterAI : MonoBehaviour
         battle_vcam.Priority = 5;
         _playerController.grammaticalPersonState = true;
         GetComponentInParent<PlayerBattle>().Renderer();
+        Camera.main.cullingMask = -1;
     }
     private void Awake()
     { 
