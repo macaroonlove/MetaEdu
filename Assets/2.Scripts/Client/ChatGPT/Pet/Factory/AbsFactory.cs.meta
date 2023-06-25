@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/2.Scripts/Client/Pet/Factory/AbsFactory.cs.meta
+guid: b6fb459ea2406a64ebe15abe8d474077
+========
+guid: 6d0fa27a694aceb4fb58c8d1f016eb80
+>>>>>>>> MINIGAME:Assets/2.Scripts/Client/Question/QuestionGenerate.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
