@@ -35,7 +35,7 @@ public class HDRcapture : MonoBehaviour
         // 텍스쳐의 값을 jpg 형태로 변경
         byte[] bytes = OutTexture.EncodeToJPG();
         // 저장 위치
-        string path = Application.dataPath + "/Test.jpg";
+        string path = Application.dataPath + "/Campus.jpg";
         // 파일 쓰기
         System.IO.File.WriteAllBytes(path, bytes);
     }

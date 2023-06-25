@@ -1218,7 +1218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9369601e9eedf22459e7bd4363349fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eye: 0
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jump: 0
@@ -1701,7 +1700,7 @@ GameObject:
   - component: {fileID: 2649634512225023694}
   - component: {fileID: 3394527395758225102}
   - component: {fileID: 2865608170235879655}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Wolf3D_Outfit_Footwear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2525,6 +2524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce42f3bd58258d0439850b9328e8964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNick: 1
 --- !u!1 &4390381448894856940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,7 +4708,7 @@ GameObject:
   - component: {fileID: 8658328111263870469}
   - component: {fileID: 2240820157912577569}
   - component: {fileID: 5866584242606724858}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Wolf3D_Outfit_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

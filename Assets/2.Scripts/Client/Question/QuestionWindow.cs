@@ -189,7 +189,7 @@ public class QuestionWindow : MonoBehaviour
                     screenSaver.SetActive(false);
                     _aggroUI.SetActive(false);
                     _playerController.enabled = false;
-                    _mainCamera.cullingMask = _mainCamera.cullingMask & ~(1 << 7) & ~(1 << 8) & ~(1 << 12);
+                    _mainCamera.cullingMask = _mainCamera.cullingMask & ~(1 << 7) & ~(1 << 8) & ~(1 << 12) & ~(1 << 13) & ~(1 << 14);
                     _questCam.Priority = 30;
                     _isWatch = true;
                     _phoneAnim.SetBool("Phone", false);

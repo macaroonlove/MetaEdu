@@ -272,6 +272,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 .WithControlsExcluding("<Mouse>/middleButton")
                 .WithControlsExcluding("<Mouse>/press")
                 .WithControlsExcluding("<Mouse>/scroll")
+                .WithControlsExcluding("<Keyboard>/1")
+                .WithControlsExcluding("<Keyboard>/2")
+                .WithControlsExcluding("<Keyboard>/3")
+                .WithControlsExcluding("<Keyboard>/4")
+                .WithControlsExcluding("<Keyboard>/5")
+                .WithControlsExcluding("<Keyboard>/6")
+                .WithControlsExcluding("<Keyboard>/7")
+                .WithControlsExcluding("<Keyboard>/8")
+                .WithControlsExcluding("<Keyboard>/9")
+                .WithControlsExcluding("<Keyboard>/0")
                 .WithCancelingThrough("<Keyboard>/escape")
                 .OnCancel(
                     operation =>

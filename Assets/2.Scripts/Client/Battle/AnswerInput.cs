@@ -16,6 +16,7 @@ public class AnswerInput : MonoBehaviour
     private int _correctDescriptiveAnswer;
     private Animator QuestAnim;
     private IngamePhotonManager _photonManager;
+    private int _num;
     private void OnEnable()
     {
         wrong = 0;
@@ -52,7 +53,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else
@@ -85,7 +86,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else
@@ -101,15 +102,17 @@ public class AnswerInput : MonoBehaviour
 
     public void DescriptiveAnswer()
     {
-        for (int i = 1; i < quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
+        for (int i = 1; i < quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[2].Split("#").Length; i++)
         {
-            if (inputAnswer.text.Contains(quizManager.Question[quizManager.currQuiz].Split("▥")[2].Split("#")[i].Replace(" ","")))
+            if (inputAnswer.text.Contains(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[2].Split("#")[i].Replace(" ","")))
             {
                 _correctDescriptiveAnswer++;
             }
         }
 
-        if (_correctDescriptiveAnswer >= int.Parse(quizManager.Question[quizManager.currQuiz].Split("▥")[3]))
+        int.TryParse(quizManager.questionList.answer[quizManager.currQuiz].Split("▥")[3], out _num);
+
+        if (_correctDescriptiveAnswer >= _num)
         {
             inputAnswer.text = "";
             PannelDisable(2);
@@ -129,7 +132,7 @@ public class AnswerInput : MonoBehaviour
                 QuestAnim.SetTrigger("isIDLE");
                 playerBattle.anim.SetTrigger(playerBattle.animReact);
                 Invoke("DelayAttackFailSound", 2.0f);
-                Invoke("UIanim", 2.8f);
+                Invoke("UIanim", 2.9f);
                 wrong++;
             }
             else

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161877799810867857}
   - component: {fileID: 5645176079346883225}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Slime_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8360433004764478547}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6629819297798592157}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 2338264047064660172}
   - component: {fileID: 245924878607063434}
   - component: {fileID: 9183458281831200988}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 6944079749070715362}
   - component: {fileID: 4297530198542071120}
   - component: {fileID: 3264065902968323591}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 2883687177654614960}
   - component: {fileID: 1006923580054729619}
   - component: {fileID: 5654951856034738308}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: SpeechBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce42f3bd58258d0439850b9328e8964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNick: 0
 --- !u!1 &4851737210385576660
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8388638392806753317}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +528,7 @@ GameObject:
   - component: {fileID: 1848442943507475499}
   - component: {fileID: -1755091200609199398}
   - component: {fileID: 3646654721332616028}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Level_1
   m_TagString: Pet
   m_Icon: {fileID: 0}
@@ -668,7 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3690983180217553933}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8879559883992447450}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bone.003_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7021536270432622301}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}

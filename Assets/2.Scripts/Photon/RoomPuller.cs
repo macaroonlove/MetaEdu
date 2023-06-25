@@ -95,7 +95,7 @@ public class RoomPuller : MonoBehaviourPunCallbacks
             joinRoomButton[i].interactable = (_multiple + i < _myList.Count) ? true : false;
             joinRoomButton[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = (_multiple + i < _myList.Count) ? _myList[_multiple + i].PlayerCount + "/" + _myList[_multiple + i].MaxPlayers : "";
             joinRoomButton[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (_multiple + i < _myList.Count) ? _myList[_multiple + i].Name.Split("#")[0] : "";
-            joinRoomButton[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (_multiple + i < _myList.Count) ? _myList[_multiple + i].Name.Split("#")[1] : "";
+            joinRoomButton[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (_multiple + i < _myList.Count) ? _myList[_multiple + i].Name.Split("#")[1].Equals("3_1.ClassRoom") ? "집중형 강의실" : "토론형 강의실" : "";
         }
     }
 

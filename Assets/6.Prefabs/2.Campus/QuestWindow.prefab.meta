@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/6.Prefabs/2.Campus/QuestWindow.prefab.meta
 guid: a05a22a86f2c9e84683ac1e8209921d1
 PrefabImporter:
+========
+guid: 4da02f450ec686441a077b8d28e32655
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> HMap:Assets/15.Decal.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

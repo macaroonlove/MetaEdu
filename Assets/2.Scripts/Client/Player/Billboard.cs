@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
+    public bool isNick;
     Transform cam;
     GameObject nickText;
     void Start()
@@ -14,11 +15,11 @@ public class Billboard : MonoBehaviour
     {
         try
         {
-            if (Singleton.Inst.showName.Equals(1) && nickText.activeSelf)
+            if (Singleton.Inst.showName.Equals(1) && nickText.activeSelf && isNick)
             {
                 nickText.SetActive(false);
             }
-            else if (Singleton.Inst.showName.Equals(0) && !nickText.activeSelf)
+            else if (Singleton.Inst.showName.Equals(0) && !nickText.activeSelf && isNick)
             {
                 nickText.SetActive(true);
             }

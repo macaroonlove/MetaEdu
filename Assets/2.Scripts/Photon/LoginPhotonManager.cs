@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 
 public class LoginPhotonManager : MonoBehaviourPunCallbacks

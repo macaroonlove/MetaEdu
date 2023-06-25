@@ -68,7 +68,7 @@ public static class UtilClass
         while (n > 1)
         {
             n--;
-            int k = Random.Range(0, n + 1);
+            int k = UnityEngine.Random.Range(0, n + 1);
             T temp = list[k];
             list[k] = list[n];
             list[n] = temp;

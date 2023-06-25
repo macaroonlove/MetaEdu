@@ -5,6 +5,10 @@ using PlayFab;
 using PlayFab.Json;
 using PlayFab.ClientModels;
 using System.Threading.Tasks;
+using System;
+using System.IO;
+using Photon.Pun;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class QuestionManager : MonoBehaviour
 {

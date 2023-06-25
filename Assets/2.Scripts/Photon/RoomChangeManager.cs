@@ -44,6 +44,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
     private TextMeshProUGUI loadingText;
     public Image loadingBar;
     
+    public int lastRoom = 0;
     private int _type = 0;
 
     void Start()
@@ -62,13 +63,15 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
         Singleton.Inst.isPatty = false;
 
-        StartCoroutine(LoadRoom(roomName, true, maxPlayer, type));
+        StartCoroutine(LoadRoom(roomName, true, maxPlayer, type, _type));
     }
 
-    public void RoomChange(string roomName) => StartCoroutine(LoadRoom(roomName, false, 20, 0));
+    public void RoomChange(string roomName) => StartCoroutine(LoadRoom(roomName, false, 20, 0, _type));
 
-    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type) // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
+    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type, int lastroom) // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
     {
+        lastRoom = lastroom;
+
         transform.GetChild(0).gameObject.SetActive(true);
         loadingImage.sprite = type.Equals(0) ? loadingImages[0] : type.Equals(2) ? loadingImages[1] : type.Equals(3) ? loadingImages[2] : roomName.Split("#")[1].Equals("3_1.ClassRoom") ? loadingImages[3] : loadingImages[4];
         loadingText.text = loadingTexts[Random.Range(0, loadingTexts.Length)];
@@ -79,6 +82,7 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
             {                
                 if (type.Equals(1)) // ClassRoom
                 {
+                    _type = type;
                     PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)maxPlayer }, null);
                 }
                 else // Others

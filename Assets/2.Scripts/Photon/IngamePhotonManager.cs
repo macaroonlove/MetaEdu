@@ -24,6 +24,8 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     public TextMeshProUGUI playerNum;
     public TextMeshProUGUI[] attendance;
 
+    public GameObject controlAdvicePanel;
+
     [Header("Æê")]
     public Pet MyPet;
     public int DateEx;
@@ -35,8 +37,29 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         string _sn = SceneManager.GetActiveScene().name;
         if (_sn.Equals("2.Campus"))
         {
-            _startPosition = new Vector3(-25f, 0.3f, 25f);
-            _startRotation = Quaternion.Euler(0, -45.0f, 0f);
+            int rm = RoomChangeManager.Instance.lastRoom;
+            if (rm.Equals(0))
+            {
+                _startPosition = new Vector3(155f, 1.35f, 45f);
+                _startRotation = Quaternion.Euler(0, -22.0f, 0f);
+                controlAdvicePanel.SetActive(true);
+            }
+            else if (rm.Equals(1))
+            {
+                _startPosition = new Vector3(75f, 4.12f, 98f);
+                _startRotation = Quaternion.Euler(0, 0.0f, 0f);
+            }
+            else if (rm.Equals(2))
+            {
+                _startPosition = new Vector3(85f, 4.2f, 108f);
+                _startRotation = Quaternion.Euler(0, 180.0f, 0f);
+            }
+            else if (rm.Equals(3))
+            {
+                _startPosition = new Vector3(170f, 2f, 70f);
+                _startRotation = Quaternion.Euler(0, -90.0f, 0f);
+            }
+
             roomName.transform.parent.gameObject.SetActive(false);
         }
         else if (_sn.Equals("3_1.ClassRoom"))
@@ -85,6 +108,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
         {
             Singleton.Inst.isPatty = false;
             PhotonNetwork.Disconnect();
+            RoomChangeManager.Instance.lastRoom = 0;
         }
         else
         {
