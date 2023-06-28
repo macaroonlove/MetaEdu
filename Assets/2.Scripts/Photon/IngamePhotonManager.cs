@@ -25,6 +25,7 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
     public TextMeshProUGUI[] attendance;
 
     public GameObject controlAdvicePanel;
+    public GameObject map, info;
 
     [Header("Æê")]
     public Pet MyPet;
@@ -59,6 +60,8 @@ public class IngamePhotonManager : MonoBehaviourPunCallbacks
                 _startPosition = new Vector3(170f, 2f, 70f);
                 _startRotation = Quaternion.Euler(0, -90.0f, 0f);
             }
+            map.SetActive(true);
+            info.SetActive(false);
 
             roomName.transform.parent.gameObject.SetActive(false);
         }
