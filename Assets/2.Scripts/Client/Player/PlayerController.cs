@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private GameObject mainCamera;
     private CinemachineVirtualCamera vcamOne;
     private CinemachineVirtualCamera vcamThree;
+    private CinemachineVirtualCamera vcamPotal;
     private CinemachineVirtualCamera[] vcamMode = new CinemachineVirtualCamera[3];
 
     private const float threshold = 0.01f;
@@ -159,6 +160,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 {
                     cm.GetChild(i).TryGetComponent(out vcamMode[i]);
                 }
+            }
+            else if (_sn.Equals("2.Campus"))
+            {
+                GameObject.Find("PotalCamera").TryGetComponent(out vcamPotal);
             }
         }
     }
@@ -618,6 +623,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Potal") && PV.IsMine)
         {
+            vcamPotal.Priority = 999;
             _roomListPanel.SetActive(true);
         }
         else if (other.CompareTag("Fog") && PV.IsMine)
@@ -634,6 +640,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Potal") && PV.IsMine)
         {
+            vcamPotal.Priority = 0;
             _roomListPanel.SetActive(false);
             _createRoomPanel.SetActive(false);
         }
