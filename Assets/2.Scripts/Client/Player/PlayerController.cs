@@ -1,11 +1,11 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using Cinemachine;
 using Photon.Pun;
-using UnityEngine.SceneManagement;
+using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private GameObject mainCamera;
     private CinemachineVirtualCamera vcamOne;
     private CinemachineVirtualCamera vcamThree;
+    private CinemachineVirtualCamera vcamPotal;
     private CinemachineVirtualCamera[] vcamMode = new CinemachineVirtualCamera[3];
 
     private const float threshold = 0.01f;
@@ -103,6 +104,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [Header("ÀÇÀÚ")]
     private bool _isSit = false;
 
+    private bool _isInput = true;
+
     private bool IsCurrentDeviceMouse
     {
         get
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             return playerInput.currentControlScheme == "KeyboardMouse";
 #else
-    				return false;
+            return false;
 #endif
         }
     }
@@ -160,6 +163,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     cm.GetChild(i).TryGetComponent(out vcamMode[i]);
                 }
             }
+            else if (_sn.Equals("2.Campus"))
+            {
+                GameObject.Find("PotalCamera").TryGetComponent(out vcamPotal);
+            }
         }
     }
 
@@ -202,7 +209,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             StartCoroutine(AgoraNick(myCam));
         }
-        
+
     }
     #endregion
 
@@ -221,7 +228,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             grammaticalPersonState = true;
             Cursor.lockState = CursorLockMode.Locked;
-            
+
             vcamThree.Follow = transform.GetChild(0);
             vcamThree.LookAt = transform.GetChild(0);
 
@@ -265,9 +272,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             hasAnim = TryGetComponent(out anim);
 
+            GrammaticalPerson();
             if (!_isSit)
             {
-                GrammaticalPerson();
                 JumpAndGravity();
                 GroundedCheck();
                 Move();
@@ -288,11 +295,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 inputPress.phone = false;
             }
 
-            if(inputPress.GPT)
+            if (inputPress.GPT)
             {
                 GPTState = !GPTState;
                 GPTAnim.SetBool(animGPT, GPTState);
-                if(GPTState = true)
+                if (GPTState)
                 {
                     _PhotonManager.MyPet.GetComponent<PetController>().SpeechBubble.SetActive(true);
                     vcamPetGPT.Priority = 20;
@@ -328,18 +335,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     playerInput.enabled = false;
                     Cursor.lockState = CursorLockMode.None;
                 }
-                    
+                _isInput = false;
             }
             else
             {
                 if (!playerInput.enabled)
                     playerInput.enabled = true;
+                _isInput = true;
             }
         }
     }
 
     void GrammaticalPerson()
     {
+        if (!_isInput && !_isSit) return;
+
         if (grammaticalPersonState)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -358,7 +368,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
             if (_isCls)
             {
-                if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
+                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     vcamMode[0].Priority = 1;
                     vcamMode[1].Priority = 1;
@@ -389,7 +399,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     Camera.main.cullingMask = -1;
                 }
             }
-            
+
         }
     }
 
@@ -406,7 +416,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 anim.SetBool(_animIDSitting, true);
                 _isSit = true;
-            } 
+            }
         }
     }
 
@@ -416,9 +426,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (num.Equals(0))
                 anim.SetTrigger(_animAsking);
-            else if(num.Equals(1))
+            else if (num.Equals(1))
                 anim.SetTrigger(_animClap);
-            else if(num.Equals(2))
+            else if (num.Equals(2))
                 anim.SetTrigger(_animShout);
         }
     }
@@ -618,6 +628,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Potal") && PV.IsMine)
         {
+            vcamPotal.Priority = 999;
             _roomListPanel.SetActive(true);
         }
         else if (other.CompareTag("Fog") && PV.IsMine)
@@ -634,14 +645,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Potal") && PV.IsMine)
         {
+            vcamPotal.Priority = 0;
             _roomListPanel.SetActive(false);
             _createRoomPanel.SetActive(false);
         }
     }
 
-    void OnDisable()
+    public override void OnDisable()
     {
-        if(!ReferenceEquals(anim, null))
+        base.OnDisable();
+
+        if (!ReferenceEquals(anim, null))
         {
             anim.SetFloat(_animIDSpeed, 0);
             anim.SetFloat(_animIDMotionSpeed, 0);
