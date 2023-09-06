@@ -1,14 +1,10 @@
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using PlayFab;
-using PlayFab.Json;
 using PlayFab.ClientModels;
+using PlayFab.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
-using System.IO;
-using Photon.Pun;
-using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
+using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -58,14 +54,16 @@ public class QuestionManager : MonoBehaviour
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
         {
-        }, result => {
+        }, result =>
+        {
             string data = result.Data["Question"].Value;
-            if(data is not null)
+            if (data is not null)
             {
                 questionDatas = PlayFabSimpleJson.DeserializeObject<List<QuestionData>>(data);
             }
             QuestionInit();
-        }, error => {
+        }, error =>
+        {
             Debug.Log(error.GenerateErrorReport());
         });
     }
@@ -111,14 +109,16 @@ public class QuestionManager : MonoBehaviour
 
         PlayFabClientAPI.GetTitleData(new GetTitleDataRequest()
         {
-        }, result => {
+        }, result =>
+        {
             string data = result.Data["Question"];
             if (data is not null)
             {
                 titleDatas = PlayFabSimpleJson.DeserializeObject<List<QuestionData>>(data);
             }
             tcs.SetResult(true);
-        }, error => {
+        }, error =>
+        {
             Debug.Log(error.GenerateErrorReport());
             tcs.SetResult(false);
         });
@@ -137,10 +137,12 @@ public class QuestionManager : MonoBehaviour
             GeneratePlayStreamEvent = true // PlayStream 이벤트 생성 여부
         };
 
-        PlayFabClientAPI.ExecuteCloudScript(request, 
-        result => {
+        PlayFabClientAPI.ExecuteCloudScript(request,
+        result =>
+        {
             tcs.SetResult(true);
-        }, error => {
+        }, error =>
+        {
             tcs.SetResult(false);
         });
 
@@ -159,9 +161,11 @@ public class QuestionManager : MonoBehaviour
         };
 
         PlayFabClientAPI.ExecuteCloudScript(request,
-        result => {
+        result =>
+        {
             tcs.SetResult(true);
-        }, error => {
+        }, error =>
+        {
             tcs.SetResult(false);
         });
 
@@ -180,9 +184,11 @@ public class QuestionManager : MonoBehaviour
         };
 
         PlayFabClientAPI.ExecuteCloudScript(request,
-        result => {
+        result =>
+        {
             tcs.SetResult(true);
-        }, error => {
+        }, error =>
+        {
             tcs.SetResult(false);
         });
 
