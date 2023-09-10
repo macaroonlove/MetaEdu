@@ -20,6 +20,7 @@ public class RoomPuller : MonoBehaviourPunCallbacks
     private int _maxPage, _multiple;
 
     public TMP_InputField roomName;
+    public TMP_InputField roomTitle;
     public TMP_Dropdown roomMax;
     private string[] _roomSets = { "3_1.ClassRoom", "3_2.ClassRoom" };
     private string _roomSet = "3_1.ClassRoom";
@@ -137,6 +138,6 @@ public class RoomPuller : MonoBehaviourPunCallbacks
         client.Disconnect();
         client = null;
         callback = null;
-        RoomChangeManager.Instance.RoomOut((roomName.text.Equals("") ? PhotonNetwork.LocalPlayer.NickName + "¥‘¿« πÊ" : roomName.text) + "#" + _roomSet + "#" + UtilClass.GenerateToken(10), roomMax.value + 2, 1);
+        RoomChangeManager.Instance.RoomOut((roomName.text.Equals("") ? PhotonNetwork.LocalPlayer.NickName + "¥‘¿« πÊ" : roomName.text) + "#" + _roomSet + "#" + UtilClass.GenerateToken(10), roomMax.value + 2, 1, roomTitle.text);
     }
 }
