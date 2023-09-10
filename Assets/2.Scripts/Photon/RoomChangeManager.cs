@@ -58,17 +58,17 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public void RoomOut(string roomName, int maxPlayer, int type)
+    public void RoomOut(string roomName, int maxPlayer, int type, string title = "")
     {
         PhotonNetwork.LeaveRoom();
         Singleton.Inst.isPatty = false;
 
-        StartCoroutine(LoadRoom(roomName, true, maxPlayer, type, _type));
+        StartCoroutine(LoadRoom(roomName, true, maxPlayer, type, _type, title));
     }
 
     public void RoomChange(string roomName) => StartCoroutine(LoadRoom(roomName, false, 20, 0, _type));
 
-    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type, int lastroom) // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
+    IEnumerator LoadRoom(string roomName, bool isJoin, int maxPlayer, int type, int lastroom, string title = "") // type, 0: Campus, 1: ClassRoom, 2: Battle, 3: Goldenball
     {
         lastRoom = lastroom;
 
@@ -83,7 +83,12 @@ public class RoomChangeManager : MonoBehaviourPunCallbacks
                 if (type.Equals(1)) // ClassRoom
                 {
                     _type = type;
-                    PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)maxPlayer }, null);
+                    Hashtable customRoomProperties = new Hashtable() { { "type", _type }, { "title", title } };
+
+                    RoomOptions roomOptions = new RoomOptions();
+                    roomOptions.MaxPlayers = (byte)maxPlayer;
+                    roomOptions.CustomRoomProperties = customRoomProperties;
+                    PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, null);
                 }
                 else // Others
                 {
