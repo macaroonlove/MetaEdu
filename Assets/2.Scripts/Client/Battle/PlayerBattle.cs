@@ -40,6 +40,11 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
     private GameObject[] _otherPlayer;
     void Awake()
     {
+        if (!SceneManager.GetActiveScene().name.Contains("Battle"))
+        {
+            this.enabled = false;
+        }
+
         _playerController = GetComponent<PlayerController>();
         PV = GetComponent<PhotonView>();
 
@@ -51,10 +56,6 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
         animGoldenballReact = Animator.StringToHash("GoldenballReact");
 
         CreateFireballs(5);
-        if (!SceneManager.GetActiveScene().name.Contains("Battle"))
-        {
-            this.enabled = false;
-        }
     }
 
     new void OnEnable()
@@ -66,7 +67,10 @@ public class PlayerBattle : MonoBehaviourPunCallbacks
 
     new void OnDisable()
     {
-        anim.SetLayerWeight(1, 0f);
+        if (anim != null)
+        {
+            anim.SetLayerWeight(1, 0f);
+        }
     }
     // Update is called once per frame
     void Update()
