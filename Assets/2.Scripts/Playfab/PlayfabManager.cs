@@ -122,10 +122,38 @@ public class PlayfabManager : MonoBehaviour
     #region 캐릭터 생성
     public void SButton(bool isOn)
     {
-        (_sex.Equals("Q") ? models[0] : _sex.Equals("W") ? models[1] : _sex.Equals("E") ? models[2] : _sex.Equals("R") ? models[3] : _sex.Equals("Y") ? models[4] : models[5]).SetActive(false);
+        CharActive(false);
         if (isOn)
             _sex = toggleGroup.ActiveToggles().FirstOrDefault().name;
-        (_sex.Equals("Q") ? models[0] : _sex.Equals("W") ? models[1] : _sex.Equals("E") ? models[2] : _sex.Equals("R") ? models[3] : _sex.Equals("Y") ? models[4] : models[5]).SetActive(true);
+        CharActive(true);
+    }
+
+    private void CharActive(bool isOn)
+    {
+        switch (_sex)
+        {
+            case "Q":
+                models[0].SetActive(isOn);
+                break;
+            case "W":
+                models[1].SetActive(isOn);
+                break;
+            case "E":
+                models[2].SetActive(isOn);
+                break;
+            case "R":
+                models[3].SetActive(isOn);
+                break;
+            case "Y":
+                models[4].SetActive(isOn);
+                break;
+            case "T":
+                models[5].SetActive(isOn);
+                break;
+            default:
+                models[5 + int.Parse(_sex)].SetActive(isOn);
+                break;
+        }
     }
 
     public void CharacterNickNameOk()
