@@ -123,6 +123,11 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.20776436
       objectReference: {fileID: 0}
+    - target: {fileID: -4732165671218428268, guid: 37a502716f2eb434db5144c70581d847,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -1728013695380148634, guid: 37a502716f2eb434db5144c70581d847,
         type: 3}
       propertyPath: m_Name
@@ -252,6 +257,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.074777305
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146093304296209568, guid: 37a502716f2eb434db5144c70581d847,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020272935348328761, guid: 37a502716f2eb434db5144c70581d847,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4870552773557632513, guid: 37a502716f2eb434db5144c70581d847, type: 3}

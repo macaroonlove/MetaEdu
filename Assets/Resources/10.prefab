@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 4873461341821379009, guid: 997577872f3f05548a639860536ee6c4,
         type: 3}
       propertyPath: m_Name
-      value: CharacterBase Variant
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5253963440458627963, guid: 997577872f3f05548a639860536ee6c4,
         type: 3}
@@ -122,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.18936786
+      objectReference: {fileID: 0}
+    - target: {fileID: -4732165671218428268, guid: 23355df87bc3cb34cb53edb8fe7724d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -1728013695380148634, guid: 23355df87bc3cb34cb53edb8fe7724d6,
         type: 3}
@@ -252,6 +257,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.07535646
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146093304296209568, guid: 23355df87bc3cb34cb53edb8fe7724d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020272935348328761, guid: 23355df87bc3cb34cb53edb8fe7724d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4870552773557632513, guid: 23355df87bc3cb34cb53edb8fe7724d6, type: 3}
