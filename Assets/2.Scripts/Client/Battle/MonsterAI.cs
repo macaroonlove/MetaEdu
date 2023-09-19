@@ -49,7 +49,7 @@ public class MonsterAI : MonoBehaviourPunCallbacks
     }
     IEnumerator CheckState()
     {
-        var wfs = new WaitForSeconds(0.5f);
+        var wfs = new WaitForSeconds(0.1f);
         if(PhotonNetwork.IsMasterClient)
         {
             while (state != State.DIE)
@@ -110,7 +110,6 @@ public class MonsterAI : MonoBehaviourPunCallbacks
         if(other.gameObject.CompareTag("fireball") && PV.IsMine)
         {
             SoundManager.Instance.ExplosionSound();
-            other.gameObject.SetActive(false);
             Vector3 pos = other.GetContact(0).point;
             Quaternion rot = Quaternion.LookRotation(-other.GetContact(0).normal);
             PV.RPC("StunMode", RpcTarget.AllBuffered, 34, pos);

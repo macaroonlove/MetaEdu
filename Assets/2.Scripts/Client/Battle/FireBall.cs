@@ -17,4 +17,9 @@ public class FireBall : MonoBehaviour
         rigid.ResetInertiaTensor();
         rigid.ResetCenterOfMass();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
+    }
 }

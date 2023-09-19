@@ -108,15 +108,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 0.7
+    agentHeight: 1
+    agentSlope: 14.1
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.23333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -166,6 +166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (157)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -237,6 +242,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -296,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -367,6 +382,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -426,6 +446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (147)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -497,6 +522,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -556,6 +586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (115)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -623,6 +658,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -718,6 +758,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (163)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -784,6 +829,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -923,6 +973,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -993,6 +1048,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1052,6 +1112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -1119,6 +1184,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -1274,6 +1344,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1344,6 +1419,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1403,6 +1483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -1470,6 +1555,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -1926,7 +2016,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &134596436
 Transform:
@@ -2153,6 +2243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2223,6 +2318,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2282,6 +2382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (148)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -2353,6 +2458,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2412,6 +2522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -2479,6 +2594,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -2662,6 +2782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (135)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2732,6 +2857,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2791,6 +2921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (167)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -2862,6 +2997,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2921,6 +3061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (140)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -2988,6 +3133,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -3233,6 +3383,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3299,6 +3454,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -3438,6 +3598,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (141)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3508,6 +3673,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3567,6 +3737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (162)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -3638,6 +3813,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3697,6 +3877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (142)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -3768,6 +3953,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3827,6 +4017,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -3894,6 +4089,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -4033,6 +4233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4099,6 +4304,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -4207,6 +4417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4277,6 +4492,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4336,6 +4556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (161)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -4403,6 +4628,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -4558,6 +4788,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4624,6 +4859,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -5064,6 +5304,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (121)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5134,6 +5379,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5193,6 +5443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -5264,6 +5519,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5323,6 +5583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (120)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -5394,6 +5659,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5453,6 +5723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -5520,6 +5795,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -5704,6 +5984,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5774,6 +6059,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5833,6 +6123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -5900,6 +6195,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -5999,6 +6299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (126)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6069,6 +6374,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6128,6 +6438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (59)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -6199,6 +6514,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6258,6 +6578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (86)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -6329,6 +6654,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6388,6 +6718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -6455,6 +6790,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -6610,6 +6950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6680,6 +7025,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6739,6 +7089,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (108)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -6810,6 +7165,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6869,6 +7229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -6936,6 +7301,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -7097,6 +7467,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (112)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7167,6 +7542,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7226,6 +7606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (101)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -7297,6 +7682,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7356,6 +7746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (152)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -7427,6 +7822,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7486,6 +7886,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (102)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -7557,6 +7962,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7616,6 +8026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (119)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -7687,6 +8102,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7746,6 +8166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -7813,6 +8238,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -7952,6 +8382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8018,6 +8453,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -8308,6 +8748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (107)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8374,6 +8819,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -8543,6 +8993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (111)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8609,6 +9064,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -8764,6 +9224,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8830,6 +9295,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -8925,6 +9395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (127)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8995,6 +9470,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9054,6 +9534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (114)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -9121,6 +9606,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9315,6 +9805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (131)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9381,6 +9876,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9504,6 +10004,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (165)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9570,6 +10075,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9735,6 +10245,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (125)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9801,6 +10316,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -9940,6 +10460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (154)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10010,6 +10535,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10069,6 +10599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -10140,6 +10675,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10199,6 +10739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (166)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -10270,6 +10815,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10329,6 +10879,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (70)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -10396,6 +10951,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -10579,6 +11139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10649,6 +11214,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10708,6 +11278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -10775,6 +11350,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -10959,6 +11539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11029,6 +11614,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11088,6 +11678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (104)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -11159,6 +11754,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11218,6 +11818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -11285,6 +11890,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -11469,6 +12079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (99)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11539,6 +12154,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11598,6 +12218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (75)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -11665,6 +12290,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -11826,6 +12456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11896,6 +12531,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11955,6 +12595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12026,6 +12671,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12085,6 +12735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12156,6 +12811,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12215,6 +12875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (91)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12286,6 +12951,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12345,6 +13015,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12416,6 +13091,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12475,6 +13155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (150)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12546,6 +13231,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12605,6 +13295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (116)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -12672,6 +13367,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -12953,6 +13653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13023,6 +13728,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13082,6 +13792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (146)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -13153,6 +13868,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13212,6 +13932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -13279,6 +14004,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -13418,6 +14148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (143)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13488,6 +14223,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13547,6 +14287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -13618,6 +14363,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13677,6 +14427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -13748,6 +14503,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13807,6 +14567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -13874,6 +14639,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -14029,6 +14799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14099,6 +14874,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14158,6 +14938,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -14229,6 +15014,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14288,6 +15078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -14359,6 +15154,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14418,6 +15218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (124)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -14485,6 +15290,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -14699,6 +15509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14769,6 +15584,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14828,6 +15648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (158)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -14899,6 +15724,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14958,6 +15788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15025,6 +15860,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -15164,6 +16004,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15234,6 +16079,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15293,6 +16143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (87)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15364,6 +16219,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15423,6 +16283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (151)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15494,6 +16359,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15553,6 +16423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15624,6 +16499,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15683,6 +16563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15754,6 +16639,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15813,6 +16703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -15884,6 +16779,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15943,6 +16843,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (118)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -16010,6 +16915,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -16105,6 +17015,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16171,6 +17086,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -16281,6 +17201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16351,6 +17276,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16410,6 +17340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -16481,6 +17416,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16540,6 +17480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -16611,6 +17556,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16670,6 +17620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (105)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -16741,6 +17696,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16800,6 +17760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -16867,6 +17832,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -17006,6 +17976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (133)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17076,6 +18051,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17135,6 +18115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (159)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -17202,6 +18187,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -17341,6 +18331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17407,6 +18402,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -17546,6 +18546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (122)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17616,6 +18621,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17675,6 +18685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (144)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -17746,6 +18761,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17805,6 +18825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -17876,6 +18901,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17935,6 +18965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (132)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -18006,6 +19041,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18065,6 +19105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (106)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -18132,6 +19177,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -18369,6 +19419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18435,6 +19490,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -18604,6 +19664,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (156)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18674,6 +19739,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18733,6 +19803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (94)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -18800,6 +19875,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -18955,6 +20035,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (153)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19025,6 +20110,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19084,6 +20174,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (129)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -19151,6 +20246,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -19378,6 +20478,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (113)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19448,6 +20553,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19477,6 +20587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5689281792616959841, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -19533,6 +20648,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e60375fb45fbd4689ba14784262000, type: 3}
 --- !u!4 &1437568153 stripped
@@ -19582,6 +20702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -19649,6 +20774,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -19788,6 +20918,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19858,6 +20993,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19917,6 +21057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -19988,6 +21133,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20047,6 +21197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (93)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20114,6 +21269,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -20269,6 +21429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (123)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20339,6 +21504,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20398,6 +21568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (79)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20469,6 +21644,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20528,6 +21708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20599,6 +21784,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20658,6 +21848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (128)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20729,6 +21924,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20788,6 +21988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (74)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20859,6 +22064,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20918,6 +22128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -20989,6 +22204,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21048,6 +22268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (96)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -21119,6 +22344,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21178,6 +22408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -21249,6 +22484,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21308,6 +22548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -21375,6 +22620,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -21502,7 +22752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1578804836
 Transform:
@@ -21673,6 +22923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21739,6 +22994,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -21878,6 +23138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21948,6 +23213,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22007,6 +23277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -22078,6 +23353,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22137,6 +23417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -22204,6 +23489,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -22366,6 +23656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22436,6 +23731,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22495,6 +23795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (155)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -22566,6 +23871,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22625,6 +23935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (77)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -22696,6 +24011,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22755,6 +24075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -22822,6 +24147,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -22991,6 +24321,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23057,6 +24392,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -23196,6 +24536,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (164)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23266,6 +24611,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23325,6 +24675,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -23396,6 +24751,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23455,6 +24815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (92)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -23526,6 +24891,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23585,6 +24955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (139)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -23656,6 +25031,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23715,6 +25095,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -23786,6 +25171,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23845,6 +25235,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -23912,6 +25307,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -24051,6 +25451,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24117,6 +25522,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -24301,6 +25711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24371,6 +25786,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24430,6 +25850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -24501,6 +25926,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24560,6 +25990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -24631,6 +26066,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24690,6 +26130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (130)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -24761,6 +26206,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24820,6 +26270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -24891,6 +26346,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24950,6 +26410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (138)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25021,6 +26486,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25080,6 +26550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25151,6 +26626,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25210,6 +26690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (149)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25281,6 +26766,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25340,6 +26830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25411,6 +26906,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25470,6 +26970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (117)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25537,6 +27042,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -25692,6 +27202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (145)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25762,6 +27277,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25821,6 +27341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -25892,6 +27417,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25951,6 +27481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -26022,6 +27557,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26081,6 +27621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (134)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -26152,6 +27697,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26211,6 +27761,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -26278,6 +27833,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -26439,6 +27999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26505,6 +28070,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -26735,6 +28305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26801,6 +28376,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -26909,6 +28489,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26975,6 +28560,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -27136,6 +28726,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (160)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27206,6 +28801,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27265,6 +28865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -27332,6 +28937,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -27487,6 +29097,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (137)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27553,6 +29168,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -27692,6 +29312,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (103)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27758,6 +29383,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -27858,6 +29488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611 (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27928,6 +29563,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27987,6 +29627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (89)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -28058,6 +29703,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -28117,6 +29767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (136)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -28188,6 +29843,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8639584166244960555, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -28247,6 +29907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bookcase N110611 (97)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
@@ -28314,6 +29979,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -31695,6 +33365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase N110611
       objectReference: {fileID: 0}
+    - target: {fileID: 5025932561188672987, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5089986333043014187, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -31761,6 +33436,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6919875126533660856, guid: 55e60375fb45fbd4689ba14784262000,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341993907879749280, guid: 55e60375fb45fbd4689ba14784262000,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
