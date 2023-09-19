@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -76,6 +77,11 @@ public class Setting : MonoBehaviour
         // ¼Ò¸®
         _soundPanel.GetChild(1).GetChild(1).TryGetComponent(out _bgm);
         _soundPanel.GetChild(2).GetChild(1).TryGetComponent(out _soundEffect);
+
+        if (SceneManager.GetActiveScene().name == "4.Battle")
+        {
+            _directional.enabled = false;
+        }
     }
 
     IEnumerator PostPetty()
