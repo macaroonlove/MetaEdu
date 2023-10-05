@@ -18,7 +18,7 @@ namespace OpenAI
         private OpenAIApi openai;
 
         private List<ChatMessage> messages = new List<ChatMessage>();
-        private string prompt = "이전까지 대화한거 잊고, 자기주도적 학습을 위한 선생님 및 친구가 되어주고 대답을 할때 한번더 생각해서 10점만점에10점으로 대답해줘";
+        private string prompt = "선생님역할을해줘";
 
         private PlayerController Player;
         private PetController _petController;
