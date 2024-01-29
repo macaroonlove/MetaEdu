@@ -7,24 +7,13 @@ public class PetFactory : AbsFactory
 {
     public override Pet CreatePet(Vector3 position, Quaternion rotation, int Level)
     {
-        GameObject sungkyulPet = null;
-        if (Level == 1)
+        GameObject pet = PhotonNetwork.Instantiate($"Level_{Level}", position, rotation);
+        
+        if(pet.GetComponent<Pet>() is SungkyulPet sungkyulPet)
         {
-            sungkyulPet = PhotonNetwork.Instantiate("Level_1", position, rotation);
-        }
-        else if (Level == 2)
-        {
-            sungkyulPet = PhotonNetwork.Instantiate("Level_2", position, rotation);
-        }
-        else if (Level == 3)
-        {
-            sungkyulPet = PhotonNetwork.Instantiate("Level_3", position, rotation);
-        }
-        else if (Level == 4)
-        {
-            sungkyulPet = PhotonNetwork.Instantiate("Level_4", position, rotation);
+            return sungkyulPet;
         }
 
-        return sungkyulPet.GetComponent<SungkyulPet>();
+        return null;
     }
 }
